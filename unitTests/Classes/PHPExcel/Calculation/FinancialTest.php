@@ -1,513 +1,447 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
-require_once 'testDataFileIterator.php';
+require_once(APPLICATION_TESTS_PATH . '/testDataFileIterator.php');
 
-class FinancialTest extends PHPUnit_Framework_TestCase
+class FinancialTest extends TestCase
 {
-
-    public function setUp()
+    public function setUp(): void
     {
-        if (!defined('PHPEXCEL_ROOT')) {
-            define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
-        }
-        require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
-
         PHPExcel_Calculation_Functions::setCompatibilityMode(PHPExcel_Calculation_Functions::COMPATIBILITY_EXCEL);
     }
 
-    /**
-     * @dataProvider providerACCRINT
-     */
+    #[DataProvider('providerACCRINT')]
     public function testACCRINT()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','ACCRINT'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial','ACCRINT'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerACCRINT()
+    public static function providerACCRINT()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/ACCRINT.data');
     }
 
-    /**
-     * @dataProvider providerACCRINTM
-     */
+    #[DataProvider('providerACCRINTM')]
     public function testACCRINTM()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','ACCRINTM'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial','ACCRINTM'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerACCRINTM()
+    public static function providerACCRINTM()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/ACCRINTM.data');
     }
 
-    /**
-     * @dataProvider providerAMORDEGRC
-     */
+    #[DataProvider('providerAMORDEGRC')]
     public function testAMORDEGRC()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','AMORDEGRC'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial','AMORDEGRC'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerAMORDEGRC()
+    public static function providerAMORDEGRC()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/AMORDEGRC.data');
     }
 
-    /**
-     * @dataProvider providerAMORLINC
-     */
+    #[DataProvider('providerAMORLINC')]
     public function testAMORLINC()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','AMORLINC'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial','AMORLINC'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerAMORLINC()
+    public static function providerAMORLINC()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/AMORLINC.data');
     }
 
-    /**
-     * @dataProvider providerCOUPDAYBS
-     */
+    #[DataProvider('providerCOUPDAYBS')]
     public function testCOUPDAYBS()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','COUPDAYBS'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial','COUPDAYBS'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerCOUPDAYBS()
+    public static function providerCOUPDAYBS()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/COUPDAYBS.data');
     }
 
-    /**
-     * @dataProvider providerCOUPDAYS
-     */
+    #[DataProvider('providerCOUPDAYS')]
     public function testCOUPDAYS()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','COUPDAYS'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial','COUPDAYS'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerCOUPDAYS()
+    public static function providerCOUPDAYS()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/COUPDAYS.data');
     }
 
-    /**
-     * @dataProvider providerCOUPDAYSNC
-     */
+    #[DataProvider('providerCOUPDAYSNC')]
     public function testCOUPDAYSNC()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','COUPDAYSNC'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial','COUPDAYSNC'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerCOUPDAYSNC()
+    public static function providerCOUPDAYSNC()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/COUPDAYSNC.data');
     }
 
-    /**
-     * @dataProvider providerCOUPNCD
-     */
+    #[DataProvider('providerCOUPNCD')]
     public function testCOUPNCD()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','COUPNCD'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial','COUPNCD'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerCOUPNCD()
+    public static function providerCOUPNCD()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/COUPNCD.data');
     }
 
-    /**
-     * @dataProvider providerCOUPNUM
-     */
+    #[DataProvider('providerCOUPNUM')]
     public function testCOUPNUM()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','COUPNUM'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial','COUPNUM'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerCOUPNUM()
+    public static function providerCOUPNUM()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/COUPNUM.data');
     }
 
-    /**
-     * @dataProvider providerCOUPPCD
-     */
+    #[DataProvider('providerCOUPPCD')]
     public function testCOUPPCD()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','COUPPCD'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial','COUPPCD'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerCOUPPCD()
+    public static function providerCOUPPCD()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/COUPPCD.data');
     }
 
-    /**
-     * @dataProvider providerCUMIPMT
-     */
+    #[DataProvider('providerCUMIPMT')]
     public function testCUMIPMT()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','CUMIPMT'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial','CUMIPMT'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerCUMIPMT()
+    public static function providerCUMIPMT()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/CUMIPMT.data');
     }
 
-    /**
-     * @dataProvider providerCUMPRINC
-     */
+    #[DataProvider('providerCUMPRINC')]
     public function testCUMPRINC()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','CUMPRINC'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial','CUMPRINC'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerCUMPRINC()
+    public static function providerCUMPRINC()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/CUMPRINC.data');
     }
 
-    /**
-     * @dataProvider providerDB
-     */
+    #[DataProvider('providerDB')]
     public function testDB()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','DB'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial','DB'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerDB()
+    public static function providerDB()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/DB.data');
     }
 
-    /**
-     * @dataProvider providerDDB
-     */
+    #[DataProvider('providerDDB')]
     public function testDDB()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','DDB'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial','DDB'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerDDB()
+    public static function providerDDB()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/DDB.data');
     }
 
-    /**
-     * @dataProvider providerDISC
-     */
+    #[DataProvider('providerDISC')]
     public function testDISC()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','DISC'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial','DISC'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerDISC()
+    public static function providerDISC()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/DISC.data');
     }
 
-    /**
-     * @dataProvider providerDOLLARDE
-     */
+    #[DataProvider('providerDOLLARDE')]
     public function testDOLLARDE()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','DOLLARDE'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial','DOLLARDE'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerDOLLARDE()
+    public static function providerDOLLARDE()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/DOLLARDE.data');
     }
 
-    /**
-     * @dataProvider providerDOLLARFR
-     */
+    #[DataProvider('providerDOLLARFR')]
     public function testDOLLARFR()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','DOLLARFR'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial','DOLLARFR'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerDOLLARFR()
+    public static function providerDOLLARFR()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/DOLLARFR.data');
     }
 
-    /**
-     * @dataProvider providerEFFECT
-     */
+    #[DataProvider('providerEFFECT')]
     public function testEFFECT()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','EFFECT'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial','EFFECT'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerEFFECT()
+    public static function providerEFFECT()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/EFFECT.data');
     }
 
-    /**
-     * @dataProvider providerFV
-     */
+    #[DataProvider('providerFV')]
     public function testFV()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','FV'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial','FV'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerFV()
+    public static function providerFV()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/FV.data');
     }
 
-    /**
-     * @dataProvider providerFVSCHEDULE
-     */
+    #[DataProvider('providerFVSCHEDULE')]
     public function testFVSCHEDULE()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','FVSCHEDULE'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial','FVSCHEDULE'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerFVSCHEDULE()
+    public static function providerFVSCHEDULE()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/FVSCHEDULE.data');
     }
 
-    /**
-     * @dataProvider providerINTRATE
-     */
+    #[DataProvider('providerINTRATE')]
     public function testINTRATE()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','INTRATE'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial','INTRATE'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerINTRATE()
+    public static function providerINTRATE()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/INTRATE.data');
     }
 
-    /**
-     * @dataProvider providerIPMT
-     */
+    #[DataProvider('providerIPMT')]
     public function testIPMT()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','IPMT'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial','IPMT'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerIPMT()
+    public static function providerIPMT()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/IPMT.data');
     }
 
-    /**
-     * @dataProvider providerIRR
-     */
+    #[DataProvider('providerIRR')]
     public function testIRR()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','IRR'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial','IRR'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerIRR()
+    public static function providerIRR()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/IRR.data');
     }
 
-    /**
-     * @dataProvider providerISPMT
-     */
+    #[DataProvider('providerISPMT')]
     public function testISPMT()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','ISPMT'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial','ISPMT'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerISPMT()
+    public static function providerISPMT()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/ISPMT.data');
     }
 
-    /**
-     * @dataProvider providerMIRR
-     */
+    #[DataProvider('providerMIRR')]
     public function testMIRR()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','MIRR'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial','MIRR'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerMIRR()
+    public static function providerMIRR()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/MIRR.data');
     }
 
-    /**
-     * @dataProvider providerNOMINAL
-     */
+    #[DataProvider('providerNOMINAL')]
     public function testNOMINAL()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','NOMINAL'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial','NOMINAL'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerNOMINAL()
+    public static function providerNOMINAL()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/NOMINAL.data');
     }
 
-    /**
-     * @dataProvider providerNPER
-     */
+    #[DataProvider('providerNPER')]
     public function testNPER()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','NPER'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial','NPER'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerNPER()
+    public static function providerNPER()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/NPER.data');
     }
 
-    /**
-     * @dataProvider providerNPV
-     */
+    #[DataProvider('providerNPV')]
     public function testNPV()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','NPV'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial','NPV'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerNPV()
+    public static function providerNPV()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/NPV.data');
     }
 
-    /**
-     * @dataProvider providerPRICE
-     */
+    #[DataProvider('providerPRICE')]
     public function testPRICE()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','PRICE'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial','PRICE'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerPRICE()
+    public static function providerPRICE()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/PRICE.data');
     }
 
-    /**
-     * @dataProvider providerRATE
-     */
+    #[DataProvider('providerRATE')]
     public function testRATE()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','RATE'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial','RATE'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerRATE()
+    public static function providerRATE()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/RATE.data');
     }
 
-    /**
-     * @dataProvider providerXIRR
-     */
+    #[DataProvider('providerXIRR')]
     public function testXIRR()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','XIRR'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial','XIRR'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerXIRR()
+    public static function providerXIRR()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/XIRR.data');
     }

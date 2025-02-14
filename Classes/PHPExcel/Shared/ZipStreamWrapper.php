@@ -61,7 +61,7 @@ class PHPExcel_Shared_ZipStreamWrapper
     public static function register()
     {
         @stream_wrapper_unregister('zip');
-        @stream_wrapper_register('zip', __CLASS__);
+        @stream_wrapper_register('zip', self::class);
     }
 
     /**
@@ -76,13 +76,13 @@ class PHPExcel_Shared_ZipStreamWrapper
     public function stream_open($path, $mode, $options, &$opened_path)
     {
         // Check for mode
-        if ($mode{0} != 'r') {
+        if ($mode[0] != 'r') {
             throw new PHPExcel_Reader_Exception('Mode ' . $mode . ' is not supported. Only read mode is supported.');
         }
 
-        $pos = strrpos($path, '#');
-        $url['host'] = substr($path, 6, $pos - 6); // 6: strlen('zip://')
-        $url['fragment'] = substr($path, $pos + 1);
+        $pos = strrpos((string) $path, '#');
+        $url['host'] = substr((string) $path, 6, $pos - 6); // 6: strlen('zip://')
+        $url['fragment'] = substr((string) $path, $pos + 1);
 
         // Open archive
         $this->archive = new ZipArchive();
@@ -133,8 +133,8 @@ class PHPExcel_Shared_ZipStreamWrapper
      */
     public function stream_read($count)
     {
-        $ret = substr($this->data, $this->position, $count);
-        $this->position += strlen($ret);
+        $ret = substr((string) $this->data, $this->position, $count);
+        $this->position += strlen((string) $ret);
         return $ret;
     }
 
@@ -156,7 +156,7 @@ class PHPExcel_Shared_ZipStreamWrapper
      */
     public function stream_eof()
     {
-        return $this->position >= strlen($this->data);
+        return $this->position >= strlen((string) $this->data);
     }
 
     /**
@@ -170,7 +170,7 @@ class PHPExcel_Shared_ZipStreamWrapper
     {
         switch ($whence) {
             case SEEK_SET:
-                if ($offset < strlen($this->data) && $offset >= 0) {
+                if ($offset < strlen((string) $this->data) && $offset >= 0) {
                      $this->position = $offset;
                      return true;
                 } else {
@@ -186,8 +186,8 @@ class PHPExcel_Shared_ZipStreamWrapper
                 }
                 break;
             case SEEK_END:
-                if (strlen($this->data) + $offset >= 0) {
-                     $this->position = strlen($this->data) + $offset;
+                if (strlen((string) $this->data) + $offset >= 0) {
+                     $this->position = strlen((string) $this->data) + $offset;
                      return true;
                 } else {
                      return false;

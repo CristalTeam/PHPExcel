@@ -1,31 +1,22 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
-require_once 'testDataFileIterator.php';
+require_once(APPLICATION_TESTS_PATH . '/testDataFileIterator.php');
 
-class CellTest extends PHPUnit_Framework_TestCase
+class CellTest extends TestCase
 {
-
-    public function setUp()
-    {
-        if (!defined('PHPEXCEL_ROOT')) {
-            define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
-        }
-        require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
-    }
-
-    /**
-     * @dataProvider providerColumnString
-     */
+    #[DataProvider('providerColumnString')]
     public function testColumnIndexFromString()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Cell','columnIndexFromString'), $args);
+        $result = call_user_func_array(['PHPExcel_Cell','columnIndexFromString'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerColumnString()
+    public static function providerColumnString()
     {
         return new testDataFileIterator('rawTestData/ColumnString.data');
     }
@@ -34,7 +25,7 @@ class CellTest extends PHPUnit_Framework_TestCase
     {
         $cellAddress = 'ABCD';
         try {
-            $result = call_user_func(array('PHPExcel_Cell','columnIndexFromString'), $cellAddress);
+            $result = call_user_func(['PHPExcel_Cell','columnIndexFromString'], $cellAddress);
         } catch (PHPExcel_Exception $e) {
             $this->assertEquals($e->getMessage(), 'Column string index can not be longer than 3 characters');
             return;
@@ -46,7 +37,7 @@ class CellTest extends PHPUnit_Framework_TestCase
     {
         $cellAddress = '';
         try {
-            $result = call_user_func(array('PHPExcel_Cell','columnIndexFromString'), $cellAddress);
+            $result = call_user_func(['PHPExcel_Cell','columnIndexFromString'], $cellAddress);
         } catch (PHPExcel_Exception $e) {
             $this->assertEquals($e->getMessage(), 'Column string index can not be empty');
             return;
@@ -54,34 +45,30 @@ class CellTest extends PHPUnit_Framework_TestCase
         $this->fail('An expected exception has not been raised.');
     }
 
-    /**
-     * @dataProvider providerColumnIndex
-     */
+    #[DataProvider('providerColumnIndex')]
     public function testStringFromColumnIndex()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Cell','stringFromColumnIndex'), $args);
+        $result = call_user_func_array(['PHPExcel_Cell','stringFromColumnIndex'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerColumnIndex()
+    public static function providerColumnIndex()
     {
         return new testDataFileIterator('rawTestData/ColumnIndex.data');
     }
 
-    /**
-     * @dataProvider providerCoordinates
-     */
+    #[DataProvider('providerCoordinates')]
     public function testCoordinateFromString()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Cell','coordinateFromString'), $args);
+        $result = call_user_func_array(['PHPExcel_Cell','coordinateFromString'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerCoordinates()
+    public static function providerCoordinates()
     {
         return new testDataFileIterator('rawTestData/CellCoordinates.data');
     }
@@ -90,7 +77,7 @@ class CellTest extends PHPUnit_Framework_TestCase
     {
         $cellAddress = 'A1:AI2012';
         try {
-            $result = call_user_func(array('PHPExcel_Cell','coordinateFromString'), $cellAddress);
+            $result = call_user_func(['PHPExcel_Cell','coordinateFromString'], $cellAddress);
         } catch (PHPExcel_Exception $e) {
             $this->assertEquals($e->getMessage(), 'Cell coordinate string can not be a range of cells');
             return;
@@ -102,7 +89,7 @@ class CellTest extends PHPUnit_Framework_TestCase
     {
         $cellAddress = '';
         try {
-            $result = call_user_func(array('PHPExcel_Cell','coordinateFromString'), $cellAddress);
+            $result = call_user_func(['PHPExcel_Cell','coordinateFromString'], $cellAddress);
         } catch (PHPExcel_Exception $e) {
             $this->assertEquals($e->getMessage(), 'Cell coordinate can not be zero-length string');
             return;
@@ -114,7 +101,7 @@ class CellTest extends PHPUnit_Framework_TestCase
     {
         $cellAddress = 'AI';
         try {
-            $result = call_user_func(array('PHPExcel_Cell','coordinateFromString'), $cellAddress);
+            $result = call_user_func(['PHPExcel_Cell','coordinateFromString'], $cellAddress);
         } catch (PHPExcel_Exception $e) {
             $this->assertEquals($e->getMessage(), 'Invalid cell coordinate '.$cellAddress);
             return;
@@ -122,18 +109,16 @@ class CellTest extends PHPUnit_Framework_TestCase
         $this->fail('An expected exception has not been raised.');
     }
 
-    /**
-     * @dataProvider providerAbsoluteCoordinates
-     */
+    #[DataProvider('providerAbsoluteCoordinates')]
     public function testAbsoluteCoordinateFromString()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Cell','absoluteCoordinate'), $args);
+        $result = call_user_func_array(['PHPExcel_Cell','absoluteCoordinate'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerAbsoluteCoordinates()
+    public static function providerAbsoluteCoordinates()
     {
         return new testDataFileIterator('rawTestData/CellAbsoluteCoordinate.data');
     }
@@ -142,7 +127,7 @@ class CellTest extends PHPUnit_Framework_TestCase
     {
         $cellAddress = 'A1:AI2012';
         try {
-            $result = call_user_func(array('PHPExcel_Cell','absoluteCoordinate'), $cellAddress);
+            $result = call_user_func(['PHPExcel_Cell','absoluteCoordinate'], $cellAddress);
         } catch (PHPExcel_Exception $e) {
             $this->assertEquals($e->getMessage(), 'Cell coordinate string can not be a range of cells');
             return;
@@ -150,18 +135,16 @@ class CellTest extends PHPUnit_Framework_TestCase
         $this->fail('An expected exception has not been raised.');
     }
 
-    /**
-     * @dataProvider providerAbsoluteReferences
-     */
+    #[DataProvider('providerAbsoluteReferences')]
     public function testAbsoluteReferenceFromString()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Cell','absoluteReference'), $args);
+        $result = call_user_func_array(['PHPExcel_Cell','absoluteReference'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerAbsoluteReferences()
+    public static function providerAbsoluteReferences()
     {
         return new testDataFileIterator('rawTestData/CellAbsoluteReference.data');
     }
@@ -170,7 +153,7 @@ class CellTest extends PHPUnit_Framework_TestCase
     {
         $cellAddress = 'A1:AI2012';
         try {
-            $result = call_user_func(array('PHPExcel_Cell','absoluteReference'), $cellAddress);
+            $result = call_user_func(['PHPExcel_Cell','absoluteReference'], $cellAddress);
         } catch (PHPExcel_Exception $e) {
             $this->assertEquals($e->getMessage(), 'Cell coordinate string can not be a range of cells');
             return;
@@ -178,14 +161,12 @@ class CellTest extends PHPUnit_Framework_TestCase
         $this->fail('An expected exception has not been raised.');
     }
 
-    /**
-     * @dataProvider providerSplitRange
-     */
+    #[DataProvider('providerSplitRange')]
     public function testSplitRange()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Cell','splitRange'), $args);
+        $result = call_user_func_array(['PHPExcel_Cell','splitRange'], $args);
         foreach ($result as $key => $split) {
             if (!is_array($expectedResult[$key])) {
                 $this->assertEquals($expectedResult[$key], $split[0]);
@@ -195,23 +176,21 @@ class CellTest extends PHPUnit_Framework_TestCase
         }
     }
 
-    public function providerSplitRange()
+    public static function providerSplitRange()
     {
         return new testDataFileIterator('rawTestData/CellSplitRange.data');
     }
 
-    /**
-     * @dataProvider providerBuildRange
-     */
+    #[DataProvider('providerBuildRange')]
     public function testBuildRange()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Cell','buildRange'), $args);
+        $result = call_user_func_array(['PHPExcel_Cell','buildRange'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerBuildRange()
+    public static function providerBuildRange()
     {
         return new testDataFileIterator('rawTestData/CellBuildRange.data');
     }
@@ -220,7 +199,7 @@ class CellTest extends PHPUnit_Framework_TestCase
     {
         $cellRange = '';
         try {
-            $result = call_user_func(array('PHPExcel_Cell','buildRange'), $cellRange);
+            $result = call_user_func(['PHPExcel_Cell','buildRange'], $cellRange);
         } catch (PHPExcel_Exception $e) {
             $this->assertEquals($e->getMessage(), 'Range does not contain any information');
             return;
@@ -228,66 +207,58 @@ class CellTest extends PHPUnit_Framework_TestCase
         $this->fail('An expected exception has not been raised.');
     }
 
-    /**
-     * @dataProvider providerRangeBoundaries
-     */
+    #[DataProvider('providerRangeBoundaries')]
     public function testRangeBoundaries()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Cell','rangeBoundaries'), $args);
+        $result = call_user_func_array(['PHPExcel_Cell','rangeBoundaries'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerRangeBoundaries()
+    public static function providerRangeBoundaries()
     {
         return new testDataFileIterator('rawTestData/CellRangeBoundaries.data');
     }
 
-    /**
-     * @dataProvider providerRangeDimension
-     */
+    #[DataProvider('providerRangeDimension')]
     public function testRangeDimension()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Cell','rangeDimension'), $args);
+        $result = call_user_func_array(['PHPExcel_Cell','rangeDimension'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerRangeDimension()
+    public static function providerRangeDimension()
     {
         return new testDataFileIterator('rawTestData/CellRangeDimension.data');
     }
 
-    /**
-     * @dataProvider providerGetRangeBoundaries
-     */
+    #[DataProvider('providerGetRangeBoundaries')]
     public function testGetRangeBoundaries()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Cell','getRangeBoundaries'), $args);
+        $result = call_user_func_array(['PHPExcel_Cell','getRangeBoundaries'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerGetRangeBoundaries()
+    public static function providerGetRangeBoundaries()
     {
         return new testDataFileIterator('rawTestData/CellGetRangeBoundaries.data');
     }
 
-    /**
-     * @dataProvider providerExtractAllCellReferencesInRange
-     */
+    #[DataProvider('providerExtractAllCellReferencesInRange')]
     public function testExtractAllCellReferencesInRange()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Cell','extractAllCellReferencesInRange'), $args);
+        $result = call_user_func_array(['PHPExcel_Cell','extractAllCellReferencesInRange'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerExtractAllCellReferencesInRange()
+    public static function providerExtractAllCellReferencesInRange()
     {
         return new testDataFileIterator('rawTestData/CellExtractAllCellReferencesInRange.data');
     }

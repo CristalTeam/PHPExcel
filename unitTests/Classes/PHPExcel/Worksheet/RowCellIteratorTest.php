@@ -1,17 +1,14 @@
 <?php
 
-class RowCellIteratorTest extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class RowCellIteratorTest extends TestCase
 {
     public $mockWorksheet;
     public $mockRowCell;
 
-    public function setUp()
+    public function setUp(): void
     {
-        if (!defined('PHPEXCEL_ROOT')) {
-            define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
-        }
-        require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
-        
         $this->mockCell = $this->getMockBuilder('PHPExcel_Cell')
             ->disableOriginalConstructor()
             ->getMock();
@@ -21,11 +18,12 @@ class RowCellIteratorTest extends PHPUnit_Framework_TestCase
             ->getMock();
 
         $this->mockWorksheet->expects($this->any())
-                 ->method('getHighestColumn')
-                 ->will($this->returnValue('E'));
+            ->method('getHighestColumn')
+            ->willReturn('E');
+
         $this->mockWorksheet->expects($this->any())
-                 ->method('getCellByColumnAndRow')
-                 ->will($this->returnValue($this->mockCell));
+            ->method('getCellByColumnAndRow')
+            ->willReturn($this->mockCell);
     }
 
 
@@ -34,7 +32,7 @@ class RowCellIteratorTest extends PHPUnit_Framework_TestCase
         $iterator = new PHPExcel_Worksheet_RowCellIterator($this->mockWorksheet);
         $RowCellIndexResult = 'A';
         $this->assertEquals($RowCellIndexResult, $iterator->key());
-        
+
         foreach ($iterator as $key => $RowCell) {
             $this->assertEquals($RowCellIndexResult++, $key);
             $this->assertInstanceOf('PHPExcel_Cell', $RowCell);
@@ -46,7 +44,7 @@ class RowCellIteratorTest extends PHPUnit_Framework_TestCase
         $iterator = new PHPExcel_Worksheet_RowCellIterator($this->mockWorksheet, 2, 'B', 'D');
         $RowCellIndexResult = 'B';
         $this->assertEquals($RowCellIndexResult, $iterator->key());
-        
+
         foreach ($iterator as $key => $RowCell) {
             $this->assertEquals($RowCellIndexResult++, $key);
             $this->assertInstanceOf('PHPExcel_Cell', $RowCell);
@@ -68,20 +66,16 @@ class RowCellIteratorTest extends PHPUnit_Framework_TestCase
         }
     }
 
-    /**
-     * @expectedException PHPExcel_Exception
-     */
     public function testSeekOutOfRange()
     {
+        $this->expectException(PHPExcel_Exception::class);
         $iterator = new PHPExcel_Worksheet_RowCellIterator($this->mockWorksheet, 2, 'B', 'D');
         $iterator->seek(1);
     }
 
-    /**
-     * @expectedException PHPExcel_Exception
-     */
     public function testPrevOutOfRange()
     {
+        $this->expectException(PHPExcel_Exception::class);
         $iterator = new PHPExcel_Worksheet_RowCellIterator($this->mockWorksheet, 2, 'B', 'D');
         $iterator->prev();
     }

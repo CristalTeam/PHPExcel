@@ -42,7 +42,7 @@ class PHPExcel_Cell_DataType
      *
      * @var array
      */
-    private static $errorCodes = array(
+    private static $errorCodes = [
         '#NULL!'  => 0,
         '#DIV/0!' => 1,
         '#VALUE!' => 2,
@@ -50,7 +50,7 @@ class PHPExcel_Cell_DataType
         '#NAME?'  => 4,
         '#NUM!'   => 5,
         '#N/A'    => 6
-    );
+    ];
 
     /**
      * Get list of error codes
@@ -91,7 +91,7 @@ class PHPExcel_Cell_DataType
         $pValue = PHPExcel_Shared_String::Substring($pValue, 0, 32767);
 
         // we require that newline is represented as "\n" in core, not as "\r\n" or "\r"
-        $pValue = str_replace(array("\r\n", "\r"), "\n", $pValue);
+        $pValue = str_replace(["\r\n", "\r"], "\n", $pValue);
 
         return $pValue;
     }

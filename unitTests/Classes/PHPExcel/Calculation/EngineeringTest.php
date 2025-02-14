@@ -1,642 +1,559 @@
 <?php
 
-//  Custom assertion class for handling precision of Complex numbers
-require_once 'custom/complexAssert.php';
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
-//  Data Provider handler
-require_once 'testDataFileIterator.php';
+require_once(APPLICATION_TESTS_PATH . '/testDataFileIterator.php');
+require_once(APPLICATION_TESTS_PATH . '/custom/complexAssert.php');
 
-
-class EngineeringTest extends PHPUnit_Framework_TestCase
+class EngineeringTest extends TestCase
 {
-
-    public function setUp()
+    public function setUp(): void
     {
-        if (!defined('PHPEXCEL_ROOT')) {
-            define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
-        }
-        require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
-
         PHPExcel_Calculation_Functions::setCompatibilityMode(PHPExcel_Calculation_Functions::COMPATIBILITY_EXCEL);
     }
 
-    /**
-     * @dataProvider providerBESSELI
-     */
+    #[DataProvider('providerBESSELI')]
     public function testBESSELI()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','BESSELI'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','BESSELI'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerBESSELI()
+    public static function providerBESSELI()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/BESSELI.data');
     }
 
-    /**
-     * @dataProvider providerBESSELJ
-     */
+    #[DataProvider('providerBESSELJ')]
     public function testBESSELJ()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','BESSELJ'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','BESSELJ'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerBESSELJ()
+    public static function providerBESSELJ()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/BESSELJ.data');
     }
 
-    /**
-     * @dataProvider providerBESSELK
-     */
+    #[DataProvider('providerBESSELK')]
     public function testBESSELK()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','BESSELK'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','BESSELK'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerBESSELK()
+    public static function providerBESSELK()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/BESSELK.data');
     }
 
-    /**
-     * @dataProvider providerBESSELY
-     */
+    #[DataProvider('providerBESSELY')]
     public function testBESSELY()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','BESSELY'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','BESSELY'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerBESSELY()
+    public static function providerBESSELY()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/BESSELY.data');
     }
 
-    /**
-     * @dataProvider providerCOMPLEX
-     */
+    #[DataProvider('providerCOMPLEX')]
     public function testCOMPLEX()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','COMPLEX'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','COMPLEX'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerCOMPLEX()
+    public static function providerCOMPLEX()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/COMPLEX.data');
     }
 
-    /**
-     * @dataProvider providerIMAGINARY
-     */
+    #[DataProvider('providerIMAGINARY')]
     public function testIMAGINARY()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMAGINARY'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','IMAGINARY'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerIMAGINARY()
+    public static function providerIMAGINARY()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMAGINARY.data');
     }
 
-    /**
-     * @dataProvider providerIMREAL
-     */
+    #[DataProvider('providerIMREAL')]
     public function testIMREAL()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMREAL'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','IMREAL'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerIMREAL()
+    public static function providerIMREAL()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMREAL.data');
     }
 
-    /**
-     * @dataProvider providerIMABS
-     */
+    #[DataProvider('providerIMABS')]
     public function testIMABS()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMABS'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','IMABS'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerIMABS()
+    public static function providerIMABS()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMABS.data');
     }
 
-    /**
-     * @dataProvider providerIMARGUMENT
-     */
+    #[DataProvider('providerIMARGUMENT')]
     public function testIMARGUMENT()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMARGUMENT'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','IMARGUMENT'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerIMARGUMENT()
+    public static function providerIMARGUMENT()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMARGUMENT.data');
     }
 
-    /**
-     * @dataProvider providerIMCONJUGATE
-     */
+    #[DataProvider('providerIMCONJUGATE')]
     public function testIMCONJUGATE()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMCONJUGATE'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','IMCONJUGATE'], $args);
         $complexAssert = new complexAssert();
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public function providerIMCONJUGATE()
+    public static function providerIMCONJUGATE()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMCONJUGATE.data');
     }
 
-    /**
-     * @dataProvider providerIMCOS
-     */
+    #[DataProvider('providerIMCOS')]
     public function testIMCOS()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMCOS'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','IMCOS'], $args);
         $complexAssert = new complexAssert();
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public function providerIMCOS()
+    public static function providerIMCOS()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMCOS.data');
     }
 
-    /**
-     * @dataProvider providerIMDIV
-     */
+    #[DataProvider('providerIMDIV')]
     public function testIMDIV()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMDIV'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','IMDIV'], $args);
         $complexAssert = new complexAssert();
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public function providerIMDIV()
+    public static function providerIMDIV()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMDIV.data');
     }
 
-    /**
-     * @dataProvider providerIMEXP
-     */
+    #[DataProvider('providerIMEXP')]
     public function testIMEXP()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMEXP'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','IMEXP'], $args);
         $complexAssert = new complexAssert();
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public function providerIMEXP()
+    public static function providerIMEXP()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMEXP.data');
     }
 
-    /**
-     * @dataProvider providerIMLN
-     */
+    #[DataProvider('providerIMLN')]
     public function testIMLN()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMLN'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','IMLN'], $args);
         $complexAssert = new complexAssert();
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public function providerIMLN()
+    public static function providerIMLN()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMLN.data');
     }
 
-    /**
-     * @dataProvider providerIMLOG2
-     */
+    #[DataProvider('providerIMLOG2')]
     public function testIMLOG2()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMLOG2'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','IMLOG2'], $args);
         $complexAssert = new complexAssert();
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public function providerIMLOG2()
+    public static function providerIMLOG2()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMLOG2.data');
     }
 
-    /**
-     * @dataProvider providerIMLOG10
-     */
+    #[DataProvider('providerIMLOG10')]
     public function testIMLOG10()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMLOG10'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','IMLOG10'], $args);
         $complexAssert = new complexAssert();
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public function providerIMLOG10()
+    public static function providerIMLOG10()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMLOG10.data');
     }
 
-    /**
-     * @dataProvider providerIMPOWER
-     */
+    #[DataProvider('providerIMPOWER')]
     public function testIMPOWER()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMPOWER'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','IMPOWER'], $args);
         $complexAssert = new complexAssert();
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public function providerIMPOWER()
+    public static function providerIMPOWER()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMPOWER.data');
     }
 
-    /**
-     * @dataProvider providerIMPRODUCT
-     */
+    #[DataProvider('providerIMPRODUCT')]
     public function testIMPRODUCT()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMPRODUCT'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','IMPRODUCT'], $args);
         $complexAssert = new complexAssert();
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public function providerIMPRODUCT()
+    public static function providerIMPRODUCT()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMPRODUCT.data');
     }
 
-    /**
-     * @dataProvider providerIMSIN
-     */
+    #[DataProvider('providerIMSIN')]
     public function testIMSIN()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMSIN'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','IMSIN'], $args);
         $complexAssert = new complexAssert();
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public function providerIMSIN()
+    public static function providerIMSIN()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMSIN.data');
     }
 
-    /**
-     * @dataProvider providerIMSQRT
-     */
+    #[DataProvider('providerIMSQRT')]
     public function testIMSQRT()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMSQRT'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','IMSQRT'], $args);
         $complexAssert = new complexAssert();
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public function providerIMSQRT()
+    public static function providerIMSQRT()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMSQRT.data');
     }
 
-    /**
-     * @dataProvider providerIMSUB
-     */
+    #[DataProvider('providerIMSUB')]
     public function testIMSUB()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMSUB'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','IMSUB'], $args);
         $complexAssert = new complexAssert();
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public function providerIMSUB()
+    public static function providerIMSUB()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMSUB.data');
     }
 
-    /**
-     * @dataProvider providerIMSUM
-     */
+    #[DataProvider('providerIMSUM')]
     public function testIMSUM()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMSUM'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','IMSUM'], $args);
         $complexAssert = new complexAssert();
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public function providerIMSUM()
+    public static function providerIMSUM()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMSUM.data');
     }
 
-    /**
-     * @dataProvider providerERF
-     */
+    #[DataProvider('providerERF')]
     public function testERF()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','ERF'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-12);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','ERF'], $args);
+        $this->assertEquals($expectedResult, $result, 1E-12);
     }
 
-    public function providerERF()
+    public static function providerERF()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/ERF.data');
     }
 
-    /**
-     * @dataProvider providerERFC
-     */
+    #[DataProvider('providerERFC')]
     public function testERFC()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','ERFC'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-12);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','ERFC'], $args);
+        $this->assertEquals($expectedResult, $result, 1E-12);
     }
 
-    public function providerERFC()
+    public static function providerERFC()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/ERFC.data');
     }
 
-    /**
-     * @dataProvider providerBIN2DEC
-     */
+    #[DataProvider('providerBIN2DEC')]
     public function testBIN2DEC()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','BINTODEC'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','BINTODEC'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerBIN2DEC()
+    public static function providerBIN2DEC()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/BIN2DEC.data');
     }
 
-    /**
-     * @dataProvider providerBIN2HEX
-     */
+    #[DataProvider('providerBIN2HEX')]
     public function testBIN2HEX()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','BINTOHEX'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','BINTOHEX'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerBIN2HEX()
+    public static function providerBIN2HEX()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/BIN2HEX.data');
     }
 
-    /**
-     * @dataProvider providerBIN2OCT
-     */
+    #[DataProvider('providerBIN2OCT')]
     public function testBIN2OCT()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','BINTOOCT'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','BINTOOCT'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerBIN2OCT()
+    public static function providerBIN2OCT()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/BIN2OCT.data');
     }
 
-    /**
-     * @dataProvider providerDEC2BIN
-     */
+    #[DataProvider('providerDEC2BIN')]
     public function testDEC2BIN()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','DECTOBIN'), $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','DECTOBIN'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerDEC2BIN()
+    public static function providerDEC2BIN()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/DEC2BIN.data');
     }
 
-    /**
-     * @dataProvider providerDEC2HEX
-     */
+    #[DataProvider('providerDEC2HEX')]
     public function testDEC2HEX()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','DECTOHEX'), $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','DECTOHEX'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerDEC2HEX()
+    public static function providerDEC2HEX()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/DEC2HEX.data');
     }
 
-    /**
-     * @dataProvider providerDEC2OCT
-     */
+    #[DataProvider('providerDEC2OCT')]
     public function testDEC2OCT()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','DECTOOCT'), $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','DECTOOCT'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerDEC2OCT()
+    public static function providerDEC2OCT()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/DEC2OCT.data');
     }
 
-    /**
-     * @dataProvider providerHEX2BIN
-     */
+    #[DataProvider('providerHEX2BIN')]
     public function testHEX2BIN()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','HEXTOBIN'), $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','HEXTOBIN'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerHEX2BIN()
+    public static function providerHEX2BIN()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/HEX2BIN.data');
     }
 
-    /**
-     * @dataProvider providerHEX2DEC
-     */
+    #[DataProvider('providerHEX2DEC')]
     public function testHEX2DEC()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','HEXTODEC'), $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','HEXTODEC'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerHEX2DEC()
+    public static function providerHEX2DEC()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/HEX2DEC.data');
     }
 
-    /**
-     * @dataProvider providerHEX2OCT
-     */
+    #[DataProvider('providerHEX2OCT')]
     public function testHEX2OCT()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','HEXTOOCT'), $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','HEXTOOCT'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerHEX2OCT()
+    public static function providerHEX2OCT()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/HEX2OCT.data');
     }
 
-    /**
-     * @dataProvider providerOCT2BIN
-     */
+    #[DataProvider('providerOCT2BIN')]
     public function testOCT2BIN()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','OCTTOBIN'), $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','OCTTOBIN'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerOCT2BIN()
+    public static function providerOCT2BIN()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/OCT2BIN.data');
     }
 
-    /**
-     * @dataProvider providerOCT2DEC
-     */
+    #[DataProvider('providerOCT2DEC')]
     public function testOCT2DEC()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','OCTTODEC'), $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','OCTTODEC'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerOCT2DEC()
+    public static function providerOCT2DEC()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/OCT2DEC.data');
     }
 
-    /**
-     * @dataProvider providerOCT2HEX
-     */
+    #[DataProvider('providerOCT2HEX')]
     public function testOCT2HEX()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','OCTTOHEX'), $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','OCTTOHEX'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerOCT2HEX()
+    public static function providerOCT2HEX()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/OCT2HEX.data');
     }
 
-    /**
-     * @dataProvider providerDELTA
-     */
+    #[DataProvider('providerDELTA')]
     public function testDELTA()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','DELTA'), $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','DELTA'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerDELTA()
+    public static function providerDELTA()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/DELTA.data');
     }
 
-    /**
-     * @dataProvider providerGESTEP
-     */
+    #[DataProvider('providerGESTEP')]
     public function testGESTEP()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','GESTEP'), $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','GESTEP'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerGESTEP()
+    public static function providerGESTEP()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/GESTEP.data');
     }
@@ -644,39 +561,37 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     public function testGetConversionGroups()
     {
         $result = PHPExcel_Calculation_Engineering::getConversionGroups();
-        $this->assertInternalType('array', $result);
+        $this->assertIsArray( $result);
     }
 
     public function testGetConversionGroupUnits()
     {
         $result = PHPExcel_Calculation_Engineering::getConversionGroupUnits();
-        $this->assertInternalType('array', $result);
+        $this->assertIsArray( $result);
     }
 
     public function testGetConversionGroupUnitDetails()
     {
         $result = PHPExcel_Calculation_Engineering::getConversionGroupUnitDetails();
-        $this->assertInternalType('array', $result);
+        $this->assertIsArray( $result);
     }
 
     public function testGetConversionMultipliers()
     {
         $result = PHPExcel_Calculation_Engineering::getConversionMultipliers();
-        $this->assertInternalType('array', $result);
+        $this->assertIsArray( $result);
     }
 
-    /**
-     * @dataProvider providerCONVERTUOM
-     */
+    #[DataProvider('providerCONVERTUOM')]
     public function testCONVERTUOM()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','CONVERTUOM'), $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering','CONVERTUOM'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerCONVERTUOM()
+    public static function providerCONVERTUOM()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/CONVERTUOM.data');
     }

@@ -1,64 +1,61 @@
 <?php
 
-class AdvancedValueBinderTest extends PHPUnit_Framework_TestCase
-{
-    public function setUp()
-    {
-        if (!defined('PHPEXCEL_ROOT')) {
-            define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
-        }
-        require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
-    }
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
-    public function provider()
+class AdvancedValueBinderTest extends TestCase
+{
+    public static function provider()
     {
-        if (!class_exists('PHPExcel_Style_NumberFormat')) {
-            $this->setUp();
-        }
         $currencyUSD = PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_USD_SIMPLE;
         $currencyEURO = str_replace('$', '€', PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
 
-        return array(
-            array('10%', 0.1, PHPExcel_Style_NumberFormat::FORMAT_PERCENTAGE_00, ',', '.', '$'),
-            array('$10.11', 10.11, $currencyUSD, ',', '.', '$'),
-            array('$1,010.12', 1010.12, $currencyUSD, ',', '.', '$'),
-            array('$20,20', 20.2, $currencyUSD, '.', ',', '$'),
-            array('$2.020,20', 2020.2, $currencyUSD, '.', ',', '$'),
-            array('€2.020,20', 2020.2, $currencyEURO, '.', ',', '€'),
-            array('€ 2.020,20', 2020.2, $currencyEURO, '.', ',', '€'),
-            array('€2,020.22', 2020.22, $currencyEURO, ',', '.', '€'),
-        );
+        return [
+            ['10%', 0.1, PHPExcel_Style_NumberFormat::FORMAT_PERCENTAGE_00, ',', '.', '$'],
+            ['$10.11', 10.11, $currencyUSD, ',', '.', '$'],
+            ['$1,010.12', 1010.12, $currencyUSD, ',', '.', '$'],
+            ['$20,20', 20.2, $currencyUSD, '.', ',', '$'],
+            ['$2.020,20', 2020.2, $currencyUSD, '.', ',', '$'],
+            ['€2.020,20', 2020.2, $currencyEURO, '.', ',', '€'],
+            ['€ 2.020,20', 2020.2, $currencyEURO, '.', ',', '€'],
+            ['€2,020.22', 2020.22, $currencyEURO, ',', '.', '€'],
+        ];
     }
 
-    /**
-     * @dataProvider provider
-     */
+    #[DataProvider('provider')]
     public function testCurrency($value, $valueBinded, $format, $thousandsSeparator, $decimalSeparator, $currencyCode)
     {
-        $sheet = $this->getMock(
-            'PHPExcel_Worksheet',
-            array('getStyle', 'getNumberFormat', 'setFormatCode','getCellCacheController')
-        );
+        $sheet = $this->getMockBuilder('PHPExcel_Worksheet')
+            ->onlyMethods(['getStyle', 'getCellCacheController'])
+            ->getMock();
+
+        $style = $this->getMockBuilder('PHPExcel_Style')
+            ->onlyMethods(['getNumberFormat'])
+            ->getMock();
+
+        $format = $this->getMockBuilder('PHPExcel_Style_NumberFormat')
+            ->onlyMethods(['setFormatCode'])
+            ->getMock();
+
+        $style->expects($this->once())
+            ->method('getNumberFormat')
+            ->willReturn($format);
+
         $cache = $this->getMockBuilder('PHPExcel_CachedObjectStorage_Memory')
             ->disableOriginalConstructor()
             ->getMock();
+
         $cache->expects($this->any())
-                 ->method('getParent')
-                 ->will($this->returnValue($sheet));
+            ->method('getParent')
+            ->willReturn($sheet);
 
         $sheet->expects($this->once())
-                 ->method('getStyle')
-                 ->will($this->returnSelf());
-        $sheet->expects($this->once())
-                 ->method('getNumberFormat')
-                 ->will($this->returnSelf());
-        $sheet->expects($this->once())
-                 ->method('setFormatCode')
-                 ->with($format)
-                 ->will($this->returnSelf());
+            ->method('getStyle')
+            ->willReturn($style);
+
         $sheet->expects($this->any())
-                 ->method('getCellCacheController')
-                 ->will($this->returnValue($cache));
+            ->method('getCellCacheController')
+            ->willReturn($cache);
 
         PHPExcel_Shared_String::setCurrencyCode($currencyCode);
         PHPExcel_Shared_String::setDecimalSeparator($decimalSeparator);

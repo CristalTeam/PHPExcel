@@ -35,7 +35,7 @@ define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 date_default_timezone_set('Europe/London');
 
 /** PHPExcel_IOFactory */
-require_once dirname(__FILE__) . '/../Classes/PHPExcel/IOFactory.php';
+require_once __DIR__ . '/../Classes/PHPExcel/IOFactory.php';
 
 
 
@@ -47,19 +47,19 @@ $objPHPExcel = $objReader->load("templates/30template.xls");
 
 
 echo date('H:i:s') , " Add new data to the template" , EOL;
-$data = array(array('title'		=> 'Excel for dummies',
+$data = [['title'		=> 'Excel for dummies',
 					'price'		=> 17.99,
 					'quantity'	=> 2
-				   ),
-			  array('title'		=> 'PHP for dummies',
+				   ],
+			  ['title'		=> 'PHP for dummies',
 					'price'		=> 15.99,
 					'quantity'	=> 1
-				   ),
-			  array('title'		=> 'Inside OOP',
+				   ],
+			  ['title'		=> 'Inside OOP',
 					'price'		=> 12.95,
 					'quantity'	=> 1
-				   )
-			 );
+				   ]
+			 ];
 
 $objPHPExcel->getActiveSheet()->setCellValue('D1', PHPExcel_Shared_Date::PHPToExcel(time()));
 

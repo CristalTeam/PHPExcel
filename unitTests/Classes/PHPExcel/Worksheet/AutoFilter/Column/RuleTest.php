@@ -1,26 +1,22 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
 
-class RuleTest extends PHPUnit_Framework_TestCase
+class RuleTest extends TestCase
 {
     private $_testAutoFilterRuleObject;
 
     private $_mockAutoFilterColumnObject;
 
-    public function setUp()
+    public function setUp(): void
     {
-        if (!defined('PHPEXCEL_ROOT')) {
-            define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
-        }
-        require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
-
         $this->_mockAutoFilterColumnObject = $this->getMockBuilder('PHPExcel_Worksheet_AutoFilter_Column')
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->_mockAutoFilterColumnObject->expects($this->any())
-            ->method('testColumnInRange')
-            ->will($this->returnValue(3));
+        // $this->_mockAutoFilterColumnObject->expects($this->any())
+        //     ->method('testColumnInRange')
+        //     ->willReturn(3);
 
         $this->_testAutoFilterRuleObject = new PHPExcel_Worksheet_AutoFilter_Column_Rule(
             $this->_mockAutoFilterColumnObject

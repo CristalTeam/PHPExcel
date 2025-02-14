@@ -1,17 +1,9 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
 
-class LayoutTest extends PHPUnit_Framework_TestCase
+class LayoutTest extends TestCase
 {
-
-    public function setUp()
-    {
-        if (!defined('PHPEXCEL_ROOT')) {
-            define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
-        }
-        require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
-    }
-
     public function testSetLayoutTarget()
     {
         $LayoutTargetValue = 'String';

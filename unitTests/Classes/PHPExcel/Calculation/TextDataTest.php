@@ -1,362 +1,316 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
-require_once 'testDataFileIterator.php';
+require_once(APPLICATION_TESTS_PATH . '/testDataFileIterator.php');
 
-class TextDataTest extends PHPUnit_Framework_TestCase
+class TextDataTest extends TestCase
 {
-
-    public function setUp()
+    public function setUp(): void
     {
-        if (!defined('PHPEXCEL_ROOT')) {
-            define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
-        }
-        require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
-
         PHPExcel_Calculation_Functions::setCompatibilityMode(PHPExcel_Calculation_Functions::COMPATIBILITY_EXCEL);
     }
 
-    /**
-     * @dataProvider providerCHAR
-     */
+    #[DataProvider('providerCHAR')]
     public function testCHAR()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','CHARACTER'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData','CHARACTER'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerCHAR()
+    public static function providerCHAR()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/CHAR.data');
     }
 
-    /**
-     * @dataProvider providerCODE
-     */
+    #[DataProvider('providerCODE')]
     public function testCODE()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','ASCIICODE'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData','ASCIICODE'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerCODE()
+    public static function providerCODE()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/CODE.data');
     }
 
-    /**
-     * @dataProvider providerCONCATENATE
-     */
+    #[DataProvider('providerCONCATENATE')]
     public function testCONCATENATE()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','CONCATENATE'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData','CONCATENATE'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerCONCATENATE()
+    public static function providerCONCATENATE()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/CONCATENATE.data');
     }
 
-    /**
-     * @dataProvider providerLEFT
-     */
+    #[DataProvider('providerLEFT')]
     public function testLEFT()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','LEFT'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData','LEFT'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerLEFT()
+    public static function providerLEFT()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/LEFT.data');
     }
 
-    /**
-     * @dataProvider providerMID
-     */
+    #[DataProvider('providerMID')]
     public function testMID()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','MID'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData','MID'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerMID()
+    public static function providerMID()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/MID.data');
     }
 
-    /**
-     * @dataProvider providerRIGHT
-     */
+    #[DataProvider('providerRIGHT')]
     public function testRIGHT()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','RIGHT'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData','RIGHT'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerRIGHT()
+    public static function providerRIGHT()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/RIGHT.data');
     }
 
-    /**
-     * @dataProvider providerLOWER
-     */
+    #[DataProvider('providerLOWER')]
     public function testLOWER()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','LOWERCASE'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData','LOWERCASE'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerLOWER()
+    public static function providerLOWER()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/LOWER.data');
     }
 
-    /**
-     * @dataProvider providerUPPER
-     */
+    #[DataProvider('providerUPPER')]
     public function testUPPER()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','UPPERCASE'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData','UPPERCASE'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerUPPER()
+    public static function providerUPPER()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/UPPER.data');
     }
 
-    /**
-     * @dataProvider providerPROPER
-     */
+    #[DataProvider('providerPROPER')]
     public function testPROPER()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','PROPERCASE'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData','PROPERCASE'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerPROPER()
+    public static function providerPROPER()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/PROPER.data');
     }
 
-    /**
-     * @dataProvider providerLEN
-     */
+    #[DataProvider('providerLEN')]
     public function testLEN()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','STRINGLENGTH'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData','STRINGLENGTH'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerLEN()
+    public static function providerLEN()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/LEN.data');
     }
 
-    /**
-     * @dataProvider providerSEARCH
-     */
+    #[DataProvider('providerSEARCH')]
     public function testSEARCH()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','SEARCHINSENSITIVE'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData','SEARCHINSENSITIVE'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerSEARCH()
+    public static function providerSEARCH()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/SEARCH.data');
     }
 
-    /**
-     * @dataProvider providerFIND
-     */
+    #[DataProvider('providerFIND')]
     public function testFIND()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','SEARCHSENSITIVE'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData','SEARCHSENSITIVE'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerFIND()
+    public static function providerFIND()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/FIND.data');
     }
 
-    /**
-     * @dataProvider providerREPLACE
-     */
+    #[DataProvider('providerREPLACE')]
     public function testREPLACE()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','REPLACE'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData','REPLACE'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerREPLACE()
+    public static function providerREPLACE()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/REPLACE.data');
     }
 
-    /**
-     * @dataProvider providerSUBSTITUTE
-     */
+    #[DataProvider('providerSUBSTITUTE')]
     public function testSUBSTITUTE()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','SUBSTITUTE'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData','SUBSTITUTE'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerSUBSTITUTE()
+    public static function providerSUBSTITUTE()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/SUBSTITUTE.data');
     }
 
-    /**
-     * @dataProvider providerTRIM
-     */
+    #[DataProvider('providerTRIM')]
     public function testTRIM()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','TRIMSPACES'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData','TRIMSPACES'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerTRIM()
+    public static function providerTRIM()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/TRIM.data');
     }
 
-    /**
-     * @dataProvider providerCLEAN
-     */
+    #[DataProvider('providerCLEAN')]
     public function testCLEAN()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','TRIMNONPRINTABLE'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData','TRIMNONPRINTABLE'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerCLEAN()
+    public static function providerCLEAN()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/CLEAN.data');
     }
 
-    /**
-     * @dataProvider providerDOLLAR
-     */
+    #[DataProvider('providerDOLLAR')]
     public function testDOLLAR()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','DOLLAR'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData','DOLLAR'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerDOLLAR()
+    public static function providerDOLLAR()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/DOLLAR.data');
     }
 
-    /**
-     * @dataProvider providerFIXED
-     */
+    #[DataProvider('providerFIXED')]
     public function testFIXED()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','FIXEDFORMAT'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData','FIXEDFORMAT'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerFIXED()
+    public static function providerFIXED()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/FIXED.data');
     }
 
-    /**
-     * @dataProvider providerT
-     */
+    #[DataProvider('providerT')]
     public function testT()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','RETURNSTRING'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData','RETURNSTRING'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerT()
+    public static function providerT()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/T.data');
     }
 
-    /**
-     * @dataProvider providerTEXT
-     */
+    #[DataProvider('providerTEXT')]
     public function testTEXT()
     {
         //    Enforce decimal and thousands separator values to UK/US, and currency code to USD
-        call_user_func(array('PHPExcel_Shared_String', 'setDecimalSeparator'), '.');
-        call_user_func(array('PHPExcel_Shared_String', 'setThousandsSeparator'), ',');
-        call_user_func(array('PHPExcel_Shared_String', 'setCurrencyCode'), '$');
+        call_user_func(['PHPExcel_Shared_String', 'setDecimalSeparator'], '.');
+        call_user_func(['PHPExcel_Shared_String', 'setThousandsSeparator'], ',');
+        call_user_func(['PHPExcel_Shared_String', 'setCurrencyCode'], '$');
 
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData', 'TEXTFORMAT'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData', 'TEXTFORMAT'], $args);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerTEXT()
+    public static function providerTEXT()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/TEXT.data');
     }
 
-    /**
-     * @dataProvider providerVALUE
-     */
+    #[DataProvider('providerVALUE')]
     public function testVALUE()
     {
-        call_user_func(array('PHPExcel_Shared_String', 'setDecimalSeparator'), '.');
-        call_user_func(array('PHPExcel_Shared_String', 'setThousandsSeparator'), ' ');
-        call_user_func(array('PHPExcel_Shared_String', 'setCurrencyCode'), '$');
+        call_user_func(['PHPExcel_Shared_String', 'setDecimalSeparator'], '.');
+        call_user_func(['PHPExcel_Shared_String', 'setThousandsSeparator'], ' ');
+        call_user_func(['PHPExcel_Shared_String', 'setCurrencyCode'], '$');
 
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData', 'VALUE'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData', 'VALUE'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerVALUE()
+    public static function providerVALUE()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/VALUE.data');
     }

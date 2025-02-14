@@ -1,26 +1,18 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
 
-class LegendTest extends PHPUnit_Framework_TestCase
+class LegendTest extends TestCase
 {
-
-    public function setUp()
-    {
-        if (!defined('PHPEXCEL_ROOT')) {
-            define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
-        }
-        require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
-    }
-
     public function testSetPosition()
     {
-        $positionValues = array(
+        $positionValues = [
             PHPExcel_Chart_Legend::POSITION_RIGHT,
             PHPExcel_Chart_Legend::POSITION_LEFT,
             PHPExcel_Chart_Legend::POSITION_TOP,
             PHPExcel_Chart_Legend::POSITION_BOTTOM,
             PHPExcel_Chart_Legend::POSITION_TOPRIGHT,
-        );
+        ];
 
         $testInstance = new PHPExcel_Chart_Legend;
 
@@ -54,14 +46,14 @@ class LegendTest extends PHPUnit_Framework_TestCase
 
     public function testSetPositionXL()
     {
-        $positionValues = array(
+        $positionValues = [
             PHPExcel_Chart_Legend::xlLegendPositionBottom,
             PHPExcel_Chart_Legend::xlLegendPositionCorner,
             PHPExcel_Chart_Legend::xlLegendPositionCustom,
             PHPExcel_Chart_Legend::xlLegendPositionLeft,
             PHPExcel_Chart_Legend::xlLegendPositionRight,
             PHPExcel_Chart_Legend::xlLegendPositionTop,
-        );
+        ];
 
         $testInstance = new PHPExcel_Chart_Legend;
 
@@ -95,10 +87,10 @@ class LegendTest extends PHPUnit_Framework_TestCase
 
     public function testSetOverlay()
     {
-        $overlayValues = array(
+        $overlayValues = [
             true,
             false,
-        );
+        ];
 
         $testInstance = new PHPExcel_Chart_Legend;
 

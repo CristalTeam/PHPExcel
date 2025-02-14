@@ -34,7 +34,7 @@ date_default_timezone_set('Europe/London');
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 
 /** Include PHPExcel */
-require_once dirname(__FILE__) . '/../Classes/PHPExcel.php';
+require_once __DIR__ . '/../Classes/PHPExcel.php';
 
 
 // Create new PHPExcel object
@@ -67,9 +67,9 @@ $endYear++;
 
 $years = range($startYear,$endYear);
 $periods = range(1,12);
-$countries = array(	'United States',	'UK',		'France',	'Germany',
+$countries = [	'United States',	'UK',		'France',	'Germany',
 					'Italy',			'Spain',	'Portugal',	'Japan'
-				  );
+				  ];
 
 $row = 2;
 foreach($years as $year) {
@@ -82,26 +82,26 @@ foreach($years as $year) {
 					$period,
 					$i
 				);
-				$value = rand(500,1000) * (1 + rand(-0.25,+0.25));
+				$value = random_int(500,1000) * (1 + random_int(-0.25,+0.25));
 				$salesValue = $invoiceValue = NULL;
-				$incomeOrExpenditure = rand(-1,1);
+				$incomeOrExpenditure = random_int(-1,1);
 				if ($incomeOrExpenditure == -1) {
-					$expenditure = rand(-500,-1000) * (1 + rand(-0.25,+0.25));
+					$expenditure = random_int(-1000, -500) * (1 + random_int(-0.25,+0.25));
 					$income = NULL;
 				} elseif ($incomeOrExpenditure == 1) {
-					$expenditure = rand(-500,-1000) * (1 + rand(-0.25,+0.25));
-					$income = rand(500,1000) * (1 + rand(-0.25,+0.25));;
+					$expenditure = random_int(-1000, -500) * (1 + random_int(-0.25,+0.25));
+					$income = random_int(500,1000) * (1 + random_int(-0.25,+0.25));;
 				} else {
 					$expenditure = NULL;
-					$income = rand(500,1000) * (1 + rand(-0.25,+0.25));;
+					$income = random_int(500,1000) * (1 + random_int(-0.25,+0.25));;
 				}
-				$dataArray = array(	$year,
+				$dataArray = [	$year,
 									$period,
 									$country,
 									$eDate,
 									$income,
 									$expenditure,
-								  );
+								  ];
 				$objPHPExcel->getActiveSheet()->fromArray($dataArray, NULL, 'A'.$row++);
 			}
 		}

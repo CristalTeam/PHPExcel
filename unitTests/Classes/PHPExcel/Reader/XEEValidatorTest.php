@@ -1,51 +1,39 @@
 <?php
 
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
-class XEEValidatorTest extends PHPUnit_Framework_TestCase
+class XEEValidatorTest extends TestCase
 {
-
-    public function setUp()
-    {
-        if (!defined('PHPEXCEL_ROOT')) {
-            define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
-        }
-        require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
-    }
-
-    /**
-     * @dataProvider providerInvalidXML
-     * @expectedException PHPExcel_Reader_Exception
-     */
+    #[DataProvider('providerInvalidXML')]
     public function testInvalidXML($filename)
     {
-        $reader = $this->getMockForAbstractClass('PHPExcel_Reader_Abstract');
+        $reader = $this->createMock('PHPExcel_Reader_Abstract');
         $expectedResult = 'FAILURE: Should throw an Exception rather than return a value';
         $result = $reader->securityScanFile($filename);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerInvalidXML()
+    public static function providerInvalidXML()
     {
-        $tests = array();
+        $tests = [];
         foreach (glob('rawTestData/Reader/XEETestInvalid*.xml') as $file) {
             $tests[] = [realpath($file), true];
         }
         return $tests;
     }
 
-    /**
-     * @dataProvider providerValidXML
-     */
+    #[DataProvider('providerValidXML')]
     public function testValidXML($filename, $expectedResult)
     {
-        $reader = $this->getMockForAbstractClass('PHPExcel_Reader_Abstract');
+        $reader = $this->createMock('PHPExcel_Reader_Abstract');
         $result = $reader->securityScanFile($filename);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerValidXML()
+    public static function providerValidXML()
     {
-        $tests = array();
+        $tests = [];
         foreach (glob('rawTestData/Reader/XEETestValid*.xml') as $file) {
             $tests[] = [realpath($file), file_get_contents($file)];
         }

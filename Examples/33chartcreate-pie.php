@@ -37,19 +37,19 @@ date_default_timezone_set('Europe/London');
  */
 
 /** PHPExcel */
-require_once dirname(__FILE__) . '/../Classes/PHPExcel.php';
+require_once __DIR__ . '/../Classes/PHPExcel.php';
 
 
 $objPHPExcel = new PHPExcel();
 $objWorksheet = $objPHPExcel->getActiveSheet();
 $objWorksheet->fromArray(
-	array(
-		array('',	2010,	2011,	2012),
-		array('Q1',   12,   15,		21),
-		array('Q2',   56,   73,		86),
-		array('Q3',   52,   61,		69),
-		array('Q4',   30,   32,		0),
-	)
+	[
+		['',	2010,	2011,	2012],
+		['Q1',   12,   15,		21],
+		['Q2',   56,   73,		86],
+		['Q3',   52,   61,		69],
+		['Q4',   30,   32,		0],
+	]
 );
 
 
@@ -60,9 +60,9 @@ $objWorksheet->fromArray(
 //		Number of datapoints in series
 //		Data values
 //		Data Marker
-$dataSeriesLabels1 = array(
+$dataSeriesLabels1 = [
 	new PHPExcel_Chart_DataSeriesValues('String', 'Worksheet!$C$1', NULL, 1),	//	2011
-);
+];
 //	Set the X-Axis Labels
 //		Datatype
 //		Cell reference for data
@@ -70,9 +70,9 @@ $dataSeriesLabels1 = array(
 //		Number of datapoints in series
 //		Data values
 //		Data Marker
-$xAxisTickValues1 = array(
+$xAxisTickValues1 = [
 	new PHPExcel_Chart_DataSeriesValues('String', 'Worksheet!$A$2:$A$5', NULL, 4),	//	Q1 to Q4
-);
+];
 //	Set the Data values for each data series we want to plot
 //		Datatype
 //		Cell reference for data
@@ -80,9 +80,9 @@ $xAxisTickValues1 = array(
 //		Number of datapoints in series
 //		Data values
 //		Data Marker
-$dataSeriesValues1 = array(
+$dataSeriesValues1 = [
 	new PHPExcel_Chart_DataSeriesValues('Number', 'Worksheet!$C$2:$C$5', NULL, 4),
-);
+];
 
 //	Build the dataseries
 $series1 = new PHPExcel_Chart_DataSeries(
@@ -100,7 +100,7 @@ $layout1->setShowVal(TRUE);
 $layout1->setShowPercent(TRUE);
 
 //	Set the series in the plot area
-$plotArea1 = new PHPExcel_Chart_PlotArea($layout1, array($series1));
+$plotArea1 = new PHPExcel_Chart_PlotArea($layout1, [$series1]);
 //	Set the chart legend
 $legend1 = new PHPExcel_Chart_Legend(PHPExcel_Chart_Legend::POSITION_RIGHT, NULL, false);
 
@@ -134,9 +134,9 @@ $objWorksheet->addChart($chart1);
 //		Number of datapoints in series
 //		Data values
 //		Data Marker
-$dataSeriesLabels2 = array(
+$dataSeriesLabels2 = [
 	new PHPExcel_Chart_DataSeriesValues('String', 'Worksheet!$C$1', NULL, 1),	//	2011
-);
+];
 //	Set the X-Axis Labels
 //		Datatype
 //		Cell reference for data
@@ -144,9 +144,9 @@ $dataSeriesLabels2 = array(
 //		Number of datapoints in series
 //		Data values
 //		Data Marker
-$xAxisTickValues2 = array(
+$xAxisTickValues2 = [
 	new PHPExcel_Chart_DataSeriesValues('String', 'Worksheet!$A$2:$A$5', NULL, 4),	//	Q1 to Q4
-);
+];
 //	Set the Data values for each data series we want to plot
 //		Datatype
 //		Cell reference for data
@@ -154,9 +154,9 @@ $xAxisTickValues2 = array(
 //		Number of datapoints in series
 //		Data values
 //		Data Marker
-$dataSeriesValues2 = array(
+$dataSeriesValues2 = [
 	new PHPExcel_Chart_DataSeriesValues('Number', 'Worksheet!$C$2:$C$5', NULL, 4),
-);
+];
 
 //	Build the dataseries
 $series2 = new PHPExcel_Chart_DataSeries(
@@ -174,7 +174,7 @@ $layout2->setShowVal(TRUE);
 $layout2->setShowCatName(TRUE);
 
 //	Set the series in the plot area
-$plotArea2 = new PHPExcel_Chart_PlotArea($layout2, array($series2));
+$plotArea2 = new PHPExcel_Chart_PlotArea($layout2, [$series2]);
 
 $title2 = new PHPExcel_Chart_Title('Test Donut Chart');
 

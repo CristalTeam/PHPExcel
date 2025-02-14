@@ -1,18 +1,14 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
-require_once 'testDataFileIterator.php';
+require_once(APPLICATION_TESTS_PATH . '/testDataFileIterator.php');
 
-class FunctionsTest extends PHPUnit_Framework_TestCase
+class FunctionsTest extends TestCase
 {
-
-    public function setUp()
+    public function setUp(): void
     {
-        if (!defined('PHPEXCEL_ROOT')) {
-            define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
-        }
-        require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
-
         PHPExcel_Calculation_Functions::setCompatibilityMode(PHPExcel_Calculation_Functions::COMPATIBILITY_EXCEL);
     }
 
@@ -64,210 +60,184 @@ class FunctionsTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('#VALUE!', $result);
     }
 
-    /**
-     * @dataProvider providerIS_BLANK
-     */
+    #[DataProvider('providerIS_BLANK')]
     public function testIS_BLANK()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Functions','IS_BLANK'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Functions','IS_BLANK'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerIS_BLANK()
+    public static function providerIS_BLANK()
     {
         return new testDataFileIterator('rawTestData/Calculation/Functions/IS_BLANK.data');
     }
 
-    /**
-     * @dataProvider providerIS_ERR
-     */
+    #[DataProvider('providerIS_ERR')]
     public function testIS_ERR()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Functions','IS_ERR'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Functions','IS_ERR'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerIS_ERR()
+    public static function providerIS_ERR()
     {
         return new testDataFileIterator('rawTestData/Calculation/Functions/IS_ERR.data');
     }
 
-    /**
-     * @dataProvider providerIS_ERROR
-     */
+    #[DataProvider('providerIS_ERROR')]
     public function testIS_ERROR()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Functions','IS_ERROR'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Functions','IS_ERROR'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerIS_ERROR()
+    public static function providerIS_ERROR()
     {
         return new testDataFileIterator('rawTestData/Calculation/Functions/IS_ERROR.data');
     }
 
-    /**
-     * @dataProvider providerERROR_TYPE
-     */
+    #[DataProvider('providerERROR_TYPE')]
     public function testERROR_TYPE()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Functions','ERROR_TYPE'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Functions','ERROR_TYPE'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerERROR_TYPE()
+    public static function providerERROR_TYPE()
     {
         return new testDataFileIterator('rawTestData/Calculation/Functions/ERROR_TYPE.data');
     }
 
-    /**
-     * @dataProvider providerIS_LOGICAL
-     */
+    #[DataProvider('providerIS_LOGICAL')]
     public function testIS_LOGICAL()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Functions','IS_LOGICAL'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Functions','IS_LOGICAL'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerIS_LOGICAL()
+    public static function providerIS_LOGICAL()
     {
         return new testDataFileIterator('rawTestData/Calculation/Functions/IS_LOGICAL.data');
     }
 
-    /**
-     * @dataProvider providerIS_NA
-     */
+    #[DataProvider('providerIS_NA')]
     public function testIS_NA()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Functions','IS_NA'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Functions','IS_NA'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerIS_NA()
+    public static function providerIS_NA()
     {
         return new testDataFileIterator('rawTestData/Calculation/Functions/IS_NA.data');
     }
 
-    /**
-     * @dataProvider providerIS_NUMBER
-     */
+    #[DataProvider('providerIS_NUMBER')]
     public function testIS_NUMBER()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Functions','IS_NUMBER'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Functions','IS_NUMBER'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerIS_NUMBER()
+    public static function providerIS_NUMBER()
     {
         return new testDataFileIterator('rawTestData/Calculation/Functions/IS_NUMBER.data');
     }
 
-    /**
-     * @dataProvider providerIS_TEXT
-     */
+    #[DataProvider('providerIS_TEXT')]
     public function testIS_TEXT()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Functions','IS_TEXT'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Functions','IS_TEXT'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerIS_TEXT()
+    public static function providerIS_TEXT()
     {
         return new testDataFileIterator('rawTestData/Calculation/Functions/IS_TEXT.data');
     }
 
-    /**
-     * @dataProvider providerIS_NONTEXT
-     */
+    #[DataProvider('providerIS_NONTEXT')]
     public function testIS_NONTEXT()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Functions','IS_NONTEXT'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Functions','IS_NONTEXT'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerIS_NONTEXT()
+    public static function providerIS_NONTEXT()
     {
         return new testDataFileIterator('rawTestData/Calculation/Functions/IS_NONTEXT.data');
     }
 
-    /**
-     * @dataProvider providerIS_EVEN
-     */
+    #[DataProvider('providerIS_EVEN')]
     public function testIS_EVEN()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Functions','IS_EVEN'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Functions','IS_EVEN'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerIS_EVEN()
+    public static function providerIS_EVEN()
     {
         return new testDataFileIterator('rawTestData/Calculation/Functions/IS_EVEN.data');
     }
 
-    /**
-     * @dataProvider providerIS_ODD
-     */
+    #[DataProvider('providerIS_ODD')]
     public function testIS_ODD()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Functions','IS_ODD'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Functions','IS_ODD'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerIS_ODD()
+    public static function providerIS_ODD()
     {
         return new testDataFileIterator('rawTestData/Calculation/Functions/IS_ODD.data');
     }
 
-    /**
-     * @dataProvider providerTYPE
-     */
+    #[DataProvider('providerTYPE')]
     public function testTYPE()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Functions','TYPE'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Functions','TYPE'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerTYPE()
+    public static function providerTYPE()
     {
         return new testDataFileIterator('rawTestData/Calculation/Functions/TYPE.data');
     }
 
-    /**
-     * @dataProvider providerN
-     */
+    #[DataProvider('providerN')]
     public function testN()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Functions','N'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Functions','N'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerN()
+    public static function providerN()
     {
         return new testDataFileIterator('rawTestData/Calculation/Functions/N.data');
     }

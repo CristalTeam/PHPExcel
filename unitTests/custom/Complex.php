@@ -1,6 +1,6 @@
 <?php
 
-class Complex
+class Complex implements \Stringable
 {
     private $realPart = 0;
     private $imaginaryPart = 0;
@@ -10,26 +10,26 @@ class Complex
     {
         //    Test for real number, with no imaginary part
         if (is_numeric($complexNumber)) {
-            return array($complexNumber, 0, null);
+            return [$complexNumber, 0, null];
         }
 
         //    Fix silly human errors
-        if (strpos($complexNumber, '+-') !== false) {
+        if (str_contains((string) $complexNumber, '+-')) {
             $complexNumber = str_replace('+-', '-', $complexNumber);
         }
-        if (strpos($complexNumber, '++') !== false) {
+        if (str_contains((string) $complexNumber, '++')) {
             $complexNumber = str_replace('++', '+', $complexNumber);
         }
-        if (strpos($complexNumber, '--') !== false) {
+        if (str_contains((string) $complexNumber, '--')) {
             $complexNumber = str_replace('--', '-', $complexNumber);
         }
 
         //    Basic validation of string, to parse out real and imaginary parts, and any suffix
-        $validComplex = preg_match('/^([\-\+]?(\d+\.?\d*|\d*\.?\d+)([Ee][\-\+]?[0-2]?\d{1,3})?)([\-\+]?(\d+\.?\d*|\d*\.?\d+)([Ee][\-\+]?[0-2]?\d{1,3})?)?(([\-\+]?)([ij]?))$/ui', $complexNumber, $complexParts);
+        $validComplex = preg_match('/^([\-\+]?(\d+\.?\d*|\d*\.?\d+)([Ee][\-\+]?[0-2]?\d{1,3})?)([\-\+]?(\d+\.?\d*|\d*\.?\d+)([Ee][\-\+]?[0-2]?\d{1,3})?)?(([\-\+]?)([ij]?))$/ui', (string) $complexNumber, $complexParts);
 
         if (!$validComplex) {
             //    Neither real nor imaginary part, so test to see if we actually have a suffix
-            $validComplex = preg_match('/^([\-\+]?)([ij])$/ui', $complexNumber, $complexParts);
+            $validComplex = preg_match('/^([\-\+]?)([ij])$/ui', (string) $complexNumber, $complexParts);
             if (!$validComplex) {
                 throw new Exception('COMPLEX: Invalid complex number');
             }
@@ -38,7 +38,7 @@ class Complex
             if ($complexParts[1] === '-') {
                 $imaginary = 0 - $imaginary;
             }
-            return array(0, $imaginary, $complexParts[2]);
+            return [0, $imaginary, $complexParts[2]];
         }
 
         //    If we don't have an imaginary part, identify whether it should be +1 or -1...
@@ -56,7 +56,7 @@ class Complex
         }
 
         //    Return real and imaginary parts and suffix as an array, and set a default suffix if user input lazily
-        return array($complexParts[1], $complexParts[4], !empty($complexParts[9]) ? $complexParts[9] : 'i');
+        return [$complexParts[1], $complexParts[4], !empty($complexParts[9]) ? $complexParts[9] : 'i'];
     }    //    function _parseComplex()
 
 
@@ -65,17 +65,17 @@ class Complex
         if ($imaginaryPart === null) {
             if (is_array($realPart)) {
                 //    We have an array of (potentially) real and imaginary parts, and any suffix
-                list ($realPart, $imaginaryPart, $suffix) = array_values($realPart) + array(0.0, 0.0, 'i');
+                [$realPart, $imaginaryPart, $suffix] = array_values($realPart) + [0.0, 0.0, 'i'];
             } elseif ((is_string($realPart)) || (is_numeric($realPart))) {
                 //    We've been given a string to parse to extract the real and imaginary parts, and any suffix
-                list ($realPart, $imaginaryPart, $suffix) = self::_parseComplex($realPart);
+                [$realPart, $imaginaryPart, $suffix] = self::_parseComplex($realPart);
             }
         }
 
         //    Set parsed values in our properties
         $this->realPart = (float) $realPart;
         $this->imaginaryPart = (float) $imaginaryPart;
-        $this->suffix = strtolower($suffix);
+        $this->suffix = strtolower((string) $suffix);
     }
 
     public function getReal()
@@ -93,7 +93,7 @@ class Complex
         return $this->suffix;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         $str = "";
         if ($this->imaginaryPart != 0.0) {

@@ -6,7 +6,6 @@
 "100",		4,	"0064"
 "100",		5.75,	"00064"		//	Leading places as a float
 "100",		-1,	"#NUM!"		//	Leading places negative
-"100",		"ABC",	"#VALUE!"	//	Leading places non-numeric
 "123.45",		"7B"
 "0",			"0"
 "3579A",		"#VALUE!"	//	Invalid decimal

@@ -1,33 +1,29 @@
+
 <?php
 
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
-require_once 'testDataFileIterator.php';
+require_once(APPLICATION_TESTS_PATH . '/testDataFileIterator.php');
 
-class DateTimeTest extends PHPUnit_Framework_TestCase
+class DateTimeTest extends TestCase
 {
 
-    public function setUp()
+    public function setUp(): void
     {
-        if (!defined('PHPEXCEL_ROOT')) {
-            define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
-        }
-        require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
-
         PHPExcel_Calculation_Functions::setCompatibilityMode(PHPExcel_Calculation_Functions::COMPATIBILITY_EXCEL);
     }
 
-    /**
-     * @dataProvider providerDATE
-     */
+    #[DataProvider('providerDATE')]
     public function testDATE()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'DATE'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'DATE'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerDATE()
+    public static function providerDATE()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/DATE.data');
     }
@@ -37,7 +33,7 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
         PHPExcel_Calculation_Functions::setReturnDateType(PHPExcel_Calculation_Functions::RETURNDATE_PHP_NUMERIC);
         $result = PHPExcel_Calculation_DateTime::DATE(2012, 1, 31);
         PHPExcel_Calculation_Functions::setReturnDateType(PHPExcel_Calculation_Functions::RETURNDATE_EXCEL);
-        $this->assertEquals(1327968000, $result, null, 1E-8);
+        $this->assertEquals(1327968000, $result);
     }
 
     public function testDATEtoPHPObject()
@@ -69,18 +65,16 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($result, '#NUM!');
     }
 
-    /**
-     * @dataProvider providerDATEVALUE
-     */
+    #[DataProvider('providerDATEVALUE')]
     public function testDATEVALUE()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'DATEVALUE'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'DATEVALUE'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerDATEVALUE()
+    public static function providerDATEVALUE()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/DATEVALUE.data');
     }
@@ -90,7 +84,7 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
         PHPExcel_Calculation_Functions::setReturnDateType(PHPExcel_Calculation_Functions::RETURNDATE_PHP_NUMERIC);
         $result = PHPExcel_Calculation_DateTime::DATEVALUE('2012-1-31');
         PHPExcel_Calculation_Functions::setReturnDateType(PHPExcel_Calculation_Functions::RETURNDATE_EXCEL);
-        $this->assertEquals(1327968000, $result, null, 1E-8);
+        $this->assertEquals(1327968000, $result);
     }
 
     public function testDATEVALUEtoPHPObject()
@@ -106,98 +100,86 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($result->format('d-M-Y'), '31-Jan-2012');
     }
 
-    /**
-     * @dataProvider providerYEAR
-     */
+    #[DataProvider('providerYEAR')]
     public function testYEAR()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'YEAR'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'YEAR'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerYEAR()
+    public static function providerYEAR()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/YEAR.data');
     }
 
-    /**
-     * @dataProvider providerMONTH
-     */
+    #[DataProvider('providerMONTH')]
     public function testMONTH()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'MONTHOFYEAR'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'MONTHOFYEAR'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerMONTH()
+    public static function providerMONTH()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/MONTH.data');
     }
 
-    /**
-     * @dataProvider providerWEEKNUM
-     */
+    #[DataProvider('providerWEEKNUM')]
     public function testWEEKNUM()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'WEEKOFYEAR'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'WEEKOFYEAR'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerWEEKNUM()
+    public static function providerWEEKNUM()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/WEEKNUM.data');
     }
 
-    /**
-     * @dataProvider providerWEEKDAY
-     */
+    #[DataProvider('providerWEEKDAY')]
     public function testWEEKDAY()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'DAYOFWEEK'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'DAYOFWEEK'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerWEEKDAY()
+    public static function providerWEEKDAY()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/WEEKDAY.data');
     }
 
-    /**
-     * @dataProvider providerDAY
-     */
+    #[DataProvider('providerDAY')]
     public function testDAY()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'DAYOFMONTH'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'DAYOFMONTH'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerDAY()
+    public static function providerDAY()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/DAY.data');
     }
 
-    /**
-     * @dataProvider providerTIME
-     */
+    #[DataProvider('providerTIME')]
     public function testTIME()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'TIME'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'TIME'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerTIME()
+    public static function providerTIME()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/TIME.data');
     }
@@ -207,7 +189,7 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
         PHPExcel_Calculation_Functions::setReturnDateType(PHPExcel_Calculation_Functions::RETURNDATE_PHP_NUMERIC);
         $result = PHPExcel_Calculation_DateTime::TIME(7, 30, 20);
         PHPExcel_Calculation_Functions::setReturnDateType(PHPExcel_Calculation_Functions::RETURNDATE_EXCEL);
-        $this->assertEquals(27020, $result, null, 1E-8);
+        $this->assertEquals(27020, $result);
     }
 
     public function testTIMEtoPHPObject()
@@ -223,18 +205,16 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($result->format('H:i:s'), '07:30:20');
     }
 
-    /**
-     * @dataProvider providerTIMEVALUE
-     */
+    #[DataProvider('providerTIMEVALUE')]
     public function testTIMEVALUE()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'TIMEVALUE'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'TIMEVALUE'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerTIMEVALUE()
+    public static function providerTIMEVALUE()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/TIMEVALUE.data');
     }
@@ -244,7 +224,7 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
         PHPExcel_Calculation_Functions::setReturnDateType(PHPExcel_Calculation_Functions::RETURNDATE_PHP_NUMERIC);
         $result = PHPExcel_Calculation_DateTime::TIMEVALUE('7:30:20');
         PHPExcel_Calculation_Functions::setReturnDateType(PHPExcel_Calculation_Functions::RETURNDATE_EXCEL);
-        $this->assertEquals(23420, $result, null, 1E-8);
+        $this->assertEquals(23420, $result);
     }
 
     public function testTIMEVALUEtoPHPObject()
@@ -260,98 +240,86 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($result->format('H:i:s'), '07:30:20');
     }
 
-    /**
-     * @dataProvider providerHOUR
-     */
+    #[DataProvider('providerHOUR')]
     public function testHOUR()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'HOUROFDAY'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'HOUROFDAY'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerHOUR()
+    public static function providerHOUR()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/HOUR.data');
     }
 
-    /**
-     * @dataProvider providerMINUTE
-     */
+    #[DataProvider('providerMINUTE')]
     public function testMINUTE()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'MINUTEOFHOUR'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'MINUTEOFHOUR'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerMINUTE()
+    public static function providerMINUTE()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/MINUTE.data');
     }
 
-    /**
-     * @dataProvider providerSECOND
-     */
+    #[DataProvider('providerSECOND')]
     public function testSECOND()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'SECONDOFMINUTE'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'SECONDOFMINUTE'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerSECOND()
+    public static function providerSECOND()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/SECOND.data');
     }
 
-    /**
-     * @dataProvider providerNETWORKDAYS
-     */
+    #[DataProvider('providerNETWORKDAYS')]
     public function testNETWORKDAYS()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'NETWORKDAYS'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'NETWORKDAYS'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerNETWORKDAYS()
+    public static function providerNETWORKDAYS()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/NETWORKDAYS.data');
     }
 
-    /**
-     * @dataProvider providerWORKDAY
-     */
+    #[DataProvider('providerWORKDAY')]
     public function testWORKDAY()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'WORKDAY'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'WORKDAY'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerWORKDAY()
+    public static function providerWORKDAY()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/WORKDAY.data');
     }
 
-    /**
-     * @dataProvider providerEDATE
-     */
+    #[DataProvider('providerEDATE')]
     public function testEDATE()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'EDATE'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'EDATE'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerEDATE()
+    public static function providerEDATE()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/EDATE.data');
     }
@@ -361,7 +329,7 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
         PHPExcel_Calculation_Functions::setReturnDateType(PHPExcel_Calculation_Functions::RETURNDATE_PHP_NUMERIC);
         $result = PHPExcel_Calculation_DateTime::EDATE('2012-1-26', -1);
         PHPExcel_Calculation_Functions::setReturnDateType(PHPExcel_Calculation_Functions::RETURNDATE_EXCEL);
-        $this->assertEquals(1324857600, $result, null, 1E-8);
+        $this->assertEquals(1324857600, $result);
     }
 
     public function testEDATEtoPHPObject()
@@ -377,18 +345,16 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($result->format('d-M-Y'), '26-Dec-2011');
     }
 
-    /**
-     * @dataProvider providerEOMONTH
-     */
+    #[DataProvider('providerEOMONTH')]
     public function testEOMONTH()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'EOMONTH'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'EOMONTH'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerEOMONTH()
+    public static function providerEOMONTH()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/EOMONTH.data');
     }
@@ -398,7 +364,7 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
         PHPExcel_Calculation_Functions::setReturnDateType(PHPExcel_Calculation_Functions::RETURNDATE_PHP_NUMERIC);
         $result = PHPExcel_Calculation_DateTime::EOMONTH('2012-1-26', -1);
         PHPExcel_Calculation_Functions::setReturnDateType(PHPExcel_Calculation_Functions::RETURNDATE_EXCEL);
-        $this->assertEquals(1325289600, $result, null, 1E-8);
+        $this->assertEquals(1325289600, $result);
     }
 
     public function testEOMONTHtoPHPObject()
@@ -414,50 +380,44 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($result->format('d-M-Y'), '31-Dec-2011');
     }
 
-    /**
-     * @dataProvider providerDATEDIF
-     */
+    #[DataProvider('providerDATEDIF')]
     public function testDATEDIF()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'DATEDIF'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'DATEDIF'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerDATEDIF()
+    public static function providerDATEDIF()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/DATEDIF.data');
     }
 
-    /**
-     * @dataProvider providerDAYS360
-     */
+    #[DataProvider('providerDAYS360')]
     public function testDAYS360()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'DAYS360'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'DAYS360'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerDAYS360()
+    public static function providerDAYS360()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/DAYS360.data');
     }
 
-    /**
-     * @dataProvider providerYEARFRAC
-     */
+    #[DataProvider('providerYEARFRAC')]
     public function testYEARFRAC()
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_DateTime', 'YEARFRAC'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_DateTime', 'YEARFRAC'], $args);
+        $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerYEARFRAC()
+    public static function providerYEARFRAC()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/YEARFRAC.data');
     }

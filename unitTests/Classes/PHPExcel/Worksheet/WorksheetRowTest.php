@@ -1,25 +1,21 @@
 <?php
 
-class WorksheetRowTest extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class WorksheetRowTest extends TestCase
 {
     public $mockWorksheet;
     public $mockRow;
 
-    public function setUp()
+    public function setUp(): void
     {
-        if (!defined('PHPEXCEL_ROOT')) {
-            define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
-        }
-        require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
-        
         $this->mockWorksheet = $this->getMockBuilder('PHPExcel_Worksheet')
             ->disableOriginalConstructor()
             ->getMock();
         $this->mockWorksheet->expects($this->any())
                  ->method('getHighestColumn')
-                 ->will($this->returnValue('E'));
+                 ->willReturn('E');
     }
-
 
     public function testInstantiateRowDefault()
     {

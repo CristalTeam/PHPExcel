@@ -1,22 +1,18 @@
 <?php
 
-require_once 'testDataFileIterator.php';
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
-class CalculationTest extends PHPUnit_Framework_TestCase
+require_once(APPLICATION_TESTS_PATH . '/testDataFileIterator.php');
+
+class CalculationTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
-        if (!defined('PHPEXCEL_ROOT')) {
-            define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
-        }
-        require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
-
         PHPExcel_Calculation_Functions::setCompatibilityMode(PHPExcel_Calculation_Functions::COMPATIBILITY_EXCEL);
     }
 
-    /**
-     * @dataProvider providerBinaryComparisonOperation
-     */
+    #[DataProvider('providerBinaryComparisonOperation')]
     public function testBinaryComparisonOperation($formula, $expectedResultExcel, $expectedResultOpenOffice)
     {
         PHPExcel_Calculation_Functions::setCompatibilityMode(PHPExcel_Calculation_Functions::COMPATIBILITY_EXCEL);
@@ -28,7 +24,7 @@ class CalculationTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($expectedResultOpenOffice, $resultOpenOffice, 'should be OpenOffice compatible');
     }
 
-    public function providerBinaryComparisonOperation()
+    public static function providerBinaryComparisonOperation()
     {
         return new testDataFileIterator('rawTestData/CalculationBinaryComparisonOperation.data');
     }

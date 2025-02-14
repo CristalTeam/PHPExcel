@@ -5,5 +5,7 @@ analysis
 ## IDE support
 *.buildpath
 *.project
+*.lock
 /.settings
 /.idea
+vendor

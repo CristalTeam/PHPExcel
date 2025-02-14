@@ -36,7 +36,7 @@ define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 date_default_timezone_set('Europe/London');
 
 /** Include PHPExcel */
-require_once dirname(__FILE__) . '/../Classes/PHPExcel.php';
+require_once __DIR__ . '/../Classes/PHPExcel.php';
 
 
 // Create new PHPExcel object
@@ -62,26 +62,26 @@ $sharedStyle1 = new PHPExcel_Style();
 $sharedStyle2 = new PHPExcel_Style();
 
 $sharedStyle1->applyFromArray(
-	array('fill' 	=> array(
+	['fill' 	=> [
 								'type'		=> PHPExcel_Style_Fill::FILL_SOLID,
-								'color'		=> array('argb' => 'FFCCFFCC')
-							),
-		  'borders' => array(
-								'bottom'	=> array('style' => PHPExcel_Style_Border::BORDER_THIN),
-								'right'		=> array('style' => PHPExcel_Style_Border::BORDER_MEDIUM)
-							)
-		 ));
+								'color'		=> ['argb' => 'FFCCFFCC']
+							],
+		  'borders' => [
+								'bottom'	=> ['style' => PHPExcel_Style_Border::BORDER_THIN],
+								'right'		=> ['style' => PHPExcel_Style_Border::BORDER_MEDIUM]
+							]
+		 ]);
 
 $sharedStyle2->applyFromArray(
-	array('fill' 	=> array(
+	['fill' 	=> [
 								'type'		=> PHPExcel_Style_Fill::FILL_SOLID,
-								'color'		=> array('argb' => 'FFFFFF00')
-							),
-		  'borders' => array(
-								'bottom'	=> array('style' => PHPExcel_Style_Border::BORDER_THIN),
-								'right'		=> array('style' => PHPExcel_Style_Border::BORDER_MEDIUM)
-							)
-		 ));
+								'color'		=> ['argb' => 'FFFFFF00']
+							],
+		  'borders' => [
+								'bottom'	=> ['style' => PHPExcel_Style_Border::BORDER_THIN],
+								'right'		=> ['style' => PHPExcel_Style_Border::BORDER_MEDIUM]
+							]
+		 ]);
 
 $objPHPExcel->getActiveSheet()->setSharedStyle($sharedStyle1, "A1:T100");
 $objPHPExcel->getActiveSheet()->setSharedStyle($sharedStyle2, "C5:R95");
