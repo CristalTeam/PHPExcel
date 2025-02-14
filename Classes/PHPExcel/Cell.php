@@ -42,13 +42,6 @@ class PHPExcel_Cell implements \Stringable
     private static $valueBinder;
 
     /**
-     *    Value of the cell
-     *
-     *    @var    mixed
-     */
-    private $value;
-
-    /**
      *    Calculated value of the cell (used for caching)
      *    This returns the value last calculated by MS Excel or whichever spreadsheet program was used to
      *        create the original spreadsheet file.
@@ -114,16 +107,16 @@ class PHPExcel_Cell implements \Stringable
     /**
      *    Create a new Cell
      *
-     *    @param    mixed                $pValue
+     * @param mixed $value
      *    @param    string                $pDataType
      *    @param    PHPExcel_Worksheet    $pSheet
      *    @throws    PHPExcel_Exception
      */
-    public function __construct($pValue = null, $pDataType = null, ?PHPExcel_Worksheet $pSheet = null)
+    public function __construct(/**
+     *    Value of the cell
+     */
+    private $value = null, $pDataType = null, ?PHPExcel_Worksheet $pSheet = null)
     {
-        // Initialise cell value
-        $this->value = $pValue;
-
         // Set worksheet cache
         $this->parent = $pSheet->getCellCacheController();
 
@@ -133,7 +126,7 @@ class PHPExcel_Cell implements \Stringable
                 $pDataType = PHPExcel_Cell_DataType::TYPE_STRING;
             }
             $this->dataType = $pDataType;
-        } elseif (!self::getValueBinder()->bindValue($this, $pValue)) {
+        } elseif (!self::getValueBinder()->bindValue($this, $this->value)) {
             throw new PHPExcel_Exception("Value could not be bound to cell.");
         }
     }

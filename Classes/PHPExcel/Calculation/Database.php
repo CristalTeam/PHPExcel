@@ -56,7 +56,7 @@ class PHPExcel_Calculation_Database
      */
     private static function fieldExtract($database, $field)
     {
-        $field = strtoupper(PHPExcel_Calculation_Functions::flattenSingleValue($field));
+        $field = strtoupper((string) PHPExcel_Calculation_Functions::flattenSingleValue($field));
         $fieldNames = array_map('strtoupper', array_shift($database));
 
         if (is_numeric($field)) {

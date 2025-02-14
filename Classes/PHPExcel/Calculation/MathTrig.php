@@ -1248,11 +1248,11 @@ class PHPExcel_Calculation_MathTrig
         foreach ($conditions as $index => $condition) {
             $aArgs = $aArgsArray[$index];
             $wildcard = false;
-            if ((str_contains($condition, '*')) || (str_contains($condition, '?'))) {
+            if ((str_contains((string) $condition, '*')) || (str_contains((string) $condition, '?'))) {
                 // * and ? are wildcard characters.
                 // Use ~* and ~? for literal star and question mark
                 // Code logic doesn't yet handle escaping
-                $condition = trim(ltrim($condition, '=<>'), '"');
+                $condition = trim(ltrim((string) $condition, '=<>'), '"');
                 $wildcard = true;
             }
             // Loop through arguments

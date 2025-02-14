@@ -426,6 +426,7 @@ class PHPExcel_Reader_Excel5 extends PHPExcel_Reader_Abstract implements PHPExce
      * @return     boolean
      * @throws PHPExcel_Reader_Exception
      */
+    #[\Override]
     public function canRead($pFilename)
     {
         // Check if file exists
@@ -4379,7 +4380,7 @@ class PHPExcel_Reader_Excel5 extends PHPExcel_Reader_Abstract implements PHPExce
         if (!$this->readDataOnly) {
             // offset: 0; size: 8; cell range address of all cells containing this hyperlink
             try {
-                $cellRange = $this->readBIFF8CellRangeAddressFixed($recordData, 0, 8);
+                $cellRange = $this->readBIFF8CellRangeAddressFixed($recordData);
             } catch (PHPExcel_Exception) {
                 return;
             }
@@ -4694,7 +4695,7 @@ class PHPExcel_Reader_Excel5 extends PHPExcel_Reader_Abstract implements PHPExce
             if ($type == PHPExcel_Cell_DataValidation::TYPE_LIST) {
                 $formula1 = str_replace(chr(0), ',', $formula1);
             }
-        } catch (PHPExcel_Exception $e) {
+        } catch (PHPExcel_Exception) {
             return;
         }
         $offset += $sz1;

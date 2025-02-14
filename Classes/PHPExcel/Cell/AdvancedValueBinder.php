@@ -43,6 +43,7 @@ class PHPExcel_Cell_AdvancedValueBinder extends PHPExcel_Cell_DefaultValueBinder
      * @param  mixed $value          Value to bind in cell
      * @return boolean
      */
+    #[\Override]
     public function bindValue(PHPExcel_Cell $cell, $value = null)
     {
         // sanitize UTF-8 strings

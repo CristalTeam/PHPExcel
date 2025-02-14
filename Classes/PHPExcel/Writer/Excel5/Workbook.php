@@ -63,13 +63,6 @@
 class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
 {
     /**
-     * Formula parser
-     *
-     * @var PHPExcel_Writer_Excel5_Parser
-     */
-    private $parser;
-
-    /**
      * The BIFF file size for the workbook.
      * @var integer
      * @see calcSheetOffsets()
@@ -99,12 +92,6 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
      * @var integer
      */
     private $countryCode;
-
-    /**
-     * Workbook
-     * @var PHPExcel
-     */
-    private $phpExcel;
 
     /**
      * Fonts writers
@@ -192,9 +179,15 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
      * @param array        &$colors        Colour Table
      * @param mixed        $parser            The formula parser created for the Workbook
      */
-    public function __construct(?PHPExcel $phpExcel = null, &$str_total, &$str_unique, &$str_table, &$colors, $parser)
+    public function __construct(&$str_total, &$str_unique, &$str_table, &$colors, /**
+     * Formula parser
+     */
+    private $parser,
+    /**
+     * Workbook
+     */
+    private readonly ?PHPExcel $phpExcel = null)
     {
-        $this->parser        = $parser;
         $this->biffSize     = 0;
         $this->palette      = [];
         $this->countryCode = -1;
@@ -205,16 +198,14 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
         $this->colors        = &$colors;
         $this->setPaletteXl97();
 
-        $this->phpExcel = $phpExcel;
-
         // set BIFFwriter limit for CONTINUE records
         //        $this->_limit = 8224;
         $this->codepage = 0x04B0;
 
         // Add empty sheets and Build color cache
-        $countSheets = $phpExcel->getSheetCount();
+        $countSheets = $this->phpExcel->getSheetCount();
         for ($i = 0; $i < $countSheets; ++$i) {
-            $phpSheet = $phpExcel->getSheet($i);
+            $phpSheet = $this->phpExcel->getSheet($i);
 
             $this->parser->setExtSheet($phpSheet->getTitle(), $i);  // Register worksheet name with parser
 
@@ -776,7 +767,7 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
                 //Autofilter built in name
                 $name = pack('C', 0x0D);
 
-                $chunk .= $this->writeData($this->writeShortNameBiff8($name, $i + 1, $rangeBounds, true));
+                $chunk .= $this->writeData($this->writeShortNameBiff8($name, $rangeBounds, $i + 1, true));
             }
         }
 
@@ -827,7 +818,7 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
      * @param    boolean      $isHidden
      * @return    string    Complete binary record data
      * */
-    private function writeShortNameBiff8($name, $sheetIndex = 0, $rangeBounds, $isHidden = false)
+    private function writeShortNameBiff8($name, $rangeBounds, $sheetIndex = 0, $isHidden = false)
     {
         $record = 0x0018;
 

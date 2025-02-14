@@ -28,22 +28,6 @@
 class PHPExcel_Worksheet_AutoFilter implements \Stringable
 {
     /**
-     * Autofilter Worksheet
-     *
-     * @var PHPExcel_Worksheet
-     */
-    private $workSheet;
-
-
-    /**
-     * Autofilter Range
-     *
-     * @var string
-     */
-    private $range = '';
-
-
-    /**
      * Autofilter Column Ruleset
      *
      * @var array of PHPExcel_Worksheet_AutoFilter_Column
@@ -54,13 +38,20 @@ class PHPExcel_Worksheet_AutoFilter implements \Stringable
     /**
      * Create a new PHPExcel_Worksheet_AutoFilter
      *
-     *    @param    string        $pRange        Cell range (i.e. A1:E10)
-     * @param PHPExcel_Worksheet $pSheet
+     * @param string $range Cell range (i.e. A1:E10)
+     * @param PHPExcel_Worksheet $workSheet
      */
-    public function __construct($pRange = '', ?PHPExcel_Worksheet $pSheet = null)
+    public function __construct(
+        /**
+         * Autofilter Range
+         */
+        private $range = '',
+        /**
+         * Autofilter Worksheet
+         */
+        private ?PHPExcel_Worksheet $workSheet = null
+    )
     {
-        $this->range = $pRange;
-        $this->workSheet = $pSheet;
     }
 
     /**

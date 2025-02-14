@@ -509,7 +509,7 @@ class PHPExcel_Calculation_TextData
      * @param    string    $newText    String to replace in defined position
      * @return    string
      */
-    public static function REPLACE($oldText = '', $start = 1, $chars = null, $newText)
+    public static function REPLACE($newText, $oldText = '', $start = 1, $chars = null)
     {
         $oldText = PHPExcel_Calculation_Functions::flattenSingleValue($oldText);
         $start   = PHPExcel_Calculation_Functions::flattenSingleValue($start);
@@ -560,9 +560,9 @@ class PHPExcel_Calculation_TextData
             }
             if ($pos !== false) {
                 if (function_exists('mb_strlen')) {
-                    return self::REPLACE($text, ++$pos, mb_strlen((string) $fromText, 'UTF-8'), $toText);
+                    return self::REPLACE($toText, $text, ++$pos, mb_strlen((string) $fromText, 'UTF-8'));
                 } else {
-                    return self::REPLACE($text, ++$pos, strlen((string) $fromText), $toText);
+                    return self::REPLACE($toText, $text, ++$pos, strlen((string) $fromText));
                 }
             }
         }

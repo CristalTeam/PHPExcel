@@ -1,5 +1,6 @@
 build/PHPExcel.phar
 unitTests/codeCoverage
+.phpunit.result.cache
 analysis
 
 ## IDE support

@@ -63,13 +63,6 @@
 class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
 {
     /**
-     * Formula parser
-     *
-     * @var PHPExcel_Writer_Excel5_Parser
-     */
-    private $parser;
-
-    /**
      * Maximum number of characters for a string (LABEL record in BIFF5)
      * @var integer
      */
@@ -165,12 +158,6 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
     private $lastColumnIndex;
 
     /**
-     * Sheet object
-     * @var PHPExcel_Worksheet
-     */
-    public $phpSheet;
-
-    /**
      * Count cell style Xfs
      *
      * @var int
@@ -203,7 +190,13 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
      * @param string    $phpSheet        The worksheet to write
      * @param PHPExcel_Worksheet $phpSheet
      */
-    public function __construct(&$str_total, &$str_unique, &$str_table, &$colors, $parser, $preCalculateFormulas, $phpSheet)
+    public function __construct(&$str_total, &$str_unique, &$str_table, &$colors, /**
+     * Formula parser
+     */
+    private $parser, $preCalculateFormulas, /**
+     * Sheet object
+     */
+    public $phpSheet)
     {
         // change BIFFwriter limit for CONTINUE records
 //        $this->_limit = 8224;
@@ -214,9 +207,6 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
         $this->stringUnique        = &$str_unique;
         $this->stringTable        = &$str_table;
         $this->colors            = &$colors;
-        $this->parser            = $parser;
-
-        $this->phpSheet = $phpSheet;
 
         //$this->ext_sheets        = array();
         //$this->offset            = 0;
@@ -253,7 +243,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
             $this->lastColumnIndex = 255;
         }
 
-        $this->countCellStyleXfs = count($phpSheet->getParent()->getCellStyleXfCollection());
+        $this->countCellStyleXfs = count($this->phpSheet->getParent()->getCellStyleXfCollection());
     }
 
     /**
@@ -2913,7 +2903,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
                     $this->parser->parse($formula1);
                     $formula1 = $this->parser->toReversePolish();
                     $sz1 = strlen((string) $formula1);
-                } catch (PHPExcel_Exception $e) {
+                } catch (PHPExcel_Exception) {
                     $sz1 = 0;
                     $formula1 = '';
                 }

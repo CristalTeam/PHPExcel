@@ -85,15 +85,6 @@ class PHPExcel_Calculation
      */
     private static $instance;
 
-
-    /**
-     * Instance of the workbook this Calculation Engine is using
-     *
-     * @access    private
-     * @var PHPExcel
-     */
-    private $workbook;
-
     /**
      * List of instances of the calculation engine that we've instantiated for individual workbooks
      *
@@ -2068,11 +2059,15 @@ class PHPExcel_Calculation
     ];
 
 
-    public function __construct(?PHPExcel $workbook = null)
+    public function __construct(/**
+     * Instance of the workbook this Calculation Engine is using
+     *
+     * @access    private
+     * @var PHPExcel
+     */
+    private ?PHPExcel $workbook = null)
     {
         $this->delta = 1 * 10 ** (0 - ini_get('precision'));
-
-        $this->workbook = $workbook;
         $this->cyclicReferenceStack = new PHPExcel_CalcEngine_CyclicReferenceStack();
         $this->_debugLog = new PHPExcel_CalcEngine_Logger($this->cyclicReferenceStack);
     }
@@ -3645,7 +3640,7 @@ class PHPExcel_Calculation
                                 $result = '#VALUE!';
                             }
                         } else {
-                            $result = '"'.str_replace('""', '"', self::unwrapResult($operand1, '"').self::unwrapResult($operand2, '"')).'"';
+                            $result = '"'.str_replace('""', '"', self::unwrapResult($operand1).self::unwrapResult($operand2)).'"';
                         }
                         $this->_debugLog->writeDebugLog('Evaluation Result is ', $this->showTypeDetails($result));
                         $stack->push('Value', $result);

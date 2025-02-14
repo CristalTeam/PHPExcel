@@ -1094,7 +1094,7 @@ class PHPExcel_Writer_Excel2007_Worksheet extends PHPExcel_Writer_Excel2007_Writ
                 switch (strtolower((string) $mappedType)) {
                     case 'inlinestr':    // Inline string
                         if (! $cellValue instanceof PHPExcel_RichText) {
-                            $objWriter->writeElement('t', PHPExcel_Shared_String::ControlCharacterPHP2OOXML(htmlspecialchars($cellValue)));
+                            $objWriter->writeElement('t', PHPExcel_Shared_String::ControlCharacterPHP2OOXML(htmlspecialchars((string) $cellValue)));
                         } elseif ($cellValue instanceof PHPExcel_RichText) {
                             $objWriter->startElement('is');
                             $this->getParentWriter()->getWriterPart('stringtable')->writeRichText($objWriter, $cellValue);
@@ -1120,10 +1120,10 @@ class PHPExcel_Writer_Excel2007_Worksheet extends PHPExcel_Writer_Excel2007_Writ
                             $objWriter->writeAttribute('ref', $pCellAddress);
                             $objWriter->writeAttribute('aca', '1');
                             $objWriter->writeAttribute('ca', '1');
-                            $objWriter->text(substr($cellValue, 1));
+                            $objWriter->text(substr((string) $cellValue, 1));
                             $objWriter->endElement();
                         } else {
-                            $objWriter->writeElement('f', substr($cellValue, 1));
+                            $objWriter->writeElement('f', substr((string) $cellValue, 1));
                         }
                         if ($this->getParentWriter()->getOffice2003Compatibility() === false) {
                             if ($this->getParentWriter()->getPreCalculateFormulas()) {
@@ -1146,9 +1146,9 @@ class PHPExcel_Writer_Excel2007_Worksheet extends PHPExcel_Writer_Excel2007_Writ
                         $objWriter->writeElement('v', ($cellValue ? '1' : '0'));
                         break;
                     case 'e':            // Error
-                        if (str_starts_with($cellValue, '=')) {
-                            $objWriter->writeElement('f', substr($cellValue, 1));
-                            $objWriter->writeElement('v', substr($cellValue, 1));
+                        if (str_starts_with((string) $cellValue, '=')) {
+                            $objWriter->writeElement('f', substr((string) $cellValue, 1));
+                            $objWriter->writeElement('v', substr((string) $cellValue, 1));
                         } else {
                             $objWriter->writeElement('v', $cellValue);
                         }

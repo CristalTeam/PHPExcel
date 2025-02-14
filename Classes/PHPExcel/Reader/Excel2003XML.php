@@ -66,6 +66,7 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
      * @return     boolean
      * @throws PHPExcel_Reader_Exception
      */
+    #[\Override]
     public function canRead($pFilename)
     {
 

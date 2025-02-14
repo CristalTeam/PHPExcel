@@ -1267,7 +1267,7 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
                                 }
 
                                 // Loop through comments
-                                foreach ($comments as $relName => $relPath) {
+                                foreach ($comments as $relPath) {
                                     // Load comments file
                                     $relPath = PHPExcel_Shared_File::realpath(dirname("$dir/$fileWorksheet") . "/" . $relPath);
                                     $commentsFile = simplexml_load_string((string) $this->securityScan($this->getFromZipArchive($zip, $relPath)), 'SimpleXMLElement', PHPExcel_Settings::getLibXmlLoaderOptions());

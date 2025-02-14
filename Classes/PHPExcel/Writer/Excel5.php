@@ -117,7 +117,7 @@ class PHPExcel_Writer_Excel5 extends PHPExcel_Writer_Abstract implements PHPExce
         $this->colors = [];
 
         // Initialise workbook writer
-        $this->writerWorkbook = new PHPExcel_Writer_Excel5_Workbook($this->strTotal, $this->strUnique, $this->strTable, $this->colors, $this->parser, $this->phpExcel);
+        $this->writerWorkbook = new PHPExcel_Writer_Excel5_Workbook($this->strUnique, $this->strTable, $this->colors, $this->parser, $this->phpExcel, $this->strTotal);
 
         // Initialise worksheet writers
         $countSheets = $this->phpExcel->getSheetCount();
