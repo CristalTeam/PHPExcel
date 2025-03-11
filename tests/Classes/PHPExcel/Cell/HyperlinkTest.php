@@ -1,7 +1,7 @@
 <?php
 
 
-class HyperlinkTest extends PHPUnit_Framework_TestCase
+class HyperlinkTest extends PHPUnit\Framework\TestCase
 {
 
     public function setUp()

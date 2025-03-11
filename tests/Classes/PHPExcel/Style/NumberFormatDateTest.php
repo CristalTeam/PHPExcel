@@ -3,7 +3,7 @@
 
 require_once 'testDataFileIterator.php';
 
-class NumberFormatDateTest extends PHPUnit_Framework_TestCase
+class NumberFormatDateTest extends PHPUnit\Framework\TestCase
 {
 
     public function setUp()

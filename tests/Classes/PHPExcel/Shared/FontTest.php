@@ -3,7 +3,7 @@
 
 require_once 'testDataFileIterator.php';
 
-class FontTest extends PHPUnit_Framework_TestCase
+class FontTest extends PHPUnit\Framework\TestCase
 {
 
     public function setUp()

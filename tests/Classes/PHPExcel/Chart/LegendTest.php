@@ -1,7 +1,7 @@
 <?php
 
 
-class LegendTest extends PHPUnit_Framework_TestCase
+class LegendTest extends PHPUnit\Framework\TestCase
 {
 
     public function setUp()

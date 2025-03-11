@@ -1,6 +1,6 @@
 <?php
 
-class AdvancedValueBinderTest extends PHPUnit_Framework_TestCase
+class AdvancedValueBinderTest extends PHPUnit\Framework\TestCase
 {
     public function setUp()
     {

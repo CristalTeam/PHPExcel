@@ -3,7 +3,7 @@
 
 require_once 'testDataFileIterator.php';
 
-class PasswordHasherTest extends PHPUnit_Framework_TestCase
+class PasswordHasherTest extends PHPUnit\Framework\TestCase
 {
 
     public function setUp()

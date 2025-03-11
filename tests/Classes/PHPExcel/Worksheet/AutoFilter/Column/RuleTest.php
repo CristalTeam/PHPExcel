@@ -1,7 +1,7 @@
 <?php
 
 
-class RuleTest extends PHPUnit_Framework_TestCase
+class RuleTest extends PHPUnit\Framework\TestCase
 {
     private $_testAutoFilterRuleObject;
 

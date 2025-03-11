@@ -3,7 +3,7 @@
 
 require_once 'testDataFileIterator.php';
 
-class MathTrigTest extends PHPUnit_Framework_TestCase
+class MathTrigTest extends PHPUnit\Framework\TestCase
 {
 
     public function setUp()
