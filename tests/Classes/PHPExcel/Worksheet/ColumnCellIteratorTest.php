@@ -1,6 +1,6 @@
 <?php
 
-class ColumnCellIteratorTest extends PHPUnit_Framework_TestCase
+class ColumnCellIteratorTest extends PHPUnit\Framework\TestCase
 {
     public $mockWorksheet;
     public $mockColumnCell;
