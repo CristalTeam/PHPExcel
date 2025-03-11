@@ -284,14 +284,14 @@ class PHPExcel_Shared_Excel5
         $startCoordinates = PHPExcel_Cell::stringFromColumnIndex($col_start) . ($row_start + 1);
         $endCoordinates = PHPExcel_Cell::stringFromColumnIndex($col_end) . ($row_end + 1);
 
-        $twoAnchor = array(
+        $twoAnchor = [
             'startCoordinates' => $startCoordinates,
             'startOffsetX' => $x1,
             'startOffsetY' => $y1,
             'endCoordinates' => $endCoordinates,
             'endOffsetX' => $x2,
             'endOffsetY' => $y2,
-        );
+        ];
 
         return  $twoAnchor;
     }

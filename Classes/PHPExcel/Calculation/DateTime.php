@@ -496,7 +496,7 @@ class PHPExcel_Calculation_DateTime
         //    Strip any ordinals because they're allowed in Excel (English only)
         $dateValue = preg_replace('/(\d)(st|nd|rd|th)([ -\/])/Ui', '$1$3', $dateValue);
         //    Convert separators (/ . or space) to hyphens (should also handle dot used for ordinals in some countries, e.g. Denmark, Germany)
-        $dateValue    = str_replace(array('/', '.', '-', '  '), array(' ', ' ', ' ', ' '), $dateValue);
+        $dateValue    = str_replace(['/', '.', '-', '  '], [' ', ' ', ' ', ' '], $dateValue);
 
         $yearFound = false;
         $t1 = explode(' ', $dateValue);
@@ -614,7 +614,7 @@ class PHPExcel_Calculation_DateTime
     public static function TIMEVALUE($timeValue)
     {
         $timeValue = trim(PHPExcel_Calculation_Functions::flattenSingleValue($timeValue), '"');
-        $timeValue = str_replace(array('/', '.'), array('-', '-'), $timeValue);
+        $timeValue = str_replace(['/', '.'], ['-', '-'], $timeValue);
 
         $PHPDateArray = date_parse($timeValue);
         if (($PHPDateArray !== false) && ($PHPDateArray['error_count'] == 0)) {
@@ -971,7 +971,7 @@ class PHPExcel_Calculation_DateTime
         }
 
         //    Test any extra holiday parameters
-        $holidayCountedArray = array();
+        $holidayCountedArray = [];
         foreach ($dateArgs as $holidayDate) {
             if (is_string($holidayDate = self::getDateValue($holidayDate))) {
                 return PHPExcel_Calculation_Functions::VALUE();
@@ -1057,7 +1057,7 @@ class PHPExcel_Calculation_DateTime
 
         //    Test any extra holiday parameters
         if (!empty($dateArgs)) {
-            $holidayCountedArray = $holidayDates = array();
+            $holidayCountedArray = $holidayDates = [];
             foreach ($dateArgs as $holidayDate) {
                 if (($holidayDate !== null) && (trim($holidayDate) > '')) {
                     if (is_string($holidayDate = self::getDateValue($holidayDate))) {

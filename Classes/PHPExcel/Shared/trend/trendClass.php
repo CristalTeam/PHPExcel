@@ -50,35 +50,35 @@ class trendClass
      *
      * @var string[]
      **/
-    private static $trendTypes = array(
+    private static $trendTypes = [
         self::TREND_LINEAR,
         self::TREND_LOGARITHMIC,
         self::TREND_EXPONENTIAL,
         self::TREND_POWER
-    );
+    ];
 
     /**
      * Names of the best-fit trend polynomial orders
      *
      * @var string[]
      **/
-    private static $trendTypePolynomialOrders = array(
+    private static $trendTypePolynomialOrders = [
         self::TREND_POLYNOMIAL_2,
         self::TREND_POLYNOMIAL_3,
         self::TREND_POLYNOMIAL_4,
         self::TREND_POLYNOMIAL_5,
         self::TREND_POLYNOMIAL_6
-    );
+    ];
 
     /**
      * Cached results for each method when trying to identify which provides the best fit
      *
      * @var PHPExcel_Best_Fit[]
      **/
-    private static $trendCache = array();
+    private static $trendCache = [];
 
 
-    public static function calculate($yValues, $trendType = self::TREND_BEST_FIT, $xValues = array(), $const = true)
+    public static function calculate($yValues, $trendType = self::TREND_BEST_FIT, $xValues = [], $const = true)
     {
         //    Calculate number of points in each dataset
         $nY = count($yValues);

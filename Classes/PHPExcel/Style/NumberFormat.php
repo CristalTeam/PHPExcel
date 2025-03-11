@@ -135,7 +135,7 @@ class PHPExcel_Style_NumberFormat extends PHPExcel_Style_Supervisor implements P
      */
     public function getStyleArray($array)
     {
-        return array('numberformat' => $array);
+        return ['numberformat' => $array];
     }
 
     /**
@@ -197,7 +197,7 @@ class PHPExcel_Style_NumberFormat extends PHPExcel_Style_Supervisor implements P
             $pValue = PHPExcel_Style_NumberFormat::FORMAT_GENERAL;
         }
         if ($this->isSupervisor) {
-            $styleArray = $this->getStyleArray(array('code' => $pValue));
+            $styleArray = $this->getStyleArray(['code' => $pValue]);
             $this->getActiveSheet()->getStyle($this->getSelectedCells())->applyFromArray($styleArray);
         } else {
             $this->formatCode = $pValue;
@@ -229,7 +229,7 @@ class PHPExcel_Style_NumberFormat extends PHPExcel_Style_Supervisor implements P
     {
 
         if ($this->isSupervisor) {
-            $styleArray = $this->getStyleArray(array('code' => self::builtInFormatCode($pValue)));
+            $styleArray = $this->getStyleArray(['code' => self::builtInFormatCode($pValue)]);
             $this->getActiveSheet()->getStyle($this->getSelectedCells())->applyFromArray($styleArray);
         } else {
             $this->builtInFormatCode = $pValue;
@@ -267,7 +267,7 @@ class PHPExcel_Style_NumberFormat extends PHPExcel_Style_Supervisor implements P
  
         // Built-in format codes
         if (is_null(self::$builtInFormats)) {
-            self::$builtInFormats = array();
+            self::$builtInFormats = [];
 
             // General
             self::$builtInFormats[0] = PHPExcel_Style_NumberFormat::FORMAT_GENERAL;
@@ -387,7 +387,7 @@ class PHPExcel_Style_NumberFormat extends PHPExcel_Style_Supervisor implements P
      *
      * @var array
      */
-    private static $dateFormatReplacements = array(
+    private static $dateFormatReplacements = [
             // first remove escapes related to non-format characters
             '\\'    => '',
             //    12-hour suffix
@@ -424,25 +424,25 @@ class PHPExcel_Style_NumberFormat extends PHPExcel_Style_Supervisor implements P
             'ss'    => 's',
             //    fractional seconds - no php equivalent
             '.s'    => ''
-        );
+        ];
     /**
      * Search/replace values to convert Excel date/time format masks hours to PHP format masks (24 hr clock)
      *
      * @var array
      */
-    private static $dateFormatReplacements24 = array(
+    private static $dateFormatReplacements24 = [
             'hh' => 'H',
             'h'  => 'G'
-        );
+        ];
     /**
      * Search/replace values to convert Excel date/time format masks hours to PHP format masks (12 hr clock)
      *
      * @var array
      */
-    private static $dateFormatReplacements12 = array(
+    private static $dateFormatReplacements12 = [
             'hh' => 'h',
             'h'  => 'g'
-        );
+        ];
 
     private static function setLowercaseCallback($matches) {
         return mb_strtolower($matches[0]);
@@ -461,7 +461,7 @@ class PHPExcel_Style_NumberFormat extends PHPExcel_Style_Supervisor implements P
 
         // OpenOffice.org uses upper-case number formats, e.g. 'YYYY', convert to lower-case;
         //    but we don't want to change any quoted strings
-        $format = preg_replace_callback('/(?:^|")([^"]*)(?:$|")/', array('self', 'setLowercaseCallback'), $format);
+        $format = preg_replace_callback('/(?:^|")([^"]*)(?:$|")/', ['self', 'setLowercaseCallback'], $format);
 
         // Only process the non-quoted blocks for date format characters
         $blocks = explode('"', $format);
@@ -480,7 +480,7 @@ class PHPExcel_Style_NumberFormat extends PHPExcel_Style_Supervisor implements P
         $format = implode('"', $blocks);
 
         // escape any quoted characters so that DateTime format() will render them correctly
-        $format = preg_replace_callback('/"(.*)"/U', array('self', 'escapeQuotesCallback'), $format);
+        $format = preg_replace_callback('/"(.*)"/U', ['self', 'escapeQuotesCallback'], $format);
 
         $dateObj = PHPExcel_Shared_Date::ExcelToPHPObject($value);
         $value = $dateObj->format($format);
@@ -653,7 +653,7 @@ class PHPExcel_Style_NumberFormat extends PHPExcel_Style_Supervisor implements P
                 $value = 'EUR ' . sprintf('%1.2f', $value);
             } else {
                 // Some non-number strings are quoted, so we'll get rid of the quotes, likewise any positional * symbols
-                $format = str_replace(array('"', '*'), '', $format);
+                $format = str_replace(['"', '*'], '', $format);
 
                 // Find out if we need thousands separator
                 // This is indicated by a comma enclosed by a digit placeholder:
@@ -668,7 +668,7 @@ class PHPExcel_Style_NumberFormat extends PHPExcel_Style_Supervisor implements P
                 // This is indicated by a number of commas after a digit placeholder:
                 //        #,   or    0.0,,
                 $scale = 1; // same as no scale
-                $matches = array();
+                $matches = [];
                 if (preg_match('/(#|0)(,+)/', $format, $matches)) {
                     $scale = pow(1000, strlen($matches[2]));
 

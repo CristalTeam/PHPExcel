@@ -221,8 +221,8 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
         //$this->ext_sheets        = array();
         //$this->offset            = 0;
         $this->xlsStringMaxLength = 255;
-        $this->columnInfo  = array();
-        $this->selection   = array(0,0,0,0);
+        $this->columnInfo  = [];
+        $this->selection   = [0,0,0,0];
         $this->activePane  = 3;
 
         $this->_print_headers = 0;
@@ -232,7 +232,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
         $this->outlineRight  = 1;
         $this->outlineOn     = 1;
 
-        $this->fontHashIndex = array();
+        $this->fontHashIndex = [];
 
         // calculate values for DIMENSIONS record
         $minR = 1;
@@ -316,7 +316,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
             // $xfIndex  The optional cell style Xf index to apply to the columns
             // $hidden   The optional hidden atribute
             // $level    The optional outline level
-            $this->columnInfo[] = array($i, $i, $width, $xfIndex, $hidden, $level);
+            $this->columnInfo[] = [$i, $i, $width, $xfIndex, $hidden, $level];
         }
 
         // Write GUTS
@@ -397,7 +397,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
             $cVal = $cell->getValue();
             if ($cVal instanceof PHPExcel_RichText) {
                 // $this->writeString($row, $column, $cVal->getPlainText(), $xfIndex);
-                $arrcRun = array();
+                $arrcRun = [];
                 $str_len = PHPExcel_Shared_String::CountCharacters($cVal->getPlainText(), 'UTF-8');
                 $str_pos = 0;
                 $elements = $cVal->getRichTextElements();
@@ -408,7 +408,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
                     } else {
                         $str_fontidx = 0;
                     }
-                    $arrcRun[] = array('strlen' => $str_pos, 'fontidx' => $str_fontidx);
+                    $arrcRun[] = ['strlen' => $str_pos, 'fontidx' => $str_fontidx];
                     // Position FROM
                     $str_pos += PHPExcel_Shared_String::CountCharacters($element->getText(), 'UTF-8');
                 }
@@ -498,7 +498,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
 
         $arrConditionalStyles = $phpSheet->getConditionalStylesCollection();
         if (!empty($arrConditionalStyles)) {
-            $arrConditional = array();
+            $arrConditional = [];
             // @todo CFRule & CFHeader
             // Write CFHEADER record
             $this->writeCFHeader();
@@ -1443,11 +1443,11 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
 
         // Swap last row/col for first row/col as necessary
         if ($rwFirst > $rwLast) {
-            list($rwFirst, $rwLast) = array($rwLast, $rwFirst);
+            list($rwFirst, $rwLast) = [$rwLast, $rwFirst];
         }
 
         if ($colFirst > $colLast) {
-            list($colFirst, $colLast) = array($colLast, $colFirst);
+            list($colFirst, $colLast) = [$colLast, $colFirst];
         }
 
         $header   = pack("vv", $record, $length);
@@ -1689,7 +1689,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
      */
     private function writePanes()
     {
-        $panes = array();
+        $panes = [];
         if ($freezePane = $this->phpSheet->getFreezePane()) {
             list($column, $row) = PHPExcel_Cell::coordinateFromString($freezePane);
             $panes[0] = $row - 1;
@@ -2134,8 +2134,8 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
     private function writeBreaks()
     {
         // initialize
-        $vbreaks = array();
-        $hbreaks = array();
+        $vbreaks = [];
+        $hbreaks = [];
 
         foreach ($this->phpSheet->getBreaks() as $cell => $breakType) {
             // Fetch coordinates
@@ -2534,7 +2534,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
         for ($j=$height; $j--;) {
             for ($i=0; $i < $width; ++$i) {
                 $color = imagecolorsforindex($image, imagecolorat($image, $i, $j));
-                foreach (array("red", "green", "blue") as $key) {
+                foreach (["red", "green", "blue"] as $key) {
                     $color[$key] += round((255 - $color[$key]) * $color["alpha"] / 127);
                 }
                 $data .= chr($color["blue"]) . chr($color["green"]) . chr($color["red"]);
@@ -2544,7 +2544,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
             }
         }
 
-        return array($width, $height, strlen($data), $data);
+        return [$width, $height, strlen($data), $data];
     }
 
     /**
@@ -2631,7 +2631,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
         $header  = pack("Vvvvv", 0x000c, $width, $height, 0x01, 0x18);
         $data    = $header . $data;
 
-        return (array($width, $height, $size, $data));
+        return ([$width, $height, $size, $data]);
     }
 
     /**
@@ -4196,7 +4196,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
         $numColumnMax = null;
         $numRowMin = null;
         $numRowMax = null;
-        $arrConditional = array();
+        $arrConditional = [];
         foreach ($this->phpSheet->getConditionalStylesCollection() as $cellCoordinate => $conditionalStyles) {
             foreach ($conditionalStyles as $conditional) {
                 if ($conditional->getConditionType() == PHPExcel_Style_Conditional::CONDITION_EXPRESSION

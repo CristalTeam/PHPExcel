@@ -108,7 +108,7 @@ class PHPExcel_Shared_OLERead
         // Total number of sectors used by MSAT
         $this->numExtensionBlocks = self::getInt4d($this->data, self::NUM_EXTENSION_BLOCK_POS);
 
-        $bigBlockDepotBlocks = array();
+        $bigBlockDepotBlocks = [];
         $pos = self::BIG_BLOCK_DEPOT_BLOCKS_POS;
 
         $bbdBlocks = $this->numBigBlockDepotBlocks;
@@ -260,12 +260,12 @@ class PHPExcel_Shared_OLERead
 
             $name = str_replace("\x00", "", substr($d, 0, $nameSize));
 
-            $this->props[] = array(
+            $this->props[] = [
                 'name' => $name,
                 'type' => $type,
                 'startBlock' => $startBlock,
                 'size' => $size
-            );
+            ];
 
             // tmp helper to simplify checks
             $upName = strtoupper($name);

@@ -38,14 +38,14 @@ class PHPExcel_Shared_String
      *
      * @var string[]
      */
-    private static $controlCharacters = array();
+    private static $controlCharacters = [];
 
     /**
      * SYLK Characters array
      *
      * $var array
      */
-    private static $SYLKCharacters = array();
+    private static $SYLKCharacters = [];
 
     /**
      * Decimal separator
@@ -101,7 +101,7 @@ class PHPExcel_Shared_String
      */
     private static function buildSYLKCharacters()
     {
-        self::$SYLKCharacters = array(
+        self::$SYLKCharacters = [
             "\x1B 0"  => chr(0),
             "\x1B 1"  => chr(1),
             "\x1B 2"  => chr(2),
@@ -258,7 +258,7 @@ class PHPExcel_Shared_String
             "\x1B/="  => 'ý', // 253 in CP1252
             "\x1BN|"  => 'þ', // 254 in CP1252
             "\x1BNHy" => 'ÿ', // 255 in CP1252
-        );
+        ];
     }
 
     /**
@@ -426,7 +426,7 @@ class PHPExcel_Shared_String
      * @param mixed[] $arrcRuns Details of rich text runs in $value
      * @return string
      */
-    public static function UTF8toBIFF8UnicodeShort($value, $arrcRuns = array())
+    public static function UTF8toBIFF8UnicodeShort($value, $arrcRuns = [])
     {
         // character count
         $ln = self::CountCharacters($value, 'UTF-8');
