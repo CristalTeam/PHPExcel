@@ -891,7 +891,7 @@ class PHPExcel_ReferenceHelper
 
             // Create new row reference
             if ($updateRow) {
-                $newRow    = $newRow + $pNumRows;
+                $newRow += $pNumRows;
             }
 
             // Return new reference

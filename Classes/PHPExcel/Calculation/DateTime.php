@@ -334,7 +334,7 @@ class PHPExcel_Calculation_DateTime
         } elseif ($month > 12) {
             //    Handle year/month adjustment if month > 12
             $year += floor($month / 12);
-            $month = ($month % 12);
+            $month %= 12;
         }
 
         // Re-validate the year parameter after adjustments
@@ -413,7 +413,7 @@ class PHPExcel_Calculation_DateTime
             }
         } elseif ($second >= 60) {
             $minute += floor($second / 60);
-            $second = $second % 60;
+            $second %= 60;
         }
         if ($minute < 0) {
             $hour += floor($minute / 60);
@@ -423,11 +423,11 @@ class PHPExcel_Calculation_DateTime
             }
         } elseif ($minute >= 60) {
             $hour += floor($minute / 60);
-            $minute = $minute % 60;
+            $minute %= 60;
         }
 
         if ($hour > 23) {
-            $hour = $hour % 24;
+            $hour %= 24;
         } elseif ($hour < 0) {
             return PHPExcel_Calculation_Functions::NaN();
         }
@@ -453,7 +453,7 @@ class PHPExcel_Calculation_DateTime
                     }
                 } elseif ($hour >= 24) {
                     $dayAdjust = floor($hour / 24);
-                    $hour = $hour % 24;
+                    $hour %= 24;
                 }
                 $phpDateObject = new DateTime('1900-01-01 '.$hour.':'.$minute.':'.$second);
                 if ($dayAdjust != 0) {

@@ -466,7 +466,7 @@ class PHPExcel_Reader_Gnumeric extends PHPExcel_Reader_Abstract implements PHPEx
             }
 
             if ((!$this->readDataOnly) && (isset($sheet->Objects))) {
-                foreach ($sheet->Objects->children('gnm', true) as $key => $comment) {
+                foreach ($sheet->Objects->children('gnm', true) as $comment) {
                     $commentAttributes = $comment->attributes();
                     //    Only comment objects are handled at the moment
                     if ($commentAttributes->Text) {

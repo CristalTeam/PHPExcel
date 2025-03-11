@@ -194,9 +194,6 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
      */
     public function __construct(PHPExcel $phpExcel = null, &$str_total, &$str_unique, &$str_table, &$colors, $parser)
     {
-        // It needs to call its parent's constructor explicitly
-        parent::__construct();
-
         $this->parser        = $parser;
         $this->biffSize     = 0;
         $this->palette      = array();

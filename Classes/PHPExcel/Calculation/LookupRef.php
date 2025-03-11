@@ -194,7 +194,7 @@ class PHPExcel_Calculation_LookupRef
         }
 
         if (is_array($cellAddress)) {
-            foreach ($cellAddress as $columnKey => $rowValue) {
+            foreach ($cellAddress as $rowValue) {
                 foreach ($rowValue as $rowKey => $cellValue) {
                     return (integer) preg_replace('/[^0-9]/i', '', $rowKey);
                 }

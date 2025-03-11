@@ -98,7 +98,7 @@ foreach($inputFileNames as $inputFileName) {
 			echo '    There are no charts in this worksheet' , EOL;
 		} else {
 			natsort($chartNames);
-			foreach($chartNames as $i => $chartName) {
+			foreach($chartNames as $chartName) {
 				$chart = $worksheet->getChartByName($chartName);
 				if (!is_null($chart->getTitle())) {
 					$caption = '"' . implode(' ',$chart->getTitle()->getCaption()) . '"';

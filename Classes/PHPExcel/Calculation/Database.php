@@ -97,7 +97,7 @@ class PHPExcel_Calculation_Database
         foreach ($criteriaNames as $key => $criteriaName) {
             $testCondition = array();
             $testConditionCount = 0;
-            foreach ($criteria as $row => $criterion) {
+            foreach ($criteria as $criterion) {
                 if ($criterion[$key] > '') {
                     $testCondition[] = '[:'.$criteriaName.']'.PHPExcel_Calculation_Functions::ifCondition($criterion[$key]);
                     $testConditionCount++;
@@ -122,7 +122,7 @@ class PHPExcel_Calculation_Database
         foreach ($database as $dataRow => $dataValues) {
             //    Substitute actual values from the database row for our [:placeholders]
             $testConditionList = $testConditionSet;
-            foreach ($criteriaNames as $key => $criteriaName) {
+            foreach ($criteriaNames as $criteriaName) {
                 $k = array_search($criteriaName, $fieldNames);
                 if (isset($dataValues[$k])) {
                     $dataValue = $dataValues[$k];

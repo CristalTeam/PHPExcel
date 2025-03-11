@@ -1289,7 +1289,7 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
                                 }
 
                                 // Loop through VML comments
-                                foreach ($vmlComments as $relName => $relPath) {
+                                foreach ($vmlComments as $relPath) {
                                     // Load VML comments file
                                     $relPath = PHPExcel_Shared_File::realpath(dirname("$dir/$fileWorksheet") . "/" . $relPath);
                                     $vmlCommentsFile = simplexml_load_string($this->securityScan($this->getFromZipArchive($zip, $relPath)), 'SimpleXMLElement', PHPExcel_Settings::getLibXmlLoaderOptions());

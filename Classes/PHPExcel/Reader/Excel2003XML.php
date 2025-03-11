@@ -496,7 +496,7 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
                         }
                         break;
                     case 'NumberFormat':
-                        foreach ($styleAttributes as $styleAttributeKey => $styleAttributeValue) {
+                        foreach ($styleAttributes as $styleAttributeValue) {
 //                                echo $styleAttributeKey.' = '.$styleAttributeValue.'<br />';
                             $styleAttributeValue = str_replace($fromFormats, $toFormats, $styleAttributeValue);
                             switch ($styleAttributeValue) {
@@ -510,7 +510,7 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
                         }
                         break;
                     case 'Protection':
-                        foreach ($styleAttributes as $styleAttributeKey => $styleAttributeValue) {
+                        foreach ($styleAttributes as $styleAttributeValue) {
 //                                echo $styleAttributeKey.' = '.$styleAttributeValue.'<br />';
                         }
                         break;
@@ -594,7 +594,7 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
                             }
                             $rowTo = $rowID;
                             if (isset($cell_ss['MergeDown'])) {
-                                $rowTo = $rowTo + $cell_ss['MergeDown'];
+                                $rowTo += $cell_ss['MergeDown'];
                             }
                             $cellRange .= ':'.$columnTo.$rowTo;
                             $objPHPExcel->getActiveSheet()->mergeCells($cellRange);

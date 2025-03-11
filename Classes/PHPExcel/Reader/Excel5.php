@@ -5167,11 +5167,11 @@ class PHPExcel_Reader_Excel5 extends PHPExcel_Reader_Abstract implements PHPExce
                 }
                 $x = 0;
                 $y = 0;
-                foreach ($rgbTriples as $i => $rgbTriple) {
+                foreach ($rgbTriples as $rgbTriple) {
                     $color = imagecolorallocate($ih, $rgbTriple['r'], $rgbTriple['g'], $rgbTriple['b']);
                     imagesetpixel($ih, $x, $bcHeight - 1 - $y, $color);
                     $x = ($x + 1) % $bcWidth;
-                    $y = $y + floor(($x + 1) / $bcWidth);
+                    $y += floor(($x + 1) / $bcWidth);
                 }
                 //imagepng($ih, 'image.png');
 

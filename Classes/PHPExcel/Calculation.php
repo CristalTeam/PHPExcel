@@ -3383,7 +3383,7 @@ class PHPExcel_Calculation
                         if ($rangeWS2 != '') {
                             $rangeWS2 .= '!';
                         }
-                        if ((is_integer($startRowColRef)) && (ctype_digit($val)) &&
+                        if ((is_int($startRowColRef)) && (ctype_digit($val)) &&
                             ($startRowColRef <= 1048576) && ($val <= 1048576)) {
                             //    Row range
                             $endRowColRef = ($pCellParent !== null) ? $pCellParent->getHighestColumn() : 'XFD';    //    Max 16,384 columns for Excel2007
@@ -4263,7 +4263,7 @@ class PHPExcel_Calculation
             }
 
             // Named range?
-            $namedRange = PHPExcel_NamedRange::resolveRange($pRange, $pSheet);
+            $namedRange = PHPExcel_NamedRange::resolveRange($pSheet, $pRange);
             if ($namedRange !== null) {
                 $pSheet = $namedRange->getWorksheet();
 //                echo 'Named Range '.$pRange.' (';

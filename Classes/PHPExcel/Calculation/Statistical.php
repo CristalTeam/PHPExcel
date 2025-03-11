@@ -691,12 +691,12 @@ class PHPExcel_Calculation_Statistical
 
             //    computation for p not close to 0, 0.5 or 1.
             if ($R <= $split2) {
-                $R = $R - $const2;
+                $R -= $const2;
                 $z = ((((((($c7 * $R + $c6) * $R + $c5) * $R + $c4) * $R + $c3) * $R + $c2) * $R + $c1) * $R + $c0) /
                      ((((((($d7 * $R + $d6) * $R + $d5) * $R + $d4) * $R + $d3) * $R + $d2) * $R + $d1) * $R + 1);
             } else {
             //    computation for p near 0 or 1.
-                $R = $R - $split2;
+                $R -= $split2;
                 $z = ((((((($e7 * $R + $e6) * $R + $e5) * $R + $e4) * $R + $e3) * $R + $e2) * $R + $e1) * $R + $e0) /
                      ((((((($f7 * $R + $f6) * $R + $f5) * $R + $f4) * $R + $f3) * $R + $f2) * $R + $f1) * $R + 1);
             }
@@ -875,7 +875,7 @@ class PHPExcel_Calculation_Statistical
         $condition = PHPExcel_Calculation_Functions::ifCondition($condition);
         // Loop through arguments
         $aCount = 0;
-        foreach ($aArgs as $key => $arg) {
+        foreach ($aArgs as $arg) {
             if (!is_numeric($arg)) {
                 $arg = PHPExcel_Calculation::wrapResult(strtoupper($arg));
             }
@@ -1447,13 +1447,13 @@ class PHPExcel_Calculation_Statistical
                 } elseif (($CumPGuessMinus1 < $alpha) && ($CumPGuess < $alpha)) {
                     $PGuessPlus1 = $PGuess * ($trials - $Guess) * $probability / $Guess / (1 - $probability);
                     $CumPGuessMinus1 = $CumPGuess;
-                    $CumPGuess = $CumPGuess + $PGuessPlus1;
+                    $CumPGuess += $PGuessPlus1;
                     $PGuess = $PGuessPlus1;
                     ++$Guess;
                 } elseif (($CumPGuessMinus1 >= $alpha) && ($CumPGuess >= $alpha)) {
                     $PGuessMinus1 = $PGuess * $Guess * (1 - $probability) / ($trials - $Guess + 1) / $probability;
                     $CumPGuess = $CumPGuessMinus1;
-                    $CumPGuessMinus1 = $CumPGuessMinus1 - $PGuess;
+                    $CumPGuessMinus1 -= $PGuess;
                     $PGuess = $PGuessMinus1;
                     --$Guess;
                 }
@@ -2288,7 +2288,7 @@ class PHPExcel_Calculation_Statistical
         }
         $condition = PHPExcel_Calculation_Functions::ifCondition($condition);
         // Loop through arguments
-        foreach ($aArgs as $key => $arg) {
+        foreach ($aArgs as $arg) {
             if (!is_numeric($arg)) {
                 $arg = PHPExcel_Calculation::wrapResult(strtoupper($arg));
             }
@@ -2333,7 +2333,7 @@ class PHPExcel_Calculation_Statistical
         $mValueCount = count($mArgs);
         if ($mValueCount > 0) {
             sort($mArgs, SORT_NUMERIC);
-            $mValueCount = $mValueCount / 2;
+            $mValueCount /= 2;
             if ($mValueCount == floor($mValueCount)) {
                 $returnValue = ($mArgs[$mValueCount--] + $mArgs[$mValueCount]) / 2;
             } else {
@@ -2447,7 +2447,7 @@ class PHPExcel_Calculation_Statistical
         }
         $condition = PHPExcel_Calculation_Functions::ifCondition($condition);
         // Loop through arguments
-        foreach ($aArgs as $key => $arg) {
+        foreach ($aArgs as $arg) {
             if (!is_numeric($arg)) {
                 $arg = PHPExcel_Calculation::wrapResult(strtoupper($arg));
             }

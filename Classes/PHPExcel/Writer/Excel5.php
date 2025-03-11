@@ -695,7 +695,7 @@ class PHPExcel_Writer_Excel5 extends PHPExcel_Writer_Abstract implements PHPExce
                 $dataProp['data']['data'] .= chr(0);
                 $dataProp['data']['length'] += 1;
                 // Complete the string with null string for being a %4
-                $dataProp['data']['length'] = $dataProp['data']['length'] + ((4 - $dataProp['data']['length'] % 4)==4 ? 0 : (4 - $dataProp['data']['length'] % 4));
+                $dataProp['data']['length'] += (4 - $dataProp['data']['length'] % 4)==4 ? 0 : (4 - $dataProp['data']['length'] % 4);
                 $dataProp['data']['data'] = str_pad($dataProp['data']['data'], $dataProp['data']['length'], chr(0), STR_PAD_RIGHT);
 
                 $dataSection_Content .= pack('V', $dataProp['data']['length']);
@@ -871,7 +871,7 @@ class PHPExcel_Writer_Excel5 extends PHPExcel_Writer_Abstract implements PHPExce
                 $dataProp['data']['data'] .= chr(0);
                 $dataProp['data']['length'] += 1;
                 // Complete the string with null string for being a %4
-                $dataProp['data']['length'] = $dataProp['data']['length'] + ((4 - $dataProp['data']['length'] % 4)==4 ? 0 : (4 - $dataProp['data']['length'] % 4));
+                $dataProp['data']['length'] += (4 - $dataProp['data']['length'] % 4)==4 ? 0 : (4 - $dataProp['data']['length'] % 4);
                 $dataProp['data']['data'] = str_pad($dataProp['data']['data'], $dataProp['data']['length'], chr(0), STR_PAD_RIGHT);
 
                 $dataSection_Content .= pack('V', $dataProp['data']['length']);

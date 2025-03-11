@@ -105,7 +105,7 @@ class PHPExcel_Shared_JAMA_LUDecomposition
                     $k = $this->piv[$p];
                     $this->piv[$p] = $this->piv[$j];
                     $this->piv[$j] = $k;
-                    $this->pivsign = $this->pivsign * -1;
+                    $this->pivsign *= -1;
                 }
                 // Compute multipliers.
                 if (($j < $this->m) && ($this->LU[$j][$j] != 0.0)) {

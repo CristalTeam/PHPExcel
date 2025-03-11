@@ -205,9 +205,6 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
      */
     public function __construct(&$str_total, &$str_unique, &$str_table, &$colors, $parser, $preCalculateFormulas, $phpSheet)
     {
-        // It needs to call its parent's constructor explicitly
-        parent::__construct();
-
         // change BIFFwriter limit for CONTINUE records
 //        $this->_limit = 8224;
 
@@ -506,7 +503,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
             // Write CFHEADER record
             $this->writeCFHeader();
             // Write ConditionalFormattingTable records
-            foreach ($arrConditionalStyles as $cellCoordinate => $conditionalStyles) {
+            foreach ($arrConditionalStyles as $conditionalStyles) {
                 foreach ($conditionalStyles as $conditional) {
                     if ($conditional->getConditionType() == PHPExcel_Style_Conditional::CONDITION_EXPRESSION
                         || $conditional->getConditionType() == PHPExcel_Style_Conditional::CONDITION_CELLIS) {
@@ -1008,8 +1005,8 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
         $options     = pack("V", 0x03);
 
         // Convert URL to a null terminated wchar string
-        $url         = join("\0", preg_split("''", $url, -1, PREG_SPLIT_NO_EMPTY));
-        $url         = $url . "\0\0\0";
+        $url         = implode("\0", preg_split("''", $url, -1, PREG_SPLIT_NO_EMPTY));
+        $url .= "\0\0\0";
 
         // Pack the length of the URL
         $url_len     = pack("V", strlen($url));
@@ -1140,7 +1137,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
         $dir_short   = preg_replace("/\.\.\\\/", '', $dir_long) . "\0";
 
         // Store the long dir name as a wchar string (non-null terminated)
-        $dir_long       = $dir_long . "\0";
+        $dir_long .= "\0";
 
         // Pack the lengths of the dir strings
         $dir_short_len = pack("V", strlen($dir_short));
@@ -2538,7 +2535,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
             for ($i=0; $i < $width; ++$i) {
                 $color = imagecolorsforindex($image, imagecolorat($image, $i, $j));
                 foreach (array("red", "green", "blue") as $key) {
-                    $color[$key] = $color[$key] + round((255 - $color[$key]) * $color["alpha"] / 127);
+                    $color[$key] += round((255 - $color[$key]) * $color["alpha"] / 127);
                 }
                 $data .= chr($color["blue"]) . chr($color["green"]) . chr($color["red"]);
             }
@@ -3059,7 +3056,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
         // $szValue1 : size of the formula data for first value or formula
         // $szValue2 : size of the formula data for second value or formula
         $arrConditions = $conditional->getConditions();
-        $numConditions = sizeof($arrConditions);
+        $numConditions = count($arrConditions);
         if ($numConditions == 1) {
             $szValue1 = ($arrConditions[0] <= 65535 ? 3 : 0x0000);
             $szValue2 = 0x0000;

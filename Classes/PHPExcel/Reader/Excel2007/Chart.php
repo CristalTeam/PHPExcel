@@ -364,7 +364,7 @@ class PHPExcel_Reader_Excel2007_Chart
         $formatCode = '';
         $pointCount = 0;
 
-        foreach ($seriesValueSet->lvl as $seriesLevelIdx => $seriesLevel) {
+        foreach ($seriesValueSet->lvl as $seriesLevel) {
             foreach ($seriesLevel as $seriesValueIdx => $seriesValue) {
                 switch ($seriesValueIdx) {
                     case 'ptCount':
@@ -396,7 +396,7 @@ class PHPExcel_Reader_Excel2007_Chart
     {
         $value = new PHPExcel_RichText();
 
-        foreach ($titleDetailPart as $titleDetailElementKey => $titleDetailElement) {
+        foreach ($titleDetailPart as $titleDetailElement) {
             if (isset($titleDetailElement->t)) {
                 $objText = $value->createTextRun((string) $titleDetailElement->t);
             }

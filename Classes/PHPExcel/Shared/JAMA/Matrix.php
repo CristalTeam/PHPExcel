@@ -836,7 +836,7 @@ class PHPExcel_Shared_JAMA_Matrix
             $this->checkMatrixDimensions($M);
             for ($i = 0; $i < $this->m; ++$i) {
                 for ($j = 0; $j < $this->n; ++$j) {
-                    $this->A[$i][$j] = $this->A[$i][$j] / $M->get($i, $j);
+                    $this->A[$i][$j] /= $M->get($i, $j);
                 }
             }
             return $M;

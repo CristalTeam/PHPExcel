@@ -687,7 +687,7 @@ class PHPExcel_Style_NumberFormat extends PHPExcel_Style_Supervisor implements P
                     // Handle the number itself
 
                     // scale number
-                    $value = $value / $scale;
+                    $value /= $scale;
 
                     // Strip #
                     $format = preg_replace('/\\#/', '0', $format);
