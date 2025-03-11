@@ -325,7 +325,7 @@ class PHPExcel_Reader_Excel5_Escher
         $pos += 16;
 
         // offset: 16; size: 16; rgbUid2 (MD4 digest), only if $recInstance = 0x46B or 0x6E3
-        if (in_array($recInstance, array(0x046B, 0x06E3))) {
+        if (in_array($recInstance, [0x046B, 0x06E3])) {
             $rgbUid2 = substr($recordData, 16, 16);
             $pos += 16;
         }

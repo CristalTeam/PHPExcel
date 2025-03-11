@@ -167,8 +167,8 @@ class PHPExcel_ReferenceHelper
     {
         $aBreaks = $pSheet->getBreaks();
         ($pNumCols > 0 || $pNumRows > 0) ?
-            uksort($aBreaks, array('PHPExcel_ReferenceHelper','cellReverseSort')) :
-            uksort($aBreaks, array('PHPExcel_ReferenceHelper','cellSort'));
+            uksort($aBreaks, ['PHPExcel_ReferenceHelper','cellReverseSort']) :
+            uksort($aBreaks, ['PHPExcel_ReferenceHelper','cellSort']);
 
         foreach ($aBreaks as $key => $value) {
             if (self::cellAddressInDeleteRange($key, $beforeRow, $pNumRows, $beforeColumnIndex, $pNumCols)) {
@@ -200,7 +200,7 @@ class PHPExcel_ReferenceHelper
     protected function adjustComments($pSheet, $pBefore, $beforeColumnIndex, $pNumCols, $beforeRow, $pNumRows)
     {
         $aComments = $pSheet->getComments();
-        $aNewComments = array(); // the new array of all comments
+        $aNewComments = []; // the new array of all comments
 
         foreach ($aComments as $key => &$value) {
             // Any comments inside a deleted range will be ignored
@@ -227,7 +227,7 @@ class PHPExcel_ReferenceHelper
     protected function adjustHyperlinks($pSheet, $pBefore, $beforeColumnIndex, $pNumCols, $beforeRow, $pNumRows)
     {
         $aHyperlinkCollection = $pSheet->getHyperlinkCollection();
-        ($pNumCols > 0 || $pNumRows > 0) ? uksort($aHyperlinkCollection, array('PHPExcel_ReferenceHelper','cellReverseSort')) : uksort($aHyperlinkCollection, array('PHPExcel_ReferenceHelper','cellSort'));
+        ($pNumCols > 0 || $pNumRows > 0) ? uksort($aHyperlinkCollection, ['PHPExcel_ReferenceHelper','cellReverseSort']) : uksort($aHyperlinkCollection, ['PHPExcel_ReferenceHelper','cellSort']);
 
         foreach ($aHyperlinkCollection as $key => $value) {
             $newReference = $this->updateCellReference($key, $pBefore, $pNumCols, $pNumRows);
@@ -251,7 +251,7 @@ class PHPExcel_ReferenceHelper
     protected function adjustDataValidations($pSheet, $pBefore, $beforeColumnIndex, $pNumCols, $beforeRow, $pNumRows)
     {
         $aDataValidationCollection = $pSheet->getDataValidationCollection();
-        ($pNumCols > 0 || $pNumRows > 0) ? uksort($aDataValidationCollection, array('PHPExcel_ReferenceHelper','cellReverseSort')) : uksort($aDataValidationCollection, array('PHPExcel_ReferenceHelper','cellSort'));
+        ($pNumCols > 0 || $pNumRows > 0) ? uksort($aDataValidationCollection, ['PHPExcel_ReferenceHelper','cellReverseSort']) : uksort($aDataValidationCollection, ['PHPExcel_ReferenceHelper','cellSort']);
         
         foreach ($aDataValidationCollection as $key => $value) {
             $newReference = $this->updateCellReference($key, $pBefore, $pNumCols, $pNumRows);
@@ -275,7 +275,7 @@ class PHPExcel_ReferenceHelper
     protected function adjustMergeCells($pSheet, $pBefore, $beforeColumnIndex, $pNumCols, $beforeRow, $pNumRows)
     {
         $aMergeCells = $pSheet->getMergeCells();
-        $aNewMergeCells = array(); // the new array of all merge cells
+        $aNewMergeCells = []; // the new array of all merge cells
         foreach ($aMergeCells as $key => &$value) {
             $newReference = $this->updateCellReference($key, $pBefore, $pNumCols, $pNumRows);
             $aNewMergeCells[$newReference] = $newReference;
@@ -297,8 +297,8 @@ class PHPExcel_ReferenceHelper
     {
         $aProtectedCells = $pSheet->getProtectedCells();
         ($pNumCols > 0 || $pNumRows > 0) ?
-            uksort($aProtectedCells, array('PHPExcel_ReferenceHelper','cellReverseSort')) :
-            uksort($aProtectedCells, array('PHPExcel_ReferenceHelper','cellSort'));
+            uksort($aProtectedCells, ['PHPExcel_ReferenceHelper','cellReverseSort']) :
+            uksort($aProtectedCells, ['PHPExcel_ReferenceHelper','cellSort']);
         foreach ($aProtectedCells as $key => $value) {
             $newReference = $this->updateCellReference($key, $pBefore, $pNumCols, $pNumRows);
             if ($key != $newReference) {
@@ -478,7 +478,7 @@ class PHPExcel_ReferenceHelper
                     for ($j = $beforeColumnIndex - 1; $j <= $beforeColumnIndex - 2 + $pNumCols; ++$j) {
                         $pSheet->getCellByColumnAndRow($j, $i)->setXfIndex($xfIndex);
                         if ($conditionalStyles) {
-                            $cloned = array();
+                            $cloned = [];
                             foreach ($conditionalStyles as $conditionalStyle) {
                                 $cloned[] = clone $conditionalStyle;
                             }
@@ -501,7 +501,7 @@ class PHPExcel_ReferenceHelper
                     for ($j = $beforeRow; $j <= $beforeRow - 1 + $pNumRows; ++$j) {
                         $pSheet->getCell(PHPExcel_Cell::stringFromColumnIndex($i) . $j)->setXfIndex($xfIndex);
                         if ($conditionalStyles) {
-                            $cloned = array();
+                            $cloned = [];
                             foreach ($conditionalStyles as $conditionalStyle) {
                                 $cloned[] = clone $conditionalStyle;
                             }
@@ -646,7 +646,7 @@ class PHPExcel_ReferenceHelper
             //    Ignore blocks that were enclosed in quotes (alternating entries in the $formulaBlocks array after the explode)
             if ($i = !$i) {
                 $adjustCount = 0;
-                $newCellTokens = $cellTokens = array();
+                $newCellTokens = $cellTokens = [];
                 //    Search for row ranges (e.g. 'Sheet1'!3:5 or 3:5) with or without $ absolutes (e.g. $3:5)
                 $matchCount = preg_match_all('/'.self::REFHELPER_REGEXP_ROWRANGE.'/i', ' '.$formulaBlock.' ', $matches, PREG_SET_ORDER);
                 if ($matchCount > 0) {

@@ -78,7 +78,7 @@ class testDataFileIterator implements Iterator
         fclose($temp);
 
         if ($data === false) {
-            $data = array(null);
+            $data = [null];
         }
 
         return $data;
