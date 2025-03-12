@@ -5,7 +5,7 @@ class ColumnCellIteratorTest extends PHPUnit\Framework\TestCase
     public $mockWorksheet;
     public $mockColumnCell;
 
-    public function setUp()
+    protected function setUp(): void
     {
         if (!defined('PHPEXCEL_ROOT')) {
             define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');

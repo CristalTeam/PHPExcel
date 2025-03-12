@@ -8,7 +8,7 @@ class AutoFilterTest extends PHPUnit\Framework\TestCase
     private $_testAutoFilterObject;
 
 
-    public function setUp()
+    protected function setUp(): void
     {
         if (!defined('PHPEXCEL_ROOT')) {
             define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
