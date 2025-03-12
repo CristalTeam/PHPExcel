@@ -12,7 +12,7 @@ class DataTypeTest extends PHPUnit\Framework\TestCase
         require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
     }
 
-    public function testGetErrorCodes()
+    public function testGetErrorCodes(): void
     {
         $result = call_user_func(['PHPExcel_Cell_DataType','getErrorCodes']);
         $this->assertIsArray($result);

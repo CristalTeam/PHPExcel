@@ -17,7 +17,7 @@ class CalculationTest extends PHPUnit\Framework\TestCase
     }
 
     #[DataProvider('providerBinaryComparisonOperation')]
-    public function testBinaryComparisonOperation($formula, $expectedResultExcel, $expectedResultOpenOffice)
+    public function testBinaryComparisonOperation($formula, $expectedResultExcel, $expectedResultOpenOffice): void
     {
         PHPExcel_Calculation_Functions::setCompatibilityMode(PHPExcel_Calculation_Functions::COMPATIBILITY_EXCEL);
         $resultExcel = \PHPExcel_Calculation::getInstance()->_calculateFormulaValue($formula);
@@ -28,7 +28,7 @@ class CalculationTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResultOpenOffice, $resultOpenOffice, 'should be OpenOffice compatible');
     }
 
-    public static function providerBinaryComparisonOperation()
+    public static function providerBinaryComparisonOperation(): array
     {
         return new testDataFileIterator('rawTestData/CalculationBinaryComparisonOperation.data');
     }

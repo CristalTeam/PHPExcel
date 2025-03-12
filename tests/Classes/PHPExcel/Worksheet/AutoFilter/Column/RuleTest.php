@@ -27,13 +27,13 @@ class RuleTest extends PHPUnit\Framework\TestCase
         );
     }
 
-    public function testGetRuleType()
+    public function testGetRuleType(): void
     {
         $result = $this->_testAutoFilterRuleObject->getRuleType();
         $this->assertEquals(PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_RULETYPE_FILTER, $result);
     }
 
-    public function testSetRuleType()
+    public function testSetRuleType(): void
     {
         $expectedResult = PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_RULETYPE_DATEGROUP;
 
@@ -45,7 +45,7 @@ class RuleTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function testSetValue()
+    public function testSetValue(): void
     {
         $expectedResult = 100;
 
@@ -57,13 +57,13 @@ class RuleTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function testGetOperator()
+    public function testGetOperator(): void
     {
         $result = $this->_testAutoFilterRuleObject->getOperator();
         $this->assertEquals(PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_COLUMN_RULE_EQUAL, $result);
     }
 
-    public function testSetOperator()
+    public function testSetOperator(): void
     {
         $expectedResult = PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_COLUMN_RULE_LESSTHAN;
 
@@ -75,7 +75,7 @@ class RuleTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function testSetGrouping()
+    public function testSetGrouping(): void
     {
         $expectedResult = PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_RULETYPE_DATEGROUP_MONTH;
 
@@ -87,20 +87,20 @@ class RuleTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function testGetParent()
+    public function testGetParent(): void
     {
         $result = $this->_testAutoFilterRuleObject->getParent();
         $this->assertInstanceOf('PHPExcel_Worksheet_AutoFilter_Column', $result);
     }
 
-    public function testSetParent()
+    public function testSetParent(): void
     {
         //    Setters return the instance to implement the fluent interface
         $result = $this->_testAutoFilterRuleObject->setParent($this->_mockAutoFilterColumnObject);
         $this->assertInstanceOf('PHPExcel_Worksheet_AutoFilter_Column_Rule', $result);
     }
 
-    public function testClone()
+    public function testClone(): void
     {
         $result = clone $this->_testAutoFilterRuleObject;
         $this->assertInstanceOf('PHPExcel_Worksheet_AutoFilter_Column_Rule', $result);

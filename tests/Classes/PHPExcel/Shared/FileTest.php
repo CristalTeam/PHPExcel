@@ -14,7 +14,7 @@ class FileTest extends PHPUnit\Framework\TestCase
         require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
     }
 
-    public function testGetUseUploadTempDirectory()
+    public function testGetUseUploadTempDirectory(): void
     {
         $expectedResult = false;
 
@@ -22,7 +22,7 @@ class FileTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function testSetUseUploadTempDirectory()
+    public function testSetUseUploadTempDirectory(): void
     {
         $useUploadTempDirectoryValues = [
             true,

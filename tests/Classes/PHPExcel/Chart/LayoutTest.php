@@ -12,7 +12,7 @@ class LayoutTest extends PHPUnit\Framework\TestCase
         require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
     }
 
-    public function testSetLayoutTarget()
+    public function testSetLayoutTarget(): void
     {
         $LayoutTargetValue = 'String';
 
@@ -22,7 +22,7 @@ class LayoutTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($result instanceof PHPExcel_Chart_Layout);
     }
 
-    public function testGetLayoutTarget()
+    public function testGetLayoutTarget(): void
     {
         $LayoutTargetValue = 'String';
 

@@ -12,7 +12,7 @@ class LegendTest extends PHPUnit\Framework\TestCase
         require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
     }
 
-    public function testSetPosition()
+    public function testSetPosition(): void
     {
         $positionValues = [
             PHPExcel_Chart_Legend::POSITION_RIGHT,
@@ -30,7 +30,7 @@ class LegendTest extends PHPUnit\Framework\TestCase
         }
     }
 
-    public function testSetInvalidPositionReturnsFalse()
+    public function testSetInvalidPositionReturnsFalse(): void
     {
         $testInstance = new PHPExcel_Chart_Legend;
 
@@ -41,7 +41,7 @@ class LegendTest extends PHPUnit\Framework\TestCase
         $this->assertEquals(PHPExcel_Chart_Legend::POSITION_RIGHT, $result);
     }
 
-    public function testGetPosition()
+    public function testGetPosition(): void
     {
         $PositionValue = PHPExcel_Chart_Legend::POSITION_BOTTOM;
 
@@ -52,7 +52,7 @@ class LegendTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($PositionValue, $result);
     }
 
-    public function testSetPositionXL()
+    public function testSetPositionXL(): void
     {
         $positionValues = [
             PHPExcel_Chart_Legend::xlLegendPositionBottom,
@@ -71,7 +71,7 @@ class LegendTest extends PHPUnit\Framework\TestCase
         }
     }
 
-    public function testSetInvalidXLPositionReturnsFalse()
+    public function testSetInvalidXLPositionReturnsFalse(): void
     {
         $testInstance = new PHPExcel_Chart_Legend;
 
@@ -82,7 +82,7 @@ class LegendTest extends PHPUnit\Framework\TestCase
         $this->assertEquals(PHPExcel_Chart_Legend::xlLegendPositionRight, $result);
     }
 
-    public function testGetPositionXL()
+    public function testGetPositionXL(): void
     {
         $PositionValue = PHPExcel_Chart_Legend::xlLegendPositionCorner;
 
@@ -93,7 +93,7 @@ class LegendTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($PositionValue, $result);
     }
 
-    public function testSetOverlay()
+    public function testSetOverlay(): void
     {
         $overlayValues = [
             true,
@@ -108,7 +108,7 @@ class LegendTest extends PHPUnit\Framework\TestCase
         }
     }
 
-    public function testSetInvalidOverlayReturnsFalse()
+    public function testSetInvalidOverlayReturnsFalse(): void
     {
         $testInstance = new PHPExcel_Chart_Legend;
 
@@ -119,7 +119,7 @@ class LegendTest extends PHPUnit\Framework\TestCase
         $this->assertFalse($result);
     }
 
-    public function testGetOverlay()
+    public function testGetOverlay(): void
     {
         $OverlayValue = true;
 

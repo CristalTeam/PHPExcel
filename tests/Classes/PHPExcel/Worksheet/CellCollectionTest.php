@@ -12,7 +12,7 @@ class CellCollectionTest extends PHPUnit\Framework\TestCase
     }
 
 
-    public function testCacheLastCell()
+    public function testCacheLastCell(): void
     {
         $methods = PHPExcel_CachedObjectStorageFactory::getCacheStorageMethods();
         foreach ($methods as $method) {

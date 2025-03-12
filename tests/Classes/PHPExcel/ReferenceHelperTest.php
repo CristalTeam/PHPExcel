@@ -12,7 +12,7 @@ class ReferenceHelperTest extends PHPUnit\Framework\TestCase
         require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
     }
 
-    public function testColumnSort()
+    public function testColumnSort(): void
     {
         $columnBase = $columnExpectedResult = [
             'A','B','Z',
@@ -33,7 +33,7 @@ class ReferenceHelperTest extends PHPUnit\Framework\TestCase
         }
     }
 
-    public function testColumnReverseSort()
+    public function testColumnReverseSort(): void
     {
         $columnBase = $columnExpectedResult = [
             'A','B','Z',
