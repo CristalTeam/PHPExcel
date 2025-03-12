@@ -75,7 +75,7 @@ class FunctionsTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerIS_BLANK()
+    public static function providerIS_BLANK()
     {
         return new testDataFileIterator('rawTestData/Calculation/Functions/IS_BLANK.data');
     }
@@ -89,7 +89,7 @@ class FunctionsTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerIS_ERR()
+    public static function providerIS_ERR()
     {
         return new testDataFileIterator('rawTestData/Calculation/Functions/IS_ERR.data');
     }
@@ -103,7 +103,7 @@ class FunctionsTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerIS_ERROR()
+    public static function providerIS_ERROR()
     {
         return new testDataFileIterator('rawTestData/Calculation/Functions/IS_ERROR.data');
     }
@@ -117,7 +117,7 @@ class FunctionsTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerERROR_TYPE()
+    public static function providerERROR_TYPE()
     {
         return new testDataFileIterator('rawTestData/Calculation/Functions/ERROR_TYPE.data');
     }
@@ -131,7 +131,7 @@ class FunctionsTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerIS_LOGICAL()
+    public static function providerIS_LOGICAL()
     {
         return new testDataFileIterator('rawTestData/Calculation/Functions/IS_LOGICAL.data');
     }
@@ -145,7 +145,7 @@ class FunctionsTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerIS_NA()
+    public static function providerIS_NA()
     {
         return new testDataFileIterator('rawTestData/Calculation/Functions/IS_NA.data');
     }
@@ -159,7 +159,7 @@ class FunctionsTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerIS_NUMBER()
+    public static function providerIS_NUMBER()
     {
         return new testDataFileIterator('rawTestData/Calculation/Functions/IS_NUMBER.data');
     }
@@ -173,7 +173,7 @@ class FunctionsTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerIS_TEXT()
+    public static function providerIS_TEXT()
     {
         return new testDataFileIterator('rawTestData/Calculation/Functions/IS_TEXT.data');
     }
@@ -187,7 +187,7 @@ class FunctionsTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerIS_NONTEXT()
+    public static function providerIS_NONTEXT()
     {
         return new testDataFileIterator('rawTestData/Calculation/Functions/IS_NONTEXT.data');
     }
@@ -201,7 +201,7 @@ class FunctionsTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerIS_EVEN()
+    public static function providerIS_EVEN()
     {
         return new testDataFileIterator('rawTestData/Calculation/Functions/IS_EVEN.data');
     }
@@ -215,7 +215,7 @@ class FunctionsTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerIS_ODD()
+    public static function providerIS_ODD()
     {
         return new testDataFileIterator('rawTestData/Calculation/Functions/IS_ODD.data');
     }
@@ -229,7 +229,7 @@ class FunctionsTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerTYPE()
+    public static function providerTYPE()
     {
         return new testDataFileIterator('rawTestData/Calculation/Functions/TYPE.data');
     }
@@ -243,7 +243,7 @@ class FunctionsTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerN()
+    public static function providerN()
     {
         return new testDataFileIterator('rawTestData/Calculation/Functions/N.data');
     }

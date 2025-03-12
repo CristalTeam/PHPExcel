@@ -25,7 +25,7 @@ class CodePageTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerCodePage()
+    public static function providerCodePage()
     {
         return new testDataFileIterator('rawTestData/Shared/CodePage.data');
     }

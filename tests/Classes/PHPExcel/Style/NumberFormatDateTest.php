@@ -28,7 +28,7 @@ class NumberFormatDateTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerNumberFormat()
+    public static function providerNumberFormat()
     {
         return new testDataFileIterator('rawTestData/Style/NumberFormatDates.data');
     }
