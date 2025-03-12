@@ -1,7 +1,7 @@
 <?php
 
 
-class TimeZoneTest extends PHPUnit\Framework\TestCase
+final class TimeZoneTest extends PHPUnit\Framework\TestCase
 {
 
     protected function setUp(): void

@@ -1,7 +1,7 @@
 <?php
 
 
-class DataSeriesValuesTest extends PHPUnit\Framework\TestCase
+final class DataSeriesValuesTest extends PHPUnit\Framework\TestCase
 {
 
     protected function setUp(): void

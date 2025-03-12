@@ -1,6 +1,6 @@
 <?php
 
-class CellCollectionTest extends PHPUnit\Framework\TestCase
+final class CellCollectionTest extends PHPUnit\Framework\TestCase
 {
 
     protected function setUp(): void

@@ -9,7 +9,7 @@ require_once 'custom/complexAssert.php';
 require_once 'testDataFileIterator.php';
 
 
-class EngineeringTest extends PHPUnit\Framework\TestCase
+final class EngineeringTest extends PHPUnit\Framework\TestCase
 {
 
     protected function setUp(): void

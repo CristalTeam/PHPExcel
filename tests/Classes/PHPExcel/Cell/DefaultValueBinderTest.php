@@ -4,7 +4,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 
 require_once 'testDataFileIterator.php';
 
-class DefaultValueBinderTest extends PHPUnit\Framework\TestCase
+final class DefaultValueBinderTest extends PHPUnit\Framework\TestCase
 {
     protected $cellStub;
 
