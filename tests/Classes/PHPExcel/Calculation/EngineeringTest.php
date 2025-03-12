@@ -1,5 +1,7 @@
 <?php
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 //  Custom assertion class for handling precision of Complex numbers
 require_once 'custom/complexAssert.php';
 
@@ -20,9 +22,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         PHPExcel_Calculation_Functions::setCompatibilityMode(PHPExcel_Calculation_Functions::COMPATIBILITY_EXCEL);
     }
 
-    /**
-     * @dataProvider providerBESSELI
-     */
+    #[DataProvider('providerBESSELI')]
     public function testBESSELI()
     {
         $args = func_get_args();
@@ -36,9 +36,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/BESSELI.data');
     }
 
-    /**
-     * @dataProvider providerBESSELJ
-     */
+    #[DataProvider('providerBESSELJ')]
     public function testBESSELJ()
     {
         $args = func_get_args();
@@ -52,9 +50,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/BESSELJ.data');
     }
 
-    /**
-     * @dataProvider providerBESSELK
-     */
+    #[DataProvider('providerBESSELK')]
     public function testBESSELK()
     {
         $args = func_get_args();
@@ -68,9 +64,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/BESSELK.data');
     }
 
-    /**
-     * @dataProvider providerBESSELY
-     */
+    #[DataProvider('providerBESSELY')]
     public function testBESSELY()
     {
         $args = func_get_args();
@@ -84,9 +78,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/BESSELY.data');
     }
 
-    /**
-     * @dataProvider providerCOMPLEX
-     */
+    #[DataProvider('providerCOMPLEX')]
     public function testCOMPLEX()
     {
         $args = func_get_args();
@@ -100,9 +92,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/COMPLEX.data');
     }
 
-    /**
-     * @dataProvider providerIMAGINARY
-     */
+    #[DataProvider('providerIMAGINARY')]
     public function testIMAGINARY()
     {
         $args = func_get_args();
@@ -116,9 +106,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMAGINARY.data');
     }
 
-    /**
-     * @dataProvider providerIMREAL
-     */
+    #[DataProvider('providerIMREAL')]
     public function testIMREAL()
     {
         $args = func_get_args();
@@ -132,9 +120,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMREAL.data');
     }
 
-    /**
-     * @dataProvider providerIMABS
-     */
+    #[DataProvider('providerIMABS')]
     public function testIMABS()
     {
         $args = func_get_args();
@@ -148,9 +134,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMABS.data');
     }
 
-    /**
-     * @dataProvider providerIMARGUMENT
-     */
+    #[DataProvider('providerIMARGUMENT')]
     public function testIMARGUMENT()
     {
         $args = func_get_args();
@@ -164,9 +148,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMARGUMENT.data');
     }
 
-    /**
-     * @dataProvider providerIMCONJUGATE
-     */
+    #[DataProvider('providerIMCONJUGATE')]
     public function testIMCONJUGATE()
     {
         $args = func_get_args();
@@ -181,9 +163,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMCONJUGATE.data');
     }
 
-    /**
-     * @dataProvider providerIMCOS
-     */
+    #[DataProvider('providerIMCOS')]
     public function testIMCOS()
     {
         $args = func_get_args();
@@ -198,9 +178,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMCOS.data');
     }
 
-    /**
-     * @dataProvider providerIMDIV
-     */
+    #[DataProvider('providerIMDIV')]
     public function testIMDIV()
     {
         $args = func_get_args();
@@ -215,9 +193,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMDIV.data');
     }
 
-    /**
-     * @dataProvider providerIMEXP
-     */
+    #[DataProvider('providerIMEXP')]
     public function testIMEXP()
     {
         $args = func_get_args();
@@ -232,9 +208,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMEXP.data');
     }
 
-    /**
-     * @dataProvider providerIMLN
-     */
+    #[DataProvider('providerIMLN')]
     public function testIMLN()
     {
         $args = func_get_args();
@@ -249,9 +223,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMLN.data');
     }
 
-    /**
-     * @dataProvider providerIMLOG2
-     */
+    #[DataProvider('providerIMLOG2')]
     public function testIMLOG2()
     {
         $args = func_get_args();
@@ -266,9 +238,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMLOG2.data');
     }
 
-    /**
-     * @dataProvider providerIMLOG10
-     */
+    #[DataProvider('providerIMLOG10')]
     public function testIMLOG10()
     {
         $args = func_get_args();
@@ -283,9 +253,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMLOG10.data');
     }
 
-    /**
-     * @dataProvider providerIMPOWER
-     */
+    #[DataProvider('providerIMPOWER')]
     public function testIMPOWER()
     {
         $args = func_get_args();
@@ -300,9 +268,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMPOWER.data');
     }
 
-    /**
-     * @dataProvider providerIMPRODUCT
-     */
+    #[DataProvider('providerIMPRODUCT')]
     public function testIMPRODUCT()
     {
         $args = func_get_args();
@@ -317,9 +283,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMPRODUCT.data');
     }
 
-    /**
-     * @dataProvider providerIMSIN
-     */
+    #[DataProvider('providerIMSIN')]
     public function testIMSIN()
     {
         $args = func_get_args();
@@ -334,9 +298,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMSIN.data');
     }
 
-    /**
-     * @dataProvider providerIMSQRT
-     */
+    #[DataProvider('providerIMSQRT')]
     public function testIMSQRT()
     {
         $args = func_get_args();
@@ -351,9 +313,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMSQRT.data');
     }
 
-    /**
-     * @dataProvider providerIMSUB
-     */
+    #[DataProvider('providerIMSUB')]
     public function testIMSUB()
     {
         $args = func_get_args();
@@ -368,9 +328,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMSUB.data');
     }
 
-    /**
-     * @dataProvider providerIMSUM
-     */
+    #[DataProvider('providerIMSUM')]
     public function testIMSUM()
     {
         $args = func_get_args();
@@ -385,9 +343,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMSUM.data');
     }
 
-    /**
-     * @dataProvider providerERF
-     */
+    #[DataProvider('providerERF')]
     public function testERF()
     {
         $args = func_get_args();
@@ -401,9 +357,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/ERF.data');
     }
 
-    /**
-     * @dataProvider providerERFC
-     */
+    #[DataProvider('providerERFC')]
     public function testERFC()
     {
         $args = func_get_args();
@@ -417,9 +371,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/ERFC.data');
     }
 
-    /**
-     * @dataProvider providerBIN2DEC
-     */
+    #[DataProvider('providerBIN2DEC')]
     public function testBIN2DEC()
     {
         $args = func_get_args();
@@ -433,9 +385,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/BIN2DEC.data');
     }
 
-    /**
-     * @dataProvider providerBIN2HEX
-     */
+    #[DataProvider('providerBIN2HEX')]
     public function testBIN2HEX()
     {
         $args = func_get_args();
@@ -449,9 +399,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/BIN2HEX.data');
     }
 
-    /**
-     * @dataProvider providerBIN2OCT
-     */
+    #[DataProvider('providerBIN2OCT')]
     public function testBIN2OCT()
     {
         $args = func_get_args();
@@ -465,9 +413,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/BIN2OCT.data');
     }
 
-    /**
-     * @dataProvider providerDEC2BIN
-     */
+    #[DataProvider('providerDEC2BIN')]
     public function testDEC2BIN()
     {
         $args = func_get_args();
@@ -481,9 +427,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/DEC2BIN.data');
     }
 
-    /**
-     * @dataProvider providerDEC2HEX
-     */
+    #[DataProvider('providerDEC2HEX')]
     public function testDEC2HEX()
     {
         $args = func_get_args();
@@ -497,9 +441,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/DEC2HEX.data');
     }
 
-    /**
-     * @dataProvider providerDEC2OCT
-     */
+    #[DataProvider('providerDEC2OCT')]
     public function testDEC2OCT()
     {
         $args = func_get_args();
@@ -513,9 +455,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/DEC2OCT.data');
     }
 
-    /**
-     * @dataProvider providerHEX2BIN
-     */
+    #[DataProvider('providerHEX2BIN')]
     public function testHEX2BIN()
     {
         $args = func_get_args();
@@ -529,9 +469,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/HEX2BIN.data');
     }
 
-    /**
-     * @dataProvider providerHEX2DEC
-     */
+    #[DataProvider('providerHEX2DEC')]
     public function testHEX2DEC()
     {
         $args = func_get_args();
@@ -545,9 +483,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/HEX2DEC.data');
     }
 
-    /**
-     * @dataProvider providerHEX2OCT
-     */
+    #[DataProvider('providerHEX2OCT')]
     public function testHEX2OCT()
     {
         $args = func_get_args();
@@ -561,9 +497,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/HEX2OCT.data');
     }
 
-    /**
-     * @dataProvider providerOCT2BIN
-     */
+    #[DataProvider('providerOCT2BIN')]
     public function testOCT2BIN()
     {
         $args = func_get_args();
@@ -577,9 +511,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/OCT2BIN.data');
     }
 
-    /**
-     * @dataProvider providerOCT2DEC
-     */
+    #[DataProvider('providerOCT2DEC')]
     public function testOCT2DEC()
     {
         $args = func_get_args();
@@ -593,9 +525,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/OCT2DEC.data');
     }
 
-    /**
-     * @dataProvider providerOCT2HEX
-     */
+    #[DataProvider('providerOCT2HEX')]
     public function testOCT2HEX()
     {
         $args = func_get_args();
@@ -609,9 +539,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/OCT2HEX.data');
     }
 
-    /**
-     * @dataProvider providerDELTA
-     */
+    #[DataProvider('providerDELTA')]
     public function testDELTA()
     {
         $args = func_get_args();
@@ -625,9 +553,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/DELTA.data');
     }
 
-    /**
-     * @dataProvider providerGESTEP
-     */
+    #[DataProvider('providerGESTEP')]
     public function testGESTEP()
     {
         $args = func_get_args();
@@ -665,9 +591,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertIsArray($result);
     }
 
-    /**
-     * @dataProvider providerCONVERTUOM
-     */
+    #[DataProvider('providerCONVERTUOM')]
     public function testCONVERTUOM()
     {
         $args = func_get_args();

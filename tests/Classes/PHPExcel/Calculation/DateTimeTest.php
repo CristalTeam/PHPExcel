@@ -1,5 +1,7 @@
 <?php
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 
 require_once 'testDataFileIterator.php';
 
@@ -16,9 +18,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         PHPExcel_Calculation_Functions::setCompatibilityMode(PHPExcel_Calculation_Functions::COMPATIBILITY_EXCEL);
     }
 
-    /**
-     * @dataProvider providerDATE
-     */
+    #[DataProvider('providerDATE')]
     public function testDATE()
     {
         $args = func_get_args();
@@ -69,9 +69,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($result, '#NUM!');
     }
 
-    /**
-     * @dataProvider providerDATEVALUE
-     */
+    #[DataProvider('providerDATEVALUE')]
     public function testDATEVALUE()
     {
         $args = func_get_args();
@@ -106,9 +104,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($result->format('d-M-Y'), '31-Jan-2012');
     }
 
-    /**
-     * @dataProvider providerYEAR
-     */
+    #[DataProvider('providerYEAR')]
     public function testYEAR()
     {
         $args = func_get_args();
@@ -122,9 +118,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/DateTime/YEAR.data');
     }
 
-    /**
-     * @dataProvider providerMONTH
-     */
+    #[DataProvider('providerMONTH')]
     public function testMONTH()
     {
         $args = func_get_args();
@@ -138,9 +132,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/DateTime/MONTH.data');
     }
 
-    /**
-     * @dataProvider providerWEEKNUM
-     */
+    #[DataProvider('providerWEEKNUM')]
     public function testWEEKNUM()
     {
         $args = func_get_args();
@@ -154,9 +146,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/DateTime/WEEKNUM.data');
     }
 
-    /**
-     * @dataProvider providerWEEKDAY
-     */
+    #[DataProvider('providerWEEKDAY')]
     public function testWEEKDAY()
     {
         $args = func_get_args();
@@ -170,9 +160,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/DateTime/WEEKDAY.data');
     }
 
-    /**
-     * @dataProvider providerDAY
-     */
+    #[DataProvider('providerDAY')]
     public function testDAY()
     {
         $args = func_get_args();
@@ -186,9 +174,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/DateTime/DAY.data');
     }
 
-    /**
-     * @dataProvider providerTIME
-     */
+    #[DataProvider('providerTIME')]
     public function testTIME()
     {
         $args = func_get_args();
@@ -223,9 +209,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($result->format('H:i:s'), '07:30:20');
     }
 
-    /**
-     * @dataProvider providerTIMEVALUE
-     */
+    #[DataProvider('providerTIMEVALUE')]
     public function testTIMEVALUE()
     {
         $args = func_get_args();
@@ -260,9 +244,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($result->format('H:i:s'), '07:30:20');
     }
 
-    /**
-     * @dataProvider providerHOUR
-     */
+    #[DataProvider('providerHOUR')]
     public function testHOUR()
     {
         $args = func_get_args();
@@ -276,9 +258,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/DateTime/HOUR.data');
     }
 
-    /**
-     * @dataProvider providerMINUTE
-     */
+    #[DataProvider('providerMINUTE')]
     public function testMINUTE()
     {
         $args = func_get_args();
@@ -292,9 +272,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/DateTime/MINUTE.data');
     }
 
-    /**
-     * @dataProvider providerSECOND
-     */
+    #[DataProvider('providerSECOND')]
     public function testSECOND()
     {
         $args = func_get_args();
@@ -308,9 +286,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/DateTime/SECOND.data');
     }
 
-    /**
-     * @dataProvider providerNETWORKDAYS
-     */
+    #[DataProvider('providerNETWORKDAYS')]
     public function testNETWORKDAYS()
     {
         $args = func_get_args();
@@ -324,9 +300,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/DateTime/NETWORKDAYS.data');
     }
 
-    /**
-     * @dataProvider providerWORKDAY
-     */
+    #[DataProvider('providerWORKDAY')]
     public function testWORKDAY()
     {
         $args = func_get_args();
@@ -340,9 +314,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/DateTime/WORKDAY.data');
     }
 
-    /**
-     * @dataProvider providerEDATE
-     */
+    #[DataProvider('providerEDATE')]
     public function testEDATE()
     {
         $args = func_get_args();
@@ -377,9 +349,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($result->format('d-M-Y'), '26-Dec-2011');
     }
 
-    /**
-     * @dataProvider providerEOMONTH
-     */
+    #[DataProvider('providerEOMONTH')]
     public function testEOMONTH()
     {
         $args = func_get_args();
@@ -414,9 +384,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($result->format('d-M-Y'), '31-Dec-2011');
     }
 
-    /**
-     * @dataProvider providerDATEDIF
-     */
+    #[DataProvider('providerDATEDIF')]
     public function testDATEDIF()
     {
         $args = func_get_args();
@@ -430,9 +398,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/DateTime/DATEDIF.data');
     }
 
-    /**
-     * @dataProvider providerDAYS360
-     */
+    #[DataProvider('providerDAYS360')]
     public function testDAYS360()
     {
         $args = func_get_args();
@@ -446,9 +412,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/DateTime/DAYS360.data');
     }
 
-    /**
-     * @dataProvider providerYEARFRAC
-     */
+    #[DataProvider('providerYEARFRAC')]
     public function testYEARFRAC()
     {
         $args = func_get_args();

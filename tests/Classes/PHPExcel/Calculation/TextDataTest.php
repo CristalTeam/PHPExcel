@@ -1,5 +1,7 @@
 <?php
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 
 require_once 'testDataFileIterator.php';
 
@@ -16,9 +18,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         PHPExcel_Calculation_Functions::setCompatibilityMode(PHPExcel_Calculation_Functions::COMPATIBILITY_EXCEL);
     }
 
-    /**
-     * @dataProvider providerCHAR
-     */
+    #[DataProvider('providerCHAR')]
     public function testCHAR()
     {
         $args = func_get_args();
@@ -32,9 +32,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/TextData/CHAR.data');
     }
 
-    /**
-     * @dataProvider providerCODE
-     */
+    #[DataProvider('providerCODE')]
     public function testCODE()
     {
         $args = func_get_args();
@@ -48,9 +46,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/TextData/CODE.data');
     }
 
-    /**
-     * @dataProvider providerCONCATENATE
-     */
+    #[DataProvider('providerCONCATENATE')]
     public function testCONCATENATE()
     {
         $args = func_get_args();
@@ -64,9 +60,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/TextData/CONCATENATE.data');
     }
 
-    /**
-     * @dataProvider providerLEFT
-     */
+    #[DataProvider('providerLEFT')]
     public function testLEFT()
     {
         $args = func_get_args();
@@ -80,9 +74,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/TextData/LEFT.data');
     }
 
-    /**
-     * @dataProvider providerMID
-     */
+    #[DataProvider('providerMID')]
     public function testMID()
     {
         $args = func_get_args();
@@ -96,9 +88,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/TextData/MID.data');
     }
 
-    /**
-     * @dataProvider providerRIGHT
-     */
+    #[DataProvider('providerRIGHT')]
     public function testRIGHT()
     {
         $args = func_get_args();
@@ -112,9 +102,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/TextData/RIGHT.data');
     }
 
-    /**
-     * @dataProvider providerLOWER
-     */
+    #[DataProvider('providerLOWER')]
     public function testLOWER()
     {
         $args = func_get_args();
@@ -128,9 +116,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/TextData/LOWER.data');
     }
 
-    /**
-     * @dataProvider providerUPPER
-     */
+    #[DataProvider('providerUPPER')]
     public function testUPPER()
     {
         $args = func_get_args();
@@ -144,9 +130,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/TextData/UPPER.data');
     }
 
-    /**
-     * @dataProvider providerPROPER
-     */
+    #[DataProvider('providerPROPER')]
     public function testPROPER()
     {
         $args = func_get_args();
@@ -160,9 +144,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/TextData/PROPER.data');
     }
 
-    /**
-     * @dataProvider providerLEN
-     */
+    #[DataProvider('providerLEN')]
     public function testLEN()
     {
         $args = func_get_args();
@@ -176,9 +158,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/TextData/LEN.data');
     }
 
-    /**
-     * @dataProvider providerSEARCH
-     */
+    #[DataProvider('providerSEARCH')]
     public function testSEARCH()
     {
         $args = func_get_args();
@@ -192,9 +172,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/TextData/SEARCH.data');
     }
 
-    /**
-     * @dataProvider providerFIND
-     */
+    #[DataProvider('providerFIND')]
     public function testFIND()
     {
         $args = func_get_args();
@@ -208,9 +186,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/TextData/FIND.data');
     }
 
-    /**
-     * @dataProvider providerREPLACE
-     */
+    #[DataProvider('providerREPLACE')]
     public function testREPLACE()
     {
         $args = func_get_args();
@@ -224,9 +200,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/TextData/REPLACE.data');
     }
 
-    /**
-     * @dataProvider providerSUBSTITUTE
-     */
+    #[DataProvider('providerSUBSTITUTE')]
     public function testSUBSTITUTE()
     {
         $args = func_get_args();
@@ -240,9 +214,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/TextData/SUBSTITUTE.data');
     }
 
-    /**
-     * @dataProvider providerTRIM
-     */
+    #[DataProvider('providerTRIM')]
     public function testTRIM()
     {
         $args = func_get_args();
@@ -256,9 +228,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/TextData/TRIM.data');
     }
 
-    /**
-     * @dataProvider providerCLEAN
-     */
+    #[DataProvider('providerCLEAN')]
     public function testCLEAN()
     {
         $args = func_get_args();
@@ -272,9 +242,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/TextData/CLEAN.data');
     }
 
-    /**
-     * @dataProvider providerDOLLAR
-     */
+    #[DataProvider('providerDOLLAR')]
     public function testDOLLAR()
     {
         $args = func_get_args();
@@ -288,9 +256,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/TextData/DOLLAR.data');
     }
 
-    /**
-     * @dataProvider providerFIXED
-     */
+    #[DataProvider('providerFIXED')]
     public function testFIXED()
     {
         $args = func_get_args();
@@ -304,9 +270,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/TextData/FIXED.data');
     }
 
-    /**
-     * @dataProvider providerT
-     */
+    #[DataProvider('providerT')]
     public function testT()
     {
         $args = func_get_args();
@@ -320,9 +284,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/TextData/T.data');
     }
 
-    /**
-     * @dataProvider providerTEXT
-     */
+    #[DataProvider('providerTEXT')]
     public function testTEXT()
     {
         //    Enforce decimal and thousands separator values to UK/US, and currency code to USD
@@ -341,9 +303,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/TextData/TEXT.data');
     }
 
-    /**
-     * @dataProvider providerVALUE
-     */
+    #[DataProvider('providerVALUE')]
     public function testVALUE()
     {
         call_user_func(['PHPExcel_Shared_String', 'setDecimalSeparator'], '.');

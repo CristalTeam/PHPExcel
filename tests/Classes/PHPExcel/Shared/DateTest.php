@@ -1,5 +1,7 @@
 <?php
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 
 require_once 'testDataFileIterator.php';
 
@@ -34,9 +36,7 @@ class DateTest extends PHPUnit\Framework\TestCase
         $this->assertFalse($result);
     }
 
-    /**
-     * @dataProvider providerDateTimeExcelToPHP1900
-     */
+    #[DataProvider('providerDateTimeExcelToPHP1900')]
     public function testDateTimeExcelToPHP1900()
     {
         $result = call_user_func(
@@ -58,9 +58,7 @@ class DateTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Shared/DateTimeExcelToPHP1900.data');
     }
 
-    /**
-     * @dataProvider providerDateTimePHPToExcel1900
-     */
+    #[DataProvider('providerDateTimePHPToExcel1900')]
     public function testDateTimePHPToExcel1900()
     {
         $result = call_user_func(
@@ -79,9 +77,7 @@ class DateTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Shared/DateTimePHPToExcel1900.data');
     }
 
-    /**
-     * @dataProvider providerDateTimeFormattedPHPToExcel1900
-     */
+    #[DataProvider('providerDateTimeFormattedPHPToExcel1900')]
     public function testDateTimeFormattedPHPToExcel1900()
     {
         $result = call_user_func(
@@ -100,9 +96,7 @@ class DateTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Shared/DateTimeFormattedPHPToExcel1900.data');
     }
 
-    /**
-     * @dataProvider providerDateTimeExcelToPHP1904
-     */
+    #[DataProvider('providerDateTimeExcelToPHP1904')]
     public function testDateTimeExcelToPHP1904()
     {
         $result = call_user_func(
@@ -124,9 +118,7 @@ class DateTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Shared/DateTimeExcelToPHP1904.data');
     }
 
-    /**
-     * @dataProvider providerDateTimePHPToExcel1904
-     */
+    #[DataProvider('providerDateTimePHPToExcel1904')]
     public function testDateTimePHPToExcel1904()
     {
         $result = call_user_func(
@@ -145,9 +137,7 @@ class DateTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Shared/DateTimePHPToExcel1904.data');
     }
 
-    /**
-     * @dataProvider providerIsDateTimeFormatCode
-     */
+    #[DataProvider('providerIsDateTimeFormatCode')]
     public function testIsDateTimeFormatCode()
     {
         $args = func_get_args();
@@ -161,9 +151,7 @@ class DateTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Shared/DateTimeFormatCodes.data');
     }
 
-    /**
-     * @dataProvider providerDateTimeExcelToPHP1900Timezone
-     */
+    #[DataProvider('providerDateTimeExcelToPHP1900Timezone')]
     public function testDateTimeExcelToPHP1900Timezone()
     {
         $result = call_user_func(

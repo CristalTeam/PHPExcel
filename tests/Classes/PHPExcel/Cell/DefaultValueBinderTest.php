@@ -1,5 +1,7 @@
 <?php
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 require_once 'testDataFileIterator.php';
 
 class DefaultValueBinderTest extends PHPUnit\Framework\TestCase
@@ -27,9 +29,7 @@ class DefaultValueBinderTest extends PHPUnit\Framework\TestCase
 
     }
 
-    /**
-     * @dataProvider binderProvider
-     */
+    #[DataProvider('binderProvider')]
     public function testBindValue($value)
     {
         $this->createCellStub();
@@ -56,9 +56,7 @@ class DefaultValueBinderTest extends PHPUnit\Framework\TestCase
         ];
     }
 
-    /**
-     * @dataProvider providerDataTypeForValue
-     */
+    #[DataProvider('providerDataTypeForValue')]
     public function testDataTypeForValue()
     {
         $args = func_get_args();

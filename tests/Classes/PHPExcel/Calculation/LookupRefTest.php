@@ -1,5 +1,7 @@
 <?php
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 
 require_once 'testDataFileIterator.php';
 
@@ -16,9 +18,7 @@ class LookupRefTest extends PHPUnit\Framework\TestCase
         PHPExcel_Calculation_Functions::setCompatibilityMode(PHPExcel_Calculation_Functions::COMPATIBILITY_EXCEL);
     }
 
-    /**
-     * @dataProvider providerHLOOKUP
-     */
+    #[DataProvider('providerHLOOKUP')]
     public function testHLOOKUP()
     {
         $args = func_get_args();
@@ -32,9 +32,7 @@ class LookupRefTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/LookupRef/HLOOKUP.data');
     }
 
-    /**
-     * @dataProvider providerVLOOKUP
-     */
+    #[DataProvider('providerVLOOKUP')]
     public function testVLOOKUP()
     {
         $args = func_get_args();

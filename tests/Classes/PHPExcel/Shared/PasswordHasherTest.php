@@ -1,5 +1,7 @@
 <?php
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 
 require_once 'testDataFileIterator.php';
 
@@ -14,9 +16,7 @@ class PasswordHasherTest extends PHPUnit\Framework\TestCase
         require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
     }
 
-    /**
-     * @dataProvider providerHashPassword
-     */
+    #[DataProvider('providerHashPassword')]
     public function testHashPassword()
     {
         $args = func_get_args();
