@@ -6,7 +6,7 @@ class DefaultValueBinderTest extends PHPUnit\Framework\TestCase
 {
     protected $cellStub;
 
-    public function setUp()
+    protected function setUp(): void
     {
         if (!defined('PHPEXCEL_ROOT')) {
             define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
