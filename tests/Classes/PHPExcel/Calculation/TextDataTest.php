@@ -27,7 +27,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerCHAR()
+    public static function providerCHAR()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/CHAR.data');
     }
@@ -41,7 +41,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerCODE()
+    public static function providerCODE()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/CODE.data');
     }
@@ -55,7 +55,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerCONCATENATE()
+    public static function providerCONCATENATE()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/CONCATENATE.data');
     }
@@ -69,7 +69,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerLEFT()
+    public static function providerLEFT()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/LEFT.data');
     }
@@ -83,7 +83,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerMID()
+    public static function providerMID()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/MID.data');
     }
@@ -97,7 +97,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerRIGHT()
+    public static function providerRIGHT()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/RIGHT.data');
     }
@@ -111,7 +111,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerLOWER()
+    public static function providerLOWER()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/LOWER.data');
     }
@@ -125,7 +125,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerUPPER()
+    public static function providerUPPER()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/UPPER.data');
     }
@@ -139,7 +139,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerPROPER()
+    public static function providerPROPER()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/PROPER.data');
     }
@@ -153,7 +153,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerLEN()
+    public static function providerLEN()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/LEN.data');
     }
@@ -167,7 +167,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerSEARCH()
+    public static function providerSEARCH()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/SEARCH.data');
     }
@@ -181,7 +181,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerFIND()
+    public static function providerFIND()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/FIND.data');
     }
@@ -195,7 +195,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerREPLACE()
+    public static function providerREPLACE()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/REPLACE.data');
     }
@@ -209,7 +209,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerSUBSTITUTE()
+    public static function providerSUBSTITUTE()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/SUBSTITUTE.data');
     }
@@ -223,7 +223,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerTRIM()
+    public static function providerTRIM()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/TRIM.data');
     }
@@ -237,7 +237,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerCLEAN()
+    public static function providerCLEAN()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/CLEAN.data');
     }
@@ -251,7 +251,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerDOLLAR()
+    public static function providerDOLLAR()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/DOLLAR.data');
     }
@@ -265,7 +265,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerFIXED()
+    public static function providerFIXED()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/FIXED.data');
     }
@@ -279,7 +279,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerT()
+    public static function providerT()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/T.data');
     }
@@ -298,7 +298,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerTEXT()
+    public static function providerTEXT()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/TEXT.data');
     }
@@ -316,7 +316,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerVALUE()
+    public static function providerVALUE()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/VALUE.data');
     }

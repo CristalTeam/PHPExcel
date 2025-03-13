@@ -31,7 +31,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerBESSELI()
+    public static function providerBESSELI()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/BESSELI.data');
     }
@@ -45,7 +45,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerBESSELJ()
+    public static function providerBESSELJ()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/BESSELJ.data');
     }
@@ -59,7 +59,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerBESSELK()
+    public static function providerBESSELK()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/BESSELK.data');
     }
@@ -73,7 +73,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerBESSELY()
+    public static function providerBESSELY()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/BESSELY.data');
     }
@@ -87,7 +87,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerCOMPLEX()
+    public static function providerCOMPLEX()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/COMPLEX.data');
     }
@@ -101,7 +101,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerIMAGINARY()
+    public static function providerIMAGINARY()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMAGINARY.data');
     }
@@ -115,7 +115,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerIMREAL()
+    public static function providerIMREAL()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMREAL.data');
     }
@@ -129,7 +129,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerIMABS()
+    public static function providerIMABS()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMABS.data');
     }
@@ -143,7 +143,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerIMARGUMENT()
+    public static function providerIMARGUMENT()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMARGUMENT.data');
     }
@@ -158,7 +158,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public function providerIMCONJUGATE()
+    public static function providerIMCONJUGATE()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMCONJUGATE.data');
     }
@@ -173,7 +173,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public function providerIMCOS()
+    public static function providerIMCOS()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMCOS.data');
     }
@@ -188,7 +188,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public function providerIMDIV()
+    public static function providerIMDIV()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMDIV.data');
     }
@@ -203,7 +203,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public function providerIMEXP()
+    public static function providerIMEXP()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMEXP.data');
     }
@@ -218,7 +218,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public function providerIMLN()
+    public static function providerIMLN()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMLN.data');
     }
@@ -233,7 +233,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public function providerIMLOG2()
+    public static function providerIMLOG2()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMLOG2.data');
     }
@@ -248,7 +248,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public function providerIMLOG10()
+    public static function providerIMLOG10()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMLOG10.data');
     }
@@ -263,7 +263,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public function providerIMPOWER()
+    public static function providerIMPOWER()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMPOWER.data');
     }
@@ -278,7 +278,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public function providerIMPRODUCT()
+    public static function providerIMPRODUCT()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMPRODUCT.data');
     }
@@ -293,7 +293,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public function providerIMSIN()
+    public static function providerIMSIN()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMSIN.data');
     }
@@ -308,7 +308,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public function providerIMSQRT()
+    public static function providerIMSQRT()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMSQRT.data');
     }
@@ -323,7 +323,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public function providerIMSUB()
+    public static function providerIMSUB()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMSUB.data');
     }
@@ -338,7 +338,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public function providerIMSUM()
+    public static function providerIMSUM()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMSUM.data');
     }
@@ -352,7 +352,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public function providerERF()
+    public static function providerERF()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/ERF.data');
     }
@@ -366,7 +366,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public function providerERFC()
+    public static function providerERFC()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/ERFC.data');
     }
@@ -380,7 +380,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerBIN2DEC()
+    public static function providerBIN2DEC()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/BIN2DEC.data');
     }
@@ -394,7 +394,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerBIN2HEX()
+    public static function providerBIN2HEX()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/BIN2HEX.data');
     }
@@ -408,7 +408,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerBIN2OCT()
+    public static function providerBIN2OCT()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/BIN2OCT.data');
     }
@@ -422,7 +422,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null);
     }
 
-    public function providerDEC2BIN()
+    public static function providerDEC2BIN()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/DEC2BIN.data');
     }
@@ -436,7 +436,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null);
     }
 
-    public function providerDEC2HEX()
+    public static function providerDEC2HEX()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/DEC2HEX.data');
     }
@@ -450,7 +450,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null);
     }
 
-    public function providerDEC2OCT()
+    public static function providerDEC2OCT()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/DEC2OCT.data');
     }
@@ -464,7 +464,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null);
     }
 
-    public function providerHEX2BIN()
+    public static function providerHEX2BIN()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/HEX2BIN.data');
     }
@@ -478,7 +478,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null);
     }
 
-    public function providerHEX2DEC()
+    public static function providerHEX2DEC()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/HEX2DEC.data');
     }
@@ -492,7 +492,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null);
     }
 
-    public function providerHEX2OCT()
+    public static function providerHEX2OCT()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/HEX2OCT.data');
     }
@@ -506,7 +506,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null);
     }
 
-    public function providerOCT2BIN()
+    public static function providerOCT2BIN()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/OCT2BIN.data');
     }
@@ -520,7 +520,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null);
     }
 
-    public function providerOCT2DEC()
+    public static function providerOCT2DEC()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/OCT2DEC.data');
     }
@@ -534,7 +534,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null);
     }
 
-    public function providerOCT2HEX()
+    public static function providerOCT2HEX()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/OCT2HEX.data');
     }
@@ -548,7 +548,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null);
     }
 
-    public function providerDELTA()
+    public static function providerDELTA()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/DELTA.data');
     }
@@ -562,7 +562,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null);
     }
 
-    public function providerGESTEP()
+    public static function providerGESTEP()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/GESTEP.data');
     }
@@ -600,7 +600,7 @@ class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null);
     }
 
-    public function providerCONVERTUOM()
+    public static function providerCONVERTUOM()
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/CONVERTUOM.data');
     }

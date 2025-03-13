@@ -38,7 +38,7 @@ class DefaultValueBinderTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($result);
     }
 
-    public function binderProvider()
+    public static function binderProvider()
     {
         return [
             [null],
@@ -65,7 +65,7 @@ class DefaultValueBinderTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerDataTypeForValue()
+    public static function providerDataTypeForValue()
     {
         return new testDataFileIterator('rawTestData/Cell/DefaultValueBinder.data');
     }

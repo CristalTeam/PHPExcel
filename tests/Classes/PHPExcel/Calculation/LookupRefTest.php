@@ -27,7 +27,7 @@ class LookupRefTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerHLOOKUP()
+    public static function providerHLOOKUP()
     {
         return new testDataFileIterator('rawTestData/Calculation/LookupRef/HLOOKUP.data');
     }
@@ -41,7 +41,7 @@ class LookupRefTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerVLOOKUP()
+    public static function providerVLOOKUP()
     {
         return new testDataFileIterator('rawTestData/Calculation/LookupRef/VLOOKUP.data');
     }
