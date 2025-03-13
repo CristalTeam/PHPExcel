@@ -27,7 +27,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public function providerATAN2()
+    public static function providerATAN2()
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/ATAN2.data');
     }
@@ -41,7 +41,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public function providerCEILING()
+    public static function providerCEILING()
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/CEILING.data');
     }
@@ -55,7 +55,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public function providerCOMBIN()
+    public static function providerCOMBIN()
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/COMBIN.data');
     }
@@ -69,7 +69,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public function providerEVEN()
+    public static function providerEVEN()
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/EVEN.data');
     }
@@ -83,7 +83,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public function providerODD()
+    public static function providerODD()
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/ODD.data');
     }
@@ -97,7 +97,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public function providerFACT()
+    public static function providerFACT()
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/FACT.data');
     }
@@ -111,7 +111,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public function providerFACTDOUBLE()
+    public static function providerFACTDOUBLE()
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/FACTDOUBLE.data');
     }
@@ -125,7 +125,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public function providerFLOOR()
+    public static function providerFLOOR()
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/FLOOR.data');
     }
@@ -139,7 +139,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public function providerGCD()
+    public static function providerGCD()
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/GCD.data');
     }
@@ -153,7 +153,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public function providerLCM()
+    public static function providerLCM()
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/LCM.data');
     }
@@ -167,7 +167,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerINT()
+    public static function providerINT()
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/INT.data');
     }
@@ -181,7 +181,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public function providerSIGN()
+    public static function providerSIGN()
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/SIGN.data');
     }
@@ -195,7 +195,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public function providerPOWER()
+    public static function providerPOWER()
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/POWER.data');
     }
@@ -209,7 +209,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public function providerLOG()
+    public static function providerLOG()
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/LOG.data');
     }
@@ -223,7 +223,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public function providerMOD()
+    public static function providerMOD()
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/MOD.data');
     }
@@ -237,7 +237,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public function providerMDETERM()
+    public static function providerMDETERM()
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/MDETERM.data');
     }
@@ -251,7 +251,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public function providerMINVERSE()
+    public static function providerMINVERSE()
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/MINVERSE.data');
     }
@@ -265,7 +265,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public function providerMMULT()
+    public static function providerMMULT()
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/MMULT.data');
     }
@@ -279,7 +279,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public function providerMULTINOMIAL()
+    public static function providerMULTINOMIAL()
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/MULTINOMIAL.data');
     }
@@ -295,7 +295,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public function providerMROUND()
+    public static function providerMROUND()
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/MROUND.data');
     }
@@ -309,7 +309,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public function providerPRODUCT()
+    public static function providerPRODUCT()
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/PRODUCT.data');
     }
@@ -323,7 +323,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public function providerQUOTIENT()
+    public static function providerQUOTIENT()
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/QUOTIENT.data');
     }
@@ -337,7 +337,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public function providerROUNDUP()
+    public static function providerROUNDUP()
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/ROUNDUP.data');
     }
@@ -351,7 +351,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public function providerROUNDDOWN()
+    public static function providerROUNDDOWN()
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/ROUNDDOWN.data');
     }
@@ -365,7 +365,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public function providerSERIESSUM()
+    public static function providerSERIESSUM()
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/SERIESSUM.data');
     }
@@ -379,7 +379,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public function providerSUMIFS()
+    public static function providerSUMIFS()
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/SUMIFS.data');
     }
@@ -393,7 +393,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public function providerSUMSQ()
+    public static function providerSUMSQ()
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/SUMSQ.data');
     }
@@ -407,7 +407,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public function providerTRUNC()
+    public static function providerTRUNC()
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/TRUNC.data');
     }
@@ -421,7 +421,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerROMAN()
+    public static function providerROMAN()
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/ROMAN.data');
     }
@@ -435,7 +435,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public function providerSQRTPI()
+    public static function providerSQRTPI()
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/SQRTPI.data');
     }
@@ -449,7 +449,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public function providerSUMIF()
+    public static function providerSUMIF()
     {
         return [
             [

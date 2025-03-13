@@ -25,7 +25,7 @@ class CellTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerColumnString()
+    public static function providerColumnString()
     {
         return new testDataFileIterator('rawTestData/ColumnString.data');
     }
@@ -63,7 +63,7 @@ class CellTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerColumnIndex()
+    public static function providerColumnIndex()
     {
         return new testDataFileIterator('rawTestData/ColumnIndex.data');
     }
@@ -77,7 +77,7 @@ class CellTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerCoordinates()
+    public static function providerCoordinates()
     {
         return new testDataFileIterator('rawTestData/CellCoordinates.data');
     }
@@ -127,7 +127,7 @@ class CellTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerAbsoluteCoordinates()
+    public static function providerAbsoluteCoordinates()
     {
         return new testDataFileIterator('rawTestData/CellAbsoluteCoordinate.data');
     }
@@ -153,7 +153,7 @@ class CellTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerAbsoluteReferences()
+    public static function providerAbsoluteReferences()
     {
         return new testDataFileIterator('rawTestData/CellAbsoluteReference.data');
     }
@@ -185,7 +185,7 @@ class CellTest extends PHPUnit\Framework\TestCase
         }
     }
 
-    public function providerSplitRange()
+    public static function providerSplitRange()
     {
         return new testDataFileIterator('rawTestData/CellSplitRange.data');
     }
@@ -199,7 +199,7 @@ class CellTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerBuildRange()
+    public static function providerBuildRange()
     {
         return new testDataFileIterator('rawTestData/CellBuildRange.data');
     }
@@ -225,7 +225,7 @@ class CellTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerRangeBoundaries()
+    public static function providerRangeBoundaries()
     {
         return new testDataFileIterator('rawTestData/CellRangeBoundaries.data');
     }
@@ -239,7 +239,7 @@ class CellTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerRangeDimension()
+    public static function providerRangeDimension()
     {
         return new testDataFileIterator('rawTestData/CellRangeDimension.data');
     }
@@ -253,7 +253,7 @@ class CellTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerGetRangeBoundaries()
+    public static function providerGetRangeBoundaries()
     {
         return new testDataFileIterator('rawTestData/CellGetRangeBoundaries.data');
     }
@@ -267,7 +267,7 @@ class CellTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerExtractAllCellReferencesInRange()
+    public static function providerExtractAllCellReferencesInRange()
     {
         return new testDataFileIterator('rawTestData/CellExtractAllCellReferencesInRange.data');
     }

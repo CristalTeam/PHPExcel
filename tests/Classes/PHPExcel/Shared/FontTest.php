@@ -54,7 +54,7 @@ class FontTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerFontSizeToPixels()
+    public static function providerFontSizeToPixels()
     {
         return new testDataFileIterator('rawTestData/Shared/FontSizeToPixels.data');
     }
@@ -68,7 +68,7 @@ class FontTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerInchSizeToPixels()
+    public static function providerInchSizeToPixels()
     {
         return new testDataFileIterator('rawTestData/Shared/InchSizeToPixels.data');
     }
@@ -82,7 +82,7 @@ class FontTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerCentimeterSizeToPixels()
+    public static function providerCentimeterSizeToPixels()
     {
         return new testDataFileIterator('rawTestData/Shared/CentimeterSizeToPixels.data');
     }

@@ -27,7 +27,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerDATE()
+    public static function providerDATE()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/DATE.data');
     }
@@ -78,7 +78,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerDATEVALUE()
+    public static function providerDATEVALUE()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/DATEVALUE.data');
     }
@@ -113,7 +113,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerYEAR()
+    public static function providerYEAR()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/YEAR.data');
     }
@@ -127,7 +127,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerMONTH()
+    public static function providerMONTH()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/MONTH.data');
     }
@@ -141,7 +141,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerWEEKNUM()
+    public static function providerWEEKNUM()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/WEEKNUM.data');
     }
@@ -155,7 +155,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerWEEKDAY()
+    public static function providerWEEKDAY()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/WEEKDAY.data');
     }
@@ -169,7 +169,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerDAY()
+    public static function providerDAY()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/DAY.data');
     }
@@ -183,7 +183,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerTIME()
+    public static function providerTIME()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/TIME.data');
     }
@@ -218,7 +218,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerTIMEVALUE()
+    public static function providerTIMEVALUE()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/TIMEVALUE.data');
     }
@@ -253,7 +253,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerHOUR()
+    public static function providerHOUR()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/HOUR.data');
     }
@@ -267,7 +267,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerMINUTE()
+    public static function providerMINUTE()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/MINUTE.data');
     }
@@ -281,7 +281,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerSECOND()
+    public static function providerSECOND()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/SECOND.data');
     }
@@ -295,7 +295,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerNETWORKDAYS()
+    public static function providerNETWORKDAYS()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/NETWORKDAYS.data');
     }
@@ -309,7 +309,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerWORKDAY()
+    public static function providerWORKDAY()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/WORKDAY.data');
     }
@@ -323,7 +323,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerEDATE()
+    public static function providerEDATE()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/EDATE.data');
     }
@@ -358,7 +358,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerEOMONTH()
+    public static function providerEOMONTH()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/EOMONTH.data');
     }
@@ -393,7 +393,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerDATEDIF()
+    public static function providerDATEDIF()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/DATEDIF.data');
     }
@@ -407,7 +407,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerDAYS360()
+    public static function providerDAYS360()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/DAYS360.data');
     }
@@ -421,7 +421,7 @@ class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public function providerYEARFRAC()
+    public static function providerYEARFRAC()
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/YEARFRAC.data');
     }

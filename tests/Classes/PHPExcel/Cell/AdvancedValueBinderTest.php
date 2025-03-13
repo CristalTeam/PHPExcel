@@ -12,7 +12,7 @@ class AdvancedValueBinderTest extends PHPUnit\Framework\TestCase
         require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
     }
 
-    public function provider()
+    public static function provider()
     {
         if (!class_exists('PHPExcel_Style_NumberFormat')) {
             $this->setUp();

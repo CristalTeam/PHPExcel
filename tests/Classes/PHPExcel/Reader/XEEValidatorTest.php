@@ -26,7 +26,7 @@ class XEEValidatorTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerInvalidXML()
+    public static function providerInvalidXML()
     {
         $tests = [];
         foreach (glob('rawTestData/Reader/XEETestInvalid*.xml') as $file) {
@@ -43,7 +43,7 @@ class XEEValidatorTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerValidXML()
+    public static function providerValidXML()
     {
         $tests = [];
         foreach (glob('rawTestData/Reader/XEETestValid*.xml') as $file) {
