@@ -1,5 +1,7 @@
 <?php
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 
 require_once 'testDataFileIterator.php';
 
@@ -14,9 +16,7 @@ class CellTest extends PHPUnit\Framework\TestCase
         require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
     }
 
-    /**
-     * @dataProvider providerColumnString
-     */
+    #[DataProvider('providerColumnString')]
     public function testColumnIndexFromString()
     {
         $args = func_get_args();
@@ -54,9 +54,7 @@ class CellTest extends PHPUnit\Framework\TestCase
         $this->fail('An expected exception has not been raised.');
     }
 
-    /**
-     * @dataProvider providerColumnIndex
-     */
+    #[DataProvider('providerColumnIndex')]
     public function testStringFromColumnIndex()
     {
         $args = func_get_args();
@@ -70,9 +68,7 @@ class CellTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/ColumnIndex.data');
     }
 
-    /**
-     * @dataProvider providerCoordinates
-     */
+    #[DataProvider('providerCoordinates')]
     public function testCoordinateFromString()
     {
         $args = func_get_args();
@@ -122,9 +118,7 @@ class CellTest extends PHPUnit\Framework\TestCase
         $this->fail('An expected exception has not been raised.');
     }
 
-    /**
-     * @dataProvider providerAbsoluteCoordinates
-     */
+    #[DataProvider('providerAbsoluteCoordinates')]
     public function testAbsoluteCoordinateFromString()
     {
         $args = func_get_args();
@@ -150,9 +144,7 @@ class CellTest extends PHPUnit\Framework\TestCase
         $this->fail('An expected exception has not been raised.');
     }
 
-    /**
-     * @dataProvider providerAbsoluteReferences
-     */
+    #[DataProvider('providerAbsoluteReferences')]
     public function testAbsoluteReferenceFromString()
     {
         $args = func_get_args();
@@ -178,9 +170,7 @@ class CellTest extends PHPUnit\Framework\TestCase
         $this->fail('An expected exception has not been raised.');
     }
 
-    /**
-     * @dataProvider providerSplitRange
-     */
+    #[DataProvider('providerSplitRange')]
     public function testSplitRange()
     {
         $args = func_get_args();
@@ -200,9 +190,7 @@ class CellTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/CellSplitRange.data');
     }
 
-    /**
-     * @dataProvider providerBuildRange
-     */
+    #[DataProvider('providerBuildRange')]
     public function testBuildRange()
     {
         $args = func_get_args();
@@ -228,9 +216,7 @@ class CellTest extends PHPUnit\Framework\TestCase
         $this->fail('An expected exception has not been raised.');
     }
 
-    /**
-     * @dataProvider providerRangeBoundaries
-     */
+    #[DataProvider('providerRangeBoundaries')]
     public function testRangeBoundaries()
     {
         $args = func_get_args();
@@ -244,9 +230,7 @@ class CellTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/CellRangeBoundaries.data');
     }
 
-    /**
-     * @dataProvider providerRangeDimension
-     */
+    #[DataProvider('providerRangeDimension')]
     public function testRangeDimension()
     {
         $args = func_get_args();
@@ -260,9 +244,7 @@ class CellTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/CellRangeDimension.data');
     }
 
-    /**
-     * @dataProvider providerGetRangeBoundaries
-     */
+    #[DataProvider('providerGetRangeBoundaries')]
     public function testGetRangeBoundaries()
     {
         $args = func_get_args();
@@ -276,9 +258,7 @@ class CellTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/CellGetRangeBoundaries.data');
     }
 
-    /**
-     * @dataProvider providerExtractAllCellReferencesInRange
-     */
+    #[DataProvider('providerExtractAllCellReferencesInRange')]
     public function testExtractAllCellReferencesInRange()
     {
         $args = func_get_args();

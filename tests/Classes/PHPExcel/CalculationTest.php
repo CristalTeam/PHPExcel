@@ -1,5 +1,7 @@
 <?php
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 require_once 'testDataFileIterator.php';
 
 class CalculationTest extends PHPUnit\Framework\TestCase
@@ -14,9 +16,7 @@ class CalculationTest extends PHPUnit\Framework\TestCase
         PHPExcel_Calculation_Functions::setCompatibilityMode(PHPExcel_Calculation_Functions::COMPATIBILITY_EXCEL);
     }
 
-    /**
-     * @dataProvider providerBinaryComparisonOperation
-     */
+    #[DataProvider('providerBinaryComparisonOperation')]
     public function testBinaryComparisonOperation($formula, $expectedResultExcel, $expectedResultOpenOffice)
     {
         PHPExcel_Calculation_Functions::setCompatibilityMode(PHPExcel_Calculation_Functions::COMPATIBILITY_EXCEL);

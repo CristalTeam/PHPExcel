@@ -1,5 +1,7 @@
 <?php
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 
 require_once 'testDataFileIterator.php';
 
@@ -43,9 +45,7 @@ class FontTest extends PHPUnit\Framework\TestCase
         $this->assertFalse($result);
     }
 
-    /**
-     * @dataProvider providerFontSizeToPixels
-     */
+    #[DataProvider('providerFontSizeToPixels')]
     public function testFontSizeToPixels()
     {
         $args = func_get_args();
@@ -59,9 +59,7 @@ class FontTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Shared/FontSizeToPixels.data');
     }
 
-    /**
-     * @dataProvider providerInchSizeToPixels
-     */
+    #[DataProvider('providerInchSizeToPixels')]
     public function testInchSizeToPixels()
     {
         $args = func_get_args();
@@ -75,9 +73,7 @@ class FontTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Shared/InchSizeToPixels.data');
     }
 
-    /**
-     * @dataProvider providerCentimeterSizeToPixels
-     */
+    #[DataProvider('providerCentimeterSizeToPixels')]
     public function testCentimeterSizeToPixels()
     {
         $args = func_get_args();
