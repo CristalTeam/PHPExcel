@@ -66,13 +66,6 @@ class PHPExcel_Worksheet_AutoFilter_Column
         self::AUTOFILTER_COLUMN_JOIN_OR,
     ];
 
-    /**
-     * Autofilter
-     *
-     * @var PHPExcel_Worksheet_AutoFilter
-     */
-    private $parent;
-
 
     /**
      * Autofilter Column Filter Type
@@ -110,14 +103,19 @@ class PHPExcel_Worksheet_AutoFilter_Column
      * Create a new PHPExcel_Worksheet_AutoFilter_Column
      *
      * @param string $columnIndex Column (e.g. A)
-     *    @param    PHPExcel_Worksheet_AutoFilter  $pParent        Autofilter for this column
+     * @param PHPExcel_Worksheet_AutoFilter $parent Autofilter for this column
      */
-    public function __construct(/**
-     * Autofilter Column Index
-     */
-    private $columnIndex, PHPExcel_Worksheet_AutoFilter $pParent = null)
+    public function __construct(
+        /**
+         * Autofilter Column Index
+         */
+        private $columnIndex,
+        /**
+         * Autofilter
+         */
+        private ?\PHPExcel_Worksheet_AutoFilter $parent = null
+    )
     {
-        $this->parent = $pParent;
     }
 
     /**

@@ -1146,7 +1146,7 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
         // Worksheet reference?
         if (str_contains($pCoordinate, '!')) {
             $worksheetReference = PHPExcel_Worksheet::extractSheetTitle($pCoordinate, true);
-            return $this->parent->getSheetByName($worksheetReference[0])->getCell(strtoupper($worksheetReference[1]), $createIfNotExists);
+            return $this->parent->getSheetByName($worksheetReference[0])->getCell(strtoupper((string) $worksheetReference[1]), $createIfNotExists);
         }
 
         // Named range?
@@ -1243,7 +1243,7 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
        // Worksheet reference?
         if (str_contains($pCoordinate, '!')) {
             $worksheetReference = PHPExcel_Worksheet::extractSheetTitle($pCoordinate, true);
-            return $this->parent->getSheetByName($worksheetReference[0])->cellExists(strtoupper($worksheetReference[1]));
+            return $this->parent->getSheetByName($worksheetReference[0])->cellExists(strtoupper((string) $worksheetReference[1]));
         }
 
         // Named range?
@@ -1470,7 +1470,7 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
      */
     public function setConditionalStyles($pValue, $pCoordinate = 'A1')
     {
-        $this->conditionalStylesCollection[strtoupper($pCoordinate)] = $pValue;
+        $this->conditionalStylesCollection[strtoupper((string) $pCoordinate)] = $pValue;
         return $this;
     }
 
@@ -2343,15 +2343,15 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
         $pCoordinate = preg_replace('/^([A-Z]+)$/', '${1}:${1}', $pCoordinate);
 
         // Convert '1' to '1:1'
-        $pCoordinate = preg_replace('/^([0-9]+)$/', '${1}:${1}', $pCoordinate);
+        $pCoordinate = preg_replace('/^([0-9]+)$/', '${1}:${1}', (string) $pCoordinate);
 
         // Convert 'A:C' to 'A1:C1048576'
-        $pCoordinate = preg_replace('/^([A-Z]+):([A-Z]+)$/', '${1}1:${2}1048576', $pCoordinate);
+        $pCoordinate = preg_replace('/^([A-Z]+):([A-Z]+)$/', '${1}1:${2}1048576', (string) $pCoordinate);
 
         // Convert '1:3' to 'A1:XFD3'
-        $pCoordinate = preg_replace('/^([0-9]+):([0-9]+)$/', 'A${1}:XFD${2}', $pCoordinate);
+        $pCoordinate = preg_replace('/^([0-9]+):([0-9]+)$/', 'A${1}:XFD${2}', (string) $pCoordinate);
 
-        if (str_contains($pCoordinate, ':') || str_contains($pCoordinate, ',')) {
+        if (str_contains((string) $pCoordinate, ':') || str_contains((string) $pCoordinate, ',')) {
             [$first, ] = PHPExcel_Cell::splitRange($pCoordinate);
             $this->activeCell = $first[0];
         } else {

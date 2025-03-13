@@ -81,7 +81,7 @@ class PHPExcel_Reader_OOCalc extends PHPExcel_Reader_Abstract implements PHPExce
             if ($stat && ($stat['size'] <= 255)) {
                 $mimeType = $zip->getFromName($stat['name']);
             } elseif ($stat = $zip->statName('META-INF/manifest.xml')) {
-                $xml = simplexml_load_string($this->securityScan($zip->getFromName('META-INF/manifest.xml')), 'SimpleXMLElement', PHPExcel_Settings::getLibXmlLoaderOptions());
+                $xml = simplexml_load_string((string) $this->securityScan($zip->getFromName('META-INF/manifest.xml')), 'SimpleXMLElement', PHPExcel_Settings::getLibXmlLoaderOptions());
                 $namespacesContent = $xml->getNamespaces(true);
                 if (isset($namespacesContent['manifest'])) {
                     $manifest = $xml->children($namespacesContent['manifest']);
@@ -299,9 +299,9 @@ class PHPExcel_Reader_OOCalc extends PHPExcel_Reader_Abstract implements PHPExce
 
     private static function identifyFixedStyleValue($styleList, &$styleAttributeValue)
     {
-        $styleAttributeValue = strtolower($styleAttributeValue);
+        $styleAttributeValue = strtolower((string) $styleAttributeValue);
         foreach ($styleList as $style) {
-            if ($styleAttributeValue == strtolower($style)) {
+            if ($styleAttributeValue == strtolower((string) $style)) {
                 $styleAttributeValue = $style;
                 return true;
             }
@@ -335,7 +335,7 @@ class PHPExcel_Reader_OOCalc extends PHPExcel_Reader_Abstract implements PHPExce
         }
 
 //        echo '<h1>Meta Information</h1>';
-        $xml = simplexml_load_string($this->securityScan($zip->getFromName("meta.xml")), 'SimpleXMLElement', PHPExcel_Settings::getLibXmlLoaderOptions());
+        $xml = simplexml_load_string((string) $this->securityScan($zip->getFromName("meta.xml")), 'SimpleXMLElement', PHPExcel_Settings::getLibXmlLoaderOptions());
         $namespacesMeta = $xml->getNamespaces(true);
 //        echo '<pre>';
 //        print_r($namespacesMeta);
@@ -421,7 +421,7 @@ class PHPExcel_Reader_OOCalc extends PHPExcel_Reader_Abstract implements PHPExce
 
 
 //        echo '<h1>Workbook Content</h1>';
-        $xml = simplexml_load_string($this->securityScan($zip->getFromName("content.xml")), 'SimpleXMLElement', PHPExcel_Settings::getLibXmlLoaderOptions());
+        $xml = simplexml_load_string((string) $this->securityScan($zip->getFromName("content.xml")), 'SimpleXMLElement', PHPExcel_Settings::getLibXmlLoaderOptions());
         $namespacesContent = $xml->getNamespaces(true);
 //        echo '<pre>';
 //        print_r($namespacesContent);
@@ -616,9 +616,9 @@ class PHPExcel_Reader_OOCalc extends PHPExcel_Reader_Abstract implements PHPExce
                                         //    Only replace in alternate array entries (i.e. non-quoted blocks)
                                         if ($tKey = !$tKey) {
                                             $value = preg_replace('/\[([^\.]+)\.([^\.]+):\.([^\.]+)\]/Ui', '$1!$2:$3', $value);    //  Cell range reference in another sheet
-                                            $value = preg_replace('/\[([^\.]+)\.([^\.]+)\]/Ui', '$1!$2', $value);       //  Cell reference in another sheet
-                                            $value = preg_replace('/\[\.([^\.]+):\.([^\.]+)\]/Ui', '$1:$2', $value);    //  Cell range reference
-                                            $value = preg_replace('/\[\.([^\.]+)\]/Ui', '$1', $value);                  //  Simple cell reference
+                                            $value = preg_replace('/\[([^\.]+)\.([^\.]+)\]/Ui', '$1!$2', (string) $value);       //  Cell reference in another sheet
+                                            $value = preg_replace('/\[\.([^\.]+):\.([^\.]+)\]/Ui', '$1:$2', (string) $value);    //  Cell range reference
+                                            $value = preg_replace('/\[\.([^\.]+)\]/Ui', '$1', (string) $value);                  //  Simple cell reference
                                             $value = PHPExcel_Calculation::translateSeparator(';', ',', $value, $inBraces);
                                         }
                                     }

@@ -35,7 +35,7 @@ class PHPExcel_Chart_PlotArea
         /**
          * PlotArea Layout
          */
-        private ?\PHPExcel_Chart_Layout $layout = null,
+        private readonly ?\PHPExcel_Chart_Layout $layout = null,
         /**
          * Plot Series
          *

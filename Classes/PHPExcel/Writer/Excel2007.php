@@ -186,7 +186,7 @@ class PHPExcel_Writer_Excel2007 extends PHPExcel_Writer_Abstract implements PHPE
 
             // If $pFilename is php://output or php://stdout, make it a temporary file...
             $originalFilename = $pFilename;
-            if (strtolower($pFilename) == 'php://output' || strtolower($pFilename) == 'php://stdout') {
+            if (strtolower((string) $pFilename) == 'php://output' || strtolower((string) $pFilename) == 'php://stdout') {
                 $pFilename = @tempnam(PHPExcel_Shared_File::sys_get_temp_dir(), 'phpxltmp');
                 if ($pFilename == '') {
                     $pFilename = $originalFilename;
@@ -255,13 +255,13 @@ class PHPExcel_Writer_Excel2007 extends PHPExcel_Writer_Abstract implements PHPE
                 $tmpRibbonTarget=$this->spreadSheet->getRibbonXMLData('target');
                 $objZip->addFromString($tmpRibbonTarget, $this->spreadSheet->getRibbonXMLData('data'));
                 if ($this->spreadSheet->hasRibbonBinObjects()) {
-                    $tmpRootPath=dirname($tmpRibbonTarget).'/';
+                    $tmpRootPath=dirname((string) $tmpRibbonTarget).'/';
                     $ribbonBinObjects=$this->spreadSheet->getRibbonBinObjects('data');//the files to write
                     foreach ($ribbonBinObjects as $aPath => $aContent) {
                         $objZip->addFromString($tmpRootPath.$aPath, $aContent);
                     }
                     //the rels for files
-                    $objZip->addFromString($tmpRootPath.'_rels/'.basename($tmpRibbonTarget).'.rels', $this->getWriterPart('RelsRibbonObjects')->writeRibbonRelationships($this->spreadSheet));
+                    $objZip->addFromString($tmpRootPath.'_rels/'.basename((string) $tmpRibbonTarget).'.rels', $this->getWriterPart('RelsRibbonObjects')->writeRibbonRelationships($this->spreadSheet));
                 }
             }
             

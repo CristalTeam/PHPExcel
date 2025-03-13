@@ -68,20 +68,17 @@ class PHPExcel_Reader_Excel5_Escher
     private $pos;
 
     /**
-     * The object to be returned by the reader. Modified during load.
-     *
-     * @var mixed
-     */
-    private $object;
-
-    /**
      * Create a new PHPExcel_Reader_Excel5_Escher instance
      *
      * @param mixed $object
      */
-    public function __construct($object)
+    public function __construct(
+        /**
+         * The object to be returned by the reader. Modified during load.
+         */
+        private $object
+    )
     {
-        $this->object = $object;
     }
 
     /**

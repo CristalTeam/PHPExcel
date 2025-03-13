@@ -259,7 +259,7 @@ class PHPExcel_CachedObjectStorage_Memcache extends PHPExcel_CachedObjectStorage
 
             //    Set a new Memcache object and connect to the Memcache server
             $this->memcache = new Memcache();
-            if (!$this->memcache->addServer($memcacheServer, $memcachePort, false, 50, 5, 5, true, [$this, 'failureCallback'])) {
+            if (!$this->memcache->addServer($memcacheServer, $memcachePort, false, 50, 5, 5, true, $this->failureCallback(...))) {
                 throw new PHPExcel_Exception("Could not connect to MemCache server at {$memcacheServer}:{$memcachePort}");
             }
             $this->cacheTime = $cacheTime;
@@ -275,7 +275,7 @@ class PHPExcel_CachedObjectStorage_Memcache extends PHPExcel_CachedObjectStorage
      * @param    integer    $port        Memcache port
      * @throws    PHPExcel_Exception
      */
-    public function failureCallback($host, $port)
+    public function failureCallback($host, $port): never
     {
         throw new PHPExcel_Exception("memcache {$host}:{$port} failed");
     }

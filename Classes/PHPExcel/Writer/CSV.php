@@ -86,7 +86,7 @@ class PHPExcel_Writer_CSV extends PHPExcel_Writer_Abstract implements PHPExcel_W
         /**
          * PHPExcel object
          */
-        private PHPExcel $phpExcel
+        private readonly PHPExcel $phpExcel
     )
     {
     }

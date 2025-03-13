@@ -12,7 +12,7 @@ return RectorConfig::configure()
         __DIR__ . '/Examples',
         __DIR__ . '/unitTests',
     ])
-    ->withPhpSets(php81: true)
+    ->withPhpSets(php82: true)
     ->withTypeCoverageLevel(0)
     ->withDeadCodeLevel(0)
     ->withCodeQualityLevel(0);

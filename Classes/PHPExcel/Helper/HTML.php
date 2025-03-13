@@ -611,10 +611,10 @@ class PHPExcel_Helper_HTML
             $text = $element->getText();
             // Trim any leading spaces on the first run
             if ($key == 0) {
-                $text = ltrim($text);
+                $text = ltrim((string) $text);
             }
             // Trim any spaces immediately after a line break
-            $text = preg_replace('/\n */mu', "\n", $text);
+            $text = preg_replace('/\n */mu', "\n", (string) $text);
             $element->setText($text);
         }
     }
@@ -622,7 +622,7 @@ class PHPExcel_Helper_HTML
     protected function buildTextRun()
     {
         $text = $this->stringData;
-        if (trim($text) === '') {
+        if (trim((string) $text) === '') {
             return;
         }
 
@@ -659,7 +659,7 @@ class PHPExcel_Helper_HTML
 
     protected function rgbToColour($rgb)
     {
-        preg_match_all('/\d+/', $rgb, $values);
+        preg_match_all('/\d+/', (string) $rgb, $values);
         foreach ($values[0] as &$value) {
             $value = str_pad(dechex($value), 2, '0', STR_PAD_LEFT);
         }
@@ -674,14 +674,14 @@ class PHPExcel_Helper_HTML
     protected function startFontTag($tag)
     {
         foreach ($tag->attributes as $attribute) {
-            $attributeName = strtolower($attribute->name);
+            $attributeName = strtolower((string) $attribute->name);
             $attributeValue = $attribute->value;
 
             if ($attributeName == 'color') {
-                if (preg_match('/rgb\s*\(/', $attributeValue)) {
+                if (preg_match('/rgb\s*\(/', (string) $attributeValue)) {
                     $this->$attributeName = $this->rgbToColour($attributeValue);
-                } elseif (str_starts_with(trim($attributeValue), '#')) {
-                    $this->$attributeName = ltrim($attributeValue, '#');
+                } elseif (str_starts_with(trim((string) $attributeValue), '#')) {
+                    $this->$attributeName = ltrim((string) $attributeValue, '#');
                 } else {
                     $this->$attributeName = $this->colourNameLookup($attributeValue);
                 }

@@ -62,7 +62,7 @@ class PHPExcel_CalcEngine_Logger
         /**
          * The calculation engine cell reference stack
          */
-        private PHPExcel_CalcEngine_CyclicReferenceStack $cellStack
+        private readonly PHPExcel_CalcEngine_CyclicReferenceStack $cellStack
     )
     {
     }

@@ -226,7 +226,7 @@ class PHPExcel_Reader_Gnumeric extends PHPExcel_Reader_Abstract implements PHPEx
 //        echo htmlentities($gFileData,ENT_QUOTES,'UTF-8');
 //        echo '</pre><hr />';
 //
-        $xml = simplexml_load_string($this->securityScan($gFileData), 'SimpleXMLElement', PHPExcel_Settings::getLibXmlLoaderOptions());
+        $xml = simplexml_load_string((string) $this->securityScan($gFileData), 'SimpleXMLElement', PHPExcel_Settings::getLibXmlLoaderOptions());
         $namespacesMeta = $xml->getNamespaces(true);
 
 //        var_dump($namespacesMeta);
@@ -289,7 +289,7 @@ class PHPExcel_Reader_Gnumeric extends PHPExcel_Reader_Abstract implements PHPEx
                             $docProps->setModified($creationDate);
                             break;
                         case 'user-defined':
-                            [, $attrName] = explode(':', $attributes['name']);
+                            [, $attrName] = explode(':', (string) $attributes['name']);
                             switch ($attrName) {
                                 case 'publisher':
                                     $docProps->setCompany(trim($propertyValue));
@@ -311,26 +311,26 @@ class PHPExcel_Reader_Gnumeric extends PHPExcel_Reader_Abstract implements PHPEx
                 $propertyValue = $summaryItem->{'val-string'};
                 switch ($propertyName) {
                     case 'title':
-                        $docProps->setTitle(trim($propertyValue));
+                        $docProps->setTitle(trim((string) $propertyValue));
                         break;
                     case 'comments':
-                        $docProps->setDescription(trim($propertyValue));
+                        $docProps->setDescription(trim((string) $propertyValue));
                         break;
                     case 'keywords':
-                        $docProps->setKeywords(trim($propertyValue));
+                        $docProps->setKeywords(trim((string) $propertyValue));
                         break;
                     case 'category':
-                        $docProps->setCategory(trim($propertyValue));
+                        $docProps->setCategory(trim((string) $propertyValue));
                         break;
                     case 'manager':
-                        $docProps->setManager(trim($propertyValue));
+                        $docProps->setManager(trim((string) $propertyValue));
                         break;
                     case 'author':
-                        $docProps->setCreator(trim($propertyValue));
-                        $docProps->setLastModifiedBy(trim($propertyValue));
+                        $docProps->setCreator(trim((string) $propertyValue));
+                        $docProps->setLastModifiedBy(trim((string) $propertyValue));
                         break;
                     case 'company':
-                        $docProps->setCompany(trim($propertyValue));
+                        $docProps->setCompany(trim((string) $propertyValue));
                         break;
                 }
             }
@@ -831,7 +831,7 @@ class PHPExcel_Reader_Gnumeric extends PHPExcel_Reader_Abstract implements PHPEx
 
     private static function parseGnumericColour($gnmColour)
     {
-        [$gnmR, $gnmG, $gnmB] = explode(':', $gnmColour);
+        [$gnmR, $gnmG, $gnmB] = explode(':', (string) $gnmColour);
         $gnmR = substr(str_pad($gnmR, 4, '0', STR_PAD_RIGHT), 0, 2);
         $gnmG = substr(str_pad($gnmG, 4, '0', STR_PAD_RIGHT), 0, 2);
         $gnmB = substr(str_pad($gnmB, 4, '0', STR_PAD_RIGHT), 0, 2);

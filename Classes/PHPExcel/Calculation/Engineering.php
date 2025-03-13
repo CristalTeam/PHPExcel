@@ -2576,8 +2576,8 @@ class PHPExcel_Calculation_Engineering
         if (isset(self::$conversionUnits[$fromUOM])) {
             $unitGroup1 = self::$conversionUnits[$fromUOM]['Group'];
         } else {
-            $fromMultiplier = substr($fromUOM, 0, 1);
-            $fromUOM = substr($fromUOM, 1);
+            $fromMultiplier = substr((string) $fromUOM, 0, 1);
+            $fromUOM = substr((string) $fromUOM, 1);
             if (isset(self::$conversionMultipliers[$fromMultiplier])) {
                 $fromMultiplier = self::$conversionMultipliers[$fromMultiplier]['multiplier'];
             } else {
@@ -2595,8 +2595,8 @@ class PHPExcel_Calculation_Engineering
         if (isset(self::$conversionUnits[$toUOM])) {
             $unitGroup2 = self::$conversionUnits[$toUOM]['Group'];
         } else {
-            $toMultiplier = substr($toUOM, 0, 1);
-            $toUOM = substr($toUOM, 1);
+            $toMultiplier = substr((string) $toUOM, 0, 1);
+            $toUOM = substr((string) $toUOM, 1);
             if (isset(self::$conversionMultipliers[$toMultiplier])) {
                 $toMultiplier = self::$conversionMultipliers[$toMultiplier]['multiplier'];
             } else {

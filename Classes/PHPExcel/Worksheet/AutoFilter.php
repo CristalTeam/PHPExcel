@@ -28,22 +28,6 @@
 class PHPExcel_Worksheet_AutoFilter implements \Stringable
 {
     /**
-     * Autofilter Worksheet
-     *
-     * @var PHPExcel_Worksheet
-     */
-    private $workSheet;
-
-
-    /**
-     * Autofilter Range
-     *
-     * @var string
-     */
-    private $range = '';
-
-
-    /**
      * Autofilter Column Ruleset
      *
      * @var array of PHPExcel_Worksheet_AutoFilter_Column
@@ -54,13 +38,20 @@ class PHPExcel_Worksheet_AutoFilter implements \Stringable
     /**
      * Create a new PHPExcel_Worksheet_AutoFilter
      *
-     *    @param    string        $pRange        Cell range (i.e. A1:E10)
-     * @param PHPExcel_Worksheet $pSheet
+     * @param string $range Cell range (i.e. A1:E10)
+     * @param PHPExcel_Worksheet $workSheet
      */
-    public function __construct($pRange = '', PHPExcel_Worksheet $pSheet = null)
+    public function __construct(
+        /**
+         * Autofilter Range
+         */
+        private $range = '',
+        /**
+         * Autofilter Worksheet
+         */
+        private ?\PHPExcel_Worksheet $workSheet = null
+    )
     {
-        $this->range = $pRange;
-        $this->workSheet = $pSheet;
     }
 
     /**
@@ -275,8 +266,8 @@ class PHPExcel_Worksheet_AutoFilter implements \Stringable
      */
     public function shiftColumn($fromColumn = null, $toColumn = null)
     {
-        $fromColumn = strtoupper($fromColumn);
-        $toColumn = strtoupper($toColumn);
+        $fromColumn = strtoupper((string) $fromColumn);
+        $toColumn = strtoupper((string) $toColumn);
 
         if (($fromColumn !== null) && (isset($this->columns[$fromColumn])) && ($toColumn !== null)) {
             $this->columns[$fromColumn]->setParent();
@@ -341,7 +332,7 @@ class PHPExcel_Worksheet_AutoFilter implements \Stringable
             }
             foreach ($dateSet as $dateValue) {
                 //    Use of substr to extract value at the appropriate group level
-                if (str_starts_with($dtVal, $dateValue)) {
+                if (str_starts_with($dtVal, (string) $dateValue)) {
                     return true;
                 }
             }
@@ -400,7 +391,7 @@ class PHPExcel_Worksheet_AutoFilter implements \Stringable
                 };
             } else {
                 //    String values are always tested for equality, factoring in for wildcards (hence a regexp test)
-                $retVal    = preg_match('/^'.$rule['value'].'$/i', $cellValue);
+                $retVal    = preg_match('/^'.$rule['value'].'$/i', (string) $cellValue);
             }
             //    If there are multiple conditions, then we need to test both using the appropriate join operator
             switch ($join) {
@@ -672,7 +663,7 @@ class PHPExcel_Worksheet_AutoFilter implements \Stringable
                         $ruleValue = $rule->getValue();
                         if (!is_numeric($ruleValue)) {
                             //    Convert to a regexp allowing for regexp reserved characters, wildcards and escaped wildcards
-                            $ruleValue = preg_quote($ruleValue);
+                            $ruleValue = preg_quote((string) $ruleValue);
                             $ruleValue = str_replace(self::$fromReplace, self::$toReplace, $ruleValue);
                             if (trim($ruleValue) == '') {
                                 $customRuleForBlanks = true;

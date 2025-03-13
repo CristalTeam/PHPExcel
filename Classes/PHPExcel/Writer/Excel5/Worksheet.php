@@ -63,13 +63,6 @@
 class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
 {
     /**
-     * Formula parser
-     *
-     * @var PHPExcel_Writer_Excel5_Parser
-     */
-    private $parser;
-
-    /**
      * Maximum number of characters for a string (LABEL record in BIFF5)
      * @var integer
      */
@@ -165,12 +158,6 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
     private $lastColumnIndex;
 
     /**
-     * Sheet object
-     * @var PHPExcel_Worksheet
-     */
-    public $phpSheet;
-
-    /**
      * Count cell style Xfs
      *
      * @var int
@@ -203,7 +190,13 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
      * @param string    $phpSheet        The worksheet to write
      * @param PHPExcel_Worksheet $phpSheet
      */
-    public function __construct(&$str_total, &$str_unique, &$str_table, &$colors, $parser, $preCalculateFormulas, $phpSheet)
+    public function __construct(&$str_total, &$str_unique, &$str_table, &$colors, /**
+     * Formula parser
+     */
+    private $parser, $preCalculateFormulas, /**
+     * Sheet object
+     */
+    public $phpSheet)
     {
         // change BIFFwriter limit for CONTINUE records
 //        $this->_limit = 8224;
@@ -214,9 +207,6 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
         $this->stringUnique        = &$str_unique;
         $this->stringTable        = &$str_table;
         $this->colors            = &$colors;
-        $this->parser            = $parser;
-
-        $this->phpSheet = $phpSheet;
 
         //$this->ext_sheets        = array();
         //$this->offset            = 0;
@@ -253,7 +243,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
             $this->lastColumnIndex = 255;
         }
 
-        $this->countCellStyleXfs = count($phpSheet->getParent()->getCellStyleXfCollection());
+        $this->countCellStyleXfs = count($this->phpSheet->getParent()->getCellStyleXfCollection());
     }
 
     /**
@@ -1104,7 +1094,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
         // Strip URL type and change Unix dir separator to Dos style (if needed)
         //
         $url = preg_replace('/^external:/', '', $url);
-        $url = preg_replace('/\//', "\\", $url);
+        $url = preg_replace('/\//', "\\", (string) $url);
 
         // Determine if the link is relative or absolute:
         //   relative if link contains no dir separator, "somefile.xls"
@@ -1112,7 +1102,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
         //   otherwise, absolute
 
         $absolute = 0x00; // relative path
-        if (preg_match('/^[A-Z]:/', $url)) {
+        if (preg_match('/^[A-Z]:/', (string) $url)) {
             $absolute = 0x02; // absolute path on Windows, e.g. C:\...
         }
         $link_type               = 0x01 | $absolute;
@@ -1121,7 +1111,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
         // parameters accordingly.
         // Split the dir name and sheet name (if it exists)
         $dir_long = $url;
-        if (preg_match("/\#/", $url)) {
+        if (preg_match("/\#/", (string) $url)) {
             $link_type |= 0x08;
         }
 
@@ -1130,11 +1120,11 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
         $link_type   = pack("V", $link_type);
 
         // Calculate the up-level dir count e.g.. (..\..\..\ == 3)
-        $up_count    = preg_match_all("/\.\.\\\/", $dir_long, $useless);
+        $up_count    = preg_match_all("/\.\.\\\/", (string) $dir_long, $useless);
         $up_count    = pack("v", $up_count);
 
         // Store the short dos dir name (null terminated)
-        $dir_short   = preg_replace("/\.\.\\\/", '', $dir_long) . "\0";
+        $dir_short   = preg_replace("/\.\.\\\/", '', (string) $dir_long) . "\0";
 
         // Store the long dir name as a wchar string (non-null terminated)
         $dir_long .= "\0";
@@ -2693,7 +2683,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
                 $record = 0x00EC;            // Record identifier
 
                 // chunk of Escher stream for one shape
-                $dataChunk = substr($data, $spOffsets[$i -1], $spOffsets[$i] - $spOffsets[$i - 1]);
+                $dataChunk = substr((string) $data, $spOffsets[$i -1], $spOffsets[$i] - $spOffsets[$i - 1]);
 
                 $length = strlen($dataChunk);
                 $header = pack("vv", $record, $length);
@@ -2913,7 +2903,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
                     $this->parser->parse($formula1);
                     $formula1 = $this->parser->toReversePolish();
                     $sz1 = strlen($formula1);
-                } catch (PHPExcel_Exception $e) {
+                } catch (PHPExcel_Exception) {
                     $sz1 = 0;
                     $formula1 = '';
                 }

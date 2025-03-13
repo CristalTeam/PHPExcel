@@ -71,7 +71,7 @@ class PHPExcel_Chart_Legend
     public function __construct($position = self::POSITION_RIGHT, /**
      * Legend Layout
      */
-    private ?\PHPExcel_Chart_Layout $layout = null, $overlay = false)
+    private readonly ?\PHPExcel_Chart_Layout $layout = null, $overlay = false)
     {
         $this->setPosition($position);
         $this->setOverlay($overlay);

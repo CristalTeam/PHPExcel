@@ -14,22 +14,22 @@ class Complex implements \Stringable
         }
 
         //    Fix silly human errors
-        if (str_contains($complexNumber, '+-')) {
+        if (str_contains((string) $complexNumber, '+-')) {
             $complexNumber = str_replace('+-', '-', $complexNumber);
         }
-        if (str_contains($complexNumber, '++')) {
+        if (str_contains((string) $complexNumber, '++')) {
             $complexNumber = str_replace('++', '+', $complexNumber);
         }
-        if (str_contains($complexNumber, '--')) {
+        if (str_contains((string) $complexNumber, '--')) {
             $complexNumber = str_replace('--', '-', $complexNumber);
         }
 
         //    Basic validation of string, to parse out real and imaginary parts, and any suffix
-        $validComplex = preg_match('/^([\-\+]?(\d+\.?\d*|\d*\.?\d+)([Ee][\-\+]?[0-2]?\d{1,3})?)([\-\+]?(\d+\.?\d*|\d*\.?\d+)([Ee][\-\+]?[0-2]?\d{1,3})?)?(([\-\+]?)([ij]?))$/ui', $complexNumber, $complexParts);
+        $validComplex = preg_match('/^([\-\+]?(\d+\.?\d*|\d*\.?\d+)([Ee][\-\+]?[0-2]?\d{1,3})?)([\-\+]?(\d+\.?\d*|\d*\.?\d+)([Ee][\-\+]?[0-2]?\d{1,3})?)?(([\-\+]?)([ij]?))$/ui', (string) $complexNumber, $complexParts);
 
         if (!$validComplex) {
             //    Neither real nor imaginary part, so test to see if we actually have a suffix
-            $validComplex = preg_match('/^([\-\+]?)([ij])$/ui', $complexNumber, $complexParts);
+            $validComplex = preg_match('/^([\-\+]?)([ij])$/ui', (string) $complexNumber, $complexParts);
             if (!$validComplex) {
                 throw new Exception('COMPLEX: Invalid complex number');
             }
@@ -75,7 +75,7 @@ class Complex implements \Stringable
         //    Set parsed values in our properties
         $this->realPart = (float) $realPart;
         $this->imaginaryPart = (float) $imaginaryPart;
-        $this->suffix = strtolower($suffix);
+        $this->suffix = strtolower((string) $suffix);
     }
 
     public function getReal()

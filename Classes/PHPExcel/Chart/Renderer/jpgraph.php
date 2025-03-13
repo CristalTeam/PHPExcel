@@ -872,7 +872,7 @@ class PHPExcel_Chart_Renderer_jpgraph
     /**
      * Create a new PHPExcel_Chart_Renderer_jpgraph
      */
-    public function __construct(private PHPExcel_Chart $chart)
+    public function __construct(private readonly PHPExcel_Chart $chart)
     {
         $this->graph    = null;
     }

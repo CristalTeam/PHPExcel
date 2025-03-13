@@ -69,7 +69,7 @@ class PHPExcel_Calculation_LookupRef
         }
 
         if ($sheetText > '') {
-            if (str_contains($sheetText, ' ')) {
+            if (str_contains((string) $sheetText, ' ')) {
                 $sheetText = "'".$sheetText."'";
             }
             $sheetText .='!';
@@ -122,11 +122,11 @@ class PHPExcel_Calculation_LookupRef
                 return (integer) PHPExcel_Cell::columnIndexFromString($columnKey);
             }
         } else {
-            if (str_contains($cellAddress, '!')) {
-                [$sheet, $cellAddress] = explode('!', $cellAddress);
+            if (str_contains((string) $cellAddress, '!')) {
+                [$sheet, $cellAddress] = explode('!', (string) $cellAddress);
             }
-            if (str_contains($cellAddress, ':')) {
-                [$startAddress, $endAddress] = explode(':', $cellAddress);
+            if (str_contains((string) $cellAddress, ':')) {
+                [$startAddress, $endAddress] = explode(':', (string) $cellAddress);
                 $startAddress = preg_replace('/[^a-z]/i', '', $startAddress);
                 $endAddress = preg_replace('/[^a-z]/i', '', $endAddress);
                 $returnValue = [];
@@ -135,7 +135,7 @@ class PHPExcel_Calculation_LookupRef
                 } while ($startAddress++ != $endAddress);
                 return $returnValue;
             } else {
-                $cellAddress = preg_replace('/[^a-z]/i', '', $cellAddress);
+                $cellAddress = preg_replace('/[^a-z]/i', '', (string) $cellAddress);
                 return (integer) PHPExcel_Cell::columnIndexFromString($cellAddress);
             }
         }
@@ -194,15 +194,15 @@ class PHPExcel_Calculation_LookupRef
         if (is_array($cellAddress)) {
             foreach ($cellAddress as $rowValue) {
                 foreach ($rowValue as $rowKey => $cellValue) {
-                    return (integer) preg_replace('/[^0-9]/i', '', $rowKey);
+                    return (integer) preg_replace('/[^0-9]/i', '', (string) $rowKey);
                 }
             }
         } else {
-            if (str_contains($cellAddress, '!')) {
-                [$sheet, $cellAddress] = explode('!', $cellAddress);
+            if (str_contains((string) $cellAddress, '!')) {
+                [$sheet, $cellAddress] = explode('!', (string) $cellAddress);
             }
-            if (str_contains($cellAddress, ':')) {
-                [$startAddress, $endAddress] = explode(':', $cellAddress);
+            if (str_contains((string) $cellAddress, ':')) {
+                [$startAddress, $endAddress] = explode(':', (string) $cellAddress);
                 $startAddress = preg_replace('/[^0-9]/', '', $startAddress);
                 $endAddress = preg_replace('/[^0-9]/', '', $endAddress);
                 $returnValue = [];
@@ -211,7 +211,7 @@ class PHPExcel_Calculation_LookupRef
                 } while ($startAddress++ != $endAddress);
                 return $returnValue;
             } else {
-                [$cellAddress] = explode(':', $cellAddress);
+                [$cellAddress] = explode(':', (string) $cellAddress);
                 return (integer) preg_replace('/[^0-9]/', '', $cellAddress);
             }
         }
@@ -268,11 +268,11 @@ class PHPExcel_Calculation_LookupRef
         $linkURL     = (is_null($linkURL))     ? '' : PHPExcel_Calculation_Functions::flattenSingleValue($linkURL);
         $displayName = (is_null($displayName)) ? '' : PHPExcel_Calculation_Functions::flattenSingleValue($displayName);
 
-        if ((!is_object($pCell)) || (trim($linkURL) == '')) {
+        if ((!is_object($pCell)) || (trim((string) $linkURL) == '')) {
             return PHPExcel_Calculation_Functions::REF();
         }
 
-        if ((is_object($displayName)) || trim($displayName) == '') {
+        if ((is_object($displayName)) || trim((string) $displayName) == '') {
             $displayName = $linkURL;
         }
 
@@ -310,8 +310,8 @@ class PHPExcel_Calculation_LookupRef
 
         $cellAddress1 = $cellAddress;
         $cellAddress2 = null;
-        if (str_contains($cellAddress, ':')) {
-            [$cellAddress1, $cellAddress2] = explode(':', $cellAddress);
+        if (str_contains((string) $cellAddress, ':')) {
+            [$cellAddress1, $cellAddress2] = explode(':', (string) $cellAddress);
         }
 
         if ((!preg_match('/^'.PHPExcel_Calculation::CALCULATION_REGEXP_CELLREF.'$/i', $cellAddress1, $matches)) ||
@@ -320,8 +320,8 @@ class PHPExcel_Calculation_LookupRef
                 return PHPExcel_Calculation_Functions::REF();
             }
 
-            if (str_contains($cellAddress, '!')) {
-                [$sheetName, $cellAddress] = explode('!', $cellAddress);
+            if (str_contains((string) $cellAddress, '!')) {
+                [$sheetName, $cellAddress] = explode('!', (string) $cellAddress);
                 $sheetName = trim($sheetName, "'");
                 $pSheet = $pCell->getWorksheet()->getParent()->getSheetByName($sheetName);
             } else {
@@ -331,8 +331,8 @@ class PHPExcel_Calculation_LookupRef
             return PHPExcel_Calculation::getInstance()->extractNamedRange($cellAddress, $pSheet, false);
         }
 
-        if (str_contains($cellAddress, '!')) {
-            [$sheetName, $cellAddress] = explode('!', $cellAddress);
+        if (str_contains((string) $cellAddress, '!')) {
+            [$sheetName, $cellAddress] = explode('!', (string) $cellAddress);
             $sheetName = trim($sheetName, "'");
             $pSheet = $pCell->getWorksheet()->getParent()->getSheetByName($sheetName);
         } else {
@@ -385,12 +385,12 @@ class PHPExcel_Calculation_LookupRef
         }
 
         $sheetName = null;
-        if (strpos($cellAddress, "!")) {
-            [$sheetName, $cellAddress] = explode("!", $cellAddress);
+        if (strpos((string) $cellAddress, "!")) {
+            [$sheetName, $cellAddress] = explode("!", (string) $cellAddress);
             $sheetName = trim($sheetName, "'");
         }
-        if (strpos($cellAddress, ":")) {
-            [$startCell, $endCell] = explode(":", $cellAddress);
+        if (strpos((string) $cellAddress, ":")) {
+            [$startCell, $endCell] = explode(":", (string) $cellAddress);
         } else {
             $startCell = $endCell = $cellAddress;
         }
@@ -502,7 +502,7 @@ class PHPExcel_Calculation_LookupRef
         $lookup_value = PHPExcel_Calculation_Functions::flattenSingleValue($lookup_value);
         $match_type    = (is_null($match_type)) ? 1 : (int) PHPExcel_Calculation_Functions::flattenSingleValue($match_type);
         //    MATCH is not case sensitive
-        $lookup_value = strtolower($lookup_value);
+        $lookup_value = strtolower((string) $lookup_value);
 
         //    lookup_value type has to be number, text, or logical values
         if ((!is_numeric($lookup_value)) && (!is_string($lookup_value)) && (!is_bool($lookup_value))) {
@@ -670,7 +670,7 @@ class PHPExcel_Calculation_LookupRef
     private static function vlookupSort($a, $b)
     {
         $firstColumn = array_key_first($a);
-        if (($aLower = strtolower($a[$firstColumn])) == ($bLower = strtolower($b[$firstColumn]))) {
+        if (($aLower = strtolower((string) $a[$firstColumn])) == ($bLower = strtolower((string) $b[$firstColumn]))) {
             return 0;
         }
         return ($aLower < $bLower) ? -1 : 1;
@@ -719,7 +719,7 @@ class PHPExcel_Calculation_LookupRef
         $rowNumber = $rowValue = false;
         foreach ($lookup_array as $rowKey => $rowData) {
             if ((is_numeric($lookup_value) && is_numeric($rowData[$firstColumn]) && ($rowData[$firstColumn] > $lookup_value)) ||
-                (!is_numeric($lookup_value) && !is_numeric($rowData[$firstColumn]) && (strtolower($rowData[$firstColumn]) > strtolower($lookup_value)))) {
+                (!is_numeric($lookup_value) && !is_numeric($rowData[$firstColumn]) && (strtolower((string) $rowData[$firstColumn]) > strtolower((string) $lookup_value)))) {
                 break;
             }
             $rowNumber = $rowKey;
@@ -783,7 +783,7 @@ class PHPExcel_Calculation_LookupRef
         $rowNumber = $rowValue = false;
         foreach ($lookup_array[$firstColumn] as $rowKey => $rowData) {
             if ((is_numeric($lookup_value) && is_numeric($rowData) && ($rowData > $lookup_value)) ||
-                (!is_numeric($lookup_value) && !is_numeric($rowData) && (strtolower($rowData) > strtolower($lookup_value)))) {
+                (!is_numeric($lookup_value) && !is_numeric($rowData) && (strtolower((string) $rowData) > strtolower((string) $lookup_value)))) {
                 break;
             }
             $rowNumber = $rowKey;

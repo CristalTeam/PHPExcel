@@ -104,7 +104,7 @@ class PHPExcel_Chart
         /**
          * Chart Plot Area
          */
-        private ?\PHPExcel_Chart_PlotArea $plotArea = null,
+        private readonly ?\PHPExcel_Chart_PlotArea $plotArea = null,
         /**
          * Plot Visible Only
          */
@@ -124,19 +124,19 @@ class PHPExcel_Chart
         /**
          * Chart Asix X as
          */
-        private ?\PHPExcel_Chart_Axis $xAxis = null,
+        private readonly ?\PHPExcel_Chart_Axis $xAxis = null,
         /**
          * Chart Asix Y as
          */
-        private ?\PHPExcel_Chart_Axis $yAxis = null,
+        private readonly ?\PHPExcel_Chart_Axis $yAxis = null,
         /**
          * Chart Major Gridlines as
          */
-        private ?\PHPExcel_Chart_GridLines $majorGridlines = null,
+        private readonly ?\PHPExcel_Chart_GridLines $majorGridlines = null,
         /**
          * Chart Minor Gridlines as
          */
-        private ?\PHPExcel_Chart_GridLines $minorGridlines = null
+        private readonly ?\PHPExcel_Chart_GridLines $minorGridlines = null
     )
     {
     }

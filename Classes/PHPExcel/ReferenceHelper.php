@@ -712,8 +712,8 @@ class PHPExcel_ReferenceHelper
                                 $toString .= $modified3.':'.$modified4;
                                 [$column, $row] = PHPExcel_Cell::coordinateFromString($match[3]);
                                 //    Max worksheet size is 1,048,576 rows by 16,384 columns in Excel 2007, so our adjustments need to be at least one digit more
-                                $column = PHPExcel_Cell::columnIndexFromString(trim($column, '$')) + 100000;
-                                $row = trim($row, '$') + 10000000;
+                                $column = PHPExcel_Cell::columnIndexFromString(trim((string) $column, '$')) + 100000;
+                                $row = trim((string) $row, '$') + 10000000;
                                 $cellIndex = $column.$row;
 
                                 $newCellTokens[$cellIndex] = preg_quote($toString);
@@ -738,8 +738,8 @@ class PHPExcel_ReferenceHelper
                                 $toString .= $modified3;
                                 [$column, $row] = PHPExcel_Cell::coordinateFromString($match[3]);
                                 //    Max worksheet size is 1,048,576 rows by 16,384 columns in Excel 2007, so our adjustments need to be at least one digit more
-                                $column = PHPExcel_Cell::columnIndexFromString(trim($column, '$')) + 100000;
-                                $row = trim($row, '$') + 10000000;
+                                $column = PHPExcel_Cell::columnIndexFromString(trim((string) $column, '$')) + 100000;
+                                $row = trim((string) $row, '$') + 10000000;
                                 $cellIndex = $row . $column;
 
                                 $newCellTokens[$cellIndex] = preg_quote($toString);
@@ -813,7 +813,7 @@ class PHPExcel_ReferenceHelper
                 $cell = $sheet->getCell($cellID);
                 if (($cell !== null) && ($cell->getDataType() == PHPExcel_Cell_DataType::TYPE_FORMULA)) {
                     $formula = $cell->getValue();
-                    if (str_contains($formula, (string) $oldName)) {
+                    if (str_contains((string) $formula, (string) $oldName)) {
                         $formula = str_replace("'" . $oldName . "'!", "'" . $newName . "'!", $formula);
                         $formula = str_replace($oldName . "!", $newName . "!", $formula);
                         $cell->setValueExplicit($formula, PHPExcel_Cell_DataType::TYPE_FORMULA);
@@ -842,10 +842,10 @@ class PHPExcel_ReferenceHelper
             for ($i = 0; $i < $ic; ++$i) {
                 $jc = count($range[$i]);
                 for ($j = 0; $j < $jc; ++$j) {
-                    if (ctype_alpha($range[$i][$j])) {
+                    if (ctype_alpha((string) $range[$i][$j])) {
                         $r = PHPExcel_Cell::coordinateFromString($this->updateSingleCellReference($range[$i][$j].'1', $pBefore, $pNumCols, $pNumRows));
                         $range[$i][$j] = $r[0];
-                    } elseif (ctype_digit($range[$i][$j])) {
+                    } elseif (ctype_digit((string) $range[$i][$j])) {
                         $r = PHPExcel_Cell::coordinateFromString($this->updateSingleCellReference('A'.$range[$i][$j], $pBefore, $pNumCols, $pNumRows));
                         $range[$i][$j] = $r[1];
                     } else {

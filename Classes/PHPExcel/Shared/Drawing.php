@@ -186,7 +186,7 @@ class PHPExcel_Shared_Drawing
 
         $temp = unpack("H*", $read);
         $hex = $temp[1];
-        $header = substr($hex, 0, 108);
+        $header = substr((string) $hex, 0, 108);
 
         //    Process the header
         //    Structure: http://www.fastgraph.com/help/bmp_header_format.html
@@ -212,7 +212,7 @@ class PHPExcel_Shared_Drawing
         $image = imagecreatetruecolor($width, $height);
 
         //    Grab the body from the image
-        $body = substr($hex, 108);
+        $body = substr((string) $hex, 108);
 
         //    Calculate if padding at the end-line is needed
         //    Divided by two to keep overview.

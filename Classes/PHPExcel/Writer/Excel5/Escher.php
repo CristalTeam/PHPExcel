@@ -348,7 +348,7 @@ class PHPExcel_Writer_Excel5_Escher
                     $innerData .= $spData;
 
                     // save the shape offsets (where new shape records begin)
-                    $totalSize += strlen($spData);
+                    $totalSize += strlen((string) $spData);
                     $spOffsets[] = $totalSize;
                     
                     $spTypes = array_merge($spTypes, $writer->getSpTypes());

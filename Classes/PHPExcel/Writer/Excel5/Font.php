@@ -42,7 +42,7 @@ class PHPExcel_Writer_Excel5_Font
     public function __construct(/**
      * Font
      */
-    private ?\PHPExcel_Style_Font $font = null)
+    private readonly ?\PHPExcel_Style_Font $font = null)
     {
         $this->colorIndex = 0x7FFF;
     }

@@ -513,7 +513,7 @@ class PHPExcel_DocumentProperties
             //    Basic String
             'lpstr', 'lpwstr', 'bstr' => $propertyValue,
             //    File Time
-            'date', 'filetime' => strtotime($propertyValue),
+            'date', 'filetime' => strtotime((string) $propertyValue),
             //    Boolean
             'bool' => ($propertyValue == 'true') ? true : false,
             //    Clipboard Data

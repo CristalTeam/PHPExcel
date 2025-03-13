@@ -97,7 +97,7 @@ class PHPExcel_Writer_OpenDocument extends PHPExcel_Writer_Abstract implements P
 
         // If $pFilename is php://output or php://stdout, make it a temporary file...
         $originalFilename = $pFilename;
-        if (strtolower($pFilename) == 'php://output' || strtolower($pFilename) == 'php://stdout') {
+        if (strtolower((string) $pFilename) == 'php://output' || strtolower((string) $pFilename) == 'php://stdout') {
             $pFilename = @tempnam(PHPExcel_Shared_File::sys_get_temp_dir(), 'phpxltmp');
             if ($pFilename == '') {
                 $pFilename = $originalFilename;

@@ -112,7 +112,7 @@ class trendClass
             case self::TREND_POLYNOMIAL_5:
             case self::TREND_POLYNOMIAL_6:
                 if (!isset(self::$trendCache[$key])) {
-                    $order = substr($trendType, -1);
+                    $order = substr((string) $trendType, -1);
                     self::$trendCache[$key] = new PHPExcel_Polynomial_Best_Fit($order, $yValues, $xValues, $const);
                 }
                 return self::$trendCache[$key];

@@ -173,7 +173,7 @@ class PHPExcel_Writer_HTML extends PHPExcel_Writer_Abstract implements PHPExcel_
         fwrite($fileHandle, $this->generateSheetData());
 
         // Write footer
-        fwrite($fileHandle, $this->generateHTMLFooter());
+        fwrite($fileHandle, (string) $this->generateHTMLFooter());
 
         // Close file
         fclose($fileHandle);
@@ -1215,13 +1215,13 @@ class PHPExcel_Writer_HTML extends PHPExcel_Writer_Abstract implements PHPExcel_
                             $cellData = PHPExcel_Style_NumberFormat::toFormattedString(
                                 $cell->getCalculatedValue(),
                                 $pSheet->getParent()->getCellXfByIndex($cell->getXfIndex())->getNumberFormat()->getFormatCode(),
-                                [$this, 'formatColor']
+                                $this->formatColor(...)
                             );
                         } else {
                             $cellData = PHPExcel_Style_NumberFormat::toFormattedString(
                                 $cell->getValue(),
                                 $pSheet->getParent()->getCellXfByIndex($cell->getXfIndex())->getNumberFormat()->getFormatCode(),
-                                [$this, 'formatColor']
+                                $this->formatColor(...)
                             );
                         }
                         $cellData = htmlspecialchars($cellData);
@@ -1237,7 +1237,7 @@ class PHPExcel_Writer_HTML extends PHPExcel_Writer_Abstract implements PHPExcel_
                     $cellData = preg_replace("/(?m)(?:^|\\G) /", '&nbsp;', $cellData);
 
                     // convert newline "\n" to '<br>'
-                    $cellData = nl2br($cellData);
+                    $cellData = nl2br((string) $cellData);
 
                     // Extend CSS class?
                     if (!$this->useInlineCss) {
@@ -1265,7 +1265,7 @@ class PHPExcel_Writer_HTML extends PHPExcel_Writer_Abstract implements PHPExcel_
 
                 // Hyperlink?
                 if ($pSheet->hyperlinkExists($coordinate) && !$pSheet->getHyperlink($coordinate)->isInternal()) {
-                    $cellData = '<a href="' . htmlspecialchars($pSheet->getHyperlink($coordinate)->getUrl()) . '" title="' . htmlspecialchars($pSheet->getHyperlink($coordinate)->getTooltip()) . '">' . $cellData . '</a>';
+                    $cellData = '<a href="' . htmlspecialchars((string) $pSheet->getHyperlink($coordinate)->getUrl()) . '" title="' . htmlspecialchars((string) $pSheet->getHyperlink($coordinate)->getTooltip()) . '">' . $cellData . '</a>';
                 }
 
                 // Should the cell be written or is it swallowed by a rowspan or colspan?

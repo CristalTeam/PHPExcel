@@ -241,7 +241,7 @@ class PHPExcel
     public function getRibbonXMLData($What = 'all') //we need some constants here...
     {
         $ReturnData = null;
-        $What = strtolower($What);
+        $What = strtolower((string) $What);
         switch ($What){
             case 'all':
                 $ReturnData = $this->ribbonXMLData;
@@ -275,7 +275,7 @@ class PHPExcel
     */
     private function getExtensionOnly($ThePath)
     {
-        return pathinfo($ThePath, PATHINFO_EXTENSION);
+        return pathinfo((string) $ThePath, PATHINFO_EXTENSION);
     }
 
     /**
@@ -285,7 +285,7 @@ class PHPExcel
     public function getRibbonBinObjects($What = 'all')
     {
         $ReturnData = null;
-        $What = strtolower($What);
+        $What = strtolower((string) $What);
         switch($What) {
             case 'all':
                 return $this->ribbonBinObjects;

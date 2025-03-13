@@ -1109,7 +1109,7 @@ class PHPExcel_Shared_JAMA_Matrix
             $this->checkMatrixDimensions($M);
             for ($i = 0; $i < $this->m; ++$i) {
                 for ($j = 0; $j < $this->n; ++$j) {
-                    $this->A[$i][$j] = trim($this->A[$i][$j], '"').trim($M->get($i, $j), '"');
+                    $this->A[$i][$j] = trim((string) $this->A[$i][$j], '"').trim((string) $M->get($i, $j), '"');
                 }
             }
             return $this;
