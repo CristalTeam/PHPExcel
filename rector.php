@@ -10,7 +10,7 @@ return RectorConfig::configure()
         __DIR__ . '/Classes',
         __DIR__ . '/Documentation',
         __DIR__ . '/Examples',
-        __DIR__ . '/unitTests',
+        __DIR__ . '/tests',
     ])
     ->withPhpSets(php82: true)
     ->withTypeCoverageLevel(0)
