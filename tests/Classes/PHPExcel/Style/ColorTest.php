@@ -17,7 +17,7 @@ class ColorTest extends PHPUnit\Framework\TestCase
     }
 
     #[DataProvider('providerColorGetRed')]
-    public function testGetRed()
+    public function testGetRed(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -25,13 +25,13 @@ class ColorTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerColorGetRed()
+    public static function providerColorGetRed(): array
     {
         return new testDataFileIterator('rawTestData/Style/ColorGetRed.data');
     }
 
     #[DataProvider('providerColorGetGreen')]
-    public function testGetGreen()
+    public function testGetGreen(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -39,13 +39,13 @@ class ColorTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerColorGetGreen()
+    public static function providerColorGetGreen(): array
     {
         return new testDataFileIterator('rawTestData/Style/ColorGetGreen.data');
     }
 
     #[DataProvider('providerColorGetBlue')]
-    public function testGetBlue()
+    public function testGetBlue(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -53,13 +53,13 @@ class ColorTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerColorGetBlue()
+    public static function providerColorGetBlue(): array
     {
         return new testDataFileIterator('rawTestData/Style/ColorGetBlue.data');
     }
 
     #[DataProvider('providerColorChangeBrightness')]
-    public function testChangeBrightness()
+    public function testChangeBrightness(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -67,7 +67,7 @@ class ColorTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerColorChangeBrightness()
+    public static function providerColorChangeBrightness(): array
     {
         return new testDataFileIterator('rawTestData/Style/ColorChangeBrightness.data');
     }

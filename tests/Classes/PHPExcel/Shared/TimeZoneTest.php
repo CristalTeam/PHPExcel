@@ -12,7 +12,7 @@ class TimeZoneTest extends PHPUnit\Framework\TestCase
         require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
     }
 
-    public function testSetTimezone()
+    public function testSetTimezone(): void
     {
         $timezoneValues = [
             'Europe/Prague',
@@ -29,7 +29,7 @@ class TimeZoneTest extends PHPUnit\Framework\TestCase
 
     }
 
-    public function testSetTimezoneWithInvalidValue()
+    public function testSetTimezoneWithInvalidValue(): void
     {
         $unsupportedTimezone = 'Etc/GMT+10';
         $result = call_user_func(['PHPExcel_Shared_TimeZone','setTimezone'], $unsupportedTimezone);

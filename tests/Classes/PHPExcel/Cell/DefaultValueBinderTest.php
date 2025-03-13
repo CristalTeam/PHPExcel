@@ -30,7 +30,7 @@ class DefaultValueBinderTest extends PHPUnit\Framework\TestCase
     }
 
     #[DataProvider('binderProvider')]
-    public function testBindValue($value)
+    public function testBindValue($value): void
     {
         $this->createCellStub();
         $binder = new PHPExcel_Cell_DefaultValueBinder();
@@ -38,7 +38,7 @@ class DefaultValueBinderTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($result);
     }
 
-    public static function binderProvider()
+    public static function binderProvider(): array
     {
         return [
             [null],
@@ -57,7 +57,7 @@ class DefaultValueBinderTest extends PHPUnit\Framework\TestCase
     }
 
     #[DataProvider('providerDataTypeForValue')]
-    public function testDataTypeForValue()
+    public function testDataTypeForValue(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -65,12 +65,12 @@ class DefaultValueBinderTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerDataTypeForValue()
+    public static function providerDataTypeForValue(): array
     {
         return new testDataFileIterator('rawTestData/Cell/DefaultValueBinder.data');
     }
 
-    public function testDataTypeForRichTextObject()
+    public function testDataTypeForRichTextObject(): void
     {
         $objRichText = new PHPExcel_RichText();
         $objRichText->createText('Hello World');

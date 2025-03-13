@@ -19,7 +19,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
     }
 
     #[DataProvider('providerCHAR')]
-    public function testCHAR()
+    public function testCHAR(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -27,13 +27,13 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerCHAR()
+    public static function providerCHAR(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/CHAR.data');
     }
 
     #[DataProvider('providerCODE')]
-    public function testCODE()
+    public function testCODE(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -41,13 +41,13 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerCODE()
+    public static function providerCODE(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/CODE.data');
     }
 
     #[DataProvider('providerCONCATENATE')]
-    public function testCONCATENATE()
+    public function testCONCATENATE(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -55,13 +55,13 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerCONCATENATE()
+    public static function providerCONCATENATE(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/CONCATENATE.data');
     }
 
     #[DataProvider('providerLEFT')]
-    public function testLEFT()
+    public function testLEFT(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -69,13 +69,13 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerLEFT()
+    public static function providerLEFT(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/LEFT.data');
     }
 
     #[DataProvider('providerMID')]
-    public function testMID()
+    public function testMID(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -83,13 +83,13 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerMID()
+    public static function providerMID(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/MID.data');
     }
 
     #[DataProvider('providerRIGHT')]
-    public function testRIGHT()
+    public function testRIGHT(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -97,13 +97,13 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerRIGHT()
+    public static function providerRIGHT(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/RIGHT.data');
     }
 
     #[DataProvider('providerLOWER')]
-    public function testLOWER()
+    public function testLOWER(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -111,13 +111,13 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerLOWER()
+    public static function providerLOWER(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/LOWER.data');
     }
 
     #[DataProvider('providerUPPER')]
-    public function testUPPER()
+    public function testUPPER(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -125,13 +125,13 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerUPPER()
+    public static function providerUPPER(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/UPPER.data');
     }
 
     #[DataProvider('providerPROPER')]
-    public function testPROPER()
+    public function testPROPER(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -139,13 +139,13 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerPROPER()
+    public static function providerPROPER(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/PROPER.data');
     }
 
     #[DataProvider('providerLEN')]
-    public function testLEN()
+    public function testLEN(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -153,13 +153,13 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerLEN()
+    public static function providerLEN(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/LEN.data');
     }
 
     #[DataProvider('providerSEARCH')]
-    public function testSEARCH()
+    public function testSEARCH(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -167,13 +167,13 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerSEARCH()
+    public static function providerSEARCH(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/SEARCH.data');
     }
 
     #[DataProvider('providerFIND')]
-    public function testFIND()
+    public function testFIND(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -181,13 +181,13 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerFIND()
+    public static function providerFIND(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/FIND.data');
     }
 
     #[DataProvider('providerREPLACE')]
-    public function testREPLACE()
+    public function testREPLACE(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -195,13 +195,13 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerREPLACE()
+    public static function providerREPLACE(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/REPLACE.data');
     }
 
     #[DataProvider('providerSUBSTITUTE')]
-    public function testSUBSTITUTE()
+    public function testSUBSTITUTE(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -209,13 +209,13 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerSUBSTITUTE()
+    public static function providerSUBSTITUTE(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/SUBSTITUTE.data');
     }
 
     #[DataProvider('providerTRIM')]
-    public function testTRIM()
+    public function testTRIM(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -223,13 +223,13 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerTRIM()
+    public static function providerTRIM(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/TRIM.data');
     }
 
     #[DataProvider('providerCLEAN')]
-    public function testCLEAN()
+    public function testCLEAN(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -237,13 +237,13 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerCLEAN()
+    public static function providerCLEAN(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/CLEAN.data');
     }
 
     #[DataProvider('providerDOLLAR')]
-    public function testDOLLAR()
+    public function testDOLLAR(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -251,13 +251,13 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerDOLLAR()
+    public static function providerDOLLAR(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/DOLLAR.data');
     }
 
     #[DataProvider('providerFIXED')]
-    public function testFIXED()
+    public function testFIXED(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -265,13 +265,13 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerFIXED()
+    public static function providerFIXED(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/FIXED.data');
     }
 
     #[DataProvider('providerT')]
-    public function testT()
+    public function testT(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -279,13 +279,13 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerT()
+    public static function providerT(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/T.data');
     }
 
     #[DataProvider('providerTEXT')]
-    public function testTEXT()
+    public function testTEXT(): void
     {
         //    Enforce decimal and thousands separator values to UK/US, and currency code to USD
         call_user_func(['PHPExcel_Shared_String', 'setDecimalSeparator'], '.');
@@ -298,13 +298,13 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerTEXT()
+    public static function providerTEXT(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/TEXT.data');
     }
 
     #[DataProvider('providerVALUE')]
-    public function testVALUE()
+    public function testVALUE(): void
     {
         call_user_func(['PHPExcel_Shared_String', 'setDecimalSeparator'], '.');
         call_user_func(['PHPExcel_Shared_String', 'setThousandsSeparator'], ' ');
@@ -316,7 +316,7 @@ class TextDataTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerVALUE()
+    public static function providerVALUE(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/VALUE.data');
     }

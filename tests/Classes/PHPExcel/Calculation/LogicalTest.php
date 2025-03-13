@@ -18,20 +18,20 @@ class LogicalTest extends PHPUnit\Framework\TestCase
         PHPExcel_Calculation_Functions::setCompatibilityMode(PHPExcel_Calculation_Functions::COMPATIBILITY_EXCEL);
     }
 
-    public function testTRUE()
+    public function testTRUE(): void
     {
         $result = PHPExcel_Calculation_Logical::TRUE();
         $this->assertEquals(true, $result);
     }
 
-    public function testFALSE()
+    public function testFALSE(): void
     {
         $result = PHPExcel_Calculation_Logical::FALSE();
         $this->assertEquals(false, $result);
     }
 
     #[DataProvider('providerAND')]
-    public function testAND()
+    public function testAND(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -39,13 +39,13 @@ class LogicalTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerAND()
+    public static function providerAND(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/Logical/AND.data');
     }
 
     #[DataProvider('providerOR')]
-    public function testOR()
+    public function testOR(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -53,13 +53,13 @@ class LogicalTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerOR()
+    public static function providerOR(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/Logical/OR.data');
     }
 
     #[DataProvider('providerNOT')]
-    public function testNOT()
+    public function testNOT(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -67,13 +67,13 @@ class LogicalTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerNOT()
+    public static function providerNOT(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/Logical/NOT.data');
     }
 
     #[DataProvider('providerIF')]
-    public function testIF()
+    public function testIF(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -81,13 +81,13 @@ class LogicalTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerIF()
+    public static function providerIF(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/Logical/IF.data');
     }
 
     #[DataProvider('providerIFERROR')]
-    public function testIFERROR()
+    public function testIFERROR(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -95,7 +95,7 @@ class LogicalTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerIFERROR()
+    public static function providerIFERROR(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/Logical/IFERROR.data');
     }

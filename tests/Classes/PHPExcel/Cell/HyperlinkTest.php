@@ -12,7 +12,7 @@ class HyperlinkTest extends PHPUnit\Framework\TestCase
         require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
     }
 
-    public function testGetUrl()
+    public function testGetUrl(): void
     {
         $urlValue = 'http://www.phpexcel.net';
 
@@ -22,7 +22,7 @@ class HyperlinkTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($urlValue, $result);
     }
 
-    public function testSetUrl()
+    public function testSetUrl(): void
     {
         $initialUrlValue = 'http://www.phpexcel.net';
         $newUrlValue = 'http://github.com/PHPOffice/PHPExcel';
@@ -35,7 +35,7 @@ class HyperlinkTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($newUrlValue, $result);
     }
 
-    public function testGetTooltip()
+    public function testGetTooltip(): void
     {
         $tooltipValue = 'PHPExcel Web Site';
 
@@ -45,7 +45,7 @@ class HyperlinkTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($tooltipValue, $result);
     }
 
-    public function testSetTooltip()
+    public function testSetTooltip(): void
     {
         $initialTooltipValue = 'PHPExcel Web Site';
         $newTooltipValue = 'PHPExcel Repository on Github';
@@ -58,7 +58,7 @@ class HyperlinkTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($newTooltipValue, $result);
     }
 
-    public function testIsInternal()
+    public function testIsInternal(): void
     {
         $initialUrlValue = 'http://www.phpexcel.net';
         $newUrlValue = 'sheet://Worksheet1!A1';
@@ -72,7 +72,7 @@ class HyperlinkTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($result);
     }
 
-    public function testGetHashCode()
+    public function testGetHashCode(): void
     {
         $urlValue = 'http://www.phpexcel.net';
         $tooltipValue = 'PHPExcel Web Site';

@@ -17,7 +17,7 @@ class CellTest extends PHPUnit\Framework\TestCase
     }
 
     #[DataProvider('providerColumnString')]
-    public function testColumnIndexFromString()
+    public function testColumnIndexFromString(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -25,12 +25,12 @@ class CellTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerColumnString()
+    public static function providerColumnString(): array
     {
         return new testDataFileIterator('rawTestData/ColumnString.data');
     }
 
-    public function testColumnIndexFromStringTooLong()
+    public function testColumnIndexFromStringTooLong(): void
     {
         $cellAddress = 'ABCD';
         try {
@@ -42,7 +42,7 @@ class CellTest extends PHPUnit\Framework\TestCase
         $this->fail('An expected exception has not been raised.');
     }
 
-    public function testColumnIndexFromStringTooShort()
+    public function testColumnIndexFromStringTooShort(): void
     {
         $cellAddress = '';
         try {
@@ -55,7 +55,7 @@ class CellTest extends PHPUnit\Framework\TestCase
     }
 
     #[DataProvider('providerColumnIndex')]
-    public function testStringFromColumnIndex()
+    public function testStringFromColumnIndex(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -63,13 +63,13 @@ class CellTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerColumnIndex()
+    public static function providerColumnIndex(): array
     {
         return new testDataFileIterator('rawTestData/ColumnIndex.data');
     }
 
     #[DataProvider('providerCoordinates')]
-    public function testCoordinateFromString()
+    public function testCoordinateFromString(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -77,12 +77,12 @@ class CellTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerCoordinates()
+    public static function providerCoordinates(): array
     {
         return new testDataFileIterator('rawTestData/CellCoordinates.data');
     }
 
-    public function testCoordinateFromStringWithRangeAddress()
+    public function testCoordinateFromStringWithRangeAddress(): void
     {
         $cellAddress = 'A1:AI2012';
         try {
@@ -94,7 +94,7 @@ class CellTest extends PHPUnit\Framework\TestCase
         $this->fail('An expected exception has not been raised.');
     }
 
-    public function testCoordinateFromStringWithEmptyAddress()
+    public function testCoordinateFromStringWithEmptyAddress(): void
     {
         $cellAddress = '';
         try {
@@ -106,7 +106,7 @@ class CellTest extends PHPUnit\Framework\TestCase
         $this->fail('An expected exception has not been raised.');
     }
 
-    public function testCoordinateFromStringWithInvalidAddress()
+    public function testCoordinateFromStringWithInvalidAddress(): void
     {
         $cellAddress = 'AI';
         try {
@@ -119,7 +119,7 @@ class CellTest extends PHPUnit\Framework\TestCase
     }
 
     #[DataProvider('providerAbsoluteCoordinates')]
-    public function testAbsoluteCoordinateFromString()
+    public function testAbsoluteCoordinateFromString(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -127,12 +127,12 @@ class CellTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerAbsoluteCoordinates()
+    public static function providerAbsoluteCoordinates(): array
     {
         return new testDataFileIterator('rawTestData/CellAbsoluteCoordinate.data');
     }
 
-    public function testAbsoluteCoordinateFromStringWithRangeAddress()
+    public function testAbsoluteCoordinateFromStringWithRangeAddress(): void
     {
         $cellAddress = 'A1:AI2012';
         try {
@@ -145,7 +145,7 @@ class CellTest extends PHPUnit\Framework\TestCase
     }
 
     #[DataProvider('providerAbsoluteReferences')]
-    public function testAbsoluteReferenceFromString()
+    public function testAbsoluteReferenceFromString(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -153,12 +153,12 @@ class CellTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerAbsoluteReferences()
+    public static function providerAbsoluteReferences(): array
     {
         return new testDataFileIterator('rawTestData/CellAbsoluteReference.data');
     }
 
-    public function testAbsoluteReferenceFromStringWithRangeAddress()
+    public function testAbsoluteReferenceFromStringWithRangeAddress(): void
     {
         $cellAddress = 'A1:AI2012';
         try {
@@ -171,7 +171,7 @@ class CellTest extends PHPUnit\Framework\TestCase
     }
 
     #[DataProvider('providerSplitRange')]
-    public function testSplitRange()
+    public function testSplitRange(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -185,13 +185,13 @@ class CellTest extends PHPUnit\Framework\TestCase
         }
     }
 
-    public static function providerSplitRange()
+    public static function providerSplitRange(): array
     {
         return new testDataFileIterator('rawTestData/CellSplitRange.data');
     }
 
     #[DataProvider('providerBuildRange')]
-    public function testBuildRange()
+    public function testBuildRange(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -199,12 +199,12 @@ class CellTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerBuildRange()
+    public static function providerBuildRange(): array
     {
         return new testDataFileIterator('rawTestData/CellBuildRange.data');
     }
 
-    public function testBuildRangeInvalid()
+    public function testBuildRangeInvalid(): void
     {
         $cellRange = '';
         try {
@@ -217,7 +217,7 @@ class CellTest extends PHPUnit\Framework\TestCase
     }
 
     #[DataProvider('providerRangeBoundaries')]
-    public function testRangeBoundaries()
+    public function testRangeBoundaries(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -225,13 +225,13 @@ class CellTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerRangeBoundaries()
+    public static function providerRangeBoundaries(): array
     {
         return new testDataFileIterator('rawTestData/CellRangeBoundaries.data');
     }
 
     #[DataProvider('providerRangeDimension')]
-    public function testRangeDimension()
+    public function testRangeDimension(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -239,13 +239,13 @@ class CellTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerRangeDimension()
+    public static function providerRangeDimension(): array
     {
         return new testDataFileIterator('rawTestData/CellRangeDimension.data');
     }
 
     #[DataProvider('providerGetRangeBoundaries')]
-    public function testGetRangeBoundaries()
+    public function testGetRangeBoundaries(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -253,13 +253,13 @@ class CellTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerGetRangeBoundaries()
+    public static function providerGetRangeBoundaries(): array
     {
         return new testDataFileIterator('rawTestData/CellGetRangeBoundaries.data');
     }
 
     #[DataProvider('providerExtractAllCellReferencesInRange')]
-    public function testExtractAllCellReferencesInRange()
+    public function testExtractAllCellReferencesInRange(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -267,7 +267,7 @@ class CellTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerExtractAllCellReferencesInRange()
+    public static function providerExtractAllCellReferencesInRange(): array
     {
         return new testDataFileIterator('rawTestData/CellExtractAllCellReferencesInRange.data');
     }

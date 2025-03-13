@@ -14,19 +14,19 @@ class StringTest extends PHPUnit\Framework\TestCase
         require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
     }
 
-    public function testGetIsMbStringEnabled()
+    public function testGetIsMbStringEnabled(): void
     {
         $result = call_user_func(['PHPExcel_Shared_String','getIsMbstringEnabled']);
         $this->assertTrue($result);
     }
 
-    public function testGetIsIconvEnabled()
+    public function testGetIsIconvEnabled(): void
     {
         $result = call_user_func(['PHPExcel_Shared_String','getIsIconvEnabled']);
         $this->assertTrue($result);
     }
 
-    public function testGetDecimalSeparator()
+    public function testGetDecimalSeparator(): void
     {
         $localeconv = localeconv();
 
@@ -35,7 +35,7 @@ class StringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function testSetDecimalSeparator()
+    public function testSetDecimalSeparator(): void
     {
         $expectedResult = ',';
         $result = call_user_func(['PHPExcel_Shared_String','setDecimalSeparator'], $expectedResult);
@@ -44,7 +44,7 @@ class StringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function testGetThousandsSeparator()
+    public function testGetThousandsSeparator(): void
     {
         $localeconv = localeconv();
 
@@ -53,7 +53,7 @@ class StringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function testSetThousandsSeparator()
+    public function testSetThousandsSeparator(): void
     {
         $expectedResult = ' ';
         $result = call_user_func(['PHPExcel_Shared_String','setThousandsSeparator'], $expectedResult);
@@ -62,7 +62,7 @@ class StringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function testGetCurrencyCode()
+    public function testGetCurrencyCode(): void
     {
         $localeconv = localeconv();
 
@@ -71,7 +71,7 @@ class StringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function testSetCurrencyCode()
+    public function testSetCurrencyCode(): void
     {
         $expectedResult = '£';
         $result = call_user_func(['PHPExcel_Shared_String','setCurrencyCode'], $expectedResult);

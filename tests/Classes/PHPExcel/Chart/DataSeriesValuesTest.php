@@ -12,7 +12,7 @@ class DataSeriesValuesTest extends PHPUnit\Framework\TestCase
         require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
     }
 
-    public function testSetDataType()
+    public function testSetDataType(): void
     {
         $dataTypeValues = [
             'Number',
@@ -27,7 +27,7 @@ class DataSeriesValuesTest extends PHPUnit\Framework\TestCase
         }
     }
 
-    public function testSetInvalidDataTypeThrowsException()
+    public function testSetInvalidDataTypeThrowsException(): void
     {
         $testInstance = new PHPExcel_Chart_DataSeriesValues;
 
@@ -40,7 +40,7 @@ class DataSeriesValuesTest extends PHPUnit\Framework\TestCase
         $this->fail('An expected exception has not been raised.');
     }
 
-    public function testGetDataType()
+    public function testGetDataType(): void
     {
         $dataTypeValue = 'String';
 

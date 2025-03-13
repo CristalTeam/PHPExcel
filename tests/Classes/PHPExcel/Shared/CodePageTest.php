@@ -17,7 +17,7 @@ class CodePageTest extends PHPUnit\Framework\TestCase
     }
 
     #[DataProvider('providerCodePage')]
-    public function testCodePageNumberToName()
+    public function testCodePageNumberToName(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -25,12 +25,12 @@ class CodePageTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerCodePage()
+    public static function providerCodePage(): array
     {
         return new testDataFileIterator('rawTestData/Shared/CodePage.data');
     }
 
-    public function testNumberToNameWithInvalidCodePage()
+    public function testNumberToNameWithInvalidCodePage(): void
     {
         $invalidCodePage = 12345;
         try {
@@ -42,7 +42,7 @@ class CodePageTest extends PHPUnit\Framework\TestCase
         $this->fail('An expected exception has not been raised.');
     }
 
-    public function testNumberToNameWithUnsupportedCodePage()
+    public function testNumberToNameWithUnsupportedCodePage(): void
     {
         $unsupportedCodePage = 720;
         try {

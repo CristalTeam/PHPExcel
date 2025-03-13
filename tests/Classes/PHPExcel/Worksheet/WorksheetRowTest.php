@@ -21,7 +21,7 @@ class WorksheetRowTest extends PHPUnit\Framework\TestCase
     }
 
 
-    public function testInstantiateRowDefault()
+    public function testInstantiateRowDefault(): void
     {
         $row = new PHPExcel_Worksheet_Row($this->mockWorksheet);
         $this->assertInstanceOf('PHPExcel_Worksheet_Row', $row);
@@ -29,7 +29,7 @@ class WorksheetRowTest extends PHPUnit\Framework\TestCase
         $this->assertEquals(1, $rowIndex);
     }
 
-    public function testInstantiateRowSpecified()
+    public function testInstantiateRowSpecified(): void
     {
         $row = new PHPExcel_Worksheet_Row($this->mockWorksheet, 5);
         $this->assertInstanceOf('PHPExcel_Worksheet_Row', $row);
@@ -37,7 +37,7 @@ class WorksheetRowTest extends PHPUnit\Framework\TestCase
         $this->assertEquals(5, $rowIndex);
     }
 
-    public function testGetCellIterator()
+    public function testGetCellIterator(): void
     {
         $row = new PHPExcel_Worksheet_Row($this->mockWorksheet);
         $cellIterator = $row->getCellIterator();

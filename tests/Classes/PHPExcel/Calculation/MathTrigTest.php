@@ -19,7 +19,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
     }
 
     #[DataProvider('providerATAN2')]
-    public function testATAN2()
+    public function testATAN2(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -27,13 +27,13 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public static function providerATAN2()
+    public static function providerATAN2(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/ATAN2.data');
     }
 
     #[DataProvider('providerCEILING')]
-    public function testCEILING()
+    public function testCEILING(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -41,13 +41,13 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public static function providerCEILING()
+    public static function providerCEILING(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/CEILING.data');
     }
 
     #[DataProvider('providerCOMBIN')]
-    public function testCOMBIN()
+    public function testCOMBIN(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -55,13 +55,13 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public static function providerCOMBIN()
+    public static function providerCOMBIN(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/COMBIN.data');
     }
 
     #[DataProvider('providerEVEN')]
-    public function testEVEN()
+    public function testEVEN(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -69,13 +69,13 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public static function providerEVEN()
+    public static function providerEVEN(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/EVEN.data');
     }
 
     #[DataProvider('providerODD')]
-    public function testODD()
+    public function testODD(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -83,13 +83,13 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public static function providerODD()
+    public static function providerODD(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/ODD.data');
     }
 
     #[DataProvider('providerFACT')]
-    public function testFACT()
+    public function testFACT(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -97,13 +97,13 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public static function providerFACT()
+    public static function providerFACT(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/FACT.data');
     }
 
     #[DataProvider('providerFACTDOUBLE')]
-    public function testFACTDOUBLE()
+    public function testFACTDOUBLE(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -111,13 +111,13 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public static function providerFACTDOUBLE()
+    public static function providerFACTDOUBLE(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/FACTDOUBLE.data');
     }
 
     #[DataProvider('providerFLOOR')]
-    public function testFLOOR()
+    public function testFLOOR(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -125,13 +125,13 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public static function providerFLOOR()
+    public static function providerFLOOR(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/FLOOR.data');
     }
 
     #[DataProvider('providerGCD')]
-    public function testGCD()
+    public function testGCD(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -139,13 +139,13 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public static function providerGCD()
+    public static function providerGCD(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/GCD.data');
     }
 
     #[DataProvider('providerLCM')]
-    public function testLCM()
+    public function testLCM(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -153,13 +153,13 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public static function providerLCM()
+    public static function providerLCM(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/LCM.data');
     }
 
     #[DataProvider('providerINT')]
-    public function testINT()
+    public function testINT(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -167,13 +167,13 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerINT()
+    public static function providerINT(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/INT.data');
     }
 
     #[DataProvider('providerSIGN')]
-    public function testSIGN()
+    public function testSIGN(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -181,13 +181,13 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public static function providerSIGN()
+    public static function providerSIGN(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/SIGN.data');
     }
 
     #[DataProvider('providerPOWER')]
-    public function testPOWER()
+    public function testPOWER(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -195,13 +195,13 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public static function providerPOWER()
+    public static function providerPOWER(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/POWER.data');
     }
 
     #[DataProvider('providerLOG')]
-    public function testLOG()
+    public function testLOG(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -209,13 +209,13 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public static function providerLOG()
+    public static function providerLOG(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/LOG.data');
     }
 
     #[DataProvider('providerMOD')]
-    public function testMOD()
+    public function testMOD(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -223,13 +223,13 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public static function providerMOD()
+    public static function providerMOD(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/MOD.data');
     }
 
     #[DataProvider('providerMDETERM')]
-    public function testMDETERM()
+    public function testMDETERM(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -237,13 +237,13 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public static function providerMDETERM()
+    public static function providerMDETERM(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/MDETERM.data');
     }
 
     #[DataProvider('providerMINVERSE')]
-    public function testMINVERSE()
+    public function testMINVERSE(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -251,13 +251,13 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public static function providerMINVERSE()
+    public static function providerMINVERSE(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/MINVERSE.data');
     }
 
     #[DataProvider('providerMMULT')]
-    public function testMMULT()
+    public function testMMULT(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -265,13 +265,13 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public static function providerMMULT()
+    public static function providerMMULT(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/MMULT.data');
     }
 
     #[DataProvider('providerMULTINOMIAL')]
-    public function testMULTINOMIAL()
+    public function testMULTINOMIAL(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -279,13 +279,13 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public static function providerMULTINOMIAL()
+    public static function providerMULTINOMIAL(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/MULTINOMIAL.data');
     }
 
     #[DataProvider('providerMROUND')]
-    public function testMROUND()
+    public function testMROUND(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -295,13 +295,13 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public static function providerMROUND()
+    public static function providerMROUND(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/MROUND.data');
     }
 
     #[DataProvider('providerPRODUCT')]
-    public function testPRODUCT()
+    public function testPRODUCT(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -309,13 +309,13 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public static function providerPRODUCT()
+    public static function providerPRODUCT(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/PRODUCT.data');
     }
 
     #[DataProvider('providerQUOTIENT')]
-    public function testQUOTIENT()
+    public function testQUOTIENT(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -323,13 +323,13 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public static function providerQUOTIENT()
+    public static function providerQUOTIENT(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/QUOTIENT.data');
     }
 
     #[DataProvider('providerROUNDUP')]
-    public function testROUNDUP()
+    public function testROUNDUP(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -337,13 +337,13 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public static function providerROUNDUP()
+    public static function providerROUNDUP(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/ROUNDUP.data');
     }
 
     #[DataProvider('providerROUNDDOWN')]
-    public function testROUNDDOWN()
+    public function testROUNDDOWN(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -351,13 +351,13 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public static function providerROUNDDOWN()
+    public static function providerROUNDDOWN(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/ROUNDDOWN.data');
     }
 
     #[DataProvider('providerSERIESSUM')]
-    public function testSERIESSUM()
+    public function testSERIESSUM(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -365,13 +365,13 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public static function providerSERIESSUM()
+    public static function providerSERIESSUM(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/SERIESSUM.data');
     }
 
     #[DataProvider('providerSUMIFS')]
-    public function testSUMIFS()
+    public function testSUMIFS(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -379,13 +379,13 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public static function providerSUMIFS()
+    public static function providerSUMIFS(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/SUMIFS.data');
     }
 
     #[DataProvider('providerSUMSQ')]
-    public function testSUMSQ()
+    public function testSUMSQ(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -393,13 +393,13 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public static function providerSUMSQ()
+    public static function providerSUMSQ(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/SUMSQ.data');
     }
 
     #[DataProvider('providerTRUNC')]
-    public function testTRUNC()
+    public function testTRUNC(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -407,13 +407,13 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public static function providerTRUNC()
+    public static function providerTRUNC(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/TRUNC.data');
     }
 
     #[DataProvider('providerROMAN')]
-    public function testROMAN()
+    public function testROMAN(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -421,13 +421,13 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerROMAN()
+    public static function providerROMAN(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/ROMAN.data');
     }
 
     #[DataProvider('providerSQRTPI')]
-    public function testSQRTPI()
+    public function testSQRTPI(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -435,13 +435,13 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public static function providerSQRTPI()
+    public static function providerSQRTPI(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/SQRTPI.data');
     }
 
     #[DataProvider('providerSUMIF')]
-    public function testSUMIF()
+    public function testSUMIF(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -449,7 +449,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public static function providerSUMIF()
+    public static function providerSUMIF(): array
     {
         return [
             [

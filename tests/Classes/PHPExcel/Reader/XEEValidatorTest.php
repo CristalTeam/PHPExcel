@@ -18,7 +18,7 @@ class XEEValidatorTest extends PHPUnit\Framework\TestCase
      * @expectedException PHPExcel_Reader_Exception
      */
     #[DataProvider('providerInvalidXML')]
-    public function testInvalidXML($filename)
+    public function testInvalidXML($filename): void
     {
         $reader = $this->getMockForAbstractClass('PHPExcel_Reader_Abstract');
         $expectedResult = 'FAILURE: Should throw an Exception rather than return a value';
@@ -26,7 +26,7 @@ class XEEValidatorTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerInvalidXML()
+    public static function providerInvalidXML(): array
     {
         $tests = [];
         foreach (glob('rawTestData/Reader/XEETestInvalid*.xml') as $file) {
@@ -36,14 +36,14 @@ class XEEValidatorTest extends PHPUnit\Framework\TestCase
     }
 
     #[DataProvider('providerValidXML')]
-    public function testValidXML($filename, $expectedResult)
+    public function testValidXML($filename, $expectedResult): void
     {
         $reader = $this->getMockForAbstractClass('PHPExcel_Reader_Abstract');
         $result = $reader->securityScanFile($filename);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerValidXML()
+    public static function providerValidXML(): array
     {
         $tests = [];
         foreach (glob('rawTestData/Reader/XEETestValid*.xml') as $file) {
