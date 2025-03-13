@@ -36,7 +36,7 @@ define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 date_default_timezone_set('Europe/London');
 
 /** Include PHPExcel */
-require_once dirname(__FILE__) . '/../Classes/PHPExcel.php';
+require_once __DIR__ . '/../Classes/PHPExcel.php';
 
 
 // Create new PHPExcel object
@@ -59,23 +59,23 @@ echo date('H:i:s') , " Add some data" , EOL;
 $objPHPExcel->setActiveSheetIndex(0);
 
 $objPHPExcel->getActiveSheet()->getStyle('A1:T100')->applyFromArray(
-	array('fill' 	=> array(
+	['fill' 	=> [
 								'type'		=> PHPExcel_Style_Fill::FILL_SOLID,
-								'color'		=> array('argb' => 'FFCCFFCC')
-							),
-		  'borders' => array(
-								'bottom'	=> array('style' => PHPExcel_Style_Border::BORDER_THIN),
-								'right'		=> array('style' => PHPExcel_Style_Border::BORDER_MEDIUM)
-							)
-		 )
+								'color'		=> ['argb' => 'FFCCFFCC']
+							],
+		  'borders' => [
+								'bottom'	=> ['style' => PHPExcel_Style_Border::BORDER_THIN],
+								'right'		=> ['style' => PHPExcel_Style_Border::BORDER_MEDIUM]
+							]
+		 ]
 	);
 
 $objPHPExcel->getActiveSheet()->getStyle('C5:R95')->applyFromArray(
-	array('fill' 	=> array(
+	['fill' 	=> [
 								'type'		=> PHPExcel_Style_Fill::FILL_SOLID,
-								'color'		=> array('argb' => 'FFFFFF00')
-							),
-		 )
+								'color'		=> ['argb' => 'FFFFFF00']
+							],
+		 ]
 	);
 
 // Save Excel 2007 file

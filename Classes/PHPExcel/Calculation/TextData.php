@@ -5,7 +5,7 @@ if (!defined('PHPEXCEL_ROOT')) {
     /**
      * @ignore
      */
-    define('PHPEXCEL_ROOT', dirname(__FILE__) . '/../../');
+    define('PHPEXCEL_ROOT', __DIR__ . '/../../');
     require(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
 }
 
@@ -214,7 +214,7 @@ class PHPExcel_Calculation_TextData
         if ($decimals > 0) {
             $mask .= '.' . str_repeat('0', $decimals);
         } else {
-            $round = pow(10, abs($decimals));
+            $round = 10 ** abs($decimals);
             if ($value < 0) {
                 $round = 0-$round;
             }

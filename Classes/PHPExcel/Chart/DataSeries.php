@@ -103,21 +103,21 @@ class PHPExcel_Chart_DataSeries
      *
      * @var array of integer
      */
-    private $plotOrder = array();
+    private $plotOrder = [];
 
     /**
      * Plot Label
      *
      * @var array of PHPExcel_Chart_DataSeriesValues
      */
-    private $plotLabel = array();
+    private $plotLabel = [];
 
     /**
      * Plot Category
      *
      * @var array of PHPExcel_Chart_DataSeriesValues
      */
-    private $plotCategory = array();
+    private $plotCategory = [];
 
     /**
      * Smooth Line
@@ -131,12 +131,12 @@ class PHPExcel_Chart_DataSeries
      *
      * @var array of PHPExcel_Chart_DataSeriesValues
      */
-    private $plotValues = array();
+    private $plotValues = [];
 
     /**
      * Create a new PHPExcel_Chart_DataSeries
      */
-    public function __construct($plotType = null, $plotGrouping = null, $plotOrder = array(), $plotLabel = array(), $plotCategory = array(), $plotValues = array(), $plotDirection = null, $smoothLine = null, $plotStyle = null)
+    public function __construct($plotType = null, $plotGrouping = null, $plotOrder = [], $plotLabel = [], $plotCategory = [], $plotValues = [], $plotDirection = null, $smoothLine = null, $plotStyle = null)
     {
         $this->plotType = $plotType;
         $this->plotGrouping = $plotGrouping;

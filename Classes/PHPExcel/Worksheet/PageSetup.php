@@ -237,14 +237,14 @@ class PHPExcel_Worksheet_PageSetup
      *
      * @var array Containing start column and end column, empty array if option unset
      */
-    private $columnsToRepeatAtLeft = array('', '');
+    private $columnsToRepeatAtLeft = ['', ''];
 
     /**
      * Rows to repeat at top
      *
      * @var array Containing start row number and end row number, empty array if option unset
      */
-    private $rowsToRepeatAtTop = array(0, 0);
+    private $rowsToRepeatAtTop = [0, 0];
 
     /**
      * Center page horizontally
@@ -484,7 +484,7 @@ class PHPExcel_Worksheet_PageSetup
      */
     public function setColumnsToRepeatAtLeftByStartAndEnd($pStart = 'A', $pEnd = 'A')
     {
-        $this->columnsToRepeatAtLeft = array($pStart, $pEnd);
+        $this->columnsToRepeatAtLeft = [$pStart, $pEnd];
         return $this;
     }
 
@@ -537,7 +537,7 @@ class PHPExcel_Worksheet_PageSetup
      */
     public function setRowsToRepeatAtTopByStartAndEnd($pStart = 1, $pEnd = 1)
     {
-        $this->rowsToRepeatAtTop = array($pStart, $pEnd);
+        $this->rowsToRepeatAtTop = [$pStart, $pEnd];
         return $this;
     }
 
@@ -705,7 +705,7 @@ class PHPExcel_Worksheet_PageSetup
                 if ($index > count($printAreas)) {
                     throw new PHPExcel_Exception('Invalid index for setting print range.');
                 }
-                $printAreas = array_merge(array_slice($printAreas, 0, $index), array($value), array_slice($printAreas, $index));
+                $printAreas = array_merge(array_slice($printAreas, 0, $index), [$value], array_slice($printAreas, $index));
                 $this->printArea = implode(',', $printAreas);
             }
         } else {

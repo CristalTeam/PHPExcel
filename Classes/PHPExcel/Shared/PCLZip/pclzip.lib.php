@@ -275,7 +275,7 @@ class PclZip
         $this->privErrorReset();
 
         // ----- Set default values
-        $v_options = array();
+        $v_options = [];
         $v_options[PCLZIP_OPT_NO_COMPRESSION] = false;
 
         // ----- Look for variable options arguments
@@ -291,9 +291,9 @@ class PclZip
             $v_size--;
 
             // ----- Look for first arg
-            if ((is_integer($v_arg_list[0])) && ($v_arg_list[0] > 77000)) {
+            if ((is_int($v_arg_list[0])) && ($v_arg_list[0] > 77000)) {
                 // ----- Parse the options
-                $v_result = $this->privParseOptions($v_arg_list, $v_size, $v_options, array (
+                $v_result = $this->privParseOptions($v_arg_list, $v_size, $v_options,  [
                     PCLZIP_OPT_REMOVE_PATH => 'optional',
                     PCLZIP_OPT_REMOVE_ALL_PATH => 'optional',
                     PCLZIP_OPT_ADD_PATH => 'optional',
@@ -305,7 +305,7 @@ class PclZip
                     PCLZIP_OPT_TEMP_FILE_ON => 'optional',
                     PCLZIP_OPT_TEMP_FILE_OFF => 'optional'
                     //, PCLZIP_OPT_CRYPT => 'optional'
-                ));
+                ]);
                 if ($v_result != 1) {
                     return 0;
                 }
@@ -330,10 +330,10 @@ class PclZip
         $this->privOptionDefaultThreshold($v_options);
 
         // ----- Init
-        $v_string_list = array();
-        $v_att_list = array();
-        $v_filedescr_list = array();
-        $p_result_list = array();
+        $v_string_list = [];
+        $v_att_list = [];
+        $v_filedescr_list = [];
+        $p_result_list = [];
 
         // ----- Look if the $p_filelist is really an array
         if (is_array($p_filelist)) {
@@ -356,7 +356,7 @@ class PclZip
         }
 
         // ----- Reformat the string list
-        if (sizeof($v_string_list) != 0) {
+        if (count($v_string_list) != 0) {
             foreach ($v_string_list as $v_string) {
                 if ($v_string != '') {
                     $v_att_list[][PCLZIP_ATT_FILE_NAME] = $v_string;
@@ -366,14 +366,14 @@ class PclZip
         }
 
         // ----- For each file in the list check the attributes
-        $v_supported_attributes = array(
+        $v_supported_attributes = [
             PCLZIP_ATT_FILE_NAME => 'mandatory',
             PCLZIP_ATT_FILE_NEW_SHORT_NAME => 'optional',
             PCLZIP_ATT_FILE_NEW_FULL_NAME => 'optional',
             PCLZIP_ATT_FILE_MTIME => 'optional',
             PCLZIP_ATT_FILE_CONTENT => 'optional',
             PCLZIP_ATT_FILE_COMMENT => 'optional'
-        );
+        ];
         foreach ($v_att_list as $v_entry) {
             $v_result = $this->privFileDescrParseAtt($v_entry, $v_filedescr_list[], $v_options, $v_supported_attributes);
             if ($v_result != 1) {
@@ -441,7 +441,7 @@ class PclZip
         $this->privErrorReset();
 
         // ----- Set default values
-        $v_options = array();
+        $v_options = [];
         $v_options[PCLZIP_OPT_NO_COMPRESSION] = false;
 
         // ----- Look for variable options arguments
@@ -457,9 +457,9 @@ class PclZip
             $v_size--;
 
             // ----- Look for first arg
-            if ((is_integer($v_arg_list[0])) && ($v_arg_list[0] > 77000)) {
+            if ((is_int($v_arg_list[0])) && ($v_arg_list[0] > 77000)) {
                 // ----- Parse the options
-                $v_result = $this->privParseOptions($v_arg_list, $v_size, $v_options, array (
+                $v_result = $this->privParseOptions($v_arg_list, $v_size, $v_options,  [
                     PCLZIP_OPT_REMOVE_PATH => 'optional',
                     PCLZIP_OPT_REMOVE_ALL_PATH => 'optional',
                     PCLZIP_OPT_ADD_PATH => 'optional',
@@ -473,7 +473,7 @@ class PclZip
                     PCLZIP_OPT_TEMP_FILE_ON => 'optional',
                     PCLZIP_OPT_TEMP_FILE_OFF => 'optional'
                     //, PCLZIP_OPT_CRYPT => 'optional'
-                ));
+                ]);
                 if ($v_result != 1) {
                     return 0;
                 }
@@ -501,10 +501,10 @@ class PclZip
         $this->privOptionDefaultThreshold($v_options);
 
         // ----- Init
-        $v_string_list = array();
-        $v_att_list = array();
-        $v_filedescr_list = array();
-        $p_result_list = array();
+        $v_string_list = [];
+        $v_att_list = [];
+        $v_filedescr_list = [];
+        $p_result_list = [];
 
         // ----- Look if the $p_filelist is really an array
         if (is_array($p_filelist)) {
@@ -527,21 +527,21 @@ class PclZip
         }
 
         // ----- Reformat the string list
-        if (sizeof($v_string_list) != 0) {
+        if (count($v_string_list) != 0) {
             foreach ($v_string_list as $v_string) {
                 $v_att_list[][PCLZIP_ATT_FILE_NAME] = $v_string;
             }
         }
 
         // ----- For each file in the list check the attributes
-        $v_supported_attributes = array(
+        $v_supported_attributes = [
           PCLZIP_ATT_FILE_NAME => 'mandatory',
           PCLZIP_ATT_FILE_NEW_SHORT_NAME => 'optional',
           PCLZIP_ATT_FILE_NEW_FULL_NAME => 'optional',
           PCLZIP_ATT_FILE_MTIME => 'optional',
           PCLZIP_ATT_FILE_CONTENT => 'optional',
           PCLZIP_ATT_FILE_COMMENT => 'optional',
-        );
+        ];
         foreach ($v_att_list as $v_entry) {
             $v_result = $this->privFileDescrParseAtt($v_entry, $v_filedescr_list[], $v_options, $v_supported_attributes);
             if ($v_result != 1) {
@@ -620,7 +620,7 @@ class PclZip
         }
 
         // ----- Call the extracting fct
-        $p_list = array();
+        $p_list = [];
         if (($v_result = $this->privList($p_list)) != 1) {
             unset($p_list);
             return(0);
@@ -676,7 +676,7 @@ class PclZip
         }
 
         // ----- Set default values
-        $v_options = array();
+        $v_options = [];
     //        $v_path = "./";
         $v_path = '';
         $v_remove_path = "";
@@ -694,9 +694,9 @@ class PclZip
             $v_arg_list = func_get_args();
 
             // ----- Look for first arg
-            if ((is_integer($v_arg_list[0])) && ($v_arg_list[0] > 77000)) {
+            if ((is_int($v_arg_list[0])) && ($v_arg_list[0] > 77000)) {
                 // ----- Parse the options
-                $v_result = $this->privParseOptions($v_arg_list, $v_size, $v_options, array (
+                $v_result = $this->privParseOptions($v_arg_list, $v_size, $v_options,  [
                   PCLZIP_OPT_PATH => 'optional',
                   PCLZIP_OPT_REMOVE_PATH => 'optional',
                   PCLZIP_OPT_REMOVE_ALL_PATH => 'optional',
@@ -716,7 +716,7 @@ class PclZip
                   PCLZIP_OPT_TEMP_FILE_THRESHOLD => 'optional',
                   PCLZIP_OPT_TEMP_FILE_ON => 'optional',
                   PCLZIP_OPT_TEMP_FILE_OFF => 'optional'
-                ));
+                ]);
                 if ($v_result != 1) {
                     return 0;
                 }
@@ -764,7 +764,7 @@ class PclZip
         // ----- Trace
 
         // ----- Call the extracting fct
-        $p_list = array();
+        $p_list = [];
         $v_result = $this->privExtractByRule($p_list, $v_path, $v_remove_path, $v_remove_all_path, $v_options);
         if ($v_result < 1) {
             unset($p_list);
@@ -827,7 +827,7 @@ class PclZip
         }
 
         // ----- Set default values
-        $v_options = array();
+        $v_options = [];
     //        $v_path = "./";
         $v_path = '';
         $v_remove_path = "";
@@ -849,9 +849,9 @@ class PclZip
             $v_size--;
 
             // ----- Look for first arg
-            if ((is_integer($v_arg_list[0])) && ($v_arg_list[0] > 77000)) {
+            if ((is_int($v_arg_list[0])) && ($v_arg_list[0] > 77000)) {
                 // ----- Parse the options
-                $v_result = $this->privParseOptions($v_arg_list, $v_size, $v_options, array(
+                $v_result = $this->privParseOptions($v_arg_list, $v_size, $v_options, [
                     PCLZIP_OPT_PATH => 'optional',
                     PCLZIP_OPT_REMOVE_PATH => 'optional',
                     PCLZIP_OPT_REMOVE_ALL_PATH => 'optional',
@@ -866,7 +866,7 @@ class PclZip
                     PCLZIP_OPT_TEMP_FILE_THRESHOLD => 'optional',
                     PCLZIP_OPT_TEMP_FILE_ON => 'optional',
                     PCLZIP_OPT_TEMP_FILE_OFF => 'optional'
-                ));
+                ]);
                 if ($v_result != 1) {
                     return 0;
                 }
@@ -918,9 +918,9 @@ class PclZip
         // ----- Trick
         // Here I want to reuse extractByRule(), so I need to parse the $p_index
         // with privParseOptions()
-        $v_arg_trick = array (PCLZIP_OPT_BY_INDEX, $p_index);
-        $v_options_trick = array();
-        $v_result = $this->privParseOptions($v_arg_trick, sizeof($v_arg_trick), $v_options_trick, array (PCLZIP_OPT_BY_INDEX => 'optional'));
+        $v_arg_trick =  [PCLZIP_OPT_BY_INDEX, $p_index];
+        $v_options_trick = [];
+        $v_result = $this->privParseOptions($v_arg_trick, count($v_arg_trick), $v_options_trick,  [PCLZIP_OPT_BY_INDEX => 'optional']);
         if ($v_result != 1) {
             return 0;
         }
@@ -970,7 +970,7 @@ class PclZip
         }
 
         // ----- Set default values
-        $v_options = array();
+        $v_options = [];
 
         // ----- Look for variable options arguments
         $v_size = func_num_args();
@@ -981,12 +981,12 @@ class PclZip
             $v_arg_list = func_get_args();
 
             // ----- Parse the options
-            $v_result = $this->privParseOptions($v_arg_list, $v_size, $v_options, array (
+            $v_result = $this->privParseOptions($v_arg_list, $v_size, $v_options,  [
                 PCLZIP_OPT_BY_NAME => 'optional',
                 PCLZIP_OPT_BY_EREG => 'optional',
                 PCLZIP_OPT_BY_PREG => 'optional',
                 PCLZIP_OPT_BY_INDEX => 'optional'
-            ));
+            ]);
             if ($v_result != 1) {
                     return 0;
             }
@@ -996,7 +996,7 @@ class PclZip
         $this->privDisableMagicQuotes();
 
         // ----- Call the delete fct
-        $v_list = array();
+        $v_list = [];
         if (($v_result = $this->privDeleteByRule($v_list, $v_options)) != 1) {
             $this->privSwapBackMagicQuotes();
             unset($v_list);
@@ -1057,7 +1057,7 @@ class PclZip
         }
 
         // ----- Default properties
-        $v_prop = array();
+        $v_prop = [];
         $v_prop['comment'] = '';
         $v_prop['nb'] = 0;
         $v_prop['status'] = 'not_exist';
@@ -1076,7 +1076,7 @@ class PclZip
             }
 
             // ----- Read the central directory informations
-            $v_central_dir = array();
+            $v_central_dir = [];
             if (($v_result = $this->privReadEndCentralDir($v_central_dir)) != 1) {
                 $this->privSwapBackMagicQuotes();
                 return 0;
@@ -1219,7 +1219,7 @@ class PclZip
     // --------------------------------------------------------------------------------
     public function errorName($p_with_code = false)
     {
-        $v_name = array(
+        $v_name = [
             PCLZIP_ERR_NO_ERROR => 'PCLZIP_ERR_NO_ERROR',
             PCLZIP_ERR_WRITE_OPEN_FAIL => 'PCLZIP_ERR_WRITE_OPEN_FAIL',
             PCLZIP_ERR_READ_OPEN_FAIL => 'PCLZIP_ERR_READ_OPEN_FAIL',
@@ -1241,7 +1241,7 @@ class PclZip
             PCLZIP_ERR_UNSUPPORTED_ENCRYPTION => 'PCLZIP_ERR_UNSUPPORTED_ENCRYPTION',
             PCLZIP_ERR_INVALID_ATTRIBUTE_VALUE => 'PCLZIP_ERR_INVALID_ATTRIBUTE_VALUE',
             PCLZIP_ERR_DIRECTORY_RESTRICTION => 'PCLZIP_ERR_DIRECTORY_RESTRICTION',
-        );
+        ];
 
         if (isset($v_name[$this->error_code])) {
             $v_value = $v_name[$this->error_code];
@@ -1403,7 +1403,7 @@ class PclZip
 
                     // ----- Check the value
                     $v_value = $p_options_list[$i+1];
-                    if ((!is_integer($v_value)) || ($v_value<0)) {
+                    if ((!is_int($v_value)) || ($v_value<0)) {
                         PclZip::privErrorLog(PCLZIP_ERR_INVALID_OPTION_VALUE, "Integer expected for option '".PclZipUtilOptionText($p_options_list[$i])."'");
                         return PclZip::errorCode();
                     }
@@ -1541,14 +1541,14 @@ class PclZip
                     }
 
                     // ----- Get the value
-                    $v_work_list = array();
+                    $v_work_list = [];
                     if (is_string($p_options_list[$i+1])) {
                         // ----- Remove spaces
                         $p_options_list[$i+1] = strtr($p_options_list[$i+1], ' ', '');
 
                         // ----- Parse items
                         $v_work_list = explode(",", $p_options_list[$i+1]);
-                    } elseif (is_integer($p_options_list[$i+1])) {
+                    } elseif (is_int($p_options_list[$i+1])) {
                             $v_work_list[0] = $p_options_list[$i+1].'-'.$p_options_list[$i+1];
                     } elseif (is_array($p_options_list[$i+1])) {
                             $v_work_list = $p_options_list[$i+1];
@@ -1566,10 +1566,10 @@ class PclZip
                     // ----- Check the format of each item
                     $v_sort_flag=false;
                     $v_sort_value=0;
-                    for ($j=0; $j<sizeof($v_work_list); $j++) {
+                    for ($j=0; $j<count($v_work_list); $j++) {
                         // ----- Explode the item
                         $v_item_list = explode("-", $v_work_list[$j]);
-                        $v_size_item_list = sizeof($v_item_list);
+                        $v_size_item_list = count($v_item_list);
 
                         // ----- TBC : Here we might check that each item is a
                         // real integer ...
@@ -1729,14 +1729,14 @@ class PclZip
 
         if ($last == 'g') {
             //$v_memory_limit = $v_memory_limit*1024*1024*1024;
-            $v_memory_limit = $v_memory_limit*1073741824;
+            $v_memory_limit *= 1073741824;
         }
         if ($last == 'm') {
             //$v_memory_limit = $v_memory_limit*1024*1024;
-            $v_memory_limit = $v_memory_limit*1048576;
+            $v_memory_limit *= 1048576;
         }
         if ($last == 'k') {
-            $v_memory_limit = $v_memory_limit*1024;
+            $v_memory_limit *= 1024;
         }
 
         $p_options[PCLZIP_OPT_TEMP_FILE_THRESHOLD] = floor($v_memory_limit*PCLZIP_TEMPORARY_FILE_RATIO);
@@ -1824,7 +1824,7 @@ class PclZip
                     $p_filedescr['comment'] = $v_value;
                     break;
                 case PCLZIP_ATT_FILE_MTIME:
-                    if (!is_integer($v_value)) {
+                    if (!is_int($v_value)) {
                         PclZip::privErrorLog(PCLZIP_ERR_INVALID_ATTRIBUTE_VALUE, "Invalid type ".gettype($v_value).". Integer expected for attribute '".PclZipUtilOptionText($v_key)."'");
                         return PclZip::errorCode();
                     }
@@ -1880,10 +1880,10 @@ class PclZip
         $v_result=1;
 
         // ----- Create a result list
-        $v_result_list = array();
+        $v_result_list = [];
 
         // ----- Look each entry
-        for ($i=0; $i<sizeof($p_filedescr_list); $i++) {
+        for ($i=0; $i<count($p_filedescr_list); $i++) {
             // ----- Get filedescr
             $v_descr = $p_filedescr_list[$i];
 
@@ -1920,12 +1920,12 @@ class PclZip
             $this->privCalculateStoredFilename($v_descr, $p_options);
 
             // ----- Add the descriptor in result list
-            $v_result_list[sizeof($v_result_list)] = $v_descr;
+            $v_result_list[count($v_result_list)] = $v_descr;
 
             // ----- Look for folder
             if ($v_descr['type'] == 'folder') {
                 // ----- List of items in folder
-                $v_dirlist_descr = array();
+                $v_dirlist_descr = [];
                 $v_dirlist_nb = 0;
                 if ($v_folder_handler = @opendir($v_descr['filename'])) {
                     while (($v_item_handler = @readdir($v_folder_handler)) !== false) {
@@ -1989,7 +1989,7 @@ class PclZip
     public function privCreate($p_filedescr_list, &$p_result_list, &$p_options)
     {
         $v_result=1;
-        $v_list_detail = array();
+        $v_list_detail = [];
 
         // ----- Magic quotes trick
         $this->privDisableMagicQuotes();
@@ -2023,7 +2023,7 @@ class PclZip
     public function privAdd($p_filedescr_list, &$p_result_list, &$p_options)
     {
         $v_result=1;
-        $v_list_detail = array();
+        $v_list_detail = [];
 
         // ----- Look if the archive exists or is empty
         if ((!is_file($this->zipname)) || (filesize($this->zipname) == 0)) {
@@ -2046,7 +2046,7 @@ class PclZip
         }
 
         // ----- Read the central directory informations
-        $v_central_dir = array();
+        $v_central_dir = [];
         if (($v_result = $this->privReadEndCentralDir($v_central_dir)) != 1) {
             $this->privCloseFd();
             $this->privSwapBackMagicQuotes();
@@ -2088,7 +2088,7 @@ class PclZip
         $v_zip_temp_fd = $v_swap;
 
         // ----- Add the files
-        $v_header_list = array();
+        $v_header_list = [];
         if (($v_result = $this->privAddFileList($p_filedescr_list, $v_header_list, $p_options)) != 1) {
             fclose($v_zip_temp_fd);
             $this->privCloseFd();
@@ -2112,7 +2112,7 @@ class PclZip
         }
 
         // ----- Create the Central Dir files header
-        for ($i=0, $v_count=0; $i<sizeof($v_header_list); $i++) {
+        for ($i=0, $v_count=0; $i<count($v_header_list); $i++) {
             // ----- Create the file header
             if ($v_header_list[$i]['status'] == 'ok') {
                 if (($v_result = $this->privWriteCentralFileHeader($v_header_list[$i])) != 1) {
@@ -2137,7 +2137,7 @@ class PclZip
             $v_comment = $p_options[PCLZIP_OPT_COMMENT];
         }
         if (isset($p_options[PCLZIP_OPT_ADD_COMMENT])) {
-            $v_comment = $v_comment.$p_options[PCLZIP_OPT_ADD_COMMENT];
+            $v_comment .= $p_options[PCLZIP_OPT_ADD_COMMENT];
         }
         if (isset($p_options[PCLZIP_OPT_PREPEND_COMMENT])) {
             $v_comment = $p_options[PCLZIP_OPT_PREPEND_COMMENT].$v_comment;
@@ -2254,7 +2254,7 @@ class PclZip
         $v_result=1;
 
         // ----- Add the files
-        $v_header_list = array();
+        $v_header_list = [];
         if (($v_result = $this->privAddFileList($p_filedescr_list, $v_header_list, $p_options)) != 1) {
             // ----- Return
             return $v_result;
@@ -2264,7 +2264,7 @@ class PclZip
         $v_offset = @ftell($this->zip_fd);
 
         // ----- Create the Central Dir files header
-        for ($i=0, $v_count=0; $i<sizeof($v_header_list); $i++) {
+        for ($i=0, $v_count=0; $i<count($v_header_list); $i++) {
             // ----- Create the file header
             if ($v_header_list[$i]['status'] == 'ok') {
                 if (($v_result = $this->privWriteCentralFileHeader($v_header_list[$i])) != 1) {
@@ -2313,13 +2313,13 @@ class PclZip
     public function privAddFileList($p_filedescr_list, &$p_result_list, &$p_options)
     {
         $v_result=1;
-        $v_header = array();
+        $v_header = [];
 
         // ----- Recuperate the current number of elt in list
-        $v_nb = sizeof($p_result_list);
+        $v_nb = count($p_result_list);
 
         // ----- Loop on the files
-        for ($j=0; ($j<sizeof($p_filedescr_list)) && ($v_result==1); $j++) {
+        for ($j=0; ($j<count($p_filedescr_list)) && ($v_result==1); $j++) {
             // ----- Format the filename
             $p_filedescr_list[$j]['filename'] = PclZipUtilTranslateWinPath($p_filedescr_list[$j]['filename'], false);
 
@@ -2444,7 +2444,7 @@ class PclZip
         // ----- Look for pre-add callback
         if (isset($p_options[PCLZIP_CB_PRE_ADD])) {
             // ----- Generate a local information
-            $v_local_header = array();
+            $v_local_header = [];
             $this->privConvertHeader2FileInfo($p_header, $v_local_header);
 
             // ----- Call the callback
@@ -2578,7 +2578,7 @@ class PclZip
         // ----- Look for post-add callback
         if (isset($p_options[PCLZIP_CB_POST_ADD])) {
             // ----- Generate a local information
-            $v_local_header = array();
+            $v_local_header = [];
             $this->privConvertHeader2FileInfo($p_header, $v_local_header);
 
             // ----- Call the callback
@@ -2634,7 +2634,7 @@ class PclZip
             $v_read_size = ($v_size < PCLZIP_READ_BLOCK_SIZE ? $v_size : PCLZIP_READ_BLOCK_SIZE);
             $v_buffer = @fread($v_file, $v_read_size);
             //$v_binary_data = pack('a'.$v_read_size, $v_buffer);
-            @gzputs($v_file_compressed, $v_buffer, $v_read_size);
+            @gzwrite($v_file_compressed, $v_buffer, $v_read_size);
             $v_size -= $v_read_size;
         }
 
@@ -2830,14 +2830,14 @@ class PclZip
         $v_binary_data = pack("VvvvvvVVVvv", 0x04034b50, $p_header['version_extracted'], $p_header['flag'], $p_header['compression'], $v_mtime, $v_mdate, $p_header['crc'], $p_header['compressed_size'], $p_header['size'], strlen($p_header['stored_filename']), $p_header['extra_len']);
 
         // ----- Write the first 148 bytes of the header in the archive
-        fputs($this->zip_fd, $v_binary_data, 30);
+        fwrite($this->zip_fd, $v_binary_data, 30);
 
         // ----- Write the variable fields
         if (strlen($p_header['stored_filename']) != 0) {
-            fputs($this->zip_fd, $p_header['stored_filename'], strlen($p_header['stored_filename']));
+            fwrite($this->zip_fd, $p_header['stored_filename'], strlen($p_header['stored_filename']));
         }
         if ($p_header['extra_len'] != 0) {
-            fputs($this->zip_fd, $p_header['extra'], $p_header['extra_len']);
+            fwrite($this->zip_fd, $p_header['extra'], $p_header['extra_len']);
         }
 
         // ----- Return
@@ -2869,17 +2869,17 @@ class PclZip
         $v_binary_data = pack("VvvvvvvVVVvvvvvVV", 0x02014b50, $p_header['version'], $p_header['version_extracted'], $p_header['flag'], $p_header['compression'], $v_mtime, $v_mdate, $p_header['crc'], $p_header['compressed_size'], $p_header['size'], strlen($p_header['stored_filename']), $p_header['extra_len'], $p_header['comment_len'], $p_header['disk'], $p_header['internal'], $p_header['external'], $p_header['offset']);
 
         // ----- Write the 42 bytes of the header in the zip file
-        fputs($this->zip_fd, $v_binary_data, 46);
+        fwrite($this->zip_fd, $v_binary_data, 46);
 
         // ----- Write the variable fields
         if (strlen($p_header['stored_filename']) != 0) {
-            fputs($this->zip_fd, $p_header['stored_filename'], strlen($p_header['stored_filename']));
+            fwrite($this->zip_fd, $p_header['stored_filename'], strlen($p_header['stored_filename']));
         }
         if ($p_header['extra_len'] != 0) {
-            fputs($this->zip_fd, $p_header['extra'], $p_header['extra_len']);
+            fwrite($this->zip_fd, $p_header['extra'], $p_header['extra_len']);
         }
         if ($p_header['comment_len'] != 0) {
-            fputs($this->zip_fd, $p_header['comment'], $p_header['comment_len']);
+            fwrite($this->zip_fd, $p_header['comment'], $p_header['comment_len']);
         }
 
         // ----- Return
@@ -2901,11 +2901,11 @@ class PclZip
         $v_binary_data = pack("VvvvvVVv", 0x06054b50, 0, 0, $p_nb_entries, $p_nb_entries, $p_size, $p_offset, strlen($p_comment));
 
         // ----- Write the 22 bytes of the header in the zip file
-        fputs($this->zip_fd, $v_binary_data, 22);
+        fwrite($this->zip_fd, $v_binary_data, 22);
 
         // ----- Write the variable fields
         if (strlen($p_comment) != 0) {
-            fputs($this->zip_fd, $p_comment, strlen($p_comment));
+            fwrite($this->zip_fd, $p_comment, strlen($p_comment));
         }
 
         // ----- Return
@@ -2939,7 +2939,7 @@ class PclZip
         }
 
         // ----- Read the central directory informations
-        $v_central_dir = array();
+        $v_central_dir = [];
         if (($v_result = $this->privReadEndCentralDir($v_central_dir)) != 1) {
             $this->privSwapBackMagicQuotes();
             return $v_result;
@@ -3073,7 +3073,7 @@ class PclZip
         }
 
         // ----- Read the central directory informations
-        $v_central_dir = array();
+        $v_central_dir = [];
         if (($v_result = $this->privReadEndCentralDir($v_central_dir)) != 1) {
             // ----- Close the zip file
             $this->privCloseFd();
@@ -3103,7 +3103,7 @@ class PclZip
             }
 
             // ----- Read the file header
-            $v_header = array();
+            $v_header = [];
             if (($v_result = $this->privReadCentralFileHeader($v_header)) != 1) {
                 // ----- Close the zip file
                 $this->privCloseFd();
@@ -3124,7 +3124,7 @@ class PclZip
             // ----- Look for extract by name rule
             if ((isset($p_options[PCLZIP_OPT_BY_NAME])) && ($p_options[PCLZIP_OPT_BY_NAME] != 0)) {
                 // ----- Look if the filename is in the list
-                for ($j=0; ($j<sizeof($p_options[PCLZIP_OPT_BY_NAME])) && (!$v_extract); $j++) {
+                for ($j=0; ($j<count($p_options[PCLZIP_OPT_BY_NAME])) && (!$v_extract); $j++) {
                     // ----- Look for a directory
                     if (substr($p_options[PCLZIP_OPT_BY_NAME][$j], -1) == "/") {
                         // ----- Look if the directory is in the filename path
@@ -3144,7 +3144,7 @@ class PclZip
             } elseif ((isset($p_options[PCLZIP_OPT_BY_INDEX])) && ($p_options[PCLZIP_OPT_BY_INDEX] != 0)) {
                 // ----- Look for extract by index rule
                 // ----- Look if the index is in the list
-                for ($j=$j_start; ($j<sizeof($p_options[PCLZIP_OPT_BY_INDEX])) && (!$v_extract); $j++) {
+                for ($j=$j_start; ($j<count($p_options[PCLZIP_OPT_BY_INDEX])) && (!$v_extract); $j++) {
                     if (($i>=$p_options[PCLZIP_OPT_BY_INDEX][$j]['start']) && ($i<=$p_options[PCLZIP_OPT_BY_INDEX][$j]['end'])) {
                             $v_extract = true;
                     }
@@ -3376,7 +3376,7 @@ class PclZip
         // ----- Look for pre-extract callback
         if (isset($p_options[PCLZIP_CB_PRE_EXTRACT])) {
             // ----- Generate a local information
-            $v_local_header = array();
+            $v_local_header = [];
             $this->privConvertHeader2FileInfo($p_entry, $v_local_header);
 
             // ----- Call the callback
@@ -3418,7 +3418,7 @@ class PclZip
                         PclZip::privErrorLog(PCLZIP_ERR_ALREADY_A_DIRECTORY, "Filename '".$p_entry['filename']."' is already used by an existing directory");
                         return PclZip::errorCode();
                     }
-                } elseif (!is_writeable($p_entry['filename'])) {
+                } elseif (!is_writable($p_entry['filename'])) {
                     // ----- Look if file is write protected
                     // ----- Change the file status
                     $p_entry['status'] = "write_protected";
@@ -3565,7 +3565,7 @@ class PclZip
         } elseif (isset($p_options[PCLZIP_CB_POST_EXTRACT])) {
             // ----- Look for post-extract callback
             // ----- Generate a local information
-            $v_local_header = array();
+            $v_local_header = [];
             $this->privConvertHeader2FileInfo($p_entry, $v_local_header);
 
             // ----- Call the callback
@@ -3681,7 +3681,7 @@ class PclZip
         // ----- Look for pre-extract callback
         if (isset($p_options[PCLZIP_CB_PRE_EXTRACT])) {
             // ----- Generate a local information
-            $v_local_header = array();
+            $v_local_header = [];
             $this->privConvertHeader2FileInfo($p_entry, $v_local_header);
 
             // ----- Call the callback
@@ -3743,7 +3743,7 @@ class PclZip
             // ----- Look for post-extract callback
 
             // ----- Generate a local information
-            $v_local_header = array();
+            $v_local_header = [];
             $this->privConvertHeader2FileInfo($p_entry, $v_local_header);
 
             // ----- Call the callback
@@ -3773,7 +3773,7 @@ class PclZip
         $v_result=1;
 
         // ----- Read the file header
-        $v_header = array();
+        $v_header = [];
         if (($v_result = $this->privReadFileHeader($v_header)) != 1) {
             // ----- Return
             return $v_result;
@@ -3787,7 +3787,7 @@ class PclZip
         // ----- Look for pre-extract callback
         if (isset($p_options[PCLZIP_CB_PRE_EXTRACT])) {
             // ----- Generate a local information
-            $v_local_header = array();
+            $v_local_header = [];
             $this->privConvertHeader2FileInfo($p_entry, $v_local_header);
 
             // ----- Call the callback
@@ -3843,7 +3843,7 @@ class PclZip
         } elseif (isset($p_options[PCLZIP_CB_POST_EXTRACT])) {
             // ----- Look for post-extract callback
             // ----- Generate a local information
-            $v_local_header = array();
+            $v_local_header = [];
             $this->privConvertHeader2FileInfo($p_entry, $v_local_header);
 
             // ----- Swap the content to header
@@ -4264,7 +4264,7 @@ class PclZip
     public function privDeleteByRule(&$p_result_list, &$p_options)
     {
         $v_result=1;
-        $v_list_detail = array();
+        $v_list_detail = [];
 
         // ----- Open the zip file
         if (($v_result=$this->privOpenFd('rb')) != 1) {
@@ -4273,7 +4273,7 @@ class PclZip
         }
 
         // ----- Read the central directory informations
-        $v_central_dir = array();
+        $v_central_dir = [];
         if (($v_result = $this->privReadEndCentralDir($v_central_dir)) != 1) {
             $this->privCloseFd();
             return $v_result;
@@ -4298,11 +4298,11 @@ class PclZip
         }
 
         // ----- Read each entry
-        $v_header_list = array();
+        $v_header_list = [];
         $j_start = 0;
         for ($i=0, $v_nb_extracted=0; $i<$v_central_dir['entries']; $i++) {
             // ----- Read the file header
-            $v_header_list[$v_nb_extracted] = array();
+            $v_header_list[$v_nb_extracted] = [];
             if (($v_result = $this->privReadCentralFileHeader($v_header_list[$v_nb_extracted])) != 1) {
                 // ----- Close the zip file
                 $this->privCloseFd();
@@ -4320,7 +4320,7 @@ class PclZip
             // ----- Look for extract by name rule
             if ((isset($p_options[PCLZIP_OPT_BY_NAME])) && ($p_options[PCLZIP_OPT_BY_NAME] != 0)) {
                 // ----- Look if the filename is in the list
-                for ($j=0; ($j<sizeof($p_options[PCLZIP_OPT_BY_NAME])) && (!$v_found); $j++) {
+                for ($j=0; ($j<count($p_options[PCLZIP_OPT_BY_NAME])) && (!$v_found); $j++) {
                     // ----- Look for a directory
                     if (substr($p_options[PCLZIP_OPT_BY_NAME][$j], -1) == "/") {
                         // ----- Look if the directory is in the filename path
@@ -4342,7 +4342,7 @@ class PclZip
             } elseif ((isset($p_options[PCLZIP_OPT_BY_INDEX])) && ($p_options[PCLZIP_OPT_BY_INDEX] != 0)) {
                 // ----- Look for extract by index rule
                 // ----- Look if the index is in the list
-                for ($j=$j_start; ($j<sizeof($p_options[PCLZIP_OPT_BY_INDEX])) && (!$v_found); $j++) {
+                for ($j=$j_start; ($j<count($p_options[PCLZIP_OPT_BY_INDEX])) && (!$v_found); $j++) {
                     if (($i>=$p_options[PCLZIP_OPT_BY_INDEX][$j]['start']) && ($i<=$p_options[PCLZIP_OPT_BY_INDEX][$j]['end'])) {
                         $v_found = true;
                     }
@@ -4382,7 +4382,7 @@ class PclZip
             }
 
             // ----- Look which file need to be kept
-            for ($i=0; $i<sizeof($v_header_list); $i++) {
+            for ($i=0; $i<count($v_header_list); $i++) {
                 // ----- Calculate the position of the header
                 @rewind($this->zip_fd);
                 if (@fseek($this->zip_fd, $v_header_list[$i]['offset'])) {
@@ -4399,7 +4399,7 @@ class PclZip
                 }
 
                 // ----- Read the file header
-                $v_local_header = array();
+                $v_local_header = [];
                 if (($v_result = $this->privReadFileHeader($v_local_header)) != 1) {
                     // ----- Close the zip file
                     $this->privCloseFd();
@@ -4443,7 +4443,7 @@ class PclZip
             $v_offset = @ftell($v_temp_zip->zip_fd);
 
             // ----- Re-Create the Central Dir files header
-            for ($i=0; $i<sizeof($v_header_list); $i++) {
+            for ($i=0; $i<count($v_header_list); $i++) {
                 // ----- Create the file header
                 if (($v_result = $v_temp_zip->privWriteCentralFileHeader($v_header_list[$i])) != 1) {
                     $v_temp_zip->privCloseFd();
@@ -4469,7 +4469,7 @@ class PclZip
             $v_size = @ftell($v_temp_zip->zip_fd)-$v_offset;
 
             // ----- Create the central dir footer
-            if (($v_result = $v_temp_zip->privWriteCentralHeader(sizeof($v_header_list), $v_size, $v_offset, $v_comment)) != 1) {
+            if (($v_result = $v_temp_zip->privWriteCentralHeader(count($v_header_list), $v_size, $v_offset, $v_comment)) != 1) {
                     // ----- Reset the file list
                     unset($v_header_list);
                     $v_temp_zip->privCloseFd();
@@ -4603,7 +4603,7 @@ class PclZip
         }
 
         // ----- Read the central directory informations
-        $v_central_dir = array();
+        $v_central_dir = [];
         if (($v_result = $this->privReadEndCentralDir($v_central_dir)) != 1) {
             $this->privCloseFd();
             return $v_result;
@@ -4621,7 +4621,7 @@ class PclZip
         }
 
         // ----- Read the central directory informations
-        $v_central_dir_to_add = array();
+        $v_central_dir_to_add = [];
         if (($v_result = $p_archive_to_add->privReadEndCentralDir($v_central_dir_to_add)) != 1) {
             $this->privCloseFd();
             $p_archive_to_add->privCloseFd();
@@ -4910,7 +4910,7 @@ function PclZipUtilPathReduction($p_dir)
 
         // ----- Study directories from last to first
         $v_skip = 0;
-        for ($i=sizeof($v_list)-1; $i>=0; $i--) {
+        for ($i=count($v_list)-1; $i>=0; $i--) {
             // ----- Look for current path
             if ($v_list[$i] == ".") {
                 // ----- Ignore this directory
@@ -4927,7 +4927,7 @@ function PclZipUtilPathReduction($p_dir)
                         $v_result = $p_dir;
                         $v_skip = 0;
                     }
-                } elseif ($i == (sizeof($v_list)-1)) {
+                } elseif ($i == (count($v_list)-1)) {
                     // ----- Last '/' i.e. indicates a directory
                     $v_result = $v_list[$i];
                 } else {
@@ -4940,7 +4940,7 @@ function PclZipUtilPathReduction($p_dir)
                 if ($v_skip > 0) {
                     $v_skip--;
                 } else {
-                    $v_result = $v_list[$i].($i!=(sizeof($v_list)-1)?"/".$v_result:"");
+                    $v_result = $v_list[$i].($i!=(count($v_list)-1)?"/".$v_result:"");
                 }
             }
         }
@@ -4988,9 +4988,9 @@ function PclZipUtilPathInclusion($p_dir, $p_path)
 
     // ----- Explode dir and path by directory separator
     $v_list_dir = explode("/", $p_dir);
-    $v_list_dir_size = sizeof($v_list_dir);
+    $v_list_dir_size = count($v_list_dir);
     $v_list_path = explode("/", $p_path);
-    $v_list_path_size = sizeof($v_list_path);
+    $v_list_path_size = count($v_list_path);
 
     // ----- Study directories paths
     $i = 0;

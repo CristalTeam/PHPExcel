@@ -104,10 +104,7 @@ class PHPExcel_Reader_Excel2007_Theme
      */
     public function getColourByIndex($index = 0)
     {
-        if (isset($this->colourMap[$index])) {
-            return $this->colourMap[$index];
-        }
-        return null;
+        return $this->colourMap[$index] ?? null;
     }
 
     /**

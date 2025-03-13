@@ -53,7 +53,7 @@ class testDataFileIterator implements Iterator
         } while (($testDataRow > '') && ($testDataRow{0} === '#'));
 
         //    Discard any comments at the end of the line
-        list($testData) = explode('//', $testDataRow);
+        [$testData] = explode('//', $testDataRow);
 
         //    Split data into an array of individual values and a result
         $dataSet = $this->_getcsv($testData, ',', "'");
@@ -78,7 +78,7 @@ class testDataFileIterator implements Iterator
         fclose($temp);
 
         if ($data === false) {
-            $data = array(null);
+            $data = [null];
         }
 
         return $data;

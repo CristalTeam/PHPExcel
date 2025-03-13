@@ -37,7 +37,7 @@ date_default_timezone_set('Europe/London');
  */
 
 /** Include path **/
-set_include_path(get_include_path() . PATH_SEPARATOR . dirname(__FILE__) . '/../Classes/');
+set_include_path(get_include_path() . PATH_SEPARATOR . __DIR__ . '/../Classes/');
 
 /** PHPExcel_IOFactory */
 include 'PHPExcel/IOFactory.php';
@@ -66,9 +66,9 @@ $inputFileType = 'Excel2007';
 $inputFileNames = 'templates/32readwrite*[0-9].xlsx';
 
 	if ((isset($argc)) && ($argc > 1)) {
-	$inputFileNames = array();
+	$inputFileNames = [];
 	for($i = 1; $i < $argc; ++$i) {
-		$inputFileNames[] = dirname(__FILE__) . '/templates/' . $argv[$i];
+		$inputFileNames[] = __DIR__ . '/templates/' . $argv[$i];
 	}
 } else {
 	$inputFileNames = glob($inputFileNames);
@@ -98,7 +98,7 @@ foreach($inputFileNames as $inputFileName) {
 			echo '    There are no charts in this worksheet' , EOL;
 		} else {
 			natsort($chartNames);
-			foreach($chartNames as $i => $chartName) {
+			foreach($chartNames as $chartName) {
 				$chart = $worksheet->getChartByName($chartName);
 				if (!is_null($chart->getTitle())) {
 					$caption = '"' . implode(' ',$chart->getTitle()->getCaption()) . '"';

@@ -33,7 +33,7 @@ if (PHP_SAPI != 'cli') {
 }
 
 // List of tests
-$aTests = array(
+$aTests = [
 	  '01simple.php'
 	, '01simplePCLZip.php'
 	, '02types.php'
@@ -110,7 +110,7 @@ $aTests = array(
 	, 'Excel2003XMLReader.php'
 	, 'XMLReader.php'
 	, 'GnumericReader.php'
-);
+];
 
 // First, clear all previous run results
 foreach ($aTests as $sTest) {

@@ -41,7 +41,7 @@ class MyReadFilter implements PHPExcel_Reader_IReadFilter
 
 	private $_endRow = 0;
 
-	private $_columns = array();
+	private $_columns = [];
 
 	public function __construct($startRow, $endRow, $columns) {
 		$this->_startRow	= $startRow;

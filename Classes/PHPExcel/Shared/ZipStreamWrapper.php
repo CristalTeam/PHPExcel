@@ -61,7 +61,7 @@ class PHPExcel_Shared_ZipStreamWrapper
     public static function register()
     {
         @stream_wrapper_unregister('zip');
-        @stream_wrapper_register('zip', __CLASS__);
+        @stream_wrapper_register('zip', self::class);
     }
 
     /**
