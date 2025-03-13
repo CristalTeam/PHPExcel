@@ -25,7 +25,7 @@
  *    @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
  *    @version    ##VERSION##, ##DATE##
  */
-class PHPExcel_Cell
+class PHPExcel_Cell implements \Stringable
 {
     /**
      *  Default range variable constant
@@ -585,7 +585,7 @@ class PHPExcel_Cell
     {
         if (preg_match("/^([$]?[A-Z]{1,3})([$]?\d{1,7})$/", $pCoordinateString, $matches)) {
             return [$matches[1],$matches[2]];
-        } elseif ((strpos($pCoordinateString, ':') !== false) || (strpos($pCoordinateString, ',') !== false)) {
+        } elseif ((str_contains($pCoordinateString, ':')) || (str_contains($pCoordinateString, ','))) {
             throw new PHPExcel_Exception('Cell coordinate string can not be a range of cells');
         } elseif ($pCoordinateString == '') {
             throw new PHPExcel_Exception('Cell coordinate can not be zero-length string');
@@ -604,7 +604,7 @@ class PHPExcel_Cell
      */
     public static function absoluteReference($pCoordinateString = 'A1')
     {
-        if (strpos($pCoordinateString, ':') === false && strpos($pCoordinateString, ',') === false) {
+        if (!str_contains($pCoordinateString, ':') && !str_contains($pCoordinateString, ',')) {
             // Split out any worksheet name from the reference
             $worksheet = '';
             $cellAddress = explode('!', $pCoordinateString);
@@ -636,7 +636,7 @@ class PHPExcel_Cell
      */
     public static function absoluteCoordinate($pCoordinateString = 'A1')
     {
-        if (strpos($pCoordinateString, ':') === false && strpos($pCoordinateString, ',') === false) {
+        if (!str_contains($pCoordinateString, ':') && !str_contains($pCoordinateString, ',')) {
             // Split out any worksheet name from the coordinate
             $worksheet = '';
             $cellAddress = explode('!', $pCoordinateString);
@@ -723,7 +723,7 @@ class PHPExcel_Cell
         $pRange = strtoupper($pRange);
 
         // Extract range
-        if (strpos($pRange, ':') === false) {
+        if (!str_contains($pRange, ':')) {
             $rangeA = $rangeB = $pRange;
         } else {
             [$rangeA, $rangeB] = explode(':', $pRange);
@@ -772,7 +772,7 @@ class PHPExcel_Cell
         $pRange = strtoupper($pRange);
 
         // Extract range
-        if (strpos($pRange, ':') === false) {
+        if (!str_contains($pRange, ':')) {
             $rangeA = $rangeB = $pRange;
         } else {
             [$rangeA, $rangeB] = explode(':', $pRange);
@@ -809,19 +809,19 @@ class PHPExcel_Cell
 
         //    We also use the language construct isset() rather than the more costly strlen() function to match the length of $pString
         //        for improved performance
-        if (isset($pString{0})) {
-            if (!isset($pString{1})) {
+        if (isset($pString[0])) {
+            if (!isset($pString[1])) {
                 $_indexCache[$pString] = $_columnLookup[$pString];
                 return $_indexCache[$pString];
-            } elseif (!isset($pString{2})) {
-                $_indexCache[$pString] = $_columnLookup[$pString{0}] * 26 + $_columnLookup[$pString{1}];
+            } elseif (!isset($pString[2])) {
+                $_indexCache[$pString] = $_columnLookup[$pString[0]] * 26 + $_columnLookup[$pString[1]];
                 return $_indexCache[$pString];
-            } elseif (!isset($pString{3})) {
-                $_indexCache[$pString] = $_columnLookup[$pString{0}] * 676 + $_columnLookup[$pString{1}] * 26 + $_columnLookup[$pString{2}];
+            } elseif (!isset($pString[3])) {
+                $_indexCache[$pString] = $_columnLookup[$pString[0]] * 676 + $_columnLookup[$pString[1]] * 26 + $_columnLookup[$pString[2]];
                 return $_indexCache[$pString];
             }
         }
-        throw new PHPExcel_Exception("Column string index can not be " . ((isset($pString{0})) ? "longer than 3 characters" : "empty"));
+        throw new PHPExcel_Exception("Column string index can not be " . ((isset($pString[0])) ? "longer than 3 characters" : "empty"));
     }
 
     /**
@@ -868,7 +868,7 @@ class PHPExcel_Cell
         $cellBlocks = explode(' ', str_replace('$', '', strtoupper($pRange)));
         foreach ($cellBlocks as $cellBlock) {
             // Single cell?
-            if (strpos($cellBlock, ':') === false && strpos($cellBlock, ',') === false) {
+            if (!str_contains($cellBlock, ':') && !str_contains($cellBlock, ',')) {
                 $returnValue[] = $cellBlock;
                 continue;
             }
@@ -1025,7 +1025,7 @@ class PHPExcel_Cell
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return (string) $this->getValue();
     }

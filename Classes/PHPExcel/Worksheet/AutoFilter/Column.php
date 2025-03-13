@@ -75,14 +75,6 @@ class PHPExcel_Worksheet_AutoFilter_Column
 
 
     /**
-     * Autofilter Column Index
-     *
-     * @var string
-     */
-    private $columnIndex = '';
-
-
-    /**
      * Autofilter Column Filter Type
      *
      * @var string
@@ -117,12 +109,14 @@ class PHPExcel_Worksheet_AutoFilter_Column
     /**
      * Create a new PHPExcel_Worksheet_AutoFilter_Column
      *
-     *    @param    string                           $pColumn        Column (e.g. A)
+     * @param string $columnIndex Column (e.g. A)
      *    @param    PHPExcel_Worksheet_AutoFilter  $pParent        Autofilter for this column
      */
-    public function __construct($pColumn, PHPExcel_Worksheet_AutoFilter $pParent = null)
+    public function __construct(/**
+     * Autofilter Column Index
+     */
+    private $columnIndex, PHPExcel_Worksheet_AutoFilter $pParent = null)
     {
-        $this->columnIndex = $pColumn;
         $this->parent = $pParent;
     }
 

@@ -54,20 +54,17 @@ class PHPExcel_CalcEngine_Logger
     private $debugLog = [];
 
     /**
-     * The calculation engine cell reference stack
-     *
-     * @var PHPExcel_CalcEngine_CyclicReferenceStack
-     */
-    private $cellStack;
-
-    /**
      * Instantiate a Calculation engine logger
      *
-     * @param  PHPExcel_CalcEngine_CyclicReferenceStack $stack
+     * @param PHPExcel_CalcEngine_CyclicReferenceStack $cellStack
      */
-    public function __construct(PHPExcel_CalcEngine_CyclicReferenceStack $stack)
+    public function __construct(
+        /**
+         * The calculation engine cell reference stack
+         */
+        private PHPExcel_CalcEngine_CyclicReferenceStack $cellStack
+    )
     {
-        $this->cellStack = $stack;
     }
 
     /**

@@ -511,16 +511,12 @@ class PHPExcel_Writer_Excel5_Xf
      */
     private static function mapLocked($locked)
     {
-        switch ($locked) {
-            case PHPExcel_Style_Protection::PROTECTION_INHERIT:
-                return 1;
-            case PHPExcel_Style_Protection::PROTECTION_PROTECTED:
-                return 1;
-            case PHPExcel_Style_Protection::PROTECTION_UNPROTECTED:
-                return 0;
-            default:
-                return 1;
-        }
+        return match ($locked) {
+            PHPExcel_Style_Protection::PROTECTION_INHERIT => 1,
+            PHPExcel_Style_Protection::PROTECTION_PROTECTED => 1,
+            PHPExcel_Style_Protection::PROTECTION_UNPROTECTED => 0,
+            default => 1,
+        };
     }
 
     /**
@@ -531,15 +527,11 @@ class PHPExcel_Writer_Excel5_Xf
      */
     private static function mapHidden($hidden)
     {
-        switch ($hidden) {
-            case PHPExcel_Style_Protection::PROTECTION_INHERIT:
-                return 0;
-            case PHPExcel_Style_Protection::PROTECTION_PROTECTED:
-                return 1;
-            case PHPExcel_Style_Protection::PROTECTION_UNPROTECTED:
-                return 0;
-            default:
-                return 0;
-        }
+        return match ($hidden) {
+            PHPExcel_Style_Protection::PROTECTION_INHERIT => 0,
+            PHPExcel_Style_Protection::PROTECTION_PROTECTED => 1,
+            PHPExcel_Style_Protection::PROTECTION_UNPROTECTED => 0,
+            default => 0,
+        };
     }
 }

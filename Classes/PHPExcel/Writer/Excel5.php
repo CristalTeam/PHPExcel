@@ -28,13 +28,6 @@
 class PHPExcel_Writer_Excel5 extends PHPExcel_Writer_Abstract implements PHPExcel_Writer_IWriter
 {
     /**
-     * PHPExcel object
-     *
-     * @var PHPExcel
-     */
-    private $phpExcel;
-
-    /**
      * Total number of shared strings in workbook
      *
      * @var int
@@ -95,10 +88,11 @@ class PHPExcel_Writer_Excel5 extends PHPExcel_Writer_Abstract implements PHPExce
      *
      * @param    PHPExcel    $phpExcel    PHPExcel object
      */
-    public function __construct(PHPExcel $phpExcel)
+    public function __construct(/**
+     * PHPExcel object
+     */
+    private PHPExcel $phpExcel)
     {
-        $this->phpExcel    = $phpExcel;
-
         $this->parser        = new PHPExcel_Writer_Excel5_Parser();
     }
 
@@ -123,7 +117,7 @@ class PHPExcel_Writer_Excel5 extends PHPExcel_Writer_Abstract implements PHPExce
         $this->colors = [];
 
         // Initialise workbook writer
-        $this->writerWorkbook = new PHPExcel_Writer_Excel5_Workbook($this->phpExcel, $this->strTotal, $this->strUnique, $this->strTable, $this->colors, $this->parser);
+        $this->writerWorkbook = new PHPExcel_Writer_Excel5_Workbook($this->strTotal, $this->strUnique, $this->strTable, $this->colors, $this->parser, $this->phpExcel);
 
         // Initialise worksheet writers
         $countSheets = $this->phpExcel->getSheetCount();

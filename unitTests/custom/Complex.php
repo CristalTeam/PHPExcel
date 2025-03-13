@@ -1,6 +1,6 @@
 <?php
 
-class Complex
+class Complex implements \Stringable
 {
     private $realPart = 0;
     private $imaginaryPart = 0;
@@ -14,13 +14,13 @@ class Complex
         }
 
         //    Fix silly human errors
-        if (strpos($complexNumber, '+-') !== false) {
+        if (str_contains($complexNumber, '+-')) {
             $complexNumber = str_replace('+-', '-', $complexNumber);
         }
-        if (strpos($complexNumber, '++') !== false) {
+        if (str_contains($complexNumber, '++')) {
             $complexNumber = str_replace('++', '+', $complexNumber);
         }
-        if (strpos($complexNumber, '--') !== false) {
+        if (str_contains($complexNumber, '--')) {
             $complexNumber = str_replace('--', '-', $complexNumber);
         }
 
@@ -93,7 +93,7 @@ class Complex
         return $this->suffix;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         $str = "";
         if ($this->imaginaryPart != 0.0) {

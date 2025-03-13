@@ -760,7 +760,7 @@ class PHPExcel_Writer_Excel2007_Worksheet extends PHPExcel_Writer_Excel2007_Writ
             $range = PHPExcel_Cell::splitRange($autoFilterRange);
             $range = $range[0];
             //    Strip any worksheet ref
-            if (strpos($range[0], '!') !== false) {
+            if (str_contains($range[0], '!')) {
                 [$ws, $range[0]] = explode('!', $range[0]);
             }
             $range = implode(':', $range);
@@ -1128,7 +1128,7 @@ class PHPExcel_Writer_Excel2007_Worksheet extends PHPExcel_Writer_Excel2007_Writ
                         if ($this->getParentWriter()->getOffice2003Compatibility() === false) {
                             if ($this->getParentWriter()->getPreCalculateFormulas()) {
 //                                $calculatedValue = $pCell->getCalculatedValue();
-                                if (!is_array($calculatedValue) && substr($calculatedValue, 0, 1) != '#') {
+                                if (!is_array($calculatedValue) && !str_starts_with($calculatedValue, '#')) {
                                     $objWriter->writeElement('v', PHPExcel_Shared_String::FormatNumber($calculatedValue));
                                 } else {
                                     $objWriter->writeElement('v', '0');
@@ -1146,7 +1146,7 @@ class PHPExcel_Writer_Excel2007_Worksheet extends PHPExcel_Writer_Excel2007_Writ
                         $objWriter->writeElement('v', ($cellValue ? '1' : '0'));
                         break;
                     case 'e':            // Error
-                        if (substr($cellValue, 0, 1) == '=') {
+                        if (str_starts_with($cellValue, '=')) {
                             $objWriter->writeElement('f', substr($cellValue, 1));
                             $objWriter->writeElement('v', substr($cellValue, 1));
                         } else {

@@ -773,23 +773,16 @@ class PHPExcel_Writer_Excel5_Parser
      */
     private function convertError($errorCode)
     {
-        switch ($errorCode) {
-            case '#NULL!':
-                return pack("C", 0x00);
-            case '#DIV/0!':
-                return pack("C", 0x07);
-            case '#VALUE!':
-                return pack("C", 0x0F);
-            case '#REF!':
-                return pack("C", 0x17);
-            case '#NAME?':
-                return pack("C", 0x1D);
-            case '#NUM!':
-                return pack("C", 0x24);
-            case '#N/A':
-                return pack("C", 0x2A);
-        }
-        return pack("C", 0xFF);
+        return match ($errorCode) {
+            '#NULL!' => pack("C", 0x00),
+            '#DIV/0!' => pack("C", 0x07),
+            '#VALUE!' => pack("C", 0x0F),
+            '#REF!' => pack("C", 0x17),
+            '#NAME?' => pack("C", 0x1D),
+            '#NUM!' => pack("C", 0x24),
+            '#N/A' => pack("C", 0x2A),
+            default => pack("C", 0xFF),
+        };
     }
 
     /**
@@ -1020,7 +1013,7 @@ class PHPExcel_Writer_Excel5_Parser
         $col  = 0;
         $col_ref_length = strlen($col_ref);
         for ($i = 0; $i < $col_ref_length; ++$i) {
-            $col += (ord($col_ref{$i}) - 64) * 26 ** $expn;
+            $col += (ord($col_ref[$i]) - 64) * 26 ** $expn;
             --$expn;
         }
 
@@ -1042,21 +1035,21 @@ class PHPExcel_Writer_Excel5_Parser
         $formula_length = strlen($this->formula);
         // eat up white spaces
         if ($i < $formula_length) {
-            while ($this->formula{$i} == " ") {
+            while ($this->formula[$i] == " ") {
                 ++$i;
             }
 
             if ($i < ($formula_length - 1)) {
-                $this->lookAhead = $this->formula{$i+1};
+                $this->lookAhead = $this->formula[$i+1];
             }
             $token = '';
         }
 
         while ($i < $formula_length) {
-            $token .= $this->formula{$i};
+            $token .= $this->formula[$i];
 
             if ($i < ($formula_length - 1)) {
-                $this->lookAhead = $this->formula{$i+1};
+                $this->lookAhead = $this->formula[$i+1];
             } else {
                 $this->lookAhead = '';
             }
@@ -1071,7 +1064,7 @@ class PHPExcel_Writer_Excel5_Parser
             }
 
             if ($i < ($formula_length - 2)) {
-                $this->lookAhead = $this->formula{$i+2};
+                $this->lookAhead = $this->formula[$i+2];
             } else { // if we run out of characters lookAhead becomes empty
                 $this->lookAhead = '';
             }
@@ -1151,7 +1144,7 @@ class PHPExcel_Writer_Excel5_Parser
                 } elseif (preg_match("/^[A-Z0-9\xc0-\xdc\.]+$/i", $token) and ($this->lookAhead == "(")) {
                     // if it's a function call
                     return $token;
-                } elseif (substr($token, -1) == ')') {
+                } elseif (str_ends_with($token, ')')) {
                     //    It's an argument of some description (e.g. a named range),
                     //        precise nature yet to be determined
                     return $token;
@@ -1172,7 +1165,7 @@ class PHPExcel_Writer_Excel5_Parser
     {
         $this->currentCharacter = 0;
         $this->formula      = $formula;
-        $this->lookAhead    = $formula{1} ?? '';
+        $this->lookAhead    = $formula[1] ?? '';
         $this->advance();
         $this->parseTree   = $this->condition();
         return true;

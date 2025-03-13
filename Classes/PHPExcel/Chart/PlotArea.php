@@ -28,26 +28,22 @@
 class PHPExcel_Chart_PlotArea
 {
     /**
-     * PlotArea Layout
-     *
-     * @var PHPExcel_Chart_Layout
-     */
-    private $layout = null;
-
-    /**
-     * Plot Series
-     *
-     * @var array of PHPExcel_Chart_DataSeries
-     */
-    private $plotSeries = [];
-
-    /**
      * Create a new PHPExcel_Chart_PlotArea
+     * @param mixed[] $plotSeries
      */
-    public function __construct(PHPExcel_Chart_Layout $layout = null, $plotSeries = [])
+    public function __construct(
+        /**
+         * PlotArea Layout
+         */
+        private ?\PHPExcel_Chart_Layout $layout = null,
+        /**
+         * Plot Series
+         *
+         * @var array of PHPExcel_Chart_DataSeries
+         */
+        private $plotSeries = []
+    )
     {
-        $this->layout = $layout;
-        $this->plotSeries = $plotSeries;
     }
 
     /**

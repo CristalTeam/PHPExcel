@@ -69,7 +69,7 @@ class PHPExcel_Calculation_LookupRef
         }
 
         if ($sheetText > '') {
-            if (strpos($sheetText, ' ') !== false) {
+            if (str_contains($sheetText, ' ')) {
                 $sheetText = "'".$sheetText."'";
             }
             $sheetText .='!';
@@ -122,10 +122,10 @@ class PHPExcel_Calculation_LookupRef
                 return (integer) PHPExcel_Cell::columnIndexFromString($columnKey);
             }
         } else {
-            if (strpos($cellAddress, '!') !== false) {
+            if (str_contains($cellAddress, '!')) {
                 [$sheet, $cellAddress] = explode('!', $cellAddress);
             }
-            if (strpos($cellAddress, ':') !== false) {
+            if (str_contains($cellAddress, ':')) {
                 [$startAddress, $endAddress] = explode(':', $cellAddress);
                 $startAddress = preg_replace('/[^a-z]/i', '', $startAddress);
                 $endAddress = preg_replace('/[^a-z]/i', '', $endAddress);
@@ -198,10 +198,10 @@ class PHPExcel_Calculation_LookupRef
                 }
             }
         } else {
-            if (strpos($cellAddress, '!') !== false) {
+            if (str_contains($cellAddress, '!')) {
                 [$sheet, $cellAddress] = explode('!', $cellAddress);
             }
-            if (strpos($cellAddress, ':') !== false) {
+            if (str_contains($cellAddress, ':')) {
                 [$startAddress, $endAddress] = explode(':', $cellAddress);
                 $startAddress = preg_replace('/[^0-9]/', '', $startAddress);
                 $endAddress = preg_replace('/[^0-9]/', '', $endAddress);
@@ -310,7 +310,7 @@ class PHPExcel_Calculation_LookupRef
 
         $cellAddress1 = $cellAddress;
         $cellAddress2 = null;
-        if (strpos($cellAddress, ':') !== false) {
+        if (str_contains($cellAddress, ':')) {
             [$cellAddress1, $cellAddress2] = explode(':', $cellAddress);
         }
 
@@ -320,7 +320,7 @@ class PHPExcel_Calculation_LookupRef
                 return PHPExcel_Calculation_Functions::REF();
             }
 
-            if (strpos($cellAddress, '!') !== false) {
+            if (str_contains($cellAddress, '!')) {
                 [$sheetName, $cellAddress] = explode('!', $cellAddress);
                 $sheetName = trim($sheetName, "'");
                 $pSheet = $pCell->getWorksheet()->getParent()->getSheetByName($sheetName);
@@ -331,7 +331,7 @@ class PHPExcel_Calculation_LookupRef
             return PHPExcel_Calculation::getInstance()->extractNamedRange($cellAddress, $pSheet, false);
         }
 
-        if (strpos($cellAddress, '!') !== false) {
+        if (str_contains($cellAddress, '!')) {
             [$sheetName, $cellAddress] = explode('!', $cellAddress);
             $sheetName = trim($sheetName, "'");
             $pSheet = $pCell->getWorksheet()->getParent()->getSheetByName($sheetName);

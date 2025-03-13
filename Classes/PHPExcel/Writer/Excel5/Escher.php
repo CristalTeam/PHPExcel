@@ -36,11 +36,6 @@
 class PHPExcel_Writer_Excel5_Escher
 {
     /**
-     * The object we are writing
-     */
-    private $object;
-
-    /**
      * The written binary data
      */
     private $data;
@@ -64,9 +59,13 @@ class PHPExcel_Writer_Excel5_Escher
      *
      * @param mixed
      */
-    public function __construct($object)
+    public function __construct(
+        /**
+         * The object we are writing
+         */
+        private $object
+    )
     {
-        $this->object = $object;
     }
 
     /**
@@ -77,7 +76,7 @@ class PHPExcel_Writer_Excel5_Escher
         // initialize
         $this->data = '';
 
-        switch (get_class($this->object)) {
+        switch ($this->object::class) {
             case 'PHPExcel_Shared_Escher':
                 if ($dggContainer = $this->object->getDggContainer()) {
                     $writer = new PHPExcel_Writer_Excel5_Escher($dggContainer);

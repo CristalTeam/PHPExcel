@@ -216,7 +216,7 @@ class PHPExcel_Style extends PHPExcel_Style_Supervisor implements PHPExcel_IComp
                 $pRange = strtoupper($pRange);
 
                 // Is it a cell range or a single cell?
-                if (strpos($pRange, ':') === false) {
+                if (!str_contains($pRange, ':')) {
                     $rangeA = $pRange;
                     $rangeB = $pRange;
                 } else {

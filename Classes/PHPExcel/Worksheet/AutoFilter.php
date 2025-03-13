@@ -25,7 +25,7 @@
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
  * @version    ##VERSION##, ##DATE##
  */
-class PHPExcel_Worksheet_AutoFilter
+class PHPExcel_Worksheet_AutoFilter implements \Stringable
 {
     /**
      * Autofilter Worksheet
@@ -111,7 +111,7 @@ class PHPExcel_Worksheet_AutoFilter
             [$worksheet, $pRange] = $cellAddress;
         }
 
-        if (strpos($pRange, ':') !== false) {
+        if (str_contains($pRange, ':')) {
             $this->range = $pRange;
         } elseif (empty($pRange)) {
             $this->range = '';
@@ -341,7 +341,7 @@ class PHPExcel_Worksheet_AutoFilter
             }
             foreach ($dateSet as $dateValue) {
                 //    Use of substr to extract value at the appropriate group level
-                if (substr($dtVal, 0, strlen($dateValue)) == $dateValue) {
+                if (str_starts_with($dtVal, $dateValue)) {
                     return true;
                 }
             }
@@ -393,17 +393,11 @@ class PHPExcel_Worksheet_AutoFilter
                         break;
                 }
             } elseif ($rule['value'] == '') {
-                switch ($rule['operator']) {
-                    case PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_COLUMN_RULE_EQUAL:
-                        $retVal    = (($cellValue == '') || ($cellValue === null));
-                        break;
-                    case PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_COLUMN_RULE_NOTEQUAL:
-                        $retVal    = (($cellValue != '') && ($cellValue !== null));
-                        break;
-                    default:
-                        $retVal    = true;
-                        break;
-                }
+                $retVal = match ($rule['operator']) {
+                    PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_COLUMN_RULE_EQUAL => ($cellValue == '') || ($cellValue === null),
+                    PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_COLUMN_RULE_NOTEQUAL => ($cellValue != '') && ($cellValue !== null),
+                    default => true,
+                };
             } else {
                 //    String values are always tested for equality, factoring in for wildcards (hence a regexp test)
                 $retVal    = preg_match('/^'.$rule['value'].'$/i', $cellValue);
@@ -717,7 +711,7 @@ class PHPExcel_Worksheet_AutoFilter
                             ];
                         } else {
                             //    Date based
-                            if ($dynamicRuleType{0} == 'M' || $dynamicRuleType{0} == 'Q') {
+                            if ($dynamicRuleType[0] == 'M' || $dynamicRuleType[0] == 'Q') {
                                 //    Month or Quarter
                                 sscanf($dynamicRuleType, '%[A-Z]%d', $periodType, $period);
                                 if ($periodType == 'M') {
@@ -839,7 +833,7 @@ class PHPExcel_Worksheet_AutoFilter
      * toString method replicates previous behavior by returning the range if object is
      *    referenced as a property of its parent.
      */
-    public function __toString()
+    public function __toString(): string
     {
         return (string) $this->range;
     }

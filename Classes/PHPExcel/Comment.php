@@ -25,7 +25,7 @@
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
  * @version    ##VERSION##, ##DATE##
  */
-class PHPExcel_Comment implements PHPExcel_IComparable
+class PHPExcel_Comment implements PHPExcel_IComparable, \Stringable
 {
     /**
      * Author
@@ -331,7 +331,7 @@ class PHPExcel_Comment implements PHPExcel_IComparable
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->text->getPlainText();
     }

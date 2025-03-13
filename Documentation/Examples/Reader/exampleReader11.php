@@ -37,14 +37,11 @@ $inputFileName = './sampleData/example2.xls';
 /**  Define a Read Filter class implementing PHPExcel_Reader_IReadFilter  */
 class chunkReadFilter implements PHPExcel_Reader_IReadFilter
 {
-	private $_startRow = 0;
-
 	private $_endRow = 0;
 
 	/**  We expect a list of the rows that we want to read to be passed into the constructor  */
-	public function __construct($startRow, $chunkSize) {
-		$this->_startRow	= $startRow;
-		$this->_endRow		= $startRow + $chunkSize;
+	public function __construct(private $_startRow, $chunkSize) {
+		$this->_endRow		= $this->_startRow + $chunkSize;
 	}
 
 	public function readCell($column, $row, $worksheetName = '') {

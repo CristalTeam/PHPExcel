@@ -622,23 +622,13 @@ class PHPExcel_Reader_Gnumeric extends PHPExcel_Reader_Abstract implements PHPEx
                             $styleArray['font']['bold'] = ($fontAttributes['Bold'] == '1') ? true : false;
                             $styleArray['font']['italic'] = ($fontAttributes['Italic'] == '1') ? true : false;
                             $styleArray['font']['strike'] = ($fontAttributes['StrikeThrough'] == '1') ? true : false;
-                            switch ($fontAttributes['Underline']) {
-                                case '1':
-                                    $styleArray['font']['underline'] = PHPExcel_Style_Font::UNDERLINE_SINGLE;
-                                    break;
-                                case '2':
-                                    $styleArray['font']['underline'] = PHPExcel_Style_Font::UNDERLINE_DOUBLE;
-                                    break;
-                                case '3':
-                                    $styleArray['font']['underline'] = PHPExcel_Style_Font::UNDERLINE_SINGLEACCOUNTING;
-                                    break;
-                                case '4':
-                                    $styleArray['font']['underline'] = PHPExcel_Style_Font::UNDERLINE_DOUBLEACCOUNTING;
-                                    break;
-                                default:
-                                    $styleArray['font']['underline'] = PHPExcel_Style_Font::UNDERLINE_NONE;
-                                    break;
-                            }
+                            $styleArray['font']['underline'] = match ($fontAttributes['Underline']) {
+                                '1' => PHPExcel_Style_Font::UNDERLINE_SINGLE,
+                                '2' => PHPExcel_Style_Font::UNDERLINE_DOUBLE,
+                                '3' => PHPExcel_Style_Font::UNDERLINE_SINGLEACCOUNTING,
+                                '4' => PHPExcel_Style_Font::UNDERLINE_DOUBLEACCOUNTING,
+                                default => PHPExcel_Style_Font::UNDERLINE_NONE,
+                            };
                             switch ($fontAttributes['Script']) {
                                 case '1':
                                     $styleArray['font']['superScript'] = true;
@@ -746,7 +736,7 @@ class PHPExcel_Reader_Gnumeric extends PHPExcel_Reader_Abstract implements PHPEx
             //    Handle Merged Cells in this worksheet
             if (isset($sheet->MergedRegions)) {
                 foreach ($sheet->MergedRegions->Merge as $mergeCells) {
-                    if (strpos($mergeCells, ':') !== false) {
+                    if (str_contains($mergeCells, ':')) {
                         $objPHPExcel->getActiveSheet()->mergeCells($mergeCells);
                     }
                 }

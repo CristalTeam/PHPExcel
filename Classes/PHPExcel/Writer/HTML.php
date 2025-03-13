@@ -190,17 +190,12 @@ class PHPExcel_Writer_HTML extends PHPExcel_Writer_Abstract implements PHPExcel_
      */
     private function mapVAlign($vAlign)
     {
-        switch ($vAlign) {
-            case PHPExcel_Style_Alignment::VERTICAL_BOTTOM:
-                return 'bottom';
-            case PHPExcel_Style_Alignment::VERTICAL_TOP:
-                return 'top';
-            case PHPExcel_Style_Alignment::VERTICAL_CENTER:
-            case PHPExcel_Style_Alignment::VERTICAL_JUSTIFY:
-                return 'middle';
-            default:
-                return 'baseline';
-        }
+        return match ($vAlign) {
+            PHPExcel_Style_Alignment::VERTICAL_BOTTOM => 'bottom',
+            PHPExcel_Style_Alignment::VERTICAL_TOP => 'top',
+            PHPExcel_Style_Alignment::VERTICAL_CENTER, PHPExcel_Style_Alignment::VERTICAL_JUSTIFY => 'middle',
+            default => 'baseline',
+        };
     }
 
     /**
@@ -211,21 +206,14 @@ class PHPExcel_Writer_HTML extends PHPExcel_Writer_Abstract implements PHPExcel_
      */
     private function mapHAlign($hAlign)
     {
-        switch ($hAlign) {
-            case PHPExcel_Style_Alignment::HORIZONTAL_GENERAL:
-                return false;
-            case PHPExcel_Style_Alignment::HORIZONTAL_LEFT:
-                return 'left';
-            case PHPExcel_Style_Alignment::HORIZONTAL_RIGHT:
-                return 'right';
-            case PHPExcel_Style_Alignment::HORIZONTAL_CENTER:
-            case PHPExcel_Style_Alignment::HORIZONTAL_CENTER_CONTINUOUS:
-                return 'center';
-            case PHPExcel_Style_Alignment::HORIZONTAL_JUSTIFY:
-                return 'justify';
-            default:
-                return false;
-        }
+        return match ($hAlign) {
+            PHPExcel_Style_Alignment::HORIZONTAL_GENERAL => false,
+            PHPExcel_Style_Alignment::HORIZONTAL_LEFT => 'left',
+            PHPExcel_Style_Alignment::HORIZONTAL_RIGHT => 'right',
+            PHPExcel_Style_Alignment::HORIZONTAL_CENTER, PHPExcel_Style_Alignment::HORIZONTAL_CENTER_CONTINUOUS => 'center',
+            PHPExcel_Style_Alignment::HORIZONTAL_JUSTIFY => 'justify',
+            default => false,
+        };
     }
 
     /**
@@ -236,39 +224,24 @@ class PHPExcel_Writer_HTML extends PHPExcel_Writer_Abstract implements PHPExcel_
      */
     private function mapBorderStyle($borderStyle)
     {
-        switch ($borderStyle) {
-            case PHPExcel_Style_Border::BORDER_NONE:
-                return 'none';
-            case PHPExcel_Style_Border::BORDER_DASHDOT:
-                return '1px dashed';
-            case PHPExcel_Style_Border::BORDER_DASHDOTDOT:
-                return '1px dotted';
-            case PHPExcel_Style_Border::BORDER_DASHED:
-                return '1px dashed';
-            case PHPExcel_Style_Border::BORDER_DOTTED:
-                return '1px dotted';
-            case PHPExcel_Style_Border::BORDER_DOUBLE:
-                return '3px double';
-            case PHPExcel_Style_Border::BORDER_HAIR:
-                return '1px solid';
-            case PHPExcel_Style_Border::BORDER_MEDIUM:
-                return '2px solid';
-            case PHPExcel_Style_Border::BORDER_MEDIUMDASHDOT:
-                return '2px dashed';
-            case PHPExcel_Style_Border::BORDER_MEDIUMDASHDOTDOT:
-                return '2px dotted';
-            case PHPExcel_Style_Border::BORDER_MEDIUMDASHED:
-                return '2px dashed';
-            case PHPExcel_Style_Border::BORDER_SLANTDASHDOT:
-                return '2px dashed';
-            case PHPExcel_Style_Border::BORDER_THICK:
-                return '3px solid';
-            case PHPExcel_Style_Border::BORDER_THIN:
-                return '1px solid';
-            default:
-                // map others to thin
-                return '1px solid';
-        }
+        return match ($borderStyle) {
+            PHPExcel_Style_Border::BORDER_NONE => 'none',
+            PHPExcel_Style_Border::BORDER_DASHDOT => '1px dashed',
+            PHPExcel_Style_Border::BORDER_DASHDOTDOT => '1px dotted',
+            PHPExcel_Style_Border::BORDER_DASHED => '1px dashed',
+            PHPExcel_Style_Border::BORDER_DOTTED => '1px dotted',
+            PHPExcel_Style_Border::BORDER_DOUBLE => '3px double',
+            PHPExcel_Style_Border::BORDER_HAIR => '1px solid',
+            PHPExcel_Style_Border::BORDER_MEDIUM => '2px solid',
+            PHPExcel_Style_Border::BORDER_MEDIUMDASHDOT => '2px dashed',
+            PHPExcel_Style_Border::BORDER_MEDIUMDASHDOTDOT => '2px dotted',
+            PHPExcel_Style_Border::BORDER_MEDIUMDASHED => '2px dashed',
+            PHPExcel_Style_Border::BORDER_SLANTDASHDOT => '2px dashed',
+            PHPExcel_Style_Border::BORDER_THICK => '3px solid',
+            PHPExcel_Style_Border::BORDER_THIN => '1px solid',
+            // map others to thin
+            default => '1px solid',
+        };
     }
 
     /**
@@ -617,7 +590,7 @@ class PHPExcel_Writer_HTML extends PHPExcel_Writer_Abstract implements PHPExcel_
                     $filename = $drawing->getPath();
 
                     // Strip off eventual '.'
-                    if (substr($filename, 0, 1) == '.') {
+                    if (str_starts_with($filename, '.')) {
                         $filename = substr($filename, 1);
                     }
 
@@ -625,7 +598,7 @@ class PHPExcel_Writer_HTML extends PHPExcel_Writer_Abstract implements PHPExcel_
                     $filename = $this->getImagesRoot() . $filename;
 
                     // Strip off eventual '.'
-                    if (substr($filename, 0, 1) == '.' && substr($filename, 0, 2) != './') {
+                    if (str_starts_with($filename, '.') && !str_starts_with($filename, './')) {
                         $filename = substr($filename, 1);
                     }
 

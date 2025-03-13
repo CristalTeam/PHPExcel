@@ -334,13 +334,10 @@ class PHPExcel_Calculation_Financial
             $fRest -= $fNRate;
 
             if ($fRest < 0.0) {
-                switch ($period - $n) {
-                    case 0:
-                    case 1:
-                        return round($cost * 0.5, 0);
-                    default:
-                        return 0.0;
-                }
+                return match ($period - $n) {
+                    0, 1 => round($cost * 0.5, 0),
+                    default => 0.0,
+                };
             }
             $cost -= $fNRate;
         }
@@ -712,20 +709,19 @@ class PHPExcel_Calculation_Financial
 
         $settlement = self::couponFirstPeriodDate($settlement, $maturity, $frequency, true);
         $daysBetweenSettlementAndMaturity = PHPExcel_Calculation_DateTime::YEARFRAC($settlement, $maturity, $basis) * 365;
-
-        switch ($frequency) {
-            case 1: // annual payments
-                return ceil($daysBetweenSettlementAndMaturity / 360);
-            case 2: // half-yearly
-                return ceil($daysBetweenSettlementAndMaturity / 180);
-            case 4: // quarterly
-                return ceil($daysBetweenSettlementAndMaturity / 90);
-            case 6: // bimonthly
-                return ceil($daysBetweenSettlementAndMaturity / 60);
-            case 12: // monthly
-                return ceil($daysBetweenSettlementAndMaturity / 30);
-        }
-        return PHPExcel_Calculation_Functions::VALUE();
+        return match ($frequency) {
+            // annual payments
+            1 => ceil($daysBetweenSettlementAndMaturity / 360),
+            // half-yearly
+            2 => ceil($daysBetweenSettlementAndMaturity / 180),
+            // quarterly
+            4 => ceil($daysBetweenSettlementAndMaturity / 90),
+            // bimonthly
+            6 => ceil($daysBetweenSettlementAndMaturity / 60),
+            // monthly
+            12 => ceil($daysBetweenSettlementAndMaturity / 30),
+            default => PHPExcel_Calculation_Functions::VALUE(),
+        };
     }
 
 

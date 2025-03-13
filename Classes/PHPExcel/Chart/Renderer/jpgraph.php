@@ -53,9 +53,6 @@ class PHPExcel_Chart_Renderer_jpgraph
         'plus'     => MARK_CROSS
     ];
 
-
-    private $chart;
-
     private $graph;
 
     private static $plotColour = 0;
@@ -875,9 +872,8 @@ class PHPExcel_Chart_Renderer_jpgraph
     /**
      * Create a new PHPExcel_Chart_Renderer_jpgraph
      */
-    public function __construct(PHPExcel_Chart $chart)
+    public function __construct(private PHPExcel_Chart $chart)
     {
         $this->graph    = null;
-        $this->chart    = $chart;
     }
 }

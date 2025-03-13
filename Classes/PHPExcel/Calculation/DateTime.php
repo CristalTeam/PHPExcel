@@ -512,7 +512,7 @@ class PHPExcel_Calculation_DateTime
                 }
             }
         }
-        if ((count($t1) == 1) && (strpos($t, ':') != false)) {
+        if ((count($t1) == 1) && (str_contains($t, ':'))) {
             //    We've been fed a time value without any date
             return 0.0;
         } elseif (count($t1) == 2) {

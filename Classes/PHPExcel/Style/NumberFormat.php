@@ -509,7 +509,7 @@ class PHPExcel_Style_NumberFormat extends PHPExcel_Style_Supervisor implements P
         $adjustedDecimalPart = $decimalPart/$GCD;
         $adjustedDecimalDivisor = $decimalDivisor/$GCD;
 
-        if ((strpos($format, '0') !== false) || (strpos($format, '#') !== false) || (substr($format, 0, 3) == '? ?')) {
+        if ((str_contains($format, '0')) || (str_contains($format, '#')) || (str_starts_with($format, '? ?'))) {
             if ($integerPart == 0) {
                 $integerPart = '';
             }
@@ -524,7 +524,7 @@ class PHPExcel_Style_NumberFormat extends PHPExcel_Style_Supervisor implements P
     {
         $sign = ($number < 0.0);
         $number = abs($number);
-        if (strpos($mask, '.') !== false) {
+        if (str_contains($mask, '.')) {
             $numbers = explode('.', $number . '.0');
             $masks = explode('.', $mask . '.0');
             $result1 = self::complexNumberFormatMask($numbers[0], $masks[0], 1);

@@ -189,9 +189,6 @@ define('PCLZIP_CB_POST_DELETE', 78008);
 // --------------------------------------------------------------------------------
 class PclZip
 {
-    // ----- Filename of the zip file
-    public $zipname = '';
-
     // ----- File descriptor of the zip file
     public $zip_fd = 0;
 
@@ -212,16 +209,13 @@ class PclZip
     //     Note that no real action is taken, if the archive does not exist it is not
     //     created. Use create() for that.
     // --------------------------------------------------------------------------------
-    public function __construct($p_zipname)
+    public function __construct(public $zipname)
     {
 
         // ----- Tests the zlib
         if (!function_exists('gzopen')) {
             die('Abort '.basename(__FILE__).' : Missing zlib extensions');
         }
-
-        // ----- Set the attributes
-        $this->zipname = $p_zipname;
         $this->zip_fd = 0;
         $this->magic_quotes_status = -1;
 
@@ -733,7 +727,7 @@ class PclZip
                 }
                 if (isset($v_options[PCLZIP_OPT_ADD_PATH])) {
                     // ----- Check for '/' in last path char
-                    if ((strlen($v_path) > 0) && (substr($v_path, -1) != '/')) {
+                    if ((strlen($v_path) > 0) && (!str_ends_with($v_path, '/'))) {
                         $v_path .= '/';
                     }
                     $v_path .= $v_options[PCLZIP_OPT_ADD_PATH];
@@ -883,7 +877,7 @@ class PclZip
                 }
                 if (isset($v_options[PCLZIP_OPT_ADD_PATH])) {
                     // ----- Check for '/' in last path char
-                    if ((strlen($v_path) > 0) && (substr($v_path, -1) != '/')) {
+                    if ((strlen($v_path) > 0) && (!str_ends_with($v_path, '/'))) {
                         $v_path .= '/';
                     }
                     $v_path .= $v_options[PCLZIP_OPT_ADD_PATH];
@@ -1119,7 +1113,7 @@ class PclZip
         $this->privErrorReset();
 
         // ----- Look if the $p_archive is a PclZip object
-        if ((is_object($p_archive)) && (get_class($p_archive) == 'pclzip')) {
+        if ((is_object($p_archive)) && ($p_archive::class == 'pclzip')) {
             // ----- Duplicate the archive
             $v_result = $this->privDuplicate($p_archive->zipname);
         } elseif (is_string($p_archive)) {
@@ -1173,7 +1167,7 @@ class PclZip
         }
 
         // ----- Look if the $p_archive_to_add is a PclZip object
-        if ((is_object($p_archive_to_add)) && (get_class($p_archive_to_add) == 'pclzip')) {
+        if ((is_object($p_archive_to_add)) && ($p_archive_to_add::class == 'pclzip')) {
             // ----- Merge the archive
             $v_result = $this->privMerge($p_archive_to_add);
         } elseif (is_string($p_archive_to_add)) {
@@ -2763,15 +2757,15 @@ class PclZip
                 $v_stored_filename = basename($p_filename);
             } elseif ($p_remove_dir != "") {
                 // ----- Look for partial path remove
-                if (substr($p_remove_dir, -1) != '/') {
+                if (!str_ends_with($p_remove_dir, '/')) {
                     $p_remove_dir .= "/";
                 }
 
-                if ((substr($p_filename, 0, 2) == "./") || (substr($p_remove_dir, 0, 2) == "./")) {
-                    if ((substr($p_filename, 0, 2) == "./") && (substr($p_remove_dir, 0, 2) != "./")) {
+                if ((str_starts_with($p_filename, "./")) || (str_starts_with($p_remove_dir, "./"))) {
+                    if ((str_starts_with($p_filename, "./")) && (!str_starts_with($p_remove_dir, "./"))) {
                         $p_remove_dir = "./".$p_remove_dir;
                     }
-                    if ((substr($p_filename, 0, 2) != "./") && (substr($p_remove_dir, 0, 2) == "./")) {
+                    if ((!str_starts_with($p_filename, "./")) && (str_starts_with($p_remove_dir, "./"))) {
                         $p_remove_dir = substr($p_remove_dir, 2);
                     }
                 }
@@ -2791,7 +2785,7 @@ class PclZip
 
             // ----- Look for path to add
             if ($p_add_dir != "") {
-                if (substr($p_add_dir, -1) == "/") {
+                if (str_ends_with($p_add_dir, "/")) {
                     $v_stored_filename = $p_add_dir.$v_stored_filename;
                 } else {
                     $v_stored_filename = $p_add_dir."/".$v_stored_filename;
@@ -3048,20 +3042,20 @@ class PclZip
         $this->privDisableMagicQuotes();
 
         // ----- Check the path
-        if (($p_path == "") || ((substr($p_path, 0, 1) != "/") && (substr($p_path, 0, 3) != "../") && (substr($p_path, 1, 2)!=":/"))) {
+        if (($p_path == "") || ((!str_starts_with($p_path, "/")) && (!str_starts_with($p_path, "../")) && (substr($p_path, 1, 2)!=":/"))) {
             $p_path = "./".$p_path;
         }
 
         // ----- Reduce the path last (and duplicated) '/'
         if (($p_path != "./") && ($p_path != "/")) {
             // ----- Look for the path end '/'
-            while (substr($p_path, -1) == "/") {
+            while (str_ends_with($p_path, "/")) {
                 $p_path = substr($p_path, 0, strlen($p_path)-1);
             }
         }
 
         // ----- Look for path to remove format (should end by /)
-        if (($p_remove_path != "") && (substr($p_remove_path, -1) != '/')) {
+        if (($p_remove_path != "") && (!str_ends_with($p_remove_path, '/'))) {
             $p_remove_path .= '/';
         }
         $p_remove_path_size = strlen($p_remove_path);
@@ -3126,9 +3120,9 @@ class PclZip
                 // ----- Look if the filename is in the list
                 for ($j=0; ($j<count($p_options[PCLZIP_OPT_BY_NAME])) && (!$v_extract); $j++) {
                     // ----- Look for a directory
-                    if (substr($p_options[PCLZIP_OPT_BY_NAME][$j], -1) == "/") {
+                    if (str_ends_with($p_options[PCLZIP_OPT_BY_NAME][$j], "/")) {
                         // ----- Look if the directory is in the filename path
-                        if ((strlen($v_header['stored_filename']) > strlen($p_options[PCLZIP_OPT_BY_NAME][$j])) && (substr($v_header['stored_filename'], 0, strlen($p_options[PCLZIP_OPT_BY_NAME][$j])) == $p_options[PCLZIP_OPT_BY_NAME][$j])) {
+                        if ((strlen($v_header['stored_filename']) > strlen($p_options[PCLZIP_OPT_BY_NAME][$j])) && (str_starts_with($v_header['stored_filename'], $p_options[PCLZIP_OPT_BY_NAME][$j]))) {
                             $v_extract = true;
                         }
                     } elseif ($v_header['stored_filename'] == $p_options[PCLZIP_OPT_BY_NAME][$j]) {
@@ -3449,7 +3443,7 @@ class PclZip
                 }
             } else {
                 // ----- Check the directory availability and create it if necessary
-                if ((($p_entry['external']&0x00000010)==0x00000010) || (substr($p_entry['filename'], -1) == '/')) {
+                if ((($p_entry['external']&0x00000010)==0x00000010) || (str_ends_with($p_entry['filename'], '/'))) {
                     $v_dir_to_check = $p_entry['filename'];
                 } elseif (!strstr($p_entry['filename'], "/")) {
                     $v_dir_to_check = "";
@@ -4059,7 +4053,7 @@ class PclZip
         $p_header['status'] = 'ok';
 
         // ----- Look if it is a directory
-        if (substr($p_header['filename'], -1) == '/') {
+        if (str_ends_with($p_header['filename'], '/')) {
             //$p_header['external'] = 0x41FF0010;
             $p_header['external'] = 0x00000010;
         }
@@ -4322,9 +4316,9 @@ class PclZip
                 // ----- Look if the filename is in the list
                 for ($j=0; ($j<count($p_options[PCLZIP_OPT_BY_NAME])) && (!$v_found); $j++) {
                     // ----- Look for a directory
-                    if (substr($p_options[PCLZIP_OPT_BY_NAME][$j], -1) == "/") {
+                    if (str_ends_with($p_options[PCLZIP_OPT_BY_NAME][$j], "/")) {
                         // ----- Look if the directory is in the filename path
-                        if ((strlen($v_header_list[$v_nb_extracted]['stored_filename']) > strlen($p_options[PCLZIP_OPT_BY_NAME][$j])) && (substr($v_header_list[$v_nb_extracted]['stored_filename'], 0, strlen($p_options[PCLZIP_OPT_BY_NAME][$j])) == $p_options[PCLZIP_OPT_BY_NAME][$j])) {
+                        if ((strlen($v_header_list[$v_nb_extracted]['stored_filename']) > strlen($p_options[PCLZIP_OPT_BY_NAME][$j])) && (str_starts_with($v_header_list[$v_nb_extracted]['stored_filename'], $p_options[PCLZIP_OPT_BY_NAME][$j]))) {
                             $v_found = true;
                         } elseif ((($v_header_list[$v_nb_extracted]['external']&0x00000010)==0x00000010) /* Indicates a folder */ && ($v_header_list[$v_nb_extracted]['stored_filename'].'/' == $p_options[PCLZIP_OPT_BY_NAME][$j])) {
                             $v_found = true;
@@ -4531,7 +4525,7 @@ class PclZip
         $v_result = 1;
 
         // ----- Remove the final '/'
-        if (($p_is_dir) && (substr($p_dir, -1)=='/')) {
+        if (($p_is_dir) && (str_ends_with($p_dir, '/'))) {
             $p_dir = substr($p_dir, 0, strlen($p_dir)-1);
         }
 
@@ -4979,10 +4973,10 @@ function PclZipUtilPathInclusion($p_dir, $p_path)
     $v_result = 1;
 
     // ----- Look for path beginning by ./
-    if (($p_dir == '.') || ((strlen($p_dir) >=2) && (substr($p_dir, 0, 2) == './'))) {
+    if (($p_dir == '.') || ((strlen($p_dir) >=2) && (str_starts_with($p_dir, './')))) {
         $p_dir = PclZipUtilTranslateWinPath(getcwd(), false).'/'.substr($p_dir, 1);
     }
-    if (($p_path == '.') || ((strlen($p_path) >=2) && (substr($p_path, 0, 2) == './'))) {
+    if (($p_path == '.') || ((strlen($p_path) >=2) && (str_starts_with($p_path, './')))) {
         $p_path = PclZipUtilTranslateWinPath(getcwd(), false).'/'.substr($p_path, 1);
     }
 
@@ -5165,7 +5159,7 @@ function PclZipUtilTranslateWinPath($p_path, $p_remove_disk_letter = true)
             $p_path = substr($p_path, $v_position+1);
         }
         // ----- Change potential windows directory separator
-        if ((strpos($p_path, '\\') > 0) || (substr($p_path, 0, 1) == '\\')) {
+        if ((strpos($p_path, '\\') > 0) || (str_starts_with($p_path, '\\'))) {
             $p_path = strtr($p_path, '\\', '/');
         }
     }

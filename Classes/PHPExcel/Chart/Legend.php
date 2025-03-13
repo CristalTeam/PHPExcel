@@ -64,21 +64,16 @@ class PHPExcel_Chart_Legend
      */
     private $overlay = true;
 
-    /**
-     * Legend Layout
-     *
-     * @var    PHPExcel_Chart_Layout
-     */
-    private $layout = null;
-
 
     /**
      *    Create a new PHPExcel_Chart_Legend
      */
-    public function __construct($position = self::POSITION_RIGHT, PHPExcel_Chart_Layout $layout = null, $overlay = false)
+    public function __construct($position = self::POSITION_RIGHT, /**
+     * Legend Layout
+     */
+    private ?\PHPExcel_Chart_Layout $layout = null, $overlay = false)
     {
         $this->setPosition($position);
-        $this->layout = $layout;
         $this->setOverlay($overlay);
     }
 

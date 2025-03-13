@@ -661,7 +661,7 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
                     $formulaData = $this->parser->toReversePolish();
 
                     // make sure tRef3d is of type tRef3dR (0x3A)
-                    if (isset($formulaData{0}) and ($formulaData{0} == "\x7A" or $formulaData{0} == "\x5A")) {
+                    if (isset($formulaData[0]) and ($formulaData[0] == "\x7A" or $formulaData[0] == "\x5A")) {
                         $formulaData = "\x3A" . substr($formulaData, 1);
                     }
 
@@ -674,7 +674,7 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
                     }
                     $chunk .= $this->writeData($this->writeDefinedNameBiff8($namedRange->getName(), $formulaData, $scope, false));
 
-                } catch (PHPExcel_Exception $e) {
+                } catch (PHPExcel_Exception) {
                     // do nothing
                 }
             }
@@ -913,20 +913,12 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
         $record    = 0x0085;                    // Record identifier
 
         // sheet state
-        switch ($sheet->getSheetState()) {
-            case PHPExcel_Worksheet::SHEETSTATE_VISIBLE:
-                $ss = 0x00;
-                break;
-            case PHPExcel_Worksheet::SHEETSTATE_HIDDEN:
-                $ss = 0x01;
-                break;
-            case PHPExcel_Worksheet::SHEETSTATE_VERYHIDDEN:
-                $ss = 0x02;
-                break;
-            default:
-                $ss = 0x00;
-                break;
-        }
+        $ss = match ($sheet->getSheetState()) {
+            PHPExcel_Worksheet::SHEETSTATE_VISIBLE => 0x00,
+            PHPExcel_Worksheet::SHEETSTATE_HIDDEN => 0x01,
+            PHPExcel_Worksheet::SHEETSTATE_VERYHIDDEN => 0x02,
+            default => 0x00,
+        };
 
         // sheet type
         $st = 0x00;

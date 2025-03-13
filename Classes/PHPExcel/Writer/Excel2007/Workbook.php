@@ -354,7 +354,7 @@ class PHPExcel_Writer_Excel2007_Workbook extends PHPExcel_Writer_Excel2007_Write
             $range = PHPExcel_Cell::splitRange($autoFilterRange);
             $range = $range[0];
             //    Strip any worksheet ref so we can make the cell ref absolute
-            if (strpos($range[0], '!') !== false) {
+            if (str_contains($range[0], '!')) {
                 [$ws, $range[0]] = explode('!', $range[0]);
             }
 

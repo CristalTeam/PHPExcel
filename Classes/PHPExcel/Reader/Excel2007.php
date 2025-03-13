@@ -302,7 +302,7 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
     private function getFromZipArchive($archive, $fileName = '')
     {
         // Root-relative paths
-        if (strpos($fileName, '//') !== false) {
+        if (str_contains($fileName, '//')) {
             $fileName = substr($fileName, strpos($fileName, '//') + 1);
         }
         $fileName = PHPExcel_Shared_File::realpath($fileName);
@@ -986,7 +986,7 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
 
                             if ($xmlSheet && $xmlSheet->autoFilter && !$this->readDataOnly) {
                                 $autoFilterRange = (string) $xmlSheet->autoFilter["ref"];
-                                if (strpos($autoFilterRange, ':') !== false) {
+                                if (str_contains($autoFilterRange, ':')) {
                                     $autoFilter = $docSheet->getAutoFilter();
                                     $autoFilter->setRange($autoFilterRange);
 
@@ -1087,7 +1087,7 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
                             if ($xmlSheet && $xmlSheet->mergeCells && $xmlSheet->mergeCells->mergeCell && !$this->readDataOnly) {
                                 foreach ($xmlSheet->mergeCells->mergeCell as $mergeCell) {
                                     $mergeRef = (string) $mergeCell["ref"];
-                                    if (strpos($mergeRef, ':') !== false) {
+                                    if (str_contains($mergeRef, ':')) {
                                         $docSheet->mergeCells((string) $mergeCell["ref"]);
                                     }
                                 }
@@ -1568,7 +1568,7 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
                                                     $extractedRange = explode(',', $extractedRange);
                                                     foreach ($extractedRange as $range) {
                                                         $autoFilterRange = $range;
-                                                        if (strpos($autoFilterRange, ':') !== false) {
+                                                        if (str_contains($autoFilterRange, ':')) {
                                                             $docSheet->getAutoFilter()->setRange($autoFilterRange);
                                                         }
                                                     }
@@ -1598,7 +1598,7 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
                                                 foreach ($rangeSets as $rangeSet) {
                                                     $range = explode('!', $rangeSet);    // FIXME: what if sheetname contains exclamation mark?
                                                     $rangeSet = $range[1] ?? $range[0];
-                                                    if (strpos($rangeSet, ':') === false) {
+                                                    if (!str_contains($rangeSet, ':')) {
                                                         $rangeSet = $rangeSet . ':' . $rangeSet;
                                                     }
                                                     $newRangeSets[] = str_replace('$', '', $rangeSet);
@@ -1662,7 +1662,7 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
                                     // "Global" definedNames
                                     $locatedSheet = null;
                                     $extractedSheetName = '';
-                                    if (strpos((string)$definedName, '!') !== false) {
+                                    if (str_contains((string)$definedName, '!')) {
                                         // Extract sheet name
                                         $extractedSheetName = PHPExcel_Worksheet::extractSheetTitle((string)$definedName, true);
                                         $extractedSheetName = $extractedSheetName[0];
@@ -2016,18 +2016,18 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
         foreach ($temp as $item) {
             $item = explode(':', $item);
 
-            if (strpos($item[1], 'px') !== false) {
+            if (str_contains($item[1], 'px')) {
                 $item[1] = str_replace('px', '', $item[1]);
             }
-            if (strpos($item[1], 'pt') !== false) {
+            if (str_contains($item[1], 'pt')) {
                 $item[1] = str_replace('pt', '', $item[1]);
                 $item[1] = PHPExcel_Shared_Font::fontSizeToPixels($item[1]);
             }
-            if (strpos($item[1], 'in') !== false) {
+            if (str_contains($item[1], 'in')) {
                 $item[1] = str_replace('in', '', $item[1]);
                 $item[1] = PHPExcel_Shared_Font::inchSizeToPixels($item[1]);
             }
-            if (strpos($item[1], 'cm') !== false) {
+            if (str_contains($item[1], 'cm')) {
                 $item[1] = str_replace('cm', '', $item[1]);
                 $item[1] = PHPExcel_Shared_Font::centimeterSizeToPixels($item[1]);
             }

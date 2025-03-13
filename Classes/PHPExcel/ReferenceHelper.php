@@ -780,13 +780,13 @@ class PHPExcel_ReferenceHelper
     public function updateCellReference($pCellRange = 'A1', $pBefore = 'A1', $pNumCols = 0, $pNumRows = 0)
     {
         // Is it in another worksheet? Will not have to update anything.
-        if (strpos($pCellRange, "!") !== false) {
+        if (str_contains($pCellRange, "!")) {
             return $pCellRange;
         // Is it a range or a single cell?
-        } elseif (strpos($pCellRange, ':') === false && strpos($pCellRange, ',') === false) {
+        } elseif (!str_contains($pCellRange, ':') && !str_contains($pCellRange, ',')) {
             // Single cell
             return $this->updateSingleCellReference($pCellRange, $pBefore, $pNumCols, $pNumRows);
-        } elseif (strpos($pCellRange, ':') !== false || strpos($pCellRange, ',') !== false) {
+        } elseif (str_contains($pCellRange, ':') || str_contains($pCellRange, ',')) {
             // Range
             return $this->updateCellRange($pCellRange, $pBefore, $pNumCols, $pNumRows);
         } else {
@@ -813,7 +813,7 @@ class PHPExcel_ReferenceHelper
                 $cell = $sheet->getCell($cellID);
                 if (($cell !== null) && ($cell->getDataType() == PHPExcel_Cell_DataType::TYPE_FORMULA)) {
                     $formula = $cell->getValue();
-                    if (strpos($formula, (string) $oldName) !== false) {
+                    if (str_contains($formula, (string) $oldName)) {
                         $formula = str_replace("'" . $oldName . "'!", "'" . $newName . "'!", $formula);
                         $formula = str_replace($oldName . "!", $newName . "!", $formula);
                         $cell->setValueExplicit($formula, PHPExcel_Cell_DataType::TYPE_FORMULA);
@@ -835,7 +835,7 @@ class PHPExcel_ReferenceHelper
      */
     private function updateCellRange($pCellRange = 'A1:A1', $pBefore = 'A1', $pNumCols = 0, $pNumRows = 0)
     {
-        if (strpos($pCellRange, ':') !== false || strpos($pCellRange, ',') !== false) {
+        if (str_contains($pCellRange, ':') || str_contains($pCellRange, ',')) {
             // Update range
             $range = PHPExcel_Cell::splitRange($pCellRange);
             $ic = count($range);
@@ -873,7 +873,7 @@ class PHPExcel_ReferenceHelper
      */
     private function updateSingleCellReference($pCellReference = 'A1', $pBefore = 'A1', $pNumCols = 0, $pNumRows = 0)
     {
-        if (strpos($pCellReference, ':') === false && strpos($pCellReference, ',') === false) {
+        if (!str_contains($pCellReference, ':') && !str_contains($pCellReference, ',')) {
             // Get coordinates of $pBefore
             [$beforeColumn, $beforeRow] = PHPExcel_Cell::coordinateFromString($pBefore);
 
@@ -881,8 +881,8 @@ class PHPExcel_ReferenceHelper
             [$newColumn, $newRow] = PHPExcel_Cell::coordinateFromString($pCellReference);
 
             // Verify which parts should be updated
-            $updateColumn = (($newColumn{0} != '$') && ($beforeColumn{0} != '$') && (PHPExcel_Cell::columnIndexFromString($newColumn) >= PHPExcel_Cell::columnIndexFromString($beforeColumn)));
-            $updateRow = (($newRow{0} != '$') && ($beforeRow{0} != '$') && $newRow >= $beforeRow);
+            $updateColumn = (($newColumn[0] != '$') && ($beforeColumn[0] != '$') && (PHPExcel_Cell::columnIndexFromString($newColumn) >= PHPExcel_Cell::columnIndexFromString($beforeColumn)));
+            $updateRow = (($newRow[0] != '$') && ($beforeRow[0] != '$') && $newRow >= $beforeRow);
 
             // Create new column reference
             if ($updateColumn) {

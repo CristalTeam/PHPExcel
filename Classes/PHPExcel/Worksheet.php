@@ -45,13 +45,6 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
     private static $invalidCharacters = ['*', ':', '/', '\\', '?', '[', ']'];
 
     /**
-     * Parent spreadsheet
-     *
-     * @var PHPExcel
-     */
-    private $parent;
-
-    /**
      * Cacheable collection of cells
      *
      * @var PHPExcel_CachedObjectStorage_xxx
@@ -327,13 +320,14 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
     /**
      * Create a new worksheet
      *
-     * @param PHPExcel        $pParent
+     * @param PHPExcel $parent
      * @param string        $pTitle
      */
-    public function __construct(PHPExcel $pParent = null, $pTitle = 'Worksheet')
+    public function __construct(/**
+     * Parent spreadsheet
+     */
+    private ?\PHPExcel $parent = null, $pTitle = 'Worksheet')
     {
-        // Set parent and title
-        $this->parent = $pParent;
         $this->setTitle($pTitle, false);
         // setTitle can change $pTitle
         $this->setCodeName($this->getTitle());
@@ -1150,7 +1144,7 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
         }
 
         // Worksheet reference?
-        if (strpos($pCoordinate, '!') !== false) {
+        if (str_contains($pCoordinate, '!')) {
             $worksheetReference = PHPExcel_Worksheet::extractSheetTitle($pCoordinate, true);
             return $this->parent->getSheetByName($worksheetReference[0])->getCell(strtoupper($worksheetReference[1]), $createIfNotExists);
         }
@@ -1168,9 +1162,9 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
         // Uppercase coordinate
         $pCoordinate = strtoupper($pCoordinate);
 
-        if (strpos($pCoordinate, ':') !== false || strpos($pCoordinate, ',') !== false) {
+        if (str_contains($pCoordinate, ':') || str_contains($pCoordinate, ',')) {
             throw new PHPExcel_Exception('Cell coordinate can not be a range of cells.');
-        } elseif (strpos($pCoordinate, '$') !== false) {
+        } elseif (str_contains($pCoordinate, '$')) {
             throw new PHPExcel_Exception('Cell coordinate must not be absolute.');
         }
 
@@ -1247,7 +1241,7 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
     public function cellExists($pCoordinate = 'A1')
     {
        // Worksheet reference?
-        if (strpos($pCoordinate, '!') !== false) {
+        if (str_contains($pCoordinate, '!')) {
             $worksheetReference = PHPExcel_Worksheet::extractSheetTitle($pCoordinate, true);
             return $this->parent->getSheetByName($worksheetReference[0])->cellExists(strtoupper($worksheetReference[1]));
         }
@@ -1273,9 +1267,9 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
         // Uppercase coordinate
         $pCoordinate = strtoupper($pCoordinate);
 
-        if (strpos($pCoordinate, ':') !== false || strpos($pCoordinate, ',') !== false) {
+        if (str_contains($pCoordinate, ':') || str_contains($pCoordinate, ',')) {
             throw new PHPExcel_Exception('Cell coordinate can not be a range of cells.');
-        } elseif (strpos($pCoordinate, '$') !== false) {
+        } elseif (str_contains($pCoordinate, '$')) {
             throw new PHPExcel_Exception('Cell coordinate must not be absolute.');
         } else {
             // Coordinates
@@ -1683,7 +1677,7 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
         // Uppercase coordinate
         $pRange = strtoupper($pRange);
 
-        if (strpos($pRange, ':') !== false) {
+        if (str_contains($pRange, ':')) {
             $this->mergeCells[$pRange] = $pRange;
 
             // make sure cells are created
@@ -1739,7 +1733,7 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
         // Uppercase coordinate
         $pRange = strtoupper($pRange);
 
-        if (strpos($pRange, ':') !== false) {
+        if (str_contains($pRange, ':')) {
             if (isset($this->mergeCells[$pRange])) {
                 unset($this->mergeCells[$pRange]);
             } else {
@@ -1963,7 +1957,7 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
     {
         // Uppercase coordinate
         $pCell = strtoupper($pCell);
-        if (strpos($pCell, ':') === false && strpos($pCell, ',') === false) {
+        if (!str_contains($pCell, ':') && !str_contains($pCell, ',')) {
             $this->freezePane = $pCell;
         } else {
             throw new PHPExcel_Exception('Freeze pane can not be set on a range of cells.');
@@ -2260,9 +2254,9 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
         // Uppercase coordinate
         $pCellCoordinate = strtoupper($pCellCoordinate);
 
-        if (strpos($pCellCoordinate, ':') !== false || strpos($pCellCoordinate, ',') !== false) {
+        if (str_contains($pCellCoordinate, ':') || str_contains($pCellCoordinate, ',')) {
             throw new PHPExcel_Exception('Cell coordinate string can not be a range of cells.');
-        } elseif (strpos($pCellCoordinate, '$') !== false) {
+        } elseif (str_contains($pCellCoordinate, '$')) {
             throw new PHPExcel_Exception('Cell coordinate string must not be absolute.');
         } elseif ($pCellCoordinate == '') {
             throw new PHPExcel_Exception('Cell coordinate can not be zero-length string.');
@@ -2357,7 +2351,7 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
         // Convert '1:3' to 'A1:XFD3'
         $pCoordinate = preg_replace('/^([0-9]+):([0-9]+)$/', 'A${1}:XFD${2}', $pCoordinate);
 
-        if (strpos($pCoordinate, ':') !== false || strpos($pCoordinate, ',') !== false) {
+        if (str_contains($pCoordinate, ':') || str_contains($pCoordinate, ',')) {
             [$first, ] = PHPExcel_Cell::splitRange($pCoordinate);
             $this->activeCell = $first[0];
         } else {

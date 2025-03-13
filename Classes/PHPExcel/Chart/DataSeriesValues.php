@@ -44,51 +44,33 @@ class PHPExcel_Chart_DataSeriesValues
     private $dataType;
 
     /**
+     * Create a new PHPExcel_Chart_DataSeriesValues object
+     * @param string $dataSource
+     * @param string $formatCode
+     * @param string $marker
+     * @param int $pointCount
+     * @param mixed[] $dataValues
+     */
+    public function __construct($dataType = self::DATASERIES_TYPE_NUMBER, /**
      * Series Data Source
-     *
-     * @var    string
      */
-    private $dataSource;
-
-    /**
+    private $dataSource = null, /**
      * Format Code
-     *
-     * @var    string
      */
-    private $formatCode;
-
-    /**
-     * Series Point Marker
-     *
-     * @var    string
-     */
-    private $pointMarker;
-
-    /**
+    private $formatCode = null, /**
      * Point Count (The number of datapoints in the dataseries)
-     *
-     * @var    integer
      */
-    private $pointCount = 0;
-
-    /**
+    private $pointCount = 0, /**
      * Data Values
      *
      * @var    array of mixed
      */
-    private $dataValues = [];
-
-    /**
-     * Create a new PHPExcel_Chart_DataSeriesValues object
+    private $dataValues = [], /**
+     * Series Point Marker
      */
-    public function __construct($dataType = self::DATASERIES_TYPE_NUMBER, $dataSource = null, $formatCode = null, $pointCount = 0, $dataValues = [], $marker = null)
+    private $pointMarker = null)
     {
         $this->setDataType($dataType);
-        $this->dataSource = $dataSource;
-        $this->formatCode = $formatCode;
-        $this->pointCount = $pointCount;
-        $this->dataValues = $dataValues;
-        $this->pointMarker = $marker;
     }
 
     /**
