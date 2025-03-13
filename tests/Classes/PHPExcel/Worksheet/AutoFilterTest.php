@@ -106,7 +106,7 @@ class AutoFilterTest extends PHPUnit\Framework\TestCase
     {
         //    There should be no columns yet defined
         $result = $this->_testAutoFilterObject->getColumns();
-        $this->assertInternalType('array', $result);
+        $this->assertIsArray($result);
         $this->assertEquals(0, count($result));
     }
 
@@ -146,7 +146,7 @@ class AutoFilterTest extends PHPUnit\Framework\TestCase
         $result = $this->_testAutoFilterObject->getColumns();
         //    Result should be an array of PHPExcel_Worksheet_AutoFilter_Column
         //    objects for each column we set indexed by the column ID
-        $this->assertInternalType('array', $result);
+        $this->assertIsArray($result);
         $this->assertEquals(1, count($result));
         $this->assertArrayHasKey($expectedResult, $result);
         $this->assertInstanceOf('PHPExcel_Worksheet_AutoFilter_Column', $result[$expectedResult]);
@@ -174,7 +174,7 @@ class AutoFilterTest extends PHPUnit\Framework\TestCase
         $result = $this->_testAutoFilterObject->getColumns();
         //    Result should be an array of PHPExcel_Worksheet_AutoFilter_Column
         //    objects for each column we set indexed by the column ID
-        $this->assertInternalType('array', $result);
+        $this->assertIsArray($result);
         $this->assertEquals(1, count($result));
         $this->assertArrayHasKey($expectedResult, $result);
         $this->assertInstanceOf('PHPExcel_Worksheet_AutoFilter_Column', $result[$expectedResult]);
@@ -213,7 +213,7 @@ class AutoFilterTest extends PHPUnit\Framework\TestCase
         $result = $this->_testAutoFilterObject->getColumns();
         //    Result should be an array of PHPExcel_Worksheet_AutoFilter_Column
         //    objects for each column we set indexed by the column ID
-        $this->assertInternalType('array', $result);
+        $this->assertIsArray($result);
         $this->assertEquals(count($columnIndexes), count($result));
         foreach ($columnIndexes as $columnIndex) {
             $this->assertArrayHasKey($columnIndex, $result);
@@ -291,7 +291,7 @@ class AutoFilterTest extends PHPUnit\Framework\TestCase
 
         //    Column array should be cleared
         $result = $this->_testAutoFilterObject->getColumns();
-        $this->assertInternalType('array', $result);
+        $this->assertIsArray($result);
         $this->assertEquals(0, count($result));
     }
 
@@ -321,7 +321,7 @@ class AutoFilterTest extends PHPUnit\Framework\TestCase
         //    Only columns that existed in the original range and that
         //        still fall within the new range should be retained
         $result = $this->_testAutoFilterObject->getColumns();
-        $this->assertInternalType('array', $result);
+        $this->assertIsArray($result);
         $this->assertEquals(count($columnIndexes1), count($result));
     }
 
