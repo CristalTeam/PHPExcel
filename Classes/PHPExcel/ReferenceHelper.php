@@ -813,7 +813,7 @@ class PHPExcel_ReferenceHelper
                 $cell = $sheet->getCell($cellID);
                 if (($cell !== null) && ($cell->getDataType() == PHPExcel_Cell_DataType::TYPE_FORMULA)) {
                     $formula = $cell->getValue();
-                    if (strpos($formula, $oldName) !== false) {
+                    if (strpos($formula, (string) $oldName) !== false) {
                         $formula = str_replace("'" . $oldName . "'!", "'" . $newName . "'!", $formula);
                         $formula = str_replace($oldName . "!", $newName . "!", $formula);
                         $cell->setValueExplicit($formula, PHPExcel_Cell_DataType::TYPE_FORMULA);

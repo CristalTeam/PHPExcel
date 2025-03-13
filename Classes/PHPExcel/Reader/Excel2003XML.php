@@ -95,7 +95,7 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
         $valid = true;
         foreach ($signature as $match) {
             // every part of the signature must be present
-            if (strpos($data, $match) === false) {
+            if (strpos($data, (string) $match) === false) {
                 $valid = false;
                 break;
             }

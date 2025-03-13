@@ -241,7 +241,7 @@ class PHPExcel_Calculation_FormulaParser
             }
 
             // scientific notation check
-            if (strpos(PHPExcel_Calculation_FormulaParser::OPERATORS_SN, $this->formula{$index}) !== false) {
+            if (strpos(PHPExcel_Calculation_FormulaParser::OPERATORS_SN, (string) $this->formula{$index}) !== false) {
                 if (strlen($value) > 1) {
                     if (preg_match("/^[1-9]{1}(\.[0-9]+)?E{1}$/", $this->formula{$index}) != 0) {
                         $value .= $this->formula{$index};
@@ -385,7 +385,7 @@ class PHPExcel_Calculation_FormulaParser
             }
 
             // standard infix operators
-            if (strpos(PHPExcel_Calculation_FormulaParser::OPERATORS_INFIX, $this->formula{$index}) !== false) {
+            if (strpos(PHPExcel_Calculation_FormulaParser::OPERATORS_INFIX, (string) $this->formula{$index}) !== false) {
                 if (strlen($value) > 0) {
                     $tokens1[] =new PHPExcel_Calculation_FormulaToken($value, PHPExcel_Calculation_FormulaToken::TOKEN_TYPE_OPERAND);
                     $value = "";
@@ -396,7 +396,7 @@ class PHPExcel_Calculation_FormulaParser
             }
 
             // standard postfix operators (only one)
-            if (strpos(PHPExcel_Calculation_FormulaParser::OPERATORS_POSTFIX, $this->formula{$index}) !== false) {
+            if (strpos(PHPExcel_Calculation_FormulaParser::OPERATORS_POSTFIX, (string) $this->formula{$index}) !== false) {
                 if (strlen($value) > 0) {
                     $tokens1[] = new PHPExcel_Calculation_FormulaToken($value, PHPExcel_Calculation_FormulaToken::TOKEN_TYPE_OPERAND);
                     $value = "";

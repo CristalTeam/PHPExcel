@@ -205,9 +205,6 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
      */
     public function __construct(&$str_total, &$str_unique, &$str_table, &$colors, $parser, $preCalculateFormulas, $phpSheet)
     {
-        // It needs to call its parent's constructor explicitly
-        parent::__construct();
-
         // change BIFFwriter limit for CONTINUE records
 //        $this->_limit = 8224;
 

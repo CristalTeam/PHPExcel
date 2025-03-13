@@ -1158,7 +1158,7 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
         // Named range?
         if ((!preg_match('/^'.PHPExcel_Calculation::CALCULATION_REGEXP_CELLREF.'$/i', $pCoordinate, $matches)) &&
             (preg_match('/^'.PHPExcel_Calculation::CALCULATION_REGEXP_NAMEDRANGE.'$/i', $pCoordinate, $matches))) {
-            $namedRange = PHPExcel_NamedRange::resolveRange($pCoordinate, $this);
+            $namedRange = PHPExcel_NamedRange::resolveRange($this, $pCoordinate);
             if ($namedRange !== null) {
                 $pCoordinate = $namedRange->getRange();
                 return $namedRange->getWorksheet()->getCell($pCoordinate, $createIfNotExists);
@@ -1255,7 +1255,7 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
         // Named range?
         if ((!preg_match('/^'.PHPExcel_Calculation::CALCULATION_REGEXP_CELLREF.'$/i', $pCoordinate, $matches)) &&
             (preg_match('/^'.PHPExcel_Calculation::CALCULATION_REGEXP_NAMEDRANGE.'$/i', $pCoordinate, $matches))) {
-            $namedRange = PHPExcel_NamedRange::resolveRange($pCoordinate, $this);
+            $namedRange = PHPExcel_NamedRange::resolveRange($this, $pCoordinate);
             if ($namedRange !== null) {
                 $pCoordinate = $namedRange->getRange();
                 if ($this->getHashCode() != $namedRange->getWorksheet()->getHashCode()) {
@@ -1474,7 +1474,7 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
      * @param $pValue PHPExcel_Style_Conditional[]
      * @return PHPExcel_Worksheet
      */
-    public function setConditionalStyles($pCoordinate = 'A1', $pValue)
+    public function setConditionalStyles($pValue, $pCoordinate = 'A1')
     {
         $this->conditionalStylesCollection[strtoupper($pCoordinate)] = $pValue;
         return $this;
@@ -1593,7 +1593,7 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
         // Loop through cells and apply styles
         for ($col = $rangeStart[0]; $col <= $rangeEnd[0]; ++$col) {
             for ($row = $rangeStart[1]; $row <= $rangeEnd[1]; ++$row) {
-                $this->setConditionalStyles(PHPExcel_Cell::stringFromColumnIndex($col - 1) . $row, $pCellStyle);
+                $this->setConditionalStyles($pCellStyle, PHPExcel_Cell::stringFromColumnIndex($col - 1) . $row);
             }
         }
 
@@ -2532,7 +2532,7 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
      */
     public function namedRangeToArray($pNamedRange = '', $nullValue = null, $calculateFormulas = true, $formatData = true, $returnCellRef = false)
     {
-        $namedRange = PHPExcel_NamedRange::resolveRange($pNamedRange, $this);
+        $namedRange = PHPExcel_NamedRange::resolveRange($this, $pNamedRange);
         if ($namedRange !== null) {
             $pWorkSheet = $namedRange->getWorksheet();
             $pCellRange = $namedRange->getRange();
