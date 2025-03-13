@@ -1,7 +1,14 @@
 {
     "name": "phpoffice/phpexcel",
     "description": "PHPExcel - OpenXML - Read, Create and Write Spreadsheet documents in PHP - Spreadsheet engine",
-    "keywords": ["PHP","Excel","OpenXML","xlsx","xls","spreadsheet"],
+    "keywords": [
+        "PHP",
+        "Excel",
+        "OpenXML",
+        "xlsx",
+        "xls",
+        "spreadsheet"
+    ],
     "homepage": "https://github.com/PHPOffice/PHPExcel",
     "type": "library",
     "license": "LGPL-2.1",
@@ -30,7 +37,7 @@
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "2.*",
-        "phpunit/phpunit": "^5.0.0",
+        "phpunit/phpunit": "^6.0",
         "rector/rector": "^2.0"
     },
     "recommend": {
