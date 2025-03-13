@@ -37,7 +37,7 @@
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "2.*",
-        "phpunit/phpunit": "^9.0",
+        "phpunit/phpunit": "^10.0",
         "rector/rector": "^2.0"
     },
     "recommend": {
