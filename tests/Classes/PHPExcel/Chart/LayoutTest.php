@@ -1,7 +1,7 @@
 <?php
 
 
-class LayoutTest extends PHPUnit\Framework\TestCase
+final class LayoutTest extends PHPUnit\Framework\TestCase
 {
 
     protected function setUp(): void

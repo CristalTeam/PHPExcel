@@ -1,7 +1,7 @@
 <?php
 
 
-class ReferenceHelperTest extends PHPUnit\Framework\TestCase
+final class ReferenceHelperTest extends PHPUnit\Framework\TestCase
 {
 
     protected function setUp(): void

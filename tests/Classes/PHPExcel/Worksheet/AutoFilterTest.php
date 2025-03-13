@@ -1,7 +1,7 @@
 <?php
 
 
-class AutoFilterTest extends PHPUnit\Framework\TestCase
+final class AutoFilterTest extends PHPUnit\Framework\TestCase
 {
     private $_testInitialRange = 'H2:O256';
 

@@ -1,7 +1,7 @@
 <?php
 
 
-class AutoloaderTest extends PHPUnit\Framework\TestCase
+final class AutoloaderTest extends PHPUnit\Framework\TestCase
 {
 
     protected function setUp(): void
