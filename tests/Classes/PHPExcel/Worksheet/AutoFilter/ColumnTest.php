@@ -9,7 +9,7 @@ class AutofilterColumnTest extends PHPUnit\Framework\TestCase
 
     private $_mockAutoFilterObject;
 
-    public function setUp()
+    protected function setUp(): void
     {
         if (!defined('PHPEXCEL_ROOT')) {
             define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
