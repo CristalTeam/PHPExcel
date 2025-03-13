@@ -3,7 +3,7 @@
 
 require_once 'testDataFileIterator.php';
 
-class FinancialTest extends PHPUnit_Framework_TestCase
+class FinancialTest extends PHPUnit\Framework\TestCase
 {
 
     public function setUp()

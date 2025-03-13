@@ -3,7 +3,7 @@
 
 require_once 'testDataFileIterator.php';
 
-class LogicalTest extends PHPUnit_Framework_TestCase
+class LogicalTest extends PHPUnit\Framework\TestCase
 {
 
     public function setUp()

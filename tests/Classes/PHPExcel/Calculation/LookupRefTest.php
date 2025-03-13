@@ -3,7 +3,7 @@
 
 require_once 'testDataFileIterator.php';
 
-class LookupRefTest extends PHPUnit_Framework_TestCase
+class LookupRefTest extends PHPUnit\Framework\TestCase
 {
 
     public function setUp()
