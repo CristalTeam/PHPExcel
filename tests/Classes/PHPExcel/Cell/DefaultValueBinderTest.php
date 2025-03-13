@@ -2,7 +2,7 @@
 
 require_once 'testDataFileIterator.php';
 
-class DefaultValueBinderTest extends PHPUnit_Framework_TestCase
+class DefaultValueBinderTest extends PHPUnit\Framework\TestCase
 {
     protected $cellStub;
 

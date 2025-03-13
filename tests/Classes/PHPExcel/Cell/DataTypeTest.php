@@ -1,7 +1,7 @@
 <?php
 
 
-class DataTypeTest extends PHPUnit_Framework_TestCase
+class DataTypeTest extends PHPUnit\Framework\TestCase
 {
 
     public function setUp()
