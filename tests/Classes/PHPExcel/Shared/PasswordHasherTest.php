@@ -17,7 +17,7 @@ class PasswordHasherTest extends PHPUnit\Framework\TestCase
     }
 
     #[DataProvider('providerHashPassword')]
-    public function testHashPassword()
+    public function testHashPassword(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -25,7 +25,7 @@ class PasswordHasherTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerHashPassword()
+    public static function providerHashPassword(): array
     {
         return new testDataFileIterator('rawTestData/Shared/PasswordHashes.data');
     }

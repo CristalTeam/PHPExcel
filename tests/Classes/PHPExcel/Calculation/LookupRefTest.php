@@ -19,7 +19,7 @@ class LookupRefTest extends PHPUnit\Framework\TestCase
     }
 
     #[DataProvider('providerHLOOKUP')]
-    public function testHLOOKUP()
+    public function testHLOOKUP(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -27,13 +27,13 @@ class LookupRefTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerHLOOKUP()
+    public static function providerHLOOKUP(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/LookupRef/HLOOKUP.data');
     }
 
     #[DataProvider('providerVLOOKUP')]
-    public function testVLOOKUP()
+    public function testVLOOKUP(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -41,7 +41,7 @@ class LookupRefTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerVLOOKUP()
+    public static function providerVLOOKUP(): array
     {
         return new testDataFileIterator('rawTestData/Calculation/LookupRef/VLOOKUP.data');
     }

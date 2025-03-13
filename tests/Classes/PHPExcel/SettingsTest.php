@@ -14,7 +14,7 @@ class SettingsTest extends PHPUnit\Framework\TestCase
 
     /**
      */
-    public function testGetXMLSettings()
+    public function testGetXMLSettings(): void
     {
         $result = call_user_func(['PHPExcel_Settings','getLibXmlLoaderOptions']);
         $this->assertTrue((bool) ((LIBXML_DTDLOAD | LIBXML_DTDATTR) & $result));
@@ -22,7 +22,7 @@ class SettingsTest extends PHPUnit\Framework\TestCase
 
     /**
      */
-    public function testSetXMLSettings()
+    public function testSetXMLSettings(): void
     {
         call_user_func_array(['PHPExcel_Settings','setLibXmlLoaderOptions'], [LIBXML_DTDLOAD | LIBXML_DTDATTR | LIBXML_DTDVALID]);
         $result = call_user_func(['PHPExcel_Settings','getLibXmlLoaderOptions']);

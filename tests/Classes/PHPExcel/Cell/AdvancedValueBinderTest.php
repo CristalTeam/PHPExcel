@@ -12,7 +12,7 @@ class AdvancedValueBinderTest extends PHPUnit\Framework\TestCase
         require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
     }
 
-    public static function provider()
+    public static function provider(): array
     {
         if (!class_exists('PHPExcel_Style_NumberFormat')) {
             $this->setUp();
@@ -33,7 +33,7 @@ class AdvancedValueBinderTest extends PHPUnit\Framework\TestCase
     }
 
     #[DataProvider('provider')]
-    public function testCurrency($value, $valueBinded, $format, $thousandsSeparator, $decimalSeparator, $currencyCode)
+    public function testCurrency($value, $valueBinded, $format, $thousandsSeparator, $decimalSeparator, $currencyCode): void
     {
         $sheet = $this->getMock(
             'PHPExcel_Worksheet',

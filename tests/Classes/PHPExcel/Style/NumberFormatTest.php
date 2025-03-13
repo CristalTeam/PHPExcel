@@ -20,7 +20,7 @@ class NumberFormatTest extends PHPUnit\Framework\TestCase
     }
 
     #[DataProvider('providerNumberFormat')]
-    public function testFormatValueWithMask()
+    public function testFormatValueWithMask(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -28,7 +28,7 @@ class NumberFormatTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerNumberFormat()
+    public static function providerNumberFormat(): array
     {
         return new testDataFileIterator('rawTestData/Style/NumberFormat.data');
     }

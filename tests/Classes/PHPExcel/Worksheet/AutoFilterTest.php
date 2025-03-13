@@ -31,7 +31,7 @@ class AutoFilterTest extends PHPUnit\Framework\TestCase
         );
     }
 
-    public function testToString()
+    public function testToString(): void
     {
         $expectedResult = $this->_testInitialRange;
 
@@ -40,20 +40,20 @@ class AutoFilterTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function testGetParent()
+    public function testGetParent(): void
     {
         $result = $this->_testAutoFilterObject->getParent();
         $this->assertInstanceOf('PHPExcel_Worksheet', $result);
     }
 
-    public function testSetParent()
+    public function testSetParent(): void
     {
         //    Setters return the instance to implement the fluent interface
         $result = $this->_testAutoFilterObject->setParent($this->_mockWorksheetObject);
         $this->assertInstanceOf('PHPExcel_Worksheet_AutoFilter', $result);
     }
 
-    public function testGetRange()
+    public function testGetRange(): void
     {
         $expectedResult = $this->_testInitialRange;
 
@@ -62,7 +62,7 @@ class AutoFilterTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function testSetRange()
+    public function testSetRange(): void
     {
         $ranges = ['G1:J512' => 'Worksheet1!G1:J512',
                         'K1:N20' => 'K1:N20'
@@ -79,7 +79,7 @@ class AutoFilterTest extends PHPUnit\Framework\TestCase
         }
     }
 
-    public function testClearRange()
+    public function testClearRange(): void
     {
         $expectedResult = '';
 
@@ -95,14 +95,14 @@ class AutoFilterTest extends PHPUnit\Framework\TestCase
     /**
      * @expectedException PHPExcel_Exception
      */
-    public function testSetRangeInvalidRange()
+    public function testSetRangeInvalidRange(): void
     {
         $expectedResult = 'A1';
 
         $result = $this->_testAutoFilterObject->setRange($expectedResult);
     }
 
-    public function testGetColumnsEmpty()
+    public function testGetColumnsEmpty(): void
     {
         //    There should be no columns yet defined
         $result = $this->_testAutoFilterObject->getColumns();
@@ -110,7 +110,7 @@ class AutoFilterTest extends PHPUnit\Framework\TestCase
         $this->assertEquals(0, count($result));
     }
 
-    public function testGetColumnOffset()
+    public function testGetColumnOffset(): void
     {
         $columnIndexes = [    'H' => 0,
                                 'K' => 3,
@@ -128,14 +128,14 @@ class AutoFilterTest extends PHPUnit\Framework\TestCase
     /**
      * @expectedException PHPExcel_Exception
      */
-    public function testGetInvalidColumnOffset()
+    public function testGetInvalidColumnOffset(): void
     {
         $invalidColumn = 'G';
 
         $result = $this->_testAutoFilterObject->getColumnOffset($invalidColumn);
     }
 
-    public function testSetColumnWithString()
+    public function testSetColumnWithString(): void
     {
         $expectedResult = 'L';
 
@@ -155,14 +155,14 @@ class AutoFilterTest extends PHPUnit\Framework\TestCase
     /**
      * @expectedException PHPExcel_Exception
      */
-    public function testSetInvalidColumnWithString()
+    public function testSetInvalidColumnWithString(): void
     {
         $invalidColumn = 'A';
 
         $result = $this->_testAutoFilterObject->setColumn($invalidColumn);
     }
 
-    public function testSetColumnWithColumnObject()
+    public function testSetColumnWithColumnObject(): void
     {
         $expectedResult = 'M';
         $columnObject = new PHPExcel_Worksheet_AutoFilter_Column($expectedResult);
@@ -183,7 +183,7 @@ class AutoFilterTest extends PHPUnit\Framework\TestCase
     /**
      * @expectedException PHPExcel_Exception
      */
-    public function testSetInvalidColumnWithObject()
+    public function testSetInvalidColumnWithObject(): void
     {
         $invalidColumn = 'E';
         $columnObject = new PHPExcel_Worksheet_AutoFilter_Column($invalidColumn);
@@ -194,7 +194,7 @@ class AutoFilterTest extends PHPUnit\Framework\TestCase
     /**
      * @expectedException PHPExcel_Exception
      */
-    public function testSetColumnWithInvalidDataType()
+    public function testSetColumnWithInvalidDataType(): void
     {
         $invalidColumn = 123.456;
         $columnObject = new PHPExcel_Worksheet_AutoFilter_Column($invalidColumn);
@@ -202,7 +202,7 @@ class AutoFilterTest extends PHPUnit\Framework\TestCase
         $result = $this->_testAutoFilterObject->setColumn($invalidColumn);
     }
 
-    public function testGetColumns()
+    public function testGetColumns(): void
     {
         $columnIndexes = ['L','M'];
 
@@ -221,7 +221,7 @@ class AutoFilterTest extends PHPUnit\Framework\TestCase
         }
     }
 
-    public function testGetColumn()
+    public function testGetColumn(): void
     {
         $columnIndexes = ['L','M'];
 
@@ -237,7 +237,7 @@ class AutoFilterTest extends PHPUnit\Framework\TestCase
         }
     }
 
-    public function testGetColumnByOffset()
+    public function testGetColumnByOffset(): void
     {
         $columnIndexes = [    0 => 'H',
                                 3 => 'K',
@@ -253,7 +253,7 @@ class AutoFilterTest extends PHPUnit\Framework\TestCase
         }
     }
 
-    public function testGetColumnIfNotSet()
+    public function testGetColumnIfNotSet(): void
     {
         //    If we request a specific column by its column ID, we should
         //    get a PHPExcel_Worksheet_AutoFilter_Column object returned
@@ -264,7 +264,7 @@ class AutoFilterTest extends PHPUnit\Framework\TestCase
     /**
      * @expectedException PHPExcel_Exception
      */
-    public function testGetColumnWithoutRangeSet()
+    public function testGetColumnWithoutRangeSet(): void
     {
         //    Clear the range
         $result = $this->_testAutoFilterObject->setRange();
@@ -272,7 +272,7 @@ class AutoFilterTest extends PHPUnit\Framework\TestCase
         $result = $this->_testAutoFilterObject->getColumn('A');
     }
 
-    public function testClearRangeWithExistingColumns()
+    public function testClearRangeWithExistingColumns(): void
     {
         $expectedResult = '';
 
@@ -295,7 +295,7 @@ class AutoFilterTest extends PHPUnit\Framework\TestCase
         $this->assertEquals(0, count($result));
     }
 
-    public function testSetRangeWithExistingColumns()
+    public function testSetRangeWithExistingColumns(): void
     {
         $expectedResult = 'G1:J512';
 
@@ -325,7 +325,7 @@ class AutoFilterTest extends PHPUnit\Framework\TestCase
         $this->assertEquals(count($columnIndexes1), count($result));
     }
 
-    public function testClone()
+    public function testClone(): void
     {
         $columnIndexes = ['L','M'];
 

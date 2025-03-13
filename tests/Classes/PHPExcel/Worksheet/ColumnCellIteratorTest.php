@@ -29,7 +29,7 @@ class ColumnCellIteratorTest extends PHPUnit\Framework\TestCase
     }
 
 
-    public function testIteratorFullRange()
+    public function testIteratorFullRange(): void
     {
         $iterator = new PHPExcel_Worksheet_ColumnCellIterator($this->mockWorksheet, 'A');
         $ColumnCellIndexResult = 1;
@@ -41,7 +41,7 @@ class ColumnCellIteratorTest extends PHPUnit\Framework\TestCase
         }
     }
 
-    public function testIteratorStartEndRange()
+    public function testIteratorStartEndRange(): void
     {
         $iterator = new PHPExcel_Worksheet_ColumnCellIterator($this->mockWorksheet, 'A', 2, 4);
         $ColumnCellIndexResult = 2;
@@ -53,7 +53,7 @@ class ColumnCellIteratorTest extends PHPUnit\Framework\TestCase
         }
     }
 
-    public function testIteratorSeekAndPrev()
+    public function testIteratorSeekAndPrev(): void
     {
         $iterator = new PHPExcel_Worksheet_ColumnCellIterator($this->mockWorksheet, 'A', 2, 4);
         $columnIndexResult = 4;
@@ -69,7 +69,7 @@ class ColumnCellIteratorTest extends PHPUnit\Framework\TestCase
     /**
      * @expectedException PHPExcel_Exception
      */
-    public function testSeekOutOfRange()
+    public function testSeekOutOfRange(): void
     {
         $iterator = new PHPExcel_Worksheet_ColumnCellIterator($this->mockWorksheet, 'A', 2, 4);
         $iterator->seek(1);
@@ -78,7 +78,7 @@ class ColumnCellIteratorTest extends PHPUnit\Framework\TestCase
     /**
      * @expectedException PHPExcel_Exception
      */
-    public function testPrevOutOfRange()
+    public function testPrevOutOfRange(): void
     {
         $iterator = new PHPExcel_Worksheet_ColumnCellIterator($this->mockWorksheet, 'A', 2, 4);
         $iterator->prev();

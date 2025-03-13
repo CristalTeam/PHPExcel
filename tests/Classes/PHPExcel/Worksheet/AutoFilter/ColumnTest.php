@@ -30,13 +30,13 @@ class AutofilterColumnTest extends PHPUnit\Framework\TestCase
         );
     }
 
-    public function testGetColumnIndex()
+    public function testGetColumnIndex(): void
     {
         $result = $this->_testAutoFilterColumnObject->getColumnIndex();
         $this->assertEquals($this->_testInitialColumn, $result);
     }
 
-    public function testSetColumnIndex()
+    public function testSetColumnIndex(): void
     {
         $expectedResult = 'L';
 
@@ -48,26 +48,26 @@ class AutofilterColumnTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function testGetParent()
+    public function testGetParent(): void
     {
         $result = $this->_testAutoFilterColumnObject->getParent();
         $this->assertInstanceOf('PHPExcel_Worksheet_AutoFilter', $result);
     }
 
-    public function testSetParent()
+    public function testSetParent(): void
     {
         //    Setters return the instance to implement the fluent interface
         $result = $this->_testAutoFilterColumnObject->setParent($this->_mockAutoFilterObject);
         $this->assertInstanceOf('PHPExcel_Worksheet_AutoFilter_Column', $result);
     }
 
-    public function testGetFilterType()
+    public function testGetFilterType(): void
     {
         $result = $this->_testAutoFilterColumnObject->getFilterType();
         $this->assertEquals(PHPExcel_Worksheet_AutoFilter_Column::AUTOFILTER_FILTERTYPE_FILTER, $result);
     }
 
-    public function testSetFilterType()
+    public function testSetFilterType(): void
     {
         $result = $this->_testAutoFilterColumnObject->setFilterType(PHPExcel_Worksheet_AutoFilter_Column::AUTOFILTER_FILTERTYPE_DYNAMICFILTER);
         $this->assertInstanceOf('PHPExcel_Worksheet_AutoFilter_Column', $result);
@@ -79,20 +79,20 @@ class AutofilterColumnTest extends PHPUnit\Framework\TestCase
     /**
      * @expectedException PHPExcel_Exception
      */
-    public function testSetInvalidFilterTypeThrowsException()
+    public function testSetInvalidFilterTypeThrowsException(): void
     {
         $expectedResult = 'Unfiltered';
 
         $result = $this->_testAutoFilterColumnObject->setFilterType($expectedResult);
     }
 
-    public function testGetJoin()
+    public function testGetJoin(): void
     {
         $result = $this->_testAutoFilterColumnObject->getJoin();
         $this->assertEquals(PHPExcel_Worksheet_AutoFilter_Column::AUTOFILTER_COLUMN_JOIN_OR, $result);
     }
 
-    public function testSetJoin()
+    public function testSetJoin(): void
     {
         $result = $this->_testAutoFilterColumnObject->setJoin(PHPExcel_Worksheet_AutoFilter_Column::AUTOFILTER_COLUMN_JOIN_AND);
         $this->assertInstanceOf('PHPExcel_Worksheet_AutoFilter_Column', $result);
@@ -104,14 +104,14 @@ class AutofilterColumnTest extends PHPUnit\Framework\TestCase
     /**
      * @expectedException PHPExcel_Exception
      */
-    public function testSetInvalidJoinThrowsException()
+    public function testSetInvalidJoinThrowsException(): void
     {
         $expectedResult = 'Neither';
 
         $result = $this->_testAutoFilterColumnObject->setJoin($expectedResult);
     }
 
-    public function testSetAttributes()
+    public function testSetAttributes(): void
     {
         $attributeSet = [    'val' => 100,
                                 'maxVal' => 200
@@ -122,7 +122,7 @@ class AutofilterColumnTest extends PHPUnit\Framework\TestCase
         $this->assertInstanceOf('PHPExcel_Worksheet_AutoFilter_Column', $result);
     }
 
-    public function testGetAttributes()
+    public function testGetAttributes(): void
     {
         $attributeSet = [    'val' => 100,
                                 'maxVal' => 200
@@ -135,7 +135,7 @@ class AutofilterColumnTest extends PHPUnit\Framework\TestCase
         $this->assertEquals(count($attributeSet), count($result));
     }
 
-    public function testSetAttribute()
+    public function testSetAttribute(): void
     {
         $attributeSet = [    'val' => 100,
                                 'maxVal' => 200
@@ -148,7 +148,7 @@ class AutofilterColumnTest extends PHPUnit\Framework\TestCase
         }
     }
 
-    public function testGetAttribute()
+    public function testGetAttribute(): void
     {
         $attributeSet = [    'val' => 100,
                                 'maxVal' => 200
@@ -164,7 +164,7 @@ class AutofilterColumnTest extends PHPUnit\Framework\TestCase
         $this->assertNull($result);
     }
 
-    public function testClone()
+    public function testClone(): void
     {
         $result = clone $this->_testAutoFilterColumnObject;
         $this->assertInstanceOf('PHPExcel_Worksheet_AutoFilter_Column', $result);

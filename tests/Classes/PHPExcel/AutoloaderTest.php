@@ -12,7 +12,7 @@ class AutoloaderTest extends PHPUnit\Framework\TestCase
         require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
     }
 
-    public function testAutoloaderNonPHPExcelClass()
+    public function testAutoloaderNonPHPExcelClass(): void
     {
         $className = 'InvalidClass';
 
@@ -23,7 +23,7 @@ class AutoloaderTest extends PHPUnit\Framework\TestCase
         $this->assertFalse($result);
     }
 
-    public function testAutoloaderInvalidPHPExcelClass()
+    public function testAutoloaderInvalidPHPExcelClass(): void
     {
         $className = 'PHPExcel_Invalid_Class';
 
@@ -34,7 +34,7 @@ class AutoloaderTest extends PHPUnit\Framework\TestCase
         $this->assertFalse($result);
     }
 
-    public function testAutoloadValidPHPExcelClass()
+    public function testAutoloadValidPHPExcelClass(): void
     {
         $className = 'PHPExcel_IOFactory';
 
@@ -43,7 +43,7 @@ class AutoloaderTest extends PHPUnit\Framework\TestCase
         $this->assertTrue(class_exists($className));
     }
 
-    public function testAutoloadInstantiateSuccess()
+    public function testAutoloadInstantiateSuccess(): void
     {
         $result = new PHPExcel_Calculation_Function(1, 2, 3);
         //    Must return an object...

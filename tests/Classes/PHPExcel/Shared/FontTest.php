@@ -16,7 +16,7 @@ class FontTest extends PHPUnit\Framework\TestCase
         require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
     }
 
-    public function testGetAutoSizeMethod()
+    public function testGetAutoSizeMethod(): void
     {
         $expectedResult = PHPExcel_Shared_Font::AUTOSIZE_METHOD_APPROX;
 
@@ -24,7 +24,7 @@ class FontTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function testSetAutoSizeMethod()
+    public function testSetAutoSizeMethod(): void
     {
         $autosizeMethodValues = [
             PHPExcel_Shared_Font::AUTOSIZE_METHOD_EXACT,
@@ -37,7 +37,7 @@ class FontTest extends PHPUnit\Framework\TestCase
         }
     }
 
-    public function testSetAutoSizeMethodWithInvalidValue()
+    public function testSetAutoSizeMethodWithInvalidValue(): void
     {
         $unsupportedAutosizeMethod = 'guess';
 
@@ -46,7 +46,7 @@ class FontTest extends PHPUnit\Framework\TestCase
     }
 
     #[DataProvider('providerFontSizeToPixels')]
-    public function testFontSizeToPixels()
+    public function testFontSizeToPixels(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -54,13 +54,13 @@ class FontTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerFontSizeToPixels()
+    public static function providerFontSizeToPixels(): array
     {
         return new testDataFileIterator('rawTestData/Shared/FontSizeToPixels.data');
     }
 
     #[DataProvider('providerInchSizeToPixels')]
-    public function testInchSizeToPixels()
+    public function testInchSizeToPixels(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -68,13 +68,13 @@ class FontTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerInchSizeToPixels()
+    public static function providerInchSizeToPixels(): array
     {
         return new testDataFileIterator('rawTestData/Shared/InchSizeToPixels.data');
     }
 
     #[DataProvider('providerCentimeterSizeToPixels')]
-    public function testCentimeterSizeToPixels()
+    public function testCentimeterSizeToPixels(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
@@ -82,7 +82,7 @@ class FontTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerCentimeterSizeToPixels()
+    public static function providerCentimeterSizeToPixels(): array
     {
         return new testDataFileIterator('rawTestData/Shared/CentimeterSizeToPixels.data');
     }
