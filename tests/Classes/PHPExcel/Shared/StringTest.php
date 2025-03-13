@@ -3,7 +3,7 @@
 
 require_once 'testDataFileIterator.php';
 
-class StringTest extends PHPUnit\Framework\TestCase
+final class StringTest extends PHPUnit\Framework\TestCase
 {
 
     protected function setUp(): void

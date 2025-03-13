@@ -3,7 +3,7 @@
 use PHPUnit\Framework\Attributes\DataProvider;
 
 
-class XEEValidatorTest extends PHPUnit\Framework\TestCase
+final class XEEValidatorTest extends PHPUnit\Framework\TestCase
 {
 
     protected function setUp(): void

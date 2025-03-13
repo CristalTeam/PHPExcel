@@ -1,7 +1,7 @@
 <?php
 
 
-class LegendTest extends PHPUnit\Framework\TestCase
+final class LegendTest extends PHPUnit\Framework\TestCase
 {
 
     protected function setUp(): void

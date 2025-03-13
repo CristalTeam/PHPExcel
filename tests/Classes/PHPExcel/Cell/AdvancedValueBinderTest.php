@@ -2,7 +2,7 @@
 
 use PHPUnit\Framework\Attributes\DataProvider;
 
-class AdvancedValueBinderTest extends PHPUnit\Framework\TestCase
+final class AdvancedValueBinderTest extends PHPUnit\Framework\TestCase
 {
     protected function setUp(): void
     {

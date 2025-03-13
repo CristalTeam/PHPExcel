@@ -5,7 +5,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 
 require_once 'testDataFileIterator.php';
 
-class FunctionsTest extends PHPUnit\Framework\TestCase
+final class FunctionsTest extends PHPUnit\Framework\TestCase
 {
 
     protected function setUp(): void

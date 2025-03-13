@@ -1,6 +1,6 @@
 <?php
 
-class WorksheetRowTest extends PHPUnit\Framework\TestCase
+final class WorksheetRowTest extends PHPUnit\Framework\TestCase
 {
     public $mockWorksheet;
     public $mockRow;
