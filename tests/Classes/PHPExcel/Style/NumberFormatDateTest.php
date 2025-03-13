@@ -1,5 +1,7 @@
 <?php
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 
 require_once 'testDataFileIterator.php';
 
@@ -17,9 +19,7 @@ class NumberFormatDateTest extends PHPUnit\Framework\TestCase
         PHPExcel_Shared_String::setThousandsSeparator(',');
     }
 
-    /**
-     * @dataProvider providerNumberFormat
-     */
+    #[DataProvider('providerNumberFormat')]
     public function testFormatValueWithMask()
     {
         $args = func_get_args();

@@ -1,5 +1,7 @@
 <?php
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 
 require_once 'testDataFileIterator.php';
 
@@ -16,9 +18,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         PHPExcel_Calculation_Functions::setCompatibilityMode(PHPExcel_Calculation_Functions::COMPATIBILITY_EXCEL);
     }
 
-    /**
-     * @dataProvider providerATAN2
-     */
+    #[DataProvider('providerATAN2')]
     public function testATAN2()
     {
         $args = func_get_args();
@@ -32,9 +32,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/ATAN2.data');
     }
 
-    /**
-     * @dataProvider providerCEILING
-     */
+    #[DataProvider('providerCEILING')]
     public function testCEILING()
     {
         $args = func_get_args();
@@ -48,9 +46,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/CEILING.data');
     }
 
-    /**
-     * @dataProvider providerCOMBIN
-     */
+    #[DataProvider('providerCOMBIN')]
     public function testCOMBIN()
     {
         $args = func_get_args();
@@ -64,9 +60,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/COMBIN.data');
     }
 
-    /**
-     * @dataProvider providerEVEN
-     */
+    #[DataProvider('providerEVEN')]
     public function testEVEN()
     {
         $args = func_get_args();
@@ -80,9 +74,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/EVEN.data');
     }
 
-    /**
-     * @dataProvider providerODD
-     */
+    #[DataProvider('providerODD')]
     public function testODD()
     {
         $args = func_get_args();
@@ -96,9 +88,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/ODD.data');
     }
 
-    /**
-     * @dataProvider providerFACT
-     */
+    #[DataProvider('providerFACT')]
     public function testFACT()
     {
         $args = func_get_args();
@@ -112,9 +102,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/FACT.data');
     }
 
-    /**
-     * @dataProvider providerFACTDOUBLE
-     */
+    #[DataProvider('providerFACTDOUBLE')]
     public function testFACTDOUBLE()
     {
         $args = func_get_args();
@@ -128,9 +116,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/FACTDOUBLE.data');
     }
 
-    /**
-     * @dataProvider providerFLOOR
-     */
+    #[DataProvider('providerFLOOR')]
     public function testFLOOR()
     {
         $args = func_get_args();
@@ -144,9 +130,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/FLOOR.data');
     }
 
-    /**
-     * @dataProvider providerGCD
-     */
+    #[DataProvider('providerGCD')]
     public function testGCD()
     {
         $args = func_get_args();
@@ -160,9 +144,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/GCD.data');
     }
 
-    /**
-     * @dataProvider providerLCM
-     */
+    #[DataProvider('providerLCM')]
     public function testLCM()
     {
         $args = func_get_args();
@@ -176,9 +158,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/LCM.data');
     }
 
-    /**
-     * @dataProvider providerINT
-     */
+    #[DataProvider('providerINT')]
     public function testINT()
     {
         $args = func_get_args();
@@ -192,9 +172,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/INT.data');
     }
 
-    /**
-     * @dataProvider providerSIGN
-     */
+    #[DataProvider('providerSIGN')]
     public function testSIGN()
     {
         $args = func_get_args();
@@ -208,9 +186,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/SIGN.data');
     }
 
-    /**
-     * @dataProvider providerPOWER
-     */
+    #[DataProvider('providerPOWER')]
     public function testPOWER()
     {
         $args = func_get_args();
@@ -224,9 +200,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/POWER.data');
     }
 
-    /**
-     * @dataProvider providerLOG
-     */
+    #[DataProvider('providerLOG')]
     public function testLOG()
     {
         $args = func_get_args();
@@ -240,9 +214,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/LOG.data');
     }
 
-    /**
-     * @dataProvider providerMOD
-     */
+    #[DataProvider('providerMOD')]
     public function testMOD()
     {
         $args = func_get_args();
@@ -256,9 +228,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/MOD.data');
     }
 
-    /**
-     * @dataProvider providerMDETERM
-     */
+    #[DataProvider('providerMDETERM')]
     public function testMDETERM()
     {
         $args = func_get_args();
@@ -272,9 +242,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/MDETERM.data');
     }
 
-    /**
-     * @dataProvider providerMINVERSE
-     */
+    #[DataProvider('providerMINVERSE')]
     public function testMINVERSE()
     {
         $args = func_get_args();
@@ -288,9 +256,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/MINVERSE.data');
     }
 
-    /**
-     * @dataProvider providerMMULT
-     */
+    #[DataProvider('providerMMULT')]
     public function testMMULT()
     {
         $args = func_get_args();
@@ -304,9 +270,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/MMULT.data');
     }
 
-    /**
-     * @dataProvider providerMULTINOMIAL
-     */
+    #[DataProvider('providerMULTINOMIAL')]
     public function testMULTINOMIAL()
     {
         $args = func_get_args();
@@ -320,9 +284,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/MULTINOMIAL.data');
     }
 
-    /**
-     * @dataProvider providerMROUND
-     */
+    #[DataProvider('providerMROUND')]
     public function testMROUND()
     {
         $args = func_get_args();
@@ -338,9 +300,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/MROUND.data');
     }
 
-    /**
-     * @dataProvider providerPRODUCT
-     */
+    #[DataProvider('providerPRODUCT')]
     public function testPRODUCT()
     {
         $args = func_get_args();
@@ -354,9 +314,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/PRODUCT.data');
     }
 
-    /**
-     * @dataProvider providerQUOTIENT
-     */
+    #[DataProvider('providerQUOTIENT')]
     public function testQUOTIENT()
     {
         $args = func_get_args();
@@ -370,9 +328,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/QUOTIENT.data');
     }
 
-    /**
-     * @dataProvider providerROUNDUP
-     */
+    #[DataProvider('providerROUNDUP')]
     public function testROUNDUP()
     {
         $args = func_get_args();
@@ -386,9 +342,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/ROUNDUP.data');
     }
 
-    /**
-     * @dataProvider providerROUNDDOWN
-     */
+    #[DataProvider('providerROUNDDOWN')]
     public function testROUNDDOWN()
     {
         $args = func_get_args();
@@ -402,9 +356,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/ROUNDDOWN.data');
     }
 
-    /**
-     * @dataProvider providerSERIESSUM
-     */
+    #[DataProvider('providerSERIESSUM')]
     public function testSERIESSUM()
     {
         $args = func_get_args();
@@ -418,9 +370,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/SERIESSUM.data');
     }
 
-    /**
-     * @dataProvider providerSUMIFS
-     */
+    #[DataProvider('providerSUMIFS')]
     public function testSUMIFS()
     {
         $args = func_get_args();
@@ -434,9 +384,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/SUMIFS.data');
     }
 
-    /**
-     * @dataProvider providerSUMSQ
-     */
+    #[DataProvider('providerSUMSQ')]
     public function testSUMSQ()
     {
         $args = func_get_args();
@@ -450,9 +398,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/SUMSQ.data');
     }
 
-    /**
-     * @dataProvider providerTRUNC
-     */
+    #[DataProvider('providerTRUNC')]
     public function testTRUNC()
     {
         $args = func_get_args();
@@ -466,9 +412,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/TRUNC.data');
     }
 
-    /**
-     * @dataProvider providerROMAN
-     */
+    #[DataProvider('providerROMAN')]
     public function testROMAN()
     {
         $args = func_get_args();
@@ -482,9 +426,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/ROMAN.data');
     }
 
-    /**
-     * @dataProvider providerSQRTPI
-     */
+    #[DataProvider('providerSQRTPI')]
     public function testSQRTPI()
     {
         $args = func_get_args();
@@ -498,9 +440,7 @@ class MathTrigTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/MathTrig/SQRTPI.data');
     }
 
-    /**
-     * @dataProvider providerSUMIF
-     */
+    #[DataProvider('providerSUMIF')]
     public function testSUMIF()
     {
         $args = func_get_args();

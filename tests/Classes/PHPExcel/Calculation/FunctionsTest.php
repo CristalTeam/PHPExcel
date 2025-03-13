@@ -1,5 +1,7 @@
 <?php
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 
 require_once 'testDataFileIterator.php';
 
@@ -64,9 +66,7 @@ class FunctionsTest extends PHPUnit\Framework\TestCase
         $this->assertEquals('#VALUE!', $result);
     }
 
-    /**
-     * @dataProvider providerIS_BLANK
-     */
+    #[DataProvider('providerIS_BLANK')]
     public function testIS_BLANK()
     {
         $args = func_get_args();
@@ -80,9 +80,7 @@ class FunctionsTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Functions/IS_BLANK.data');
     }
 
-    /**
-     * @dataProvider providerIS_ERR
-     */
+    #[DataProvider('providerIS_ERR')]
     public function testIS_ERR()
     {
         $args = func_get_args();
@@ -96,9 +94,7 @@ class FunctionsTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Functions/IS_ERR.data');
     }
 
-    /**
-     * @dataProvider providerIS_ERROR
-     */
+    #[DataProvider('providerIS_ERROR')]
     public function testIS_ERROR()
     {
         $args = func_get_args();
@@ -112,9 +108,7 @@ class FunctionsTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Functions/IS_ERROR.data');
     }
 
-    /**
-     * @dataProvider providerERROR_TYPE
-     */
+    #[DataProvider('providerERROR_TYPE')]
     public function testERROR_TYPE()
     {
         $args = func_get_args();
@@ -128,9 +122,7 @@ class FunctionsTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Functions/ERROR_TYPE.data');
     }
 
-    /**
-     * @dataProvider providerIS_LOGICAL
-     */
+    #[DataProvider('providerIS_LOGICAL')]
     public function testIS_LOGICAL()
     {
         $args = func_get_args();
@@ -144,9 +136,7 @@ class FunctionsTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Functions/IS_LOGICAL.data');
     }
 
-    /**
-     * @dataProvider providerIS_NA
-     */
+    #[DataProvider('providerIS_NA')]
     public function testIS_NA()
     {
         $args = func_get_args();
@@ -160,9 +150,7 @@ class FunctionsTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Functions/IS_NA.data');
     }
 
-    /**
-     * @dataProvider providerIS_NUMBER
-     */
+    #[DataProvider('providerIS_NUMBER')]
     public function testIS_NUMBER()
     {
         $args = func_get_args();
@@ -176,9 +164,7 @@ class FunctionsTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Functions/IS_NUMBER.data');
     }
 
-    /**
-     * @dataProvider providerIS_TEXT
-     */
+    #[DataProvider('providerIS_TEXT')]
     public function testIS_TEXT()
     {
         $args = func_get_args();
@@ -192,9 +178,7 @@ class FunctionsTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Functions/IS_TEXT.data');
     }
 
-    /**
-     * @dataProvider providerIS_NONTEXT
-     */
+    #[DataProvider('providerIS_NONTEXT')]
     public function testIS_NONTEXT()
     {
         $args = func_get_args();
@@ -208,9 +192,7 @@ class FunctionsTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Functions/IS_NONTEXT.data');
     }
 
-    /**
-     * @dataProvider providerIS_EVEN
-     */
+    #[DataProvider('providerIS_EVEN')]
     public function testIS_EVEN()
     {
         $args = func_get_args();
@@ -224,9 +206,7 @@ class FunctionsTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Functions/IS_EVEN.data');
     }
 
-    /**
-     * @dataProvider providerIS_ODD
-     */
+    #[DataProvider('providerIS_ODD')]
     public function testIS_ODD()
     {
         $args = func_get_args();
@@ -240,9 +220,7 @@ class FunctionsTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Functions/IS_ODD.data');
     }
 
-    /**
-     * @dataProvider providerTYPE
-     */
+    #[DataProvider('providerTYPE')]
     public function testTYPE()
     {
         $args = func_get_args();
@@ -256,9 +234,7 @@ class FunctionsTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Functions/TYPE.data');
     }
 
-    /**
-     * @dataProvider providerN
-     */
+    #[DataProvider('providerN')]
     public function testN()
     {
         $args = func_get_args();

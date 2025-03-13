@@ -1,5 +1,7 @@
 <?php
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 
 require_once 'testDataFileIterator.php';
 
@@ -28,9 +30,7 @@ class LogicalTest extends PHPUnit\Framework\TestCase
         $this->assertEquals(false, $result);
     }
 
-    /**
-     * @dataProvider providerAND
-     */
+    #[DataProvider('providerAND')]
     public function testAND()
     {
         $args = func_get_args();
@@ -44,9 +44,7 @@ class LogicalTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Logical/AND.data');
     }
 
-    /**
-     * @dataProvider providerOR
-     */
+    #[DataProvider('providerOR')]
     public function testOR()
     {
         $args = func_get_args();
@@ -60,9 +58,7 @@ class LogicalTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Logical/OR.data');
     }
 
-    /**
-     * @dataProvider providerNOT
-     */
+    #[DataProvider('providerNOT')]
     public function testNOT()
     {
         $args = func_get_args();
@@ -76,9 +72,7 @@ class LogicalTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Logical/NOT.data');
     }
 
-    /**
-     * @dataProvider providerIF
-     */
+    #[DataProvider('providerIF')]
     public function testIF()
     {
         $args = func_get_args();
@@ -92,9 +86,7 @@ class LogicalTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Logical/IF.data');
     }
 
-    /**
-     * @dataProvider providerIFERROR
-     */
+    #[DataProvider('providerIFERROR')]
     public function testIFERROR()
     {
         $args = func_get_args();

@@ -1,5 +1,7 @@
 <?php
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 class AdvancedValueBinderTest extends PHPUnit\Framework\TestCase
 {
     protected function setUp(): void
@@ -30,9 +32,7 @@ class AdvancedValueBinderTest extends PHPUnit\Framework\TestCase
         ];
     }
 
-    /**
-     * @dataProvider provider
-     */
+    #[DataProvider('provider')]
     public function testCurrency($value, $valueBinded, $format, $thousandsSeparator, $decimalSeparator, $currencyCode)
     {
         $sheet = $this->getMock(

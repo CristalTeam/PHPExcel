@@ -1,5 +1,7 @@
 <?php
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 
 require_once 'testDataFileIterator.php';
 
@@ -16,9 +18,7 @@ class FinancialTest extends PHPUnit\Framework\TestCase
         PHPExcel_Calculation_Functions::setCompatibilityMode(PHPExcel_Calculation_Functions::COMPATIBILITY_EXCEL);
     }
 
-    /**
-     * @dataProvider providerACCRINT
-     */
+    #[DataProvider('providerACCRINT')]
     public function testACCRINT()
     {
         $args = func_get_args();
@@ -32,9 +32,7 @@ class FinancialTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Financial/ACCRINT.data');
     }
 
-    /**
-     * @dataProvider providerACCRINTM
-     */
+    #[DataProvider('providerACCRINTM')]
     public function testACCRINTM()
     {
         $args = func_get_args();
@@ -48,9 +46,7 @@ class FinancialTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Financial/ACCRINTM.data');
     }
 
-    /**
-     * @dataProvider providerAMORDEGRC
-     */
+    #[DataProvider('providerAMORDEGRC')]
     public function testAMORDEGRC()
     {
         $args = func_get_args();
@@ -64,9 +60,7 @@ class FinancialTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Financial/AMORDEGRC.data');
     }
 
-    /**
-     * @dataProvider providerAMORLINC
-     */
+    #[DataProvider('providerAMORLINC')]
     public function testAMORLINC()
     {
         $args = func_get_args();
@@ -80,9 +74,7 @@ class FinancialTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Financial/AMORLINC.data');
     }
 
-    /**
-     * @dataProvider providerCOUPDAYBS
-     */
+    #[DataProvider('providerCOUPDAYBS')]
     public function testCOUPDAYBS()
     {
         $args = func_get_args();
@@ -96,9 +88,7 @@ class FinancialTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Financial/COUPDAYBS.data');
     }
 
-    /**
-     * @dataProvider providerCOUPDAYS
-     */
+    #[DataProvider('providerCOUPDAYS')]
     public function testCOUPDAYS()
     {
         $args = func_get_args();
@@ -112,9 +102,7 @@ class FinancialTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Financial/COUPDAYS.data');
     }
 
-    /**
-     * @dataProvider providerCOUPDAYSNC
-     */
+    #[DataProvider('providerCOUPDAYSNC')]
     public function testCOUPDAYSNC()
     {
         $args = func_get_args();
@@ -128,9 +116,7 @@ class FinancialTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Financial/COUPDAYSNC.data');
     }
 
-    /**
-     * @dataProvider providerCOUPNCD
-     */
+    #[DataProvider('providerCOUPNCD')]
     public function testCOUPNCD()
     {
         $args = func_get_args();
@@ -144,9 +130,7 @@ class FinancialTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Financial/COUPNCD.data');
     }
 
-    /**
-     * @dataProvider providerCOUPNUM
-     */
+    #[DataProvider('providerCOUPNUM')]
     public function testCOUPNUM()
     {
         $args = func_get_args();
@@ -160,9 +144,7 @@ class FinancialTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Financial/COUPNUM.data');
     }
 
-    /**
-     * @dataProvider providerCOUPPCD
-     */
+    #[DataProvider('providerCOUPPCD')]
     public function testCOUPPCD()
     {
         $args = func_get_args();
@@ -176,9 +158,7 @@ class FinancialTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Financial/COUPPCD.data');
     }
 
-    /**
-     * @dataProvider providerCUMIPMT
-     */
+    #[DataProvider('providerCUMIPMT')]
     public function testCUMIPMT()
     {
         $args = func_get_args();
@@ -192,9 +172,7 @@ class FinancialTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Financial/CUMIPMT.data');
     }
 
-    /**
-     * @dataProvider providerCUMPRINC
-     */
+    #[DataProvider('providerCUMPRINC')]
     public function testCUMPRINC()
     {
         $args = func_get_args();
@@ -208,9 +186,7 @@ class FinancialTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Financial/CUMPRINC.data');
     }
 
-    /**
-     * @dataProvider providerDB
-     */
+    #[DataProvider('providerDB')]
     public function testDB()
     {
         $args = func_get_args();
@@ -224,9 +200,7 @@ class FinancialTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Financial/DB.data');
     }
 
-    /**
-     * @dataProvider providerDDB
-     */
+    #[DataProvider('providerDDB')]
     public function testDDB()
     {
         $args = func_get_args();
@@ -240,9 +214,7 @@ class FinancialTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Financial/DDB.data');
     }
 
-    /**
-     * @dataProvider providerDISC
-     */
+    #[DataProvider('providerDISC')]
     public function testDISC()
     {
         $args = func_get_args();
@@ -256,9 +228,7 @@ class FinancialTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Financial/DISC.data');
     }
 
-    /**
-     * @dataProvider providerDOLLARDE
-     */
+    #[DataProvider('providerDOLLARDE')]
     public function testDOLLARDE()
     {
         $args = func_get_args();
@@ -272,9 +242,7 @@ class FinancialTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Financial/DOLLARDE.data');
     }
 
-    /**
-     * @dataProvider providerDOLLARFR
-     */
+    #[DataProvider('providerDOLLARFR')]
     public function testDOLLARFR()
     {
         $args = func_get_args();
@@ -288,9 +256,7 @@ class FinancialTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Financial/DOLLARFR.data');
     }
 
-    /**
-     * @dataProvider providerEFFECT
-     */
+    #[DataProvider('providerEFFECT')]
     public function testEFFECT()
     {
         $args = func_get_args();
@@ -304,9 +270,7 @@ class FinancialTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Financial/EFFECT.data');
     }
 
-    /**
-     * @dataProvider providerFV
-     */
+    #[DataProvider('providerFV')]
     public function testFV()
     {
         $args = func_get_args();
@@ -320,9 +284,7 @@ class FinancialTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Financial/FV.data');
     }
 
-    /**
-     * @dataProvider providerFVSCHEDULE
-     */
+    #[DataProvider('providerFVSCHEDULE')]
     public function testFVSCHEDULE()
     {
         $args = func_get_args();
@@ -336,9 +298,7 @@ class FinancialTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Financial/FVSCHEDULE.data');
     }
 
-    /**
-     * @dataProvider providerINTRATE
-     */
+    #[DataProvider('providerINTRATE')]
     public function testINTRATE()
     {
         $args = func_get_args();
@@ -352,9 +312,7 @@ class FinancialTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Financial/INTRATE.data');
     }
 
-    /**
-     * @dataProvider providerIPMT
-     */
+    #[DataProvider('providerIPMT')]
     public function testIPMT()
     {
         $args = func_get_args();
@@ -368,9 +326,7 @@ class FinancialTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Financial/IPMT.data');
     }
 
-    /**
-     * @dataProvider providerIRR
-     */
+    #[DataProvider('providerIRR')]
     public function testIRR()
     {
         $args = func_get_args();
@@ -384,9 +340,7 @@ class FinancialTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Financial/IRR.data');
     }
 
-    /**
-     * @dataProvider providerISPMT
-     */
+    #[DataProvider('providerISPMT')]
     public function testISPMT()
     {
         $args = func_get_args();
@@ -400,9 +354,7 @@ class FinancialTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Financial/ISPMT.data');
     }
 
-    /**
-     * @dataProvider providerMIRR
-     */
+    #[DataProvider('providerMIRR')]
     public function testMIRR()
     {
         $args = func_get_args();
@@ -416,9 +368,7 @@ class FinancialTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Financial/MIRR.data');
     }
 
-    /**
-     * @dataProvider providerNOMINAL
-     */
+    #[DataProvider('providerNOMINAL')]
     public function testNOMINAL()
     {
         $args = func_get_args();
@@ -432,9 +382,7 @@ class FinancialTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Financial/NOMINAL.data');
     }
 
-    /**
-     * @dataProvider providerNPER
-     */
+    #[DataProvider('providerNPER')]
     public function testNPER()
     {
         $args = func_get_args();
@@ -448,9 +396,7 @@ class FinancialTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Financial/NPER.data');
     }
 
-    /**
-     * @dataProvider providerNPV
-     */
+    #[DataProvider('providerNPV')]
     public function testNPV()
     {
         $args = func_get_args();
@@ -464,9 +410,7 @@ class FinancialTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Financial/NPV.data');
     }
 
-    /**
-     * @dataProvider providerPRICE
-     */
+    #[DataProvider('providerPRICE')]
     public function testPRICE()
     {
         $args = func_get_args();
@@ -480,9 +424,7 @@ class FinancialTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Financial/PRICE.data');
     }
 
-    /**
-     * @dataProvider providerRATE
-     */
+    #[DataProvider('providerRATE')]
     public function testRATE()
     {
         $args = func_get_args();
@@ -496,9 +438,7 @@ class FinancialTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Calculation/Financial/RATE.data');
     }
 
-    /**
-     * @dataProvider providerXIRR
-     */
+    #[DataProvider('providerXIRR')]
     public function testXIRR()
     {
         $args = func_get_args();

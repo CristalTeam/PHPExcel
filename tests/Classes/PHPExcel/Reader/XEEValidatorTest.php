@@ -1,5 +1,7 @@
 <?php
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 
 class XEEValidatorTest extends PHPUnit\Framework\TestCase
 {
@@ -13,9 +15,9 @@ class XEEValidatorTest extends PHPUnit\Framework\TestCase
     }
 
     /**
-     * @dataProvider providerInvalidXML
      * @expectedException PHPExcel_Reader_Exception
      */
+    #[DataProvider('providerInvalidXML')]
     public function testInvalidXML($filename)
     {
         $reader = $this->getMockForAbstractClass('PHPExcel_Reader_Abstract');
@@ -33,9 +35,7 @@ class XEEValidatorTest extends PHPUnit\Framework\TestCase
         return $tests;
     }
 
-    /**
-     * @dataProvider providerValidXML
-     */
+    #[DataProvider('providerValidXML')]
     public function testValidXML($filename, $expectedResult)
     {
         $reader = $this->getMockForAbstractClass('PHPExcel_Reader_Abstract');

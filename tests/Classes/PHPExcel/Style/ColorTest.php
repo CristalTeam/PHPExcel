@@ -1,5 +1,7 @@
 <?php
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 
 require_once 'testDataFileIterator.php';
 
@@ -14,9 +16,7 @@ class ColorTest extends PHPUnit\Framework\TestCase
         require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
     }
 
-    /**
-     * @dataProvider providerColorGetRed
-     */
+    #[DataProvider('providerColorGetRed')]
     public function testGetRed()
     {
         $args = func_get_args();
@@ -30,9 +30,7 @@ class ColorTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Style/ColorGetRed.data');
     }
 
-    /**
-     * @dataProvider providerColorGetGreen
-     */
+    #[DataProvider('providerColorGetGreen')]
     public function testGetGreen()
     {
         $args = func_get_args();
@@ -46,9 +44,7 @@ class ColorTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Style/ColorGetGreen.data');
     }
 
-    /**
-     * @dataProvider providerColorGetBlue
-     */
+    #[DataProvider('providerColorGetBlue')]
     public function testGetBlue()
     {
         $args = func_get_args();
@@ -62,9 +58,7 @@ class ColorTest extends PHPUnit\Framework\TestCase
         return new testDataFileIterator('rawTestData/Style/ColorGetBlue.data');
     }
 
-    /**
-     * @dataProvider providerColorChangeBrightness
-     */
+    #[DataProvider('providerColorChangeBrightness')]
     public function testChangeBrightness()
     {
         $args = func_get_args();
