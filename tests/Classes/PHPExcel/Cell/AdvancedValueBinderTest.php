@@ -14,9 +14,6 @@ final class AdvancedValueBinderTest extends PHPUnit\Framework\TestCase
 
     public static function provider(): array
     {
-        if (!class_exists('PHPExcel_Style_NumberFormat')) {
-            $this->setUp();
-        }
         $currencyUSD = PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_USD_SIMPLE;
         $currencyEURO = str_replace('$', '€', PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
 
