@@ -27,7 +27,7 @@ final class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerDATE(): array
+    public static function providerDATE(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/DATE.data');
     }
@@ -78,7 +78,7 @@ final class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerDATEVALUE(): array
+    public static function providerDATEVALUE(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/DATEVALUE.data');
     }
@@ -113,7 +113,7 @@ final class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerYEAR(): array
+    public static function providerYEAR(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/YEAR.data');
     }
@@ -127,7 +127,7 @@ final class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerMONTH(): array
+    public static function providerMONTH(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/MONTH.data');
     }
@@ -141,7 +141,7 @@ final class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerWEEKNUM(): array
+    public static function providerWEEKNUM(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/WEEKNUM.data');
     }
@@ -155,7 +155,7 @@ final class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerWEEKDAY(): array
+    public static function providerWEEKDAY(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/WEEKDAY.data');
     }
@@ -169,7 +169,7 @@ final class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerDAY(): array
+    public static function providerDAY(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/DAY.data');
     }
@@ -183,7 +183,7 @@ final class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerTIME(): array
+    public static function providerTIME(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/TIME.data');
     }
@@ -218,7 +218,7 @@ final class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerTIMEVALUE(): array
+    public static function providerTIMEVALUE(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/TIMEVALUE.data');
     }
@@ -253,7 +253,7 @@ final class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerHOUR(): array
+    public static function providerHOUR(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/HOUR.data');
     }
@@ -267,7 +267,7 @@ final class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerMINUTE(): array
+    public static function providerMINUTE(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/MINUTE.data');
     }
@@ -281,7 +281,7 @@ final class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerSECOND(): array
+    public static function providerSECOND(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/SECOND.data');
     }
@@ -295,7 +295,7 @@ final class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerNETWORKDAYS(): array
+    public static function providerNETWORKDAYS(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/NETWORKDAYS.data');
     }
@@ -309,7 +309,7 @@ final class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerWORKDAY(): array
+    public static function providerWORKDAY(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/WORKDAY.data');
     }
@@ -323,7 +323,7 @@ final class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerEDATE(): array
+    public static function providerEDATE(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/EDATE.data');
     }
@@ -358,7 +358,7 @@ final class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerEOMONTH(): array
+    public static function providerEOMONTH(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/EOMONTH.data');
     }
@@ -393,7 +393,7 @@ final class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerDATEDIF(): array
+    public static function providerDATEDIF(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/DATEDIF.data');
     }
@@ -407,7 +407,7 @@ final class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerDAYS360(): array
+    public static function providerDAYS360(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/DAYS360.data');
     }
@@ -421,7 +421,7 @@ final class DateTimeTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerYEARFRAC(): array
+    public static function providerYEARFRAC(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/DateTime/YEARFRAC.data');
     }

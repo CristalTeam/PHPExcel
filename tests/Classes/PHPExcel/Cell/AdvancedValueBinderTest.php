@@ -37,7 +37,7 @@ final class AdvancedValueBinderTest extends PHPUnit\Framework\TestCase
     {
         $sheet = $this->getMock(
             'PHPExcel_Worksheet',
-            ['getStyle', 'getNumberFormat', 'setFormatCode','getCellCacheController']
+            ['getStyle', 'getNumberFormat', 'setFormatCode','getCellCacheController', 'disconnectCells']
         );
         $cache = $this->getMockBuilder('PHPExcel_CachedObjectStorage_Memory')
             ->disableOriginalConstructor()
@@ -59,6 +59,9 @@ final class AdvancedValueBinderTest extends PHPUnit\Framework\TestCase
         $sheet->expects($this->any())
                  ->method('getCellCacheController')
                  ->will($this->returnValue($cache));
+        $sheet->expects($this->any())
+                 ->method('disconnectCells')
+                 ->willReturn(null);
 
         PHPExcel_Shared_String::setCurrencyCode($currencyCode);
         PHPExcel_Shared_String::setDecimalSeparator($decimalSeparator);

@@ -31,7 +31,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerBESSELI(): array
+    public static function providerBESSELI(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/BESSELI.data');
     }
@@ -45,7 +45,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerBESSELJ(): array
+    public static function providerBESSELJ(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/BESSELJ.data');
     }
@@ -59,7 +59,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerBESSELK(): array
+    public static function providerBESSELK(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/BESSELK.data');
     }
@@ -73,7 +73,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerBESSELY(): array
+    public static function providerBESSELY(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/BESSELY.data');
     }
@@ -87,7 +87,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerCOMPLEX(): array
+    public static function providerCOMPLEX(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/COMPLEX.data');
     }
@@ -101,7 +101,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerIMAGINARY(): array
+    public static function providerIMAGINARY(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMAGINARY.data');
     }
@@ -115,7 +115,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerIMREAL(): array
+    public static function providerIMREAL(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMREAL.data');
     }
@@ -129,7 +129,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerIMABS(): array
+    public static function providerIMABS(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMABS.data');
     }
@@ -143,7 +143,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerIMARGUMENT(): array
+    public static function providerIMARGUMENT(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMARGUMENT.data');
     }
@@ -158,7 +158,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public static function providerIMCONJUGATE(): array
+    public static function providerIMCONJUGATE(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMCONJUGATE.data');
     }
@@ -173,7 +173,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public static function providerIMCOS(): array
+    public static function providerIMCOS(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMCOS.data');
     }
@@ -188,7 +188,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public static function providerIMDIV(): array
+    public static function providerIMDIV(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMDIV.data');
     }
@@ -203,7 +203,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public static function providerIMEXP(): array
+    public static function providerIMEXP(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMEXP.data');
     }
@@ -218,7 +218,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public static function providerIMLN(): array
+    public static function providerIMLN(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMLN.data');
     }
@@ -233,7 +233,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public static function providerIMLOG2(): array
+    public static function providerIMLOG2(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMLOG2.data');
     }
@@ -248,7 +248,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public static function providerIMLOG10(): array
+    public static function providerIMLOG10(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMLOG10.data');
     }
@@ -263,7 +263,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public static function providerIMPOWER(): array
+    public static function providerIMPOWER(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMPOWER.data');
     }
@@ -278,7 +278,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public static function providerIMPRODUCT(): array
+    public static function providerIMPRODUCT(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMPRODUCT.data');
     }
@@ -293,7 +293,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public static function providerIMSIN(): array
+    public static function providerIMSIN(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMSIN.data');
     }
@@ -308,7 +308,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public static function providerIMSQRT(): array
+    public static function providerIMSQRT(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMSQRT.data');
     }
@@ -323,7 +323,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public static function providerIMSUB(): array
+    public static function providerIMSUB(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMSUB.data');
     }
@@ -338,7 +338,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
-    public static function providerIMSUM(): array
+    public static function providerIMSUM(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/IMSUM.data');
     }
@@ -352,7 +352,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public static function providerERF(): array
+    public static function providerERF(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/ERF.data');
     }
@@ -366,7 +366,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-12);
     }
 
-    public static function providerERFC(): array
+    public static function providerERFC(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/ERFC.data');
     }
@@ -380,7 +380,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerBIN2DEC(): array
+    public static function providerBIN2DEC(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/BIN2DEC.data');
     }
@@ -394,7 +394,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerBIN2HEX(): array
+    public static function providerBIN2HEX(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/BIN2HEX.data');
     }
@@ -408,7 +408,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerBIN2OCT(): array
+    public static function providerBIN2OCT(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/BIN2OCT.data');
     }
@@ -422,7 +422,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null);
     }
 
-    public static function providerDEC2BIN(): array
+    public static function providerDEC2BIN(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/DEC2BIN.data');
     }
@@ -436,7 +436,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null);
     }
 
-    public static function providerDEC2HEX(): array
+    public static function providerDEC2HEX(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/DEC2HEX.data');
     }
@@ -450,7 +450,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null);
     }
 
-    public static function providerDEC2OCT(): array
+    public static function providerDEC2OCT(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/DEC2OCT.data');
     }
@@ -464,7 +464,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null);
     }
 
-    public static function providerHEX2BIN(): array
+    public static function providerHEX2BIN(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/HEX2BIN.data');
     }
@@ -478,7 +478,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null);
     }
 
-    public static function providerHEX2DEC(): array
+    public static function providerHEX2DEC(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/HEX2DEC.data');
     }
@@ -492,7 +492,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null);
     }
 
-    public static function providerHEX2OCT(): array
+    public static function providerHEX2OCT(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/HEX2OCT.data');
     }
@@ -506,7 +506,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null);
     }
 
-    public static function providerOCT2BIN(): array
+    public static function providerOCT2BIN(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/OCT2BIN.data');
     }
@@ -520,7 +520,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null);
     }
 
-    public static function providerOCT2DEC(): array
+    public static function providerOCT2DEC(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/OCT2DEC.data');
     }
@@ -534,7 +534,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null);
     }
 
-    public static function providerOCT2HEX(): array
+    public static function providerOCT2HEX(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/OCT2HEX.data');
     }
@@ -548,7 +548,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null);
     }
 
-    public static function providerDELTA(): array
+    public static function providerDELTA(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/DELTA.data');
     }
@@ -562,7 +562,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null);
     }
 
-    public static function providerGESTEP(): array
+    public static function providerGESTEP(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/GESTEP.data');
     }
@@ -600,7 +600,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null);
     }
 
-    public static function providerCONVERTUOM(): array
+    public static function providerCONVERTUOM(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Engineering/CONVERTUOM.data');
     }

@@ -65,7 +65,7 @@ final class DefaultValueBinderTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerDataTypeForValue(): array
+    public static function providerDataTypeForValue(): iterable
     {
         return new testDataFileIterator('rawTestData/Cell/DefaultValueBinder.data');
     }

@@ -20,7 +20,6 @@ final class WorksheetRowTest extends PHPUnit\Framework\TestCase
                  ->will($this->returnValue('E'));
     }
 
-
     public function testInstantiateRowDefault(): void
     {
         $row = new PHPExcel_Worksheet_Row($this->mockWorksheet);

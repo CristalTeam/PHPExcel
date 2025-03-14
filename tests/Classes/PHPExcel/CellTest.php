@@ -25,7 +25,7 @@ final class CellTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerColumnString(): array
+    public static function providerColumnString(): iterable
     {
         return new testDataFileIterator('rawTestData/ColumnString.data');
     }
@@ -63,7 +63,7 @@ final class CellTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerColumnIndex(): array
+    public static function providerColumnIndex(): iterable
     {
         return new testDataFileIterator('rawTestData/ColumnIndex.data');
     }
@@ -77,7 +77,7 @@ final class CellTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerCoordinates(): array
+    public static function providerCoordinates(): iterable
     {
         return new testDataFileIterator('rawTestData/CellCoordinates.data');
     }
@@ -127,7 +127,7 @@ final class CellTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerAbsoluteCoordinates(): array
+    public static function providerAbsoluteCoordinates(): iterable
     {
         return new testDataFileIterator('rawTestData/CellAbsoluteCoordinate.data');
     }
@@ -153,7 +153,7 @@ final class CellTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerAbsoluteReferences(): array
+    public static function providerAbsoluteReferences(): iterable
     {
         return new testDataFileIterator('rawTestData/CellAbsoluteReference.data');
     }
@@ -185,7 +185,7 @@ final class CellTest extends PHPUnit\Framework\TestCase
         }
     }
 
-    public static function providerSplitRange(): array
+    public static function providerSplitRange(): iterable
     {
         return new testDataFileIterator('rawTestData/CellSplitRange.data');
     }
@@ -199,7 +199,7 @@ final class CellTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerBuildRange(): array
+    public static function providerBuildRange(): iterable
     {
         return new testDataFileIterator('rawTestData/CellBuildRange.data');
     }
@@ -225,7 +225,7 @@ final class CellTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerRangeBoundaries(): array
+    public static function providerRangeBoundaries(): iterable
     {
         return new testDataFileIterator('rawTestData/CellRangeBoundaries.data');
     }
@@ -239,7 +239,7 @@ final class CellTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerRangeDimension(): array
+    public static function providerRangeDimension(): iterable
     {
         return new testDataFileIterator('rawTestData/CellRangeDimension.data');
     }
@@ -253,7 +253,7 @@ final class CellTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerGetRangeBoundaries(): array
+    public static function providerGetRangeBoundaries(): iterable
     {
         return new testDataFileIterator('rawTestData/CellGetRangeBoundaries.data');
     }
@@ -267,7 +267,7 @@ final class CellTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerExtractAllCellReferencesInRange(): array
+    public static function providerExtractAllCellReferencesInRange(): iterable
     {
         return new testDataFileIterator('rawTestData/CellExtractAllCellReferencesInRange.data');
     }

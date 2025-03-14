@@ -28,7 +28,7 @@ final class CalculationTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResultOpenOffice, $resultOpenOffice, 'should be OpenOffice compatible');
     }
 
-    public static function providerBinaryComparisonOperation(): array
+    public static function providerBinaryComparisonOperation(): iterable
     {
         return new testDataFileIterator('rawTestData/CalculationBinaryComparisonOperation.data');
     }

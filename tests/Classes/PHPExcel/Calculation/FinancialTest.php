@@ -27,7 +27,7 @@ final class FinancialTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerACCRINT(): array
+    public static function providerACCRINT(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/ACCRINT.data');
     }
@@ -41,7 +41,7 @@ final class FinancialTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerACCRINTM(): array
+    public static function providerACCRINTM(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/ACCRINTM.data');
     }
@@ -55,7 +55,7 @@ final class FinancialTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerAMORDEGRC(): array
+    public static function providerAMORDEGRC(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/AMORDEGRC.data');
     }
@@ -69,7 +69,7 @@ final class FinancialTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerAMORLINC(): array
+    public static function providerAMORLINC(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/AMORLINC.data');
     }
@@ -83,7 +83,7 @@ final class FinancialTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerCOUPDAYBS(): array
+    public static function providerCOUPDAYBS(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/COUPDAYBS.data');
     }
@@ -97,7 +97,7 @@ final class FinancialTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerCOUPDAYS(): array
+    public static function providerCOUPDAYS(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/COUPDAYS.data');
     }
@@ -111,7 +111,7 @@ final class FinancialTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerCOUPDAYSNC(): array
+    public static function providerCOUPDAYSNC(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/COUPDAYSNC.data');
     }
@@ -125,7 +125,7 @@ final class FinancialTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerCOUPNCD(): array
+    public static function providerCOUPNCD(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/COUPNCD.data');
     }
@@ -139,7 +139,7 @@ final class FinancialTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerCOUPNUM(): array
+    public static function providerCOUPNUM(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/COUPNUM.data');
     }
@@ -153,7 +153,7 @@ final class FinancialTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerCOUPPCD(): array
+    public static function providerCOUPPCD(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/COUPPCD.data');
     }
@@ -167,7 +167,7 @@ final class FinancialTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerCUMIPMT(): array
+    public static function providerCUMIPMT(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/CUMIPMT.data');
     }
@@ -181,7 +181,7 @@ final class FinancialTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerCUMPRINC(): array
+    public static function providerCUMPRINC(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/CUMPRINC.data');
     }
@@ -195,7 +195,7 @@ final class FinancialTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerDB(): array
+    public static function providerDB(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/DB.data');
     }
@@ -209,7 +209,7 @@ final class FinancialTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerDDB(): array
+    public static function providerDDB(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/DDB.data');
     }
@@ -223,7 +223,7 @@ final class FinancialTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerDISC(): array
+    public static function providerDISC(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/DISC.data');
     }
@@ -237,7 +237,7 @@ final class FinancialTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerDOLLARDE(): array
+    public static function providerDOLLARDE(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/DOLLARDE.data');
     }
@@ -251,7 +251,7 @@ final class FinancialTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerDOLLARFR(): array
+    public static function providerDOLLARFR(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/DOLLARFR.data');
     }
@@ -265,7 +265,7 @@ final class FinancialTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerEFFECT(): array
+    public static function providerEFFECT(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/EFFECT.data');
     }
@@ -279,7 +279,7 @@ final class FinancialTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerFV(): array
+    public static function providerFV(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/FV.data');
     }
@@ -293,7 +293,7 @@ final class FinancialTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerFVSCHEDULE(): array
+    public static function providerFVSCHEDULE(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/FVSCHEDULE.data');
     }
@@ -307,7 +307,7 @@ final class FinancialTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerINTRATE(): array
+    public static function providerINTRATE(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/INTRATE.data');
     }
@@ -321,7 +321,7 @@ final class FinancialTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerIPMT(): array
+    public static function providerIPMT(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/IPMT.data');
     }
@@ -335,7 +335,7 @@ final class FinancialTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerIRR(): array
+    public static function providerIRR(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/IRR.data');
     }
@@ -349,7 +349,7 @@ final class FinancialTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerISPMT(): array
+    public static function providerISPMT(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/ISPMT.data');
     }
@@ -363,7 +363,7 @@ final class FinancialTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerMIRR(): array
+    public static function providerMIRR(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/MIRR.data');
     }
@@ -377,7 +377,7 @@ final class FinancialTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerNOMINAL(): array
+    public static function providerNOMINAL(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/NOMINAL.data');
     }
@@ -391,7 +391,7 @@ final class FinancialTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerNPER(): array
+    public static function providerNPER(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/NPER.data');
     }
@@ -405,7 +405,7 @@ final class FinancialTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerNPV(): array
+    public static function providerNPV(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/NPV.data');
     }
@@ -419,7 +419,7 @@ final class FinancialTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerPRICE(): array
+    public static function providerPRICE(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/PRICE.data');
     }
@@ -433,7 +433,7 @@ final class FinancialTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerRATE(): array
+    public static function providerRATE(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/RATE.data');
     }
@@ -447,7 +447,7 @@ final class FinancialTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result, null, 1E-8);
     }
 
-    public static function providerXIRR(): array
+    public static function providerXIRR(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/XIRR.data');
     }

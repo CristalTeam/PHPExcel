@@ -39,7 +39,7 @@ final class LogicalTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerAND(): array
+    public static function providerAND(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Logical/AND.data');
     }
@@ -53,7 +53,7 @@ final class LogicalTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerOR(): array
+    public static function providerOR(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Logical/OR.data');
     }
@@ -67,7 +67,7 @@ final class LogicalTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerNOT(): array
+    public static function providerNOT(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Logical/NOT.data');
     }
@@ -81,7 +81,7 @@ final class LogicalTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerIF(): array
+    public static function providerIF(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Logical/IF.data');
     }
@@ -95,7 +95,7 @@ final class LogicalTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerIFERROR(): array
+    public static function providerIFERROR(): iterable
     {
         return new testDataFileIterator('rawTestData/Calculation/Logical/IFERROR.data');
     }

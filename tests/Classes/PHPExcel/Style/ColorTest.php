@@ -25,7 +25,7 @@ final class ColorTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerColorGetRed(): array
+    public static function providerColorGetRed(): iterable
     {
         return new testDataFileIterator('rawTestData/Style/ColorGetRed.data');
     }
@@ -39,7 +39,7 @@ final class ColorTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerColorGetGreen(): array
+    public static function providerColorGetGreen(): iterable
     {
         return new testDataFileIterator('rawTestData/Style/ColorGetGreen.data');
     }
@@ -53,7 +53,7 @@ final class ColorTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerColorGetBlue(): array
+    public static function providerColorGetBlue(): iterable
     {
         return new testDataFileIterator('rawTestData/Style/ColorGetBlue.data');
     }
@@ -67,7 +67,7 @@ final class ColorTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public static function providerColorChangeBrightness(): array
+    public static function providerColorChangeBrightness(): iterable
     {
         return new testDataFileIterator('rawTestData/Style/ColorChangeBrightness.data');
     }
