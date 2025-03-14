@@ -35,33 +35,37 @@ final class AdvancedValueBinderTest extends PHPUnit\Framework\TestCase
     #[DataProvider('provider')]
     public function testCurrency($value, $valueBinded, $format, $thousandsSeparator, $decimalSeparator, $currencyCode): void
     {
-        $sheet = $this->getMock(
-            'PHPExcel_Worksheet',
-            ['getStyle', 'getNumberFormat', 'setFormatCode','getCellCacheController', 'disconnectCells']
-        );
+        $sheet = $this->getMockBuilder('PHPExcel_Worksheet')
+            ->onlyMethods(['getStyle', 'getCellCacheController'])
+            ->getMock();
+
+        $style = $this->getMockBuilder('PHPExcel_Style')
+            ->onlyMethods(['getNumberFormat'])
+            ->getMock();
+
+        $format = $this->getMockBuilder('PHPExcel_Style_NumberFormat')
+            ->onlyMethods(['setFormatCode'])
+            ->getMock();
+
+        $style->expects($this->once())
+            ->method('getNumberFormat')
+            ->willReturn($format);
+
         $cache = $this->getMockBuilder('PHPExcel_CachedObjectStorage_Memory')
             ->disableOriginalConstructor()
             ->getMock();
+
         $cache->expects($this->any())
-                 ->method('getParent')
-                 ->will($this->returnValue($sheet));
+            ->method('getParent')
+            ->willReturn($sheet);
 
         $sheet->expects($this->once())
-                 ->method('getStyle')
-                 ->will($this->returnSelf());
-        $sheet->expects($this->once())
-                 ->method('getNumberFormat')
-                 ->will($this->returnSelf());
-        $sheet->expects($this->once())
-                 ->method('setFormatCode')
-                 ->with($format)
-                 ->will($this->returnSelf());
+            ->method('getStyle')
+            ->willReturn($style);
+
         $sheet->expects($this->any())
-                 ->method('getCellCacheController')
-                 ->will($this->returnValue($cache));
-        $sheet->expects($this->any())
-                 ->method('disconnectCells')
-                 ->willReturn(null);
+            ->method('getCellCacheController')
+            ->willReturn($cache);
 
         PHPExcel_Shared_String::setCurrencyCode($currencyCode);
         PHPExcel_Shared_String::setDecimalSeparator($decimalSeparator);
