@@ -32,7 +32,7 @@ class PHPExcel_Writer_OpenDocument extends PHPExcel_Writer_Abstract implements P
      *
      * @var PHPExcel_Writer_OpenDocument_WriterPart[]
      */
-    private $writerParts = array();
+    private $writerParts = [];
 
     /**
      * Private PHPExcel
@@ -50,7 +50,7 @@ class PHPExcel_Writer_OpenDocument extends PHPExcel_Writer_Abstract implements P
     {
         $this->setPHPExcel($pPHPExcel);
 
-        $writerPartsArray = array(
+        $writerPartsArray = [
             'content'    => 'PHPExcel_Writer_OpenDocument_Content',
             'meta'       => 'PHPExcel_Writer_OpenDocument_Meta',
             'meta_inf'   => 'PHPExcel_Writer_OpenDocument_MetaInf',
@@ -58,7 +58,7 @@ class PHPExcel_Writer_OpenDocument extends PHPExcel_Writer_Abstract implements P
             'settings'   => 'PHPExcel_Writer_OpenDocument_Settings',
             'styles'     => 'PHPExcel_Writer_OpenDocument_Styles',
             'thumbnails' => 'PHPExcel_Writer_OpenDocument_Thumbnails'
-        );
+        ];
 
         foreach ($writerPartsArray as $writer => $class) {
             $this->writerParts[$writer] = new $class($this);
@@ -97,7 +97,7 @@ class PHPExcel_Writer_OpenDocument extends PHPExcel_Writer_Abstract implements P
 
         // If $pFilename is php://output or php://stdout, make it a temporary file...
         $originalFilename = $pFilename;
-        if (strtolower($pFilename) == 'php://output' || strtolower($pFilename) == 'php://stdout') {
+        if (strtolower((string) $pFilename) == 'php://output' || strtolower((string) $pFilename) == 'php://stdout') {
             $pFilename = @tempnam(PHPExcel_Shared_File::sys_get_temp_dir(), 'phpxltmp');
             if ($pFilename == '') {
                 $pFilename = $originalFilename;

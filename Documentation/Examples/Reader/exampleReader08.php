@@ -32,7 +32,7 @@ $inputFileType = 'Excel5';
 //	$inputFileType = 'OOCalc';
 //	$inputFileType = 'Gnumeric';
 $inputFileName = './sampleData/example1.xls';
-$sheetnames = array('Data Sheet #1','Data Sheet #3');
+$sheetnames = ['Data Sheet #1','Data Sheet #3'];
 
 echo 'Loading file ',pathinfo($inputFileName,PATHINFO_BASENAME),' using IOFactory with a defined reader type of ',$inputFileType,'<br />';
 $objReader = PHPExcel_IOFactory::createReader($inputFileType);

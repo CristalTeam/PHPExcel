@@ -34,7 +34,7 @@ date_default_timezone_set('Europe/London');
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 
 /** Include PHPExcel */
-require_once dirname(__FILE__) . '/../Classes/PHPExcel.php';
+require_once __DIR__ . '/../Classes/PHPExcel.php';
 
 
 // Create new PHPExcel object
@@ -54,7 +54,7 @@ $objPHPExcel->getProperties()
 
 
 function transpose($value) {
-    return array($value);
+    return [$value];
 }
 
 // Add some data
@@ -75,8 +75,7 @@ foreach(glob('./data/continents/*') as $key => $filename) {
         ->fromArray($countries, null, $column . '1');
     $objPHPExcel->addNamedRange(
         new PHPExcel_NamedRange(
-            $continent, 
-            $objPHPExcel->getActiveSheet(), $column . '1:' . $column . $countryCount
+            $objPHPExcel->getActiveSheet(), $continent, $column . '1:' . $column . $countryCount
         )
     );
     $objPHPExcel->getActiveSheet()
@@ -96,8 +95,7 @@ $objPHPExcel->getActiveSheet()
 
 $objPHPExcel->addNamedRange(
     new PHPExcel_NamedRange(
-        'Continents', 
-        $objPHPExcel->getActiveSheet(), $continentColumn . '1:' . $continentColumn . ($key+1)
+        $objPHPExcel->getActiveSheet(), 'Continents', $continentColumn . '1:' . $continentColumn . ($key+1)
     )
 );
 

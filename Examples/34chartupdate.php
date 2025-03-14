@@ -37,7 +37,7 @@ date_default_timezone_set('Europe/London');
  */
 
 /** PHPExcel */
-require_once dirname(__FILE__) . '/../Classes/PHPExcel.php';
+require_once __DIR__ . '/../Classes/PHPExcel.php';
 
 if (!file_exists("33chartcreate-bar.xlsx")) {
 	exit("Please run 33chartcreate-bar.php first." . EOL);
@@ -52,12 +52,12 @@ $objPHPExcel = $objReader->load("33chartcreate-bar.xlsx");
 echo date('H:i:s') , " Update cell data values that are displayed in the chart" , EOL;
 $objWorksheet = $objPHPExcel->getActiveSheet();
 $objWorksheet->fromArray(
-	array(
-		array(50-12,   50-15,		50-21),
-		array(50-56,   50-73,		50-86),
-		array(50-52,   50-61,		50-69),
-		array(50-30,   50-32,		50),
-	),
+	[
+		[50-12,   50-15,		50-21],
+		[50-56,   50-73,		50-86],
+		[50-52,   50-61,		50-69],
+		[50-30,   50-32,		50],
+	],
 	NULL,
 	'B2'
 );

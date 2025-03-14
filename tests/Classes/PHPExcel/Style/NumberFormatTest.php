@@ -1,0 +1,35 @@
+<?php
+
+use PHPUnit\Framework\Attributes\DataProvider;
+
+
+require_once 'testDataFileIterator.php';
+
+final class NumberFormatTest extends PHPUnit\Framework\TestCase
+{
+
+    protected function setUp(): void
+    {
+        if (!defined('PHPEXCEL_ROOT')) {
+            define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
+        }
+        require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
+
+        PHPExcel_Shared_String::setDecimalSeparator('.');
+        PHPExcel_Shared_String::setThousandsSeparator(',');
+    }
+
+    #[DataProvider('providerNumberFormat')]
+    public function testFormatValueWithMask(): void
+    {
+        $args = func_get_args();
+        $expectedResult = array_pop($args);
+        $result = call_user_func_array(['PHPExcel_Style_NumberFormat','toFormattedString'], $args);
+        $this->assertEquals($expectedResult, $result);
+    }
+
+    public static function providerNumberFormat(): iterable
+    {
+        return new testDataFileIterator('rawTestData/Style/NumberFormat.data');
+    }
+}

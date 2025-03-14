@@ -1,0 +1,136 @@
+<?php
+
+class testDataFileIterator implements Iterator
+{
+    protected $file;
+    protected $key = 0;
+    protected $current;
+
+    public function __construct($file)
+    {
+        $this->file = fopen($file, 'r');
+    }
+
+    public function __destruct()
+    {
+        fclose($this->file);
+    }
+
+    public function rewind(): void
+    {
+        rewind($this->file);
+        $this->current = $this->_parseNextDataset();
+        $this->key = 0;
+    }
+
+    public function valid(): bool
+    {
+        return !feof($this->file);
+    }
+
+    public function key(): int
+    {
+        return $this->key;
+    }
+
+    public function current(): mixed
+    {
+        return $this->current;
+    }
+
+    public function next(): void
+    {
+        $this->current = $this->_parseNextDataset();
+        $this->key++;
+    }
+
+    private function _parseNextDataset()
+    {
+        //    Read a line of test data from the file
+        do {
+            //    Only take lines that contain test data and that aren't commented out
+            $testDataRow = trim(fgets($this->file));
+        } while (($testDataRow > '') && ($testDataRow[0] === '#'));
+
+        //    Discard any comments at the end of the line
+        [$testData] = explode('//', $testDataRow);
+
+        //    Split data into an array of individual values and a result
+        $dataSet = $this->_getcsv($testData, ',', "'");
+        foreach ($dataSet as &$dataValue) {
+            $dataValue = $this->_parseDataValue($dataValue);
+        }
+        unset($dataValue);
+
+        return $dataSet;
+    }
+
+    private function _getcsv($input, $delimiter, $enclosure)
+    {
+        if (function_exists('str_getcsv')) {
+            return str_getcsv((string) $input, $delimiter, $enclosure);
+        }
+
+        $temp = fopen('php://memory', 'rw');
+        fwrite($temp, (string) $input);
+        rewind($temp);
+        $data = fgetcsv($temp, strlen((string) $input), $delimiter, $enclosure);
+        fclose($temp);
+
+        if ($data === false) {
+            $data = [null];
+        }
+
+        return $data;
+    }
+
+    private function _parseDataValue($dataValue)
+    {
+        //    discard any white space
+        $dataValue = trim((string) $dataValue);
+        //    test for the required datatype and convert accordingly
+        if (!is_numeric($dataValue)) {
+            if ($dataValue == '') {
+                $dataValue = null;
+            } elseif ($dataValue == '""') {
+                $dataValue = '';
+            } elseif (($dataValue[0] == '"') && ($dataValue[strlen($dataValue)-1] == '"')) {
+                $dataValue = substr($dataValue, 1, -1);
+            } elseif (($dataValue[0] == '{') && ($dataValue[strlen($dataValue)-1] == '}')) {
+                $dataValue = explode(';', substr($dataValue, 1, -1));
+                foreach ($dataValue as &$dataRow) {
+                    if (str_contains($dataRow, '|')) {
+                        $dataRow = explode('|', $dataRow);
+                        foreach ($dataRow as &$dataCell) {
+                            $dataCell = $this->_parseDataValue($dataCell);
+                        }
+                        unset($dataCell);
+                    } else {
+                        $dataRow = $this->_parseDataValue($dataRow);
+                    }
+                }
+                unset($dataRow);
+            } else {
+                switch (strtoupper($dataValue)) {
+                    case 'NULL':
+                        $dataValue = null;
+                        break;
+                    case 'TRUE':
+                        $dataValue = true;
+                        break;
+                    case 'FALSE':
+                        $dataValue = false;
+                        break;
+                }
+            }
+        } else {
+            if (str_contains($dataValue, '.')) {
+                $dataValue = (float) $dataValue;
+            } else {
+                $dataValue = (int) $dataValue;
+            }
+        }
+
+        return $dataValue;
+    }
+}

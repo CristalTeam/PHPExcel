@@ -211,7 +211,7 @@ class PHPExcel_Writer_Excel2007_Rels extends PHPExcel_Writer_Excel2007_WriterPar
         if ($includeCharts) {
             $charts = $pWorksheet->getChartCollection();
         } else {
-            $charts = array();
+            $charts = [];
         }
         if (($pWorksheet->getDrawingCollection()->count() > 0) ||
             (count($charts) > 0)) {
@@ -297,7 +297,7 @@ class PHPExcel_Writer_Excel2007_Rels extends PHPExcel_Writer_Excel2007_WriterPar
      * @return     string                 XML Output
      * @throws     PHPExcel_Writer_Exception
      */
-    public function writeDrawingRelationships(PHPExcel_Worksheet $pWorksheet = null, &$chartRef, $includeCharts = false)
+    public function writeDrawingRelationships(&$chartRef, PHPExcel_Worksheet $pWorksheet = null, $includeCharts = false)
     {
         // Create XML writer
         $objWriter = null;

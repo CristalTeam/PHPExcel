@@ -27,7 +27,7 @@ include 'PHPExcel/IOFactory.php';
 
 
 $inputFileType = 'CSV';
-$inputFileNames = array('./sampleData/example1.csv','./sampleData/example2.csv');
+$inputFileNames = ['./sampleData/example1.csv','./sampleData/example2.csv'];
 
 $objReader = PHPExcel_IOFactory::createReader($inputFileType);
 $inputFileName = array_shift($inputFileNames);

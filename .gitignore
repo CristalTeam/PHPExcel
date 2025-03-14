@@ -7,3 +7,8 @@ analysis
 *.project
 /.settings
 /.idea
+
+/vendor
+composer.lock
+/.phpunit.result.cache
+/.phpunit.cache

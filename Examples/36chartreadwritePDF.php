@@ -37,7 +37,7 @@ date_default_timezone_set('Europe/London');
  */
 
 /** Include path **/
-set_include_path(get_include_path() . PATH_SEPARATOR . dirname(__FILE__) . '/../Classes/');
+set_include_path(get_include_path() . PATH_SEPARATOR . __DIR__ . '/../Classes/');
 
 /** PHPExcel_IOFactory */
 include 'PHPExcel/IOFactory.php';
@@ -89,9 +89,9 @@ $inputFileType = 'Excel2007';
 $inputFileNames = 'templates/36write*.xlsx';
 
 if ((isset($argc)) && ($argc > 1)) {
-	$inputFileNames = array();
+	$inputFileNames = [];
 	for($i = 1; $i < $argc; ++$i) {
-		$inputFileNames[] = dirname(__FILE__) . '/templates/' . $argv[$i];
+		$inputFileNames[] = __DIR__ . '/templates/' . $argv[$i];
 	}
 } else {
 	$inputFileNames = glob($inputFileNames);
@@ -135,7 +135,7 @@ foreach($inputFileNames as $inputFileName) {
 					$chartType = $chart->getPlotArea()->getPlotGroupByIndex(0)->getPlotType();
 					echo '    ' , $chartType , EOL;
 				} else {
-					$chartTypes = array();
+					$chartTypes = [];
 					for($i = 0; $i < $groupCount; ++$i) {
 						$chartTypes[] = $chart->getPlotArea()->getPlotGroupByIndex($i)->getPlotType();
 					}
