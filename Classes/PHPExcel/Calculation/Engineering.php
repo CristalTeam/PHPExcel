@@ -833,7 +833,9 @@ class PHPExcel_Calculation_Engineering
      */
     private static function nbrConversionFormat($xVal, $places)
     {
-        if (!is_null($places)) {
+        // Check if $places is numeric and convert it to an integer
+        if (!is_null($places) && is_numeric($places)) {
+            $places = (int)$places; // Forcing $places to be an integer
             if (strlen($xVal) <= $places) {
                 return substr(str_pad($xVal, $places, '0', STR_PAD_LEFT), -10);
             } else {
