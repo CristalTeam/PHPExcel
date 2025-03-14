@@ -28,7 +28,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(['PHPExcel_Calculation_Engineering','BESSELI'], $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result);
     }
 
     public static function providerBESSELI(): iterable
@@ -42,7 +42,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(['PHPExcel_Calculation_Engineering','BESSELJ'], $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result);
     }
 
     public static function providerBESSELJ(): iterable
@@ -56,7 +56,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(['PHPExcel_Calculation_Engineering','BESSELK'], $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result);
     }
 
     public static function providerBESSELK(): iterable
@@ -70,7 +70,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(['PHPExcel_Calculation_Engineering','BESSELY'], $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result);
     }
 
     public static function providerBESSELY(): iterable
@@ -98,7 +98,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(['PHPExcel_Calculation_Engineering','IMAGINARY'], $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result);
     }
 
     public static function providerIMAGINARY(): iterable
@@ -112,7 +112,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(['PHPExcel_Calculation_Engineering','IMREAL'], $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result);
     }
 
     public static function providerIMREAL(): iterable
@@ -126,7 +126,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(['PHPExcel_Calculation_Engineering','IMABS'], $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result);
     }
 
     public static function providerIMABS(): iterable
@@ -140,7 +140,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(['PHPExcel_Calculation_Engineering','IMARGUMENT'], $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result);
     }
 
     public static function providerIMARGUMENT(): iterable
@@ -349,7 +349,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(['PHPExcel_Calculation_Engineering','ERF'], $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-12);
+        $this->assertEquals($expectedResult, $result);
     }
 
     public static function providerERF(): iterable
@@ -363,7 +363,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(['PHPExcel_Calculation_Engineering','ERFC'], $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-12);
+        $this->assertEquals($expectedResult, $result);
     }
 
     public static function providerERFC(): iterable
@@ -419,7 +419,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(['PHPExcel_Calculation_Engineering','DECTOBIN'], $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $this->assertEquals($expectedResult, $result);
     }
 
     public static function providerDEC2BIN(): iterable
@@ -433,7 +433,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(['PHPExcel_Calculation_Engineering','DECTOHEX'], $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $this->assertEquals($expectedResult, $result);
     }
 
     public static function providerDEC2HEX(): iterable
@@ -447,7 +447,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(['PHPExcel_Calculation_Engineering','DECTOOCT'], $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $this->assertEquals($expectedResult, $result);
     }
 
     public static function providerDEC2OCT(): iterable
@@ -461,7 +461,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(['PHPExcel_Calculation_Engineering','HEXTOBIN'], $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $this->assertEquals($expectedResult, $result);
     }
 
     public static function providerHEX2BIN(): iterable
@@ -475,7 +475,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(['PHPExcel_Calculation_Engineering','HEXTODEC'], $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $this->assertEquals($expectedResult, $result);
     }
 
     public static function providerHEX2DEC(): iterable
@@ -489,7 +489,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(['PHPExcel_Calculation_Engineering','HEXTOOCT'], $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $this->assertEquals($expectedResult, $result);
     }
 
     public static function providerHEX2OCT(): iterable
@@ -503,7 +503,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(['PHPExcel_Calculation_Engineering','OCTTOBIN'], $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $this->assertEquals($expectedResult, $result);
     }
 
     public static function providerOCT2BIN(): iterable
@@ -517,7 +517,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(['PHPExcel_Calculation_Engineering','OCTTODEC'], $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $this->assertEquals($expectedResult, $result);
     }
 
     public static function providerOCT2DEC(): iterable
@@ -531,7 +531,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(['PHPExcel_Calculation_Engineering','OCTTOHEX'], $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $this->assertEquals($expectedResult, $result);
     }
 
     public static function providerOCT2HEX(): iterable
@@ -545,7 +545,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(['PHPExcel_Calculation_Engineering','DELTA'], $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $this->assertEquals($expectedResult, $result);
     }
 
     public static function providerDELTA(): iterable
@@ -559,7 +559,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(['PHPExcel_Calculation_Engineering','GESTEP'], $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $this->assertEquals($expectedResult, $result);
     }
 
     public static function providerGESTEP(): iterable
@@ -597,7 +597,7 @@ final class EngineeringTest extends PHPUnit\Framework\TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(['PHPExcel_Calculation_Engineering','CONVERTUOM'], $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $this->assertEquals($expectedResult, $result);
     }
 
     public static function providerCONVERTUOM(): iterable

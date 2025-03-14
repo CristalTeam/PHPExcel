@@ -313,7 +313,7 @@ final class TextDataTest extends PHPUnit\Framework\TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(['PHPExcel_Calculation_TextData', 'VALUE'], $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result);
     }
 
     public static function providerVALUE(): iterable

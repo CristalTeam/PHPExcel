@@ -69,7 +69,7 @@ final class DateTest extends PHPUnit\Framework\TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(['PHPExcel_Shared_Date','PHPToExcel'], $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-5);
+        $this->assertEquals($expectedResult, $result);
     }
 
     public static function providerDateTimePHPToExcel1900(): iterable
@@ -88,7 +88,7 @@ final class DateTest extends PHPUnit\Framework\TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(['PHPExcel_Shared_Date','FormattedPHPToExcel'], $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-5);
+        $this->assertEquals($expectedResult, $result);
     }
 
     public static function providerDateTimeFormattedPHPToExcel1900(): iterable
@@ -129,7 +129,7 @@ final class DateTest extends PHPUnit\Framework\TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(['PHPExcel_Shared_Date','PHPToExcel'], $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-5);
+        $this->assertEquals($expectedResult, $result);
     }
 
     public static function providerDateTimePHPToExcel1904(): iterable
