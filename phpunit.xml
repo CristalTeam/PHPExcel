@@ -1,32 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?> 
-<phpunit bootstrap="tests/bootstrap.php"
-    backupGlobals="true"
-    colors="true" 
-    convertErrorsToExceptions="true" 
-    convertNoticesToExceptions="true" 
-    convertWarningsToExceptions="true" 
-    processIsolation="false" 
-    syntaxCheck="true" 
-    verbose="true" 
-    strict="true"
-    stopOnError="false"
-    stopOnFailure="false"
-    stopOnIncomplete="false"
-    stopOnSkipped="false">
-    <php>
-        <ini name="memory_limit" value="2048M"/>
-    </php>
-    <testsuite name="PHPExcel Unit Test Suite">
-        <directory suffix="Test.php">./tests/Classes</directory>
-    </testsuite>
-    <filter>
-        <whitelist>
-            <directory suffix=".php">../Classes</directory>
-            <exclude>
-                <directory>../Classes/PHPExcel/Shared/PCLZip</directory>
-                <directory>../Classes/PHPExcel/Shared/JAMA</directory>
-                <directory>../Classes/PHPExcel/Writer/PDF</directory>
-            </exclude>
-        </whitelist>
-    </filter>
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="tests/bootstrap.php" backupGlobals="true" colors="true" processIsolation="false" stopOnError="false" stopOnFailure="false" stopOnIncomplete="false" stopOnSkipped="false" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd" cacheDirectory=".phpunit.cache">
+  <php>
+    <ini name="memory_limit" value="2048M"/>
+  </php>
+  <testsuite name="PHPExcel Unit Test Suite">
+    <directory suffix="Test.php">./tests/Classes</directory>
+  </testsuite>
+  <source>
+    <include>
+      <directory suffix=".php">../Classes</directory>
+    </include>
+    <exclude>
+      <directory>../Classes/PHPExcel/Shared/PCLZip</directory>
+      <directory>../Classes/PHPExcel/Shared/JAMA</directory>
+      <directory>../Classes/PHPExcel/Writer/PDF</directory>
+    </exclude>
+  </source>
 </phpunit>
