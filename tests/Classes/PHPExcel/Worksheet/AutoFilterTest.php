@@ -100,9 +100,8 @@ final class AutoFilterTest extends PHPUnit\Framework\TestCase
      */
     public function testSetRangeInvalidRange(): void
     {
-        $expectedResult = 'A1';
-
-        $result = $this->_testAutoFilterObject->setRange($expectedResult);
+        $this->expectException(PHPExcel_Exception::class);
+        $this->_testAutoFilterObject->setRange($expectedResult);
     }
 
     public function testGetColumnsEmpty(): void
@@ -132,10 +131,9 @@ final class AutoFilterTest extends PHPUnit\Framework\TestCase
      * @expectedException PHPExcel_Exception
      */
     public function testGetInvalidColumnOffset(): void
-    {
-        $invalidColumn = 'G';
-
-        $result = $this->_testAutoFilterObject->getColumnOffset($invalidColumn);
+    {        
+        $this->expectException(PHPExcel_Exception::class);
+        $this->_testAutoFilterObject->getColumnOffset($invalidColumn);
     }
 
     public function testSetColumnWithString(): void
@@ -159,10 +157,9 @@ final class AutoFilterTest extends PHPUnit\Framework\TestCase
      * @expectedException PHPExcel_Exception
      */
     public function testSetInvalidColumnWithString(): void
-    {
-        $invalidColumn = 'A';
-
-        $result = $this->_testAutoFilterObject->setColumn($invalidColumn);
+    {        
+        $this->expectException(PHPExcel_Exception::class);
+        $this->_testAutoFilterObject->setColumn($invalidColumn);
     }
 
     public function testSetColumnWithColumnObject(): void
@@ -188,10 +185,9 @@ final class AutoFilterTest extends PHPUnit\Framework\TestCase
      */
     public function testSetInvalidColumnWithObject(): void
     {
-        $invalidColumn = 'E';
-        $columnObject = new PHPExcel_Worksheet_AutoFilter_Column($invalidColumn);
-
-        $result = $this->_testAutoFilterObject->setColumn($invalidColumn);
+        $this->expectException(PHPExcel_Exception::class);
+        new PHPExcel_Worksheet_AutoFilter_Column('E');
+        $this->_testAutoFilterObject->setColumn($invalidColumn);
     }
 
     /**
@@ -199,10 +195,9 @@ final class AutoFilterTest extends PHPUnit\Framework\TestCase
      */
     public function testSetColumnWithInvalidDataType(): void
     {
-        $invalidColumn = 123.456;
-        $columnObject = new PHPExcel_Worksheet_AutoFilter_Column($invalidColumn);
-
-        $result = $this->_testAutoFilterObject->setColumn($invalidColumn);
+        $this->expectException(PHPExcel_Exception::class);
+        new PHPExcel_Worksheet_AutoFilter_Column(123.456);
+        $this->_testAutoFilterObject->setColumn($invalidColumn);
     }
 
     public function testGetColumns(): void
@@ -269,10 +264,9 @@ final class AutoFilterTest extends PHPUnit\Framework\TestCase
      */
     public function testGetColumnWithoutRangeSet(): void
     {
-        //    Clear the range
-        $result = $this->_testAutoFilterObject->setRange();
-
-        $result = $this->_testAutoFilterObject->getColumn('A');
+        $this->expectException(PHPExcel_Exception::class);
+        $this->_testAutoFilterObject->setRange();
+        $this->_testAutoFilterObject->getColumn('A');
     }
 
     public function testClearRangeWithExistingColumns(): void

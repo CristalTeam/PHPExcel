@@ -74,6 +74,7 @@ final class ColumnCellIteratorTest extends PHPUnit\Framework\TestCase
      */
     public function testSeekOutOfRange(): void
     {
+        $this->expectException(PHPExcel_Exception::class);
         $iterator = new PHPExcel_Worksheet_ColumnCellIterator($this->mockWorksheet, 'A', 2, 4);
         $iterator->seek(1);
     }
@@ -83,6 +84,7 @@ final class ColumnCellIteratorTest extends PHPUnit\Framework\TestCase
      */
     public function testPrevOutOfRange(): void
     {
+        $this->expectException(PHPExcel_Exception::class);
         $iterator = new PHPExcel_Worksheet_ColumnCellIterator($this->mockWorksheet, 'A', 2, 4);
         $iterator->prev();
     }

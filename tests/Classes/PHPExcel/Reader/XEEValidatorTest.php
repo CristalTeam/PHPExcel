@@ -20,10 +20,10 @@ final class XEEValidatorTest extends PHPUnit\Framework\TestCase
     #[DataProvider('providerInvalidXML')]
     public function testInvalidXML($filename): void
     {
+        $this->expectException(PHPExcel_Reader_Exception::class);
+
         $reader = $this->getMockForAbstractClass('PHPExcel_Reader_Abstract');
-        $expectedResult = 'FAILURE: Should throw an Exception rather than return a value';
-        $result = $reader->securityScanFile($filename);
-        $this->assertEquals($expectedResult, $result);
+        $reader->securityScanFile($filename);
     }
 
     public static function providerInvalidXML(): array

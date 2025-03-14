@@ -81,9 +81,8 @@ class AutofilterColumnTest extends PHPUnit\Framework\TestCase
      */
     public function testSetInvalidFilterTypeThrowsException(): void
     {
-        $expectedResult = 'Unfiltered';
-
-        $result = $this->_testAutoFilterColumnObject->setFilterType($expectedResult);
+        $this->expectException(PHPExcel_Exception::class);
+        $this->_testAutoFilterColumnObject->setFilterType('Unfiltered');
     }
 
     public function testGetJoin(): void
@@ -106,9 +105,8 @@ class AutofilterColumnTest extends PHPUnit\Framework\TestCase
      */
     public function testSetInvalidJoinThrowsException(): void
     {
-        $expectedResult = 'Neither';
-
-        $result = $this->_testAutoFilterColumnObject->setJoin($expectedResult);
+        $this->expectException(PHPExcel_Exception::class);
+        $this->_testAutoFilterColumnObject->setJoin('Neither');
     }
 
     public function testSetAttributes(): void
