@@ -24,8 +24,8 @@ final class RowIteratorTest extends PHPUnit\Framework\TestCase
                  ->method('getHighestRow')
                  ->will($this->returnValue(5));
         $this->mockWorksheet->expects($this->any())
-                 ->method('current')
-                 ->will($this->returnValue($this->mockRow));
+                 ->method('disconnectCells')
+                 ->willReturn(null);
     }
 
 

@@ -24,8 +24,8 @@ final class ColumnIteratorTest extends PHPUnit\Framework\TestCase
                  ->method('getHighestColumn')
                  ->will($this->returnValue('E'));
         $this->mockWorksheet->expects($this->any())
-                 ->method('current')
-                 ->will($this->returnValue($this->mockColumn));
+                 ->method('disconnectCells')
+                 ->willReturn(null);
     }
 
 

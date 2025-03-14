@@ -26,6 +26,9 @@ final class ColumnCellIteratorTest extends PHPUnit\Framework\TestCase
         $this->mockWorksheet->expects($this->any())
                  ->method('getCellByColumnAndRow')
                  ->will($this->returnValue($this->mockCell));
+        $this->mockWorksheet->expects($this->any())
+                 ->method('disconnectCells')
+                 ->willReturn(null);
     }
 
 

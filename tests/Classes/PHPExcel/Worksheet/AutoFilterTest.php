@@ -24,6 +24,9 @@ final class AutoFilterTest extends PHPUnit\Framework\TestCase
         $this->_mockWorksheetObject->expects($this->any())
             ->method('getCellCacheController')
             ->will($this->returnValue($this->_mockCacheController));
+        $this->_mockWorksheetObject->expects($this->any())
+            ->method('disconnectCells')
+            ->willReturn(null);
 
         $this->_testAutoFilterObject = new PHPExcel_Worksheet_AutoFilter(
             $this->_testInitialRange,

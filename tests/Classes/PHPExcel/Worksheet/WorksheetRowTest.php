@@ -18,6 +18,9 @@ final class WorksheetRowTest extends PHPUnit\Framework\TestCase
         $this->mockWorksheet->expects($this->any())
                  ->method('getHighestColumn')
                  ->will($this->returnValue('E'));
+        $this->mockWorksheet->expects($this->any())
+                 ->method('disconnectCells')
+                 ->willReturn(null);
     }
 
     public function testInstantiateRowDefault(): void
