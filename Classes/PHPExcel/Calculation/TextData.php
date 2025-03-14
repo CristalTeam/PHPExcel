@@ -511,17 +511,16 @@ class PHPExcel_Calculation_TextData
      */
     public static function REPLACE($newText, $oldText = '', $start = 1, $chars = null)
     {
+        $start = (int)PHPExcel_Calculation_Functions::flattenSingleValue($start);
+        $chars = ($chars !== null) ? (int)PHPExcel_Calculation_Functions::flattenSingleValue($chars) : null;
         $oldText = PHPExcel_Calculation_Functions::flattenSingleValue($oldText);
-        $start   = PHPExcel_Calculation_Functions::flattenSingleValue($start);
-        $chars   = PHPExcel_Calculation_Functions::flattenSingleValue($chars);
         $newText = PHPExcel_Calculation_Functions::flattenSingleValue($newText);
 
-        $left = self::LEFT($oldText, $start-1);
-        $right = self::RIGHT($oldText, self::STRINGLENGTH($oldText)-($start+$chars)+1);
+        $left = self::LEFT($oldText, $start - 1);
+        $right = self::RIGHT($oldText, self::STRINGLENGTH($oldText) - ($start + $chars) + 1);
 
-        return $left.$newText.$right;
+        return $left . $newText . $right;
     }
-
 
     /**
      * SUBSTITUTE
