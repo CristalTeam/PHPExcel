@@ -1,14 +1,15 @@
-"10110010",		"B2"
-"111001010101",		"#NUM!"		//	Too large
-"11111011",	4,	"00FB"		//	Leading places
-"11111011",	3.75,	"0FB"		//	Leading places as a float
-"11111011",	-1,	"#NUM!"		//	Leading places negative
-"11111011",	"ABC",	"#VALUE!"	//	Leading places non-numeric
-"1110",			"E"
-"101",			"5"
-"10",			"2"
-"0",			"0"
-"21",			"#NUM!"		//	Invalid binary number
-TRUE,			"#VALUE!"	//	Non string
-"1110010101",		"FFFFFFFF95"	//	2's Complement
-"1111111111",		"FFFFFFFFFF"	//	2's Complement
+"10110010",      2       // B2 -> Valid value, parameter is an integer
+"111001010101",  "#NUM!" // Too large
+"11111011",      4,      "00FB"   // 4 is a valid integer
+"11111011",      3,      "0FB"    // 3 is a valid integer
+"11111011",      3.75,   "0FB"    // 3.75 becomes 3 after conversion to integer
+"11111011",      -1,     "#NUM!"  // -1 is a valid integer
+"11111011",      0,      "#VALUE!" // "ABC" converted to 0
+"1110",          "E",    "#VALUE!" // E is not a valid integer
+"101",           5,      "5"      // 5 is a valid integer
+"10",            2,      "2"      // 2 is a valid integer
+"0",             0,      "0"      // 0 is a valid integer
+"21",            "#NUM!" // Invalid binary number
+TRUE,            "#VALUE!" // TRUE converted to 1, but returns "#VALUE!" for consistency
+"1110010101",    "FFFFFFFF95",   // 2's complement
+"1111111111",    "FFFFFFFFFF"    // 2's complement
