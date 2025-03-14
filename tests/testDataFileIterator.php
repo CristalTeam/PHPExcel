@@ -16,29 +16,29 @@ class testDataFileIterator implements Iterator
         fclose($this->file);
     }
 
-    public function rewind()
+    public function rewind(): void
     {
         rewind($this->file);
         $this->current = $this->_parseNextDataset();
         $this->key = 0;
     }
 
-    public function valid()
+    public function valid(): bool
     {
         return !feof($this->file);
     }
 
-    public function key()
+    public function key(): int
     {
         return $this->key;
     }
 
-    public function current()
+    public function current(): mixed
     {
         return $this->current;
     }
 
-    public function next()
+    public function next(): void
     {
         $this->current = $this->_parseNextDataset();
         $this->key++;
