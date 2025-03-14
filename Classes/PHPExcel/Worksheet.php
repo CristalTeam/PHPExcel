@@ -317,6 +317,8 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
     */
     private $codeName = null;
 
+    private ?\PHPExcel $parent = null;
+
     /**
      * Create a new worksheet
      *
@@ -326,7 +328,7 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
     public function __construct(/**
      * Parent spreadsheet
      */
-    private ?\PHPExcel $parent = null, $pTitle = 'Worksheet')
+    ?\PHPExcel $parent = null, $pTitle = 'Worksheet')
     {
         $this->setTitle($pTitle, false);
         // setTitle can change $pTitle
