@@ -757,7 +757,7 @@ class PHPExcel_ReferenceHelper
                         ksort($cellTokens);
                         ksort($newCellTokens);
                     }   //  Update cell references in the formula
-                    $formulaBlock = str_replace('\\', '', preg_replace($cellTokens, (string) $newCellTokens, (string) $formulaBlock));
+                    $formulaBlock = str_replace('\\', '', preg_replace($cellTokens, $newCellTokens, $formulaBlock));
                 }
             }
         }
